@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Trax – app for sportrening med hund. Support og personvernerklæring.">
+<title>Trax</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: smal leseside med sticky nav, tre seksjoner (app, support, personvern), sporlinje som motiv */
+:root{
+  --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
+  --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body);padding-inline:16px}
+.wrap{max-width:720px;margin:0 auto}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:10px 16px}
+nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{font:800 20px var(--display);letter-spacing:-.02em;color:var(--fg);text-decoration:none;margin-right:auto}
+nav a.l{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
+nav a.l:hover,nav a.l:focus-visible{color:var(--accent)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header.hero{padding-block:48px 32px}
+.hero h1{font:800 clamp(40px,9vw,64px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
+.hero p{font-size:20px;color:var(--muted);margin:0;max-width:34ch}
+.trackline{display:block;width:100%;height:60px;margin-top:24px}
+.trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.trackline circle{fill:var(--accent)}
+section{padding-block:40px;border-top:1px solid var(--line);scroll-margin-top:64px}
+h2{font:700 28px/1.2 var(--display);letter-spacing:-.02em;margin:0 0 8px;text-wrap:balance}
+h3{font:700 18px/1.3 var(--display);margin:28px 0 6px}
+.eyebrow{font:400 12px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 6px}
+p,li{max-width:65ch}
+ul{padding-left:1.2em}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.feat div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.feat b{display:block;font-family:var(--display);margin-bottom:2px}
+.feat span{color:var(--muted);font-size:15px}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+.contact code{font:400 16px var(--mono);user-select:all;min-width:0;overflow-wrap:anywhere}
+.ph{background:var(--mark);padding:0 4px;border-radius:3px}
+button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:12px 0}
+dt{font-weight:600}
+dd{margin:0;color:var(--muted);min-width:0}
+@media (max-width:480px){dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
+.updated{font:400 13px var(--mono);color:var(--muted)}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top">Trax</a>
+  <a class="l" href="#support">Support</a>
+  <a class="l" href="#personvern">Personvern</a>
+</div></nav>
+
+<div class="wrap" id="top">
+  <header class="hero">
+    <p class="eyebrow">iOS-app for sportrening</p>
+    <h1>Følg sporet. Se fremgangen.</h1>
+    <p>Trax hjelper deg å legge spor, trene hunden og følge utviklingen over tid.</p>
+    <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
+      <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
+    </svg>
+    <div class="feat">
+      <div><b>Legg spor</b><span>Registrer sporet med GPS mens du går det.</span></div>
+      <div><b>Tren hunden</b><span>Følg hundens rute og sammenlign med sporet.</span></div>
+      <div><b>Treningslogg</b><span>Lengde, liggetid, vær og notater for hver økt.</span></div>
+    </div>
+  </header>
+
+  <section id="support">
+    <p class="eyebrow">Support</p>
+    <h2>Trenger du hjelp?</h2>
+    <p>Send oss en e-post, så svarer vi så raskt vi kan, vanligvis innen to virkedager. Beskriv gjerne hva du prøvde å gjøre, hvilken iPhone og iOS-versjon du har, og legg ved skjermbilde om mulig.</p>
+    <div class="contact">
+      <code id="mail">stillerflaten@icloud.com</code>
+      <button id="copy" type="button">Kopier adresse</button>
+    </div>
+
+    <h3>Vanlige spørsmål</h3>
+    <p><b>Sporet blir unøyaktig.</b> Sjekk at Trax har tilgang til posisjon «Ved bruk av appen» og at Nøyaktig posisjon er slått på under Innstillinger › Trax › Posisjon. GPS er mindre presis i tett skog og mellom høye bygninger.</p>
+    <p><b>Hvordan sletter jeg dataene mine?</b> Alt lagres bare på telefonen din. Du kan slette enkeltøkter i appen, eller slette appen for å fjerne alle data permanent.</p>
+    <p><b>Kan jeg flytte data til en ny telefon?</b> Dataene følger med når du gjenoppretter telefonen fra en iCloud- eller datamaskin-sikkerhetskopi. Du kan også eksportere økter fra appen.</p>
+  </section>
+
+  <section id="personvern">
+    <p class="eyebrow">Personvernerklæring</p>
+    <h2>Slik behandler Trax dine data</h2>
+    <p class="updated">Sist oppdatert: 4. oktober 2026</p>
+    <p>Denne erklæringen forklarer hvilke opplysninger Trax samler inn, hvorfor, og hvilke rettigheter du har. Trax er utviklet av Silje Tillerflaten, som du når på stillerflaten@icloud.com.</p>
+
+    <h3>Kort fortalt</h3>
+    <p>Alt du registrerer i Trax lagres bare på din egen telefon. Trax har ingen konto, ingen egen server og ingen reklame, og utvikleren har ikke tilgang til dataene dine.</p>
+
+    <h3>Hva appen lagrer på telefonen</h3>
+    <dl>
+      <dt>Posisjon</dt><dd>GPS-punkter mens du registrerer et spor eller en treningsøkt. Posisjon hentes bare når appen er i bruk og du har startet en økt.</dd>
+      <dt>Treningsdata</dt><dd>Spor, ruter, tidspunkt, liggetid, vær, notater og opplysninger om hunden din som du selv legger inn.</dd>
+    </dl>
+
+    <h3>Når data forlater telefonen</h3>
+    <dl>
+      <dt>Værdata</dt><dd>For å hente været for en økt sender appen posisjonen og tidspunktet sporet startet til Apple Weather (WeatherKit). Apple bruker posisjonen bare til å svare på forespørselen og knytter den ikke til deg eller Apple-kontoen din. Det sendes ingen navn eller treningsdata. Værdataene som kommer tilbake, lagres sammen med økten på telefonen. Eldre økter kan ha værdata fra Open-Meteo (open-meteo.com, CC BY 4.0).</dd>
+      <dt>Eksport</dt><dd>Når du velger å eksportere eller dele en økt, sendes den dit du selv velger, for eksempel på e-post, melding eller til en annen app. Det skjer bare når du trykker på eksport.</dd>
+      <dt>Sikkerhetskopi</dt><dd>Hvis du har iCloud-sikkerhetskopi slått på, kan iOS ta med Trax-dataene i sikkerhetskopien din. Den styres av Apple og din Apple-konto, ikke av Trax.</dd>
+      <dt>Krasjrapporter</dt><dd>Anonyme krasjrapporter fra Apple, bare hvis du har slått på deling av analysedata på iPhonen.</dd>
+    </dl>
+    <p>Trax selger ikke data, bruker dem ikke til reklame og sporer deg ikke på tvers av andre apper og nettsteder.</p>
+
+    <h3>Hvor lenge dataene lagres</h3>
+    <p>Dataene ligger på telefonen til du sletter dem. Du kan slette enkeltøkter i appen, og alt fjernes permanent når du sletter appen.</p>
+
+    <h3>Dine rettigheter</h3>
+    <p>Siden dataene bare ligger hos deg, har du full kontroll over dem selv. Du kan når som helst slå av tilgang til posisjon under Innstillinger › Trax på iPhonen. Har du spørsmål om personvern, kontakt stillerflaten@icloud.com. Du kan også klage til Datatilsynet (datatilsynet.no).</p>
+
+    <h3>Barn</h3>
+    <p>Trax er ikke rettet mot barn under 13 år, og vi samler ikke bevisst inn opplysninger om dem.</p>
+
+    <h3>Endringer</h3>
+    <p>Vi oppdaterer denne erklæringen ved behov. Datoen øverst viser når den sist ble endret.</p>
+  </section>
+
+  <footer>© 2026 Silje Tillerflaten · <a href="#support">Support</a> · <a href="#personvern">Personvern</a></footer>
+</div>
+
+<script>
+document.getElementById('copy').addEventListener('click',function(){
+  var t=document.getElementById('mail').innerText.trim(),b=this;
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  try{navigator.clipboard.writeText(t).then(function(){b.textContent='Kopiert';setTimeout(function(){b.textContent='Kopier adresse'},1800)},sel)}catch(e){sel()}
+});
+</script>
+</body>
+</html>
