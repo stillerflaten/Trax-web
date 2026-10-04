@@ -4,15 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Trax – app for sportrening med hund. Support og personvernerklæring.">
-<title>Trax</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<title>Trax – sportrening med hund</title>
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:site_name" content="Trax">
+<meta property="og:title" content="Trax – sportrening med hund">
+<meta property="og:description" content="iOS-app for sportrening: legg spor, tren hunden og følg utviklingen over tid.">
+<meta property="og:url" content="https://stillerflaten.github.io/Trax-web/">
+<meta property="og:image" content="https://stillerflaten.github.io/Trax-web/img/og-image.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Trax-appikonet: en hund og en posisjonsnål">
+<meta name="twitter:card" content="summary">
 <style>
 /* Layout: smal leseside med sticky nav, tre seksjoner (app, support, personvern), sporlinje som motiv */
 :root{
   --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
   --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
-  --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --display:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
@@ -49,13 +61,15 @@ ul{padding-left:1.2em}
 .feat b{display:block;font-family:var(--display);margin-bottom:2px}
 .feat span{color:var(--muted);font-size:15px}
 .contact{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
-.contact code{font:400 16px var(--mono);user-select:all;min-width:0;overflow-wrap:anywhere}
+.contact a{font:400 16px var(--mono);min-width:0;overflow-wrap:anywhere}
 .ph{background:var(--mark);padding:0 4px;border-radius:3px}
 button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
-dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:12px 0}
+dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
 dt{font-weight:600}
 dd{margin:0;color:var(--muted);min-width:0}
 @media (max-width:480px){dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
+.shots{display:flex;gap:16px;margin-top:28px;overflow-x:auto;padding-bottom:4px}
+.shots img{flex:0 0 auto;width:min(210px,62vw);height:auto;border-radius:18px;border:1px solid var(--line)}
 footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
 .updated{font:400 13px var(--mono);color:var(--muted)}
 </style>
@@ -67,7 +81,7 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
   <a class="l" href="#personvern">Personvern</a>
 </div></nav>
 
-<div class="wrap" id="top">
+<main class="wrap" id="top">
   <header class="hero">
     <p class="eyebrow">iOS-app for sportrening</p>
     <h1>Følg sporet. Se fremgangen.</h1>
@@ -81,6 +95,11 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
       <div><b>Tren hunden</b><span>Følg hundens rute og sammenlign med sporet.</span></div>
       <div><b>Treningslogg</b><span>Lengde, liggetid, vær og notater for hver økt.</span></div>
     </div>
+    <div class="shots">
+      <img src="img/skjerm-home.jpg" width="420" height="913" alt="Startsiden i Trax med spor som er klare til å gås og fullførte spor">
+      <img src="img/skjerm-walk.jpg" width="420" height="913" alt="Et spor som gås, med kart, tid, lengde og antall gjenstander funnet" loading="lazy">
+      <img src="img/skjerm-detail.jpg" width="420" height="913" alt="Resultatet for et fullført spor med kart, funn, liggetid og værforhold" loading="lazy">
+    </div>
   </header>
 
   <section id="support">
@@ -88,7 +107,7 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
     <h2>Trenger du hjelp?</h2>
     <p>Send oss en e-post, så svarer vi så raskt vi kan, vanligvis innen to virkedager. Beskriv gjerne hva du prøvde å gjøre, hvilken iPhone og iOS-versjon du har, og legg ved skjermbilde om mulig.</p>
     <div class="contact">
-      <code id="mail">stillerflaten@icloud.com</code>
+      <a id="mail" href="mailto:stillerflaten@icloud.com">stillerflaten@icloud.com</a>
       <button id="copy" type="button">Kopier adresse</button>
     </div>
 
@@ -102,7 +121,7 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
     <p class="eyebrow">Personvernerklæring</p>
     <h2>Slik behandler Trax dine data</h2>
     <p class="updated">Sist oppdatert: 4. oktober 2026</p>
-    <p>Denne erklæringen forklarer hvilke opplysninger Trax samler inn, hvorfor, og hvilke rettigheter du har. Trax er utviklet av Silje Tillerflaten, som du når på stillerflaten@icloud.com.</p>
+    <p>Denne erklæringen forklarer hvilke opplysninger Trax samler inn, hvorfor, og hvilke rettigheter du har. Trax er utviklet av Silje Tillerflaten, som du når på <a href="mailto:stillerflaten@icloud.com">stillerflaten@icloud.com</a>.</p>
 
     <h3>Kort fortalt</h3>
     <p>Alt du registrerer i Trax lagres bare på din egen telefon. Trax har ingen konto, ingen egen server og ingen reklame, og utvikleren har ikke tilgang til dataene dine.</p>
@@ -122,11 +141,14 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
     </dl>
     <p>Trax selger ikke data, bruker dem ikke til reklame og sporer deg ikke på tvers av andre apper og nettsteder.</p>
 
+    <h3>Denne nettsiden</h3>
+    <p>Nettsiden ligger på GitHub Pages. GitHub lagrer IP-adressen til besøkende i tekniske logger av sikkerhetshensyn, se <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHubs personvernerklæring</a>. Nettsiden bruker ikke informasjonskapsler (cookies) eller analyseverktøy, og henter ikke skrifttyper eller annet innhold fra andre tjenester.</p>
+
     <h3>Hvor lenge dataene lagres</h3>
     <p>Dataene ligger på telefonen til du sletter dem. Du kan slette enkeltøkter i appen, og alt fjernes permanent når du sletter appen.</p>
 
     <h3>Dine rettigheter</h3>
-    <p>Siden dataene bare ligger hos deg, har du full kontroll over dem selv. Du kan når som helst slå av tilgang til posisjon under Innstillinger › Trax på iPhonen. Har du spørsmål om personvern, kontakt stillerflaten@icloud.com. Du kan også klage til Datatilsynet (datatilsynet.no).</p>
+    <p>Siden dataene bare ligger hos deg, har du full kontroll over dem selv. Du kan når som helst slå av tilgang til posisjon under Innstillinger › Trax på iPhonen. Har du spørsmål om personvern, kontakt <a href="mailto:stillerflaten@icloud.com">stillerflaten@icloud.com</a>. Du kan også klage til Datatilsynet (<a href="https://www.datatilsynet.no">datatilsynet.no</a>).</p>
 
     <h3>Barn</h3>
     <p>Trax er ikke rettet mot barn under 13 år, og vi samler ikke bevisst inn opplysninger om dem.</p>
@@ -134,7 +156,9 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
     <h3>Endringer</h3>
     <p>Vi oppdaterer denne erklæringen ved behov. Datoen øverst viser når den sist ble endret.</p>
   </section>
+</main>
 
+<div class="wrap">
   <footer>© 2026 Silje Tillerflaten · <a href="#support">Support</a> · <a href="#personvern">Personvern</a></footer>
 </div>
 
