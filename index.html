@@ -39,7 +39,8 @@ body{background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body);padding-
 .wrap{max-width:720px;margin:0 auto}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:10px 16px}
 nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.brand{font:800 20px var(--display);letter-spacing:-.02em;color:var(--fg);text-decoration:none;margin-right:auto}
+.brand{font:800 20px var(--display);letter-spacing:-.02em;color:var(--fg);text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:10px}
+.brand img{width:32px;height:32px;border-radius:8px}
 nav a.l{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
 nav a.l:hover,nav a.l:focus-visible{color:var(--accent)}
 a{color:var(--accent)}
@@ -76,7 +77,7 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
 </head>
 <body>
 <nav><div class="wrap">
-  <a class="brand" href="#top">Trax</a>
+  <a class="brand" href="#top"><img src="img/icon-192.png" width="32" height="32" alt="">Trax</a>
   <a class="l" href="#support">Support</a>
   <a class="l" href="#personvern">Personvern</a>
 </div></nav>
