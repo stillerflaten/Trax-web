@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Trax – an app for scent tracking training with your dog. Support and privacy policy.">
+<title>Trax – tracking training for dogs</title>
+<link rel="alternate" hreflang="nb" href="https://stillerflaten.github.io/Trax-web/">
+<link rel="alternate" hreflang="en" href="https://stillerflaten.github.io/Trax-web/en/">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../img/icon-192.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="nb_NO">
+<meta property="og:site_name" content="Trax">
+<meta property="og:title" content="Trax – tracking training for dogs">
+<meta property="og:description" content="iOS app for tracking training: lay tracks, train your dog and follow its progress over time.">
+<meta property="og:url" content="https://stillerflaten.github.io/Trax-web/en/">
+<meta property="og:image" content="https://stillerflaten.github.io/Trax-web/img/og-image.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="The Trax app icon: a dog and a location pin">
+<meta name="twitter:card" content="summary">
+<style>
+/* Engelsk utgave av index.html: samme stil, hold de to filene i takt */
+:root{
+  --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
+  --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
+  --display:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body);padding-inline:16px}
+.wrap{max-width:720px;margin:0 auto}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:10px 16px}
+nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{font:800 20px var(--display);letter-spacing:-.02em;color:var(--fg);text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:10px}
+.brand img{width:32px;height:32px;border-radius:8px}
+nav a.l{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
+nav a.l:hover,nav a.l:focus-visible{color:var(--accent)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header.hero{padding-block:48px 32px}
+.hero h1{font:800 clamp(40px,9vw,64px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
+.hero p{font-size:20px;color:var(--muted);margin:0;max-width:34ch}
+.trackline{display:block;width:100%;height:60px;margin-top:24px}
+.trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.trackline circle{fill:var(--accent)}
+section{padding-block:40px;border-top:1px solid var(--line);scroll-margin-top:64px}
+h2{font:700 28px/1.2 var(--display);letter-spacing:-.02em;margin:0 0 8px;text-wrap:balance}
+h3{font:700 18px/1.3 var(--display);margin:28px 0 6px}
+.eyebrow{font:400 12px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 6px}
+p,li{max-width:65ch}
+ul{padding-left:1.2em}
+.feat{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
+.feat div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.feat b{display:block;font-family:var(--display);margin-bottom:2px}
+.feat span{color:var(--muted);font-size:15px}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+.contact a{font:400 16px var(--mono);min-width:0;overflow-wrap:anywhere}
+.ph{background:var(--mark);padding:0 4px;border-radius:3px}
+button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
+dt{font-weight:600}
+dd{margin:0;color:var(--muted);min-width:0}
+@media (max-width:480px){dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.shots img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+@media (min-width:600px){.feat{grid-template-columns:repeat(3,1fr)}}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
+.updated{font:400 13px var(--mono);color:var(--muted)}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top"><img src="../img/icon-192.png" width="32" height="32" alt="">Trax</a>
+  <a class="l" href="#support">Support</a>
+  <a class="l" href="#privacy">Privacy</a>
+  <a class="l" href="../" hreflang="nb" lang="nb">Norsk</a>
+</div></nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <p class="eyebrow">iOS app for tracking training</p>
+    <h1>Follow the track. See the progress.</h1>
+    <p>Trax helps you lay tracks, train your dog and follow its progress over time.</p>
+    <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
+      <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
+    </svg>
+    <div class="feat">
+      <div><b>Lay tracks</b><span>Record the track with GPS as you walk it.</span></div>
+      <div><b>Train your dog</b><span>Follow the dog's route and compare it with the track.</span></div>
+      <div><b>Training log</b><span>Length, track age, weather and notes for every session.</span></div>
+    </div>
+    <div class="shots">
+      <img src="../img/screen-lay-en.jpg" width="420" height="913" alt="A track being laid, with map, time, length and number of items placed">
+      <img src="../img/screen-walk-en.jpg" width="420" height="913" alt="A track being walked, with map, time, length and number of items found" loading="lazy">
+      <img src="../img/screen-detail-en.jpg" width="420" height="913" alt="The result of a completed track with map, items found, track age and weather" loading="lazy">
+    </div>
+  </header>
+
+  <section id="support">
+    <p class="eyebrow">Support</p>
+    <h2>Need help?</h2>
+    <p>Send us an email and we'll reply as soon as we can, usually within two business days. Please describe what you were trying to do, which iPhone and iOS version you have, and attach a screenshot if possible.</p>
+    <div class="contact">
+      <a id="mail" href="mailto:stillerflaten@icloud.com">stillerflaten@icloud.com</a>
+      <button id="copy" type="button">Copy address</button>
+    </div>
+
+    <h3>Frequently asked questions</h3>
+    <p><b>The track is inaccurate.</b> Make sure Trax has location access “While Using the App” and that Precise Location is turned on under Settings › Trax › Location. GPS is less accurate in dense forest and between tall buildings.</p>
+    <p><b>How do I delete my data?</b> Everything is stored only on your phone. You can delete individual sessions in the app, or delete the app to remove all data permanently.</p>
+    <p><b>Can I move my data to a new phone?</b> Your data comes along when you restore the phone from an iCloud or computer backup. You can also export sessions from the app.</p>
+  </section>
+
+  <section id="privacy">
+    <p class="eyebrow">Privacy policy</p>
+    <h2>How Trax handles your data</h2>
+    <p class="updated">Last updated: 4 October 2026</p>
+    <p>This policy explains what information Trax collects, why, and what rights you have. Trax is developed by Silje Tillerflaten, who can be reached at <a href="mailto:stillerflaten@icloud.com">stillerflaten@icloud.com</a>.</p>
+
+    <h3>In short</h3>
+    <p>Everything you record in Trax is stored only on your own phone. Trax has no account, no server of its own and no ads, and the developer has no access to your data.</p>
+
+    <h3>What the app stores on your phone</h3>
+    <dl>
+      <dt>Location</dt><dd>GPS points while you record a track or a training session. Location is only used while the app is in use and you have started a session.</dd>
+      <dt>Training data</dt><dd>Tracks, routes, times, track age, weather, notes and information about your dog that you enter yourself.</dd>
+    </dl>
+
+    <h3>When data leaves your phone</h3>
+    <dl>
+      <dt>Weather data</dt><dd>To get the weather for a session, the app sends the location and the time the track started to Apple Weather (WeatherKit). Apple uses the location only to answer the request and does not link it to you or your Apple Account. No names or training data are sent. The weather data that comes back is stored with the session on your phone. Older sessions may have weather data from Open-Meteo (open-meteo.com, CC BY 4.0).</dd>
+      <dt>Export</dt><dd>When you choose to export or share a session, it is sent wherever you choose, for example by email, message or to another app. This only happens when you tap export.</dd>
+      <dt>Backup</dt><dd>If iCloud Backup is turned on, iOS may include your Trax data in your backup. The backup is controlled by Apple and your Apple Account, not by Trax.</dd>
+      <dt>Crash reports</dt><dd>Anonymous crash reports from Apple, only if you have turned on sharing of analytics data on your iPhone.</dd>
+    </dl>
+    <p>Trax does not sell data, does not use it for advertising and does not track you across other apps and websites.</p>
+
+    <h3>This website</h3>
+    <p>This website is hosted on GitHub Pages. GitHub stores visitors' IP addresses in technical logs for security purposes, see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>. The website does not use cookies or analytics tools, and does not load fonts or other content from other services.</p>
+
+    <h3>How long data is kept</h3>
+    <p>Your data stays on your phone until you delete it. You can delete individual sessions in the app, and everything is removed permanently when you delete the app.</p>
+
+    <h3>Your rights</h3>
+    <p>Since your data is stored only with you, you have full control over it yourself. You can turn off location access at any time under Settings › Trax on your iPhone. If you have questions about privacy, contact <a href="mailto:stillerflaten@icloud.com">stillerflaten@icloud.com</a>. You can also lodge a complaint with a data protection authority, such as the Norwegian Data Protection Authority (<a href="https://www.datatilsynet.no/en/">datatilsynet.no</a>).</p>
+
+    <h3>Children</h3>
+    <p>Trax is not directed at children under 13, and we do not knowingly collect information about them.</p>
+
+    <h3>Changes</h3>
+    <p>We update this policy when needed. The date at the top shows when it was last changed.</p>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>© 2026 Silje Tillerflaten · <a href="#support">Support</a> · <a href="#privacy">Privacy</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a></footer>
+</div>
+
+<script>
+document.getElementById('copy').addEventListener('click',function(){
+  var t=document.getElementById('mail').innerText.trim(),b=this;
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy address'},1800)},sel)}catch(e){sel()}
+});
+</script>
+</body>
+</html>
