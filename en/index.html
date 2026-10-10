@@ -64,8 +64,18 @@ ul{padding-left:1.2em}
 .feat div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
 .feat b{display:block;font-family:var(--display);margin-bottom:2px}
 .feat span{color:var(--muted);font-size:15px}
-.contact{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
-.contact a{font:400 16px var(--mono);min-width:0;overflow-wrap:anywhere}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-wrap:wrap;gap:14px 16px;align-items:center;margin-top:16px}
+.contact .ic{flex:none;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center}
+.contact .ic svg{width:22px;height:22px}
+.contact .who{flex:1 1 12em;min-width:0}
+.contact .who b{display:block;font-family:var(--display)}
+.contact .who span{color:var(--muted);font:400 15px var(--mono);overflow-wrap:anywhere}
+.contact .act{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:6px;font:600 15px var(--body);background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);border-radius:8px;padding:9px 16px;text-decoration:none;white-space:nowrap;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:hover{filter:brightness(1.08)}
+@media (max-width:480px){.contact .act{width:100%;flex-direction:column}.contact .act .btn{justify-content:center}}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .ph{background:var(--mark);padding:0 4px;border-radius:3px}
 button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
 dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
@@ -113,8 +123,13 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
     <h2>Need help?</h2>
     <p>Send us an email and we'll reply as soon as we can, usually within two business days. Please describe what you were trying to do, which iPhone and iOS version you have, and attach a screenshot if possible.</p>
     <div class="contact">
-      <a id="mail" href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>
-      <button id="copy" type="button">Copy address</button>
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <div class="who"><b>Email support</b><span id="mail">post@trax-dogtracking.no</span></div>
+      <div class="act">
+        <a class="btn" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=What%20were%20you%20trying%20to%20do%3F%0A%0A%0AiPhone%20model%3A%0AiOS%20version%3A%0A">Write email</a>
+        <button class="btn ghost" id="copy" type="button" aria-label="Copy the email address">Copy address</button>
+      </div>
+      <span class="vh" id="copied" aria-live="polite"></span>
     </div>
 
     <h3>Frequently asked questions</h3>
@@ -170,9 +185,10 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
 
 <script>
 document.getElementById('copy').addEventListener('click',function(){
-  var t=document.getElementById('mail').innerText.trim(),b=this;
-  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
-  try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy address'},1800)},sel)}catch(e){sel()}
+  var m=document.getElementById('mail'),t=m.textContent.trim(),b=this,live=document.getElementById('copied');
+  function sel(){var r=document.createRange();r.selectNodeContents(m);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  function ok(){b.textContent='Copied ✓';live.textContent='Copied';setTimeout(function(){b.textContent='Copy address';live.textContent=''},1800)}
+  try{navigator.clipboard.writeText(t).then(ok,sel)}catch(e){sel()}
 });
 </script>
 </body>
