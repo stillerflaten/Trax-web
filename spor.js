@@ -1,6 +1,6 @@
 /* Sporlinja øverst: fire poter går over skjermen og etterlater det stiplede sporet.
    Spilles én gang per besøk (sessionStorage), og først når linja er synlig på skjermen.
-   Med «reduser bevegelse» eller uten JS vises sporet statisk. Felles for index.html og en/index.html. */
+   Med «reduser bevegelse» eller uten JS vises sporet statisk. Felles for index.html, sv/index.html og en/index.html. */
 (function(){
   var svg=document.querySelector('.trackline');
   if(!svg)return;

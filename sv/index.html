@@ -1,31 +1,31 @@
 <!doctype html>
-<html lang="nb">
+<html lang="sv">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Trax – app for sportrening med hund. Support og personvernerklæring.">
-<title>Trax – sportrening med hund</title>
+<meta name="description" content="Trax – en app för spårträning med hund. Support och integritetspolicy.">
+<title>Trax – spårträning med hund</title>
 <link rel="alternate" hreflang="nb" href="https://trax-dogtracking.no/">
 <link rel="alternate" hreflang="sv" href="https://trax-dogtracking.no/sv/">
 <link rel="alternate" hreflang="en" href="https://trax-dogtracking.no/en/">
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../img/icon-192.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="nb_NO">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:locale:alternate" content="nb_NO">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:locale:alternate" content="sv_SE">
 <meta property="og:site_name" content="Trax">
-<meta property="og:title" content="Trax – sportrening med hund">
-<meta property="og:description" content="iOS-app for sportrening: legg spor, tren hunden og følg utviklingen over tid.">
-<meta property="og:url" content="https://trax-dogtracking.no/">
+<meta property="og:title" content="Trax – spårträning med hund">
+<meta property="og:description" content="iOS-app för spårträning: lägg spår, träna hunden och följ utvecklingen över tid.">
+<meta property="og:url" content="https://trax-dogtracking.no/sv/">
 <meta property="og:image" content="https://trax-dogtracking.no/img/og-image.png">
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
-<meta property="og:image:alt" content="Trax-appikonet: en hund og en posisjonsnål">
+<meta property="og:image:alt" content="Trax-appikonen: en hund och en platsnål">
 <meta name="twitter:card" content="summary">
 <style>
-/* Layout: smal leseside med sticky nav, tre seksjoner (app, support, personvern), sporlinje som motiv */
+/* Svensk utgave av index.html: samme stil, hold de tre filene i takt */
 :root{
   --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
   --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
@@ -125,110 +125,111 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
 </head>
 <body>
 <nav><div class="wrap">
-  <a class="brand" href="#top"><img src="img/icon-192.png" width="32" height="32" alt="">Trax</a>
+  <a class="brand" href="#top"><img src="../img/icon-192.png" width="32" height="32" alt="">Trax</a>
   <a class="l" href="#support">Support</a>
-  <a class="l" href="#personvern">Personvern</a>
+  <a class="l" href="#integritet">Integritet</a>
   <details class="lang">
-    <summary aria-label="Velg språk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span>NO</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+    <summary aria-label="Välj språk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span>SV</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
     <ul>
-      <li><a href="./" lang="nb" aria-current="page">Norsk</a></li>
-      <li><a href="sv/" hreflang="sv" lang="sv">Svenska</a></li>
-      <li><a href="en/" hreflang="en" lang="en">English</a></li>
+      <li><a href="../" hreflang="nb" lang="nb">Norsk</a></li>
+      <li><a href="./" lang="sv" aria-current="page">Svenska</a></li>
+      <li><a href="../en/" hreflang="en" lang="en">English</a></li>
     </ul>
   </details>
 </div></nav>
 
 <main class="wrap" id="top">
   <header class="hero">
-    <p class="eyebrow">iOS-app for sportrening</p>
-    <h1>Følg sporet. Se fremgangen.</h1>
-    <p>Trax hjelper deg å legge spor, trene hunden og følge utviklingen over tid.</p>
+    <p class="eyebrow">iOS-app för spårträning</p>
+    <h1>Följ spåret. Se framstegen.</h1>
+    <p>Trax hjälper dig att lägga spår, träna hunden och följa utvecklingen över tid.</p>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
     <div class="feat">
-      <div><b>Legg spor</b><span>Registrer sporet med GPS mens du går det.</span></div>
-      <div><b>Tren hunden</b><span>Følg hundens rute og sammenlign med sporet.</span></div>
-      <div><b>Treningslogg</b><span>Lengde, liggetid, vær og notater for hver økt.</span></div>
+      <div><b>Lägg spår</b><span>Registrera spåret med GPS medan du lägger det.</span></div>
+      <div><b>Träna hunden</b><span>Följ hundens väg och jämför den med spåret.</span></div>
+      <div><b>Träningslogg</b><span>Längd, spårets ålder, väder och anteckningar för varje träningspass.</span></div>
     </div>
     <div class="shots">
-      <img src="img/skjerm-lay.jpg" width="420" height="913" alt="Et spor som legges, med kart, tid, lengde og antall gjenstander lagt ut">
-      <img src="img/skjerm-walk.jpg" width="420" height="913" alt="Et spor som gås, med kart, tid, lengde og antall gjenstander funnet" loading="lazy">
-      <img src="img/skjerm-detail.jpg" width="420" height="913" alt="Resultatet for et fullført spor med kart, funn, liggetid og værforhold" loading="lazy">
+      <!-- Engelska skärmbilder tills svenska finns (img/screen-*-sv.jpg) -->
+      <img src="../img/screen-lay-en.jpg" width="420" height="913" alt="Ett spår som läggs, med karta, tid, längd och antal utlagda föremål">
+      <img src="../img/screen-walk-en.jpg" width="420" height="913" alt="Ett spår som hunden spårar, med karta, tid, längd och antal hittade föremål" loading="lazy">
+      <img src="../img/screen-detail-en.jpg" width="420" height="913" alt="Resultatet för ett avslutat spår med karta, hittade föremål, spårets ålder och väder" loading="lazy">
     </div>
   </header>
 
   <section id="support">
     <p class="eyebrow">Support</p>
-    <h2>Trenger du hjelp?</h2>
-    <p>Send oss en e-post, så svarer vi så raskt vi kan, vanligvis innen to virkedager. Beskriv gjerne hva du prøvde å gjøre, hvilken iPhone og iOS-versjon du har, og legg ved skjermbilde om mulig.</p>
+    <h2>Behöver du hjälp?</h2>
+    <p>Skicka ett mejl så svarar vi så snart vi kan, oftast inom två arbetsdagar. Beskriv gärna vad du försökte göra, vilken iPhone och iOS-version du har, och bifoga en skärmbild om det går.</p>
     <div class="contact">
       <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-      <div class="who"><b>E-post til support</b><span id="mail">post@trax-dogtracking.no</span></div>
+      <div class="who"><b>Mejla support</b><span id="mail">post@trax-dogtracking.no</span></div>
       <div class="act">
-        <a class="btn" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=Hva%20pr%C3%B8vde%20du%20%C3%A5%20gj%C3%B8re%3F%0A%0A%0AiPhone-modell%3A%0AiOS-versjon%3A%0A">Skriv e-post</a>
-        <button class="btn ghost" id="copy" type="button" aria-label="Kopier e-postadressen">Kopier adresse</button>
+        <a class="btn" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=Vad%20f%C3%B6rs%C3%B6kte%20du%20g%C3%B6ra%3F%0A%0A%0AiPhone-modell%3A%0AiOS-version%3A%0A">Skriv mejl</a>
+        <button class="btn ghost" id="copy" type="button" aria-label="Kopiera mejladressen">Kopiera adress</button>
       </div>
       <span class="vh" id="copied" aria-live="polite"></span>
     </div>
 
-    <h3>Vanlige spørsmål</h3>
-    <p><b>Sporet blir unøyaktig.</b> Sjekk at Trax har tilgang til posisjon «Ved bruk av appen» og at Nøyaktig posisjon er slått på under Innstillinger › Trax › Posisjon. GPS er mindre presis i tett skog og mellom høye bygninger.</p>
-    <p><b>Hvordan sletter jeg dataene mine?</b> Alt lagres bare på telefonen din. Du kan slette enkeltøkter i appen, eller slette appen for å fjerne alle data permanent.</p>
-    <p><b>Kan jeg flytte data til en ny telefon?</b> Dataene følger med når du gjenoppretter telefonen fra en iCloud- eller datamaskin-sikkerhetskopi. Du kan også eksportere økter fra appen.</p>
+    <h3>Vanliga frågor</h3>
+    <p><b>Spåret blir inte exakt.</b> Kontrollera att Trax har tillgång till platsen ”Vid användning av appen” och att Exakt plats är påslaget under Inställningar › Trax › Plats. GPS är mindre exakt i tät skog och mellan höga byggnader.</p>
+    <p><b>Hur raderar jag mina data?</b> Allt sparas bara på din telefon. Du kan radera enskilda träningspass i appen, eller radera appen för att ta bort alla data permanent.</p>
+    <p><b>Kan jag flytta mina data till en ny telefon?</b> Dina data följer med när du återställer telefonen från en säkerhetskopia i iCloud eller på en dator. Du kan också exportera träningspass från appen.</p>
   </section>
 
-  <section id="personvern">
-    <p class="eyebrow">Personvernerklæring</p>
-    <h2>Slik behandler Trax dine data</h2>
-    <p class="updated">Sist oppdatert: 4. oktober 2026</p>
-    <p>Denne erklæringen forklarer hvilke opplysninger Trax samler inn, hvorfor, og hvilke rettigheter du har. Trax er utviklet av Silje Tillerflaten, som du når på <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>.</p>
+  <section id="integritet">
+    <p class="eyebrow">Integritetspolicy</p>
+    <h2>Så hanterar Trax dina data</h2>
+    <p class="updated">Senast uppdaterad: 4 oktober 2026</p>
+    <p>Den här policyn förklarar vilka uppgifter Trax samlar in, varför, och vilka rättigheter du har. Trax är utvecklad av Silje Tillerflaten, som du når på <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>.</p>
 
-    <h3>Kort fortalt</h3>
-    <p>Alt du registrerer i Trax lagres bare på din egen telefon. Trax har ingen konto, ingen egen server og ingen reklame, og utvikleren har ikke tilgang til dataene dine.</p>
+    <h3>Kort sagt</h3>
+    <p>Allt du registrerar i Trax sparas bara på din egen telefon. Trax har inget konto, ingen egen server och ingen reklam, och utvecklaren har inte tillgång till dina data.</p>
 
-    <h3>Hva appen lagrer på telefonen</h3>
+    <h3>Vad appen sparar på telefonen</h3>
     <dl>
-      <dt>Posisjon</dt><dd>GPS-punkter mens du registrerer et spor eller en treningsøkt. Posisjon hentes bare når appen er i bruk og du har startet en økt.</dd>
-      <dt>Treningsdata</dt><dd>Spor, ruter, tidspunkt, liggetid, vær, notater og opplysninger om hunden din som du selv legger inn.</dd>
+      <dt>Plats</dt><dd>GPS-punkter medan du registrerar ett spår eller ett träningspass. Platsen hämtas bara när appen används och du har startat ett träningspass.</dd>
+      <dt>Träningsdata</dt><dd>Spår, rutter, tidpunkter, spårets ålder, väder, anteckningar och uppgifter om din hund som du själv lägger in.</dd>
     </dl>
 
-    <h3>Når data forlater telefonen</h3>
+    <h3>När data lämnar telefonen</h3>
     <dl>
-      <dt>Værdata</dt><dd>For å hente været for en økt sender appen posisjonen og tidspunktet sporet startet til Apple Weather (WeatherKit). Apple bruker posisjonen bare til å svare på forespørselen og knytter den ikke til deg eller Apple-kontoen din. Det sendes ingen navn eller treningsdata. Værdataene som kommer tilbake, lagres sammen med økten på telefonen. Eldre økter kan ha værdata fra Open-Meteo (open-meteo.com, CC BY 4.0).</dd>
-      <dt>Eksport</dt><dd>Når du velger å eksportere eller dele en økt, sendes den dit du selv velger, for eksempel på e-post, melding eller til en annen app. Det skjer bare når du trykker på eksport.</dd>
-      <dt>Sikkerhetskopi</dt><dd>Hvis du har iCloud-sikkerhetskopi slått på, kan iOS ta med Trax-dataene i sikkerhetskopien din. Den styres av Apple og din Apple-konto, ikke av Trax.</dd>
-      <dt>Krasjrapporter</dt><dd>Anonyme krasjrapporter fra Apple, bare hvis du har slått på deling av analysedata på iPhonen.</dd>
+      <dt>Väderdata</dt><dd>För att hämta vädret för ett träningspass skickar appen platsen och tidpunkten då spåret startade till Apple Weather (WeatherKit). Apple använder platsen bara för att besvara förfrågan och kopplar den inte till dig eller ditt Apple-konto. Inga namn eller träningsdata skickas. Väderdata som kommer tillbaka sparas tillsammans med träningspasset på telefonen. Äldre träningspass kan ha väderdata från Open-Meteo (open-meteo.com, CC BY 4.0).</dd>
+      <dt>Export</dt><dd>När du väljer att exportera eller dela ett träningspass skickas det dit du själv väljer, till exempel via mejl, meddelande eller till en annan app. Det sker bara när du trycker på exportera.</dd>
+      <dt>Säkerhetskopia</dt><dd>Om du har säkerhetskopiering till iCloud påslagen kan iOS ta med Trax-data i din säkerhetskopia. Den styrs av Apple och ditt Apple-konto, inte av Trax.</dd>
+      <dt>Kraschrapporter</dt><dd>Anonyma kraschrapporter från Apple, bara om du har slagit på delning av analysdata på din iPhone.</dd>
     </dl>
-    <p>Trax selger ikke data, bruker dem ikke til reklame og sporer deg ikke på tvers av andre apper og nettsteder.</p>
+    <p>Trax säljer inte data, använder dem inte för reklam och spårar dig inte mellan andra appar och webbplatser.</p>
 
-    <h3>Denne nettsiden</h3>
-    <p>Nettsiden ligger på GitHub Pages. GitHub lagrer IP-adressen til besøkende i tekniske logger av sikkerhetshensyn, se <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHubs personvernerklæring</a>. Nettsiden bruker ikke informasjonskapsler (cookies) eller analyseverktøy, og henter ikke skrifttyper eller annet innhold fra andre tjenester.</p>
+    <h3>Den här webbplatsen</h3>
+    <p>Webbplatsen ligger på GitHub Pages. GitHub sparar besökarnas IP-adresser i tekniska loggar av säkerhetsskäl, se <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHubs integritetspolicy</a>. Webbplatsen använder inte kakor (cookies) eller analysverktyg, och hämtar inte typsnitt eller annat innehåll från andra tjänster.</p>
 
-    <h3>Hvor lenge dataene lagres</h3>
-    <p>Dataene ligger på telefonen til du sletter dem. Du kan slette enkeltøkter i appen, og alt fjernes permanent når du sletter appen.</p>
+    <h3>Hur länge data sparas</h3>
+    <p>Dina data finns kvar på telefonen tills du raderar dem. Du kan radera enskilda träningspass i appen, och allt tas bort permanent när du raderar appen.</p>
 
-    <h3>Dine rettigheter</h3>
-    <p>Siden dataene bare ligger hos deg, har du full kontroll over dem selv. Du kan når som helst slå av tilgang til posisjon under Innstillinger › Trax på iPhonen. Har du spørsmål om personvern, kontakt <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>. Du kan også klage til Datatilsynet (<a href="https://www.datatilsynet.no">datatilsynet.no</a>).</p>
+    <h3>Dina rättigheter</h3>
+    <p>Eftersom dina data bara finns hos dig har du själv full kontroll över dem. Du kan när som helst stänga av tillgången till platsen under Inställningar › Trax på din iPhone. Har du frågor om integritet, kontakta <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>. Du kan också lämna klagomål till en dataskyddsmyndighet, till exempel Integritetsskyddsmyndigheten (<a href="https://www.imy.se">imy.se</a>) i Sverige eller Datatilsynet (<a href="https://www.datatilsynet.no">datatilsynet.no</a>) i Norge.</p>
 
     <h3>Barn</h3>
-    <p>Trax er ikke rettet mot barn under 13 år, og vi samler ikke bevisst inn opplysninger om dem.</p>
+    <p>Trax riktar sig inte till barn under 13 år, och vi samlar inte medvetet in uppgifter om dem.</p>
 
-    <h3>Endringer</h3>
-    <p>Vi oppdaterer denne erklæringen ved behov. Datoen øverst viser når den sist ble endret.</p>
+    <h3>Ändringar</h3>
+    <p>Vi uppdaterar den här policyn vid behov. Datumet högst upp visar när den senast ändrades.</p>
   </section>
 </main>
 
 <div class="wrap">
-  <footer>© 2026 Silje Tillerflaten · <a href="#support">Support</a> · <a href="#personvern">Personvern</a> · <a href="sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="en/" hreflang="en" lang="en">English</a></footer>
+  <footer>© 2026 Silje Tillerflaten · <a href="#support">Support</a> · <a href="#integritet">Integritet</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../en/" hreflang="en" lang="en">English</a></footer>
 </div>
 
 <script>
 document.getElementById('copy').addEventListener('click',function(){
   var m=document.getElementById('mail'),t=m.textContent.trim(),b=this,live=document.getElementById('copied');
   function sel(){var r=document.createRange();r.selectNodeContents(m);var s=getSelection();s.removeAllRanges();s.addRange(r);}
-  function ok(){b.textContent='Kopiert ✓';live.textContent='Kopiert';setTimeout(function(){b.textContent='Kopier adresse';live.textContent=''},1800)}
+  function ok(){b.textContent='Kopierad ✓';live.textContent='Kopierad';setTimeout(function(){b.textContent='Kopiera adress';live.textContent=''},1800)}
   try{navigator.clipboard.writeText(t).then(ok,sel)}catch(e){sel()}
 });
 /* Språkvelger: lukk menyen ved klikk utenfor eller Escape */
@@ -236,6 +237,6 @@ document.getElementById('copy').addEventListener('click',function(){
 document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus()}});})();
 </script>
-<script src="spor.js" defer></script>
+<script src="../spor.js" defer></script>
 </body>
 </html>
