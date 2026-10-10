@@ -70,7 +70,7 @@
       var u=el('use',{href:'#spor-pote',transform:'translate('+x.toFixed(1)+' '+y.toFixed(1)+') rotate('+(ang*180/Math.PI+90).toFixed(1)+') scale(1.25)',opacity:0});
       paws.appendChild(u);prints.push({s:s,u:u});
     }
-    var TAIL=STEP*4.5, speed=Math.min(520,Math.max(230,L/2.6)), t0=0;
+    var TAIL=STEP*4.5, speed=Math.min(260,Math.max(115,L/5.2)), t0=0;
     maskPath.style.strokeDasharray=L+' '+(L+10);
     function frame(now){
       if(!t0)t0=now;
