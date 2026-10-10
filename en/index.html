@@ -92,8 +92,28 @@ dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
 dt{font-weight:600}
 dd{margin:0;color:var(--muted);min-width:0}
 @media (max-width:480px){dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
-.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-.shots img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+/* Skjermbildegalleri (galleri.js): sveip på mobil, piler og prikker på PC. Uten JS er det en vanlig vannrett rulleliste. */
+.galleri{margin-top:28px}
+.g-liste{display:flex;gap:16px;margin:0 -16px;padding:4px 16px 8px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;overscroll-behavior-x:contain;scrollbar-width:none}
+.g-liste::-webkit-scrollbar{display:none}
+.g-liste:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:12px}
+.g-liste li{flex:0 0 min(76%,272px);max-width:none;scroll-snap-align:start}
+.g-liste figure{margin:0}
+.g-liste img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#eef0e4}
+.g-liste figcaption{padding:10px 2px 0}
+.g-liste figcaption b{display:block;font:700 17px/1.3 var(--display)}
+.g-liste figcaption span{display:block;color:var(--muted);font-size:15px;line-height:1.45}
+.g-ktrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
+.g-ktrl[hidden]{display:none}
+.g-pil{width:40px;height:40px;padding:0;border-radius:50%;background:var(--surface);color:var(--fg);border:1px solid var(--line);display:grid;place-items:center}
+.g-pil:hover:not(:disabled){color:var(--accent);border-color:var(--accent)}
+.g-pil:disabled{opacity:.35;cursor:default}
+.g-pil svg{width:18px;height:18px}
+.g-prikker{display:flex;gap:2px}
+.g-prikker button{width:24px;height:24px;padding:0;background:none;border-radius:50%;display:grid;place-items:center}
+.g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
+.g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
+@media (hover:none) and (pointer:coarse){.g-pil{display:none}}
 @media (min-width:600px){.feat{grid-template-columns:repeat(3,1fr)}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
@@ -156,10 +176,15 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
       <div><b>Train your dog</b><span>Follow the dog's route and compare it with the track.</span></div>
       <div><b>Training log</b><span>Length, track age, weather and notes for every session.</span></div>
     </div>
-    <div class="shots">
-      <img src="../img/screen-lay-en.jpg" width="420" height="913" alt="A track being laid, with map, time, length and number of items placed">
-      <img src="../img/screen-walk-en.jpg" width="420" height="913" alt="A track being walked, with map, time, length and number of items found" loading="lazy">
-      <img src="../img/screen-detail-en.jpg" width="420" height="913" alt="The result of a completed track with map, items found, track age and weather" loading="lazy">
+    <div class="galleri" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app" data-forrige="Previous image" data-neste="Next image" data-prikk="Image {n} of {t}">
+      <ul class="g-liste" tabindex="0" aria-label="Screenshots from the app">
+        <li><figure><img src="../img/galleri/galleri-en-1-oversikt.webp" width="640" height="999" alt="The Trax home screen with the list of tracks, buttons to lay and import tracks and a dog filter" decoding="async"><figcaption><b>Every track at a glance</b><span>Lay new tracks, import tracks and see the results for each dog.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-2-legg-spor.webp" width="640" height="999" alt="A track being laid, with map, time, length and number of items placed" decoding="async" loading="lazy"><figcaption><b>Lay tracks with GPS</b><span>See time, length and number of items while you lay the track.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-3-varsel.webp" width="640" height="999" alt="An alert that an item is close by, with a button to mark it as found" decoding="async" loading="lazy"><figcaption><b>Get alerted near each item</b><span>The app tells you when you are close to an item, and you mark it as found with one tap.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-4-ga-sporet.webp" width="640" height="999" alt="The dog on the track, with the laid track in blue, your route in red and the number of finds" decoding="async" loading="lazy"><figcaption><b>Walk the track with your dog</b><span>The laid track shows in blue and your route in red, with finds along the way.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-5-resultat.webp" width="640" height="999" alt="The result of a completed track with map, items found, track age and weather" decoding="async" loading="lazy"><figcaption><b>See the result of every track</b><span>Finds, track age, length and weather, collected after each session.</span></figcaption></figure></li>
+      </ul>
+      <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
   </header>
 
@@ -231,5 +256,6 @@ document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus()}});})();
 </script>
 <script src="../spor.js" defer></script>
+<script src="../galleri.js" defer></script>
 </body>
 </html>
