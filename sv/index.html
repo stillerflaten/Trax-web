@@ -53,6 +53,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 header.hero{padding-block:48px 32px}
 .hero h1{font:800 clamp(40px,9vw,64px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
 .hero p{font-size:20px;color:var(--muted);margin:0;max-width:34ch}
+/* «Snart i App Store»: fjern denne linja og <p class="snart"> i hero når appen er live */
+.hero p.snart{display:inline-block;margin:20px 0 0;padding:6px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--accent);color:var(--accent);font:700 15px/1.4 var(--display)}
 .trackline{display:block;width:100%;height:60px;margin-top:24px}
 .trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
 .trackline circle{fill:var(--accent)}
@@ -144,6 +146,7 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
     <p class="eyebrow">iOS-app för spårträning</p>
     <h1>Följ spåret. Se framstegen.</h1>
     <p>Trax hjälper dig att lägga spår, träna hunden och följa utvecklingen över tid.</p>
+    <p class="snart">Snart i App Store</p>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
