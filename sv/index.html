@@ -74,18 +74,16 @@ ul{padding-left:1.2em}
 .feat div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
 .feat b{display:block;font-family:var(--display);margin-bottom:2px}
 .feat span{color:var(--muted);font-size:15px}
-.contact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-wrap:wrap;gap:14px 16px;align-items:center;margin-top:16px}
-.contact .ic{flex:none;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center}
-.contact .ic svg{width:22px;height:22px}
-.contact .who{flex:1 1 12em;min-width:0}
-.contact .who b{display:block;font-family:var(--display)}
-.contact .who span{color:var(--muted);font:400 15px var(--mono);overflow-wrap:anywhere}
-.contact .act{display:flex;flex-wrap:wrap;gap:8px}
-.btn{display:inline-flex;align-items:center;gap:6px;font:600 15px var(--body);background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);border-radius:8px;padding:9px 16px;text-decoration:none;white-space:nowrap;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--accent)}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 24px;display:flex;flex-wrap:wrap;gap:16px 20px;align-items:center;margin-top:20px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06)}
+.contact .ic{flex:none;width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#3b8357,#1f4d31);color:#fff;display:grid;place-items:center}
+.contact .ic svg{width:26px;height:26px}
+.contact .who{flex:1 1 16em;min-width:0}
+.contact .who b{display:block;font:700 20px/1.25 var(--display);letter-spacing:-.01em;margin-bottom:2px}
+.contact .who span{color:var(--muted);font-size:16px}
+.contact .who a{font-weight:600;text-decoration:none;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:600 17px var(--body);background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:14px 28px;text-decoration:none;white-space:nowrap}
 .btn:hover{filter:brightness(1.08)}
-@media (max-width:480px){.contact .act{width:100%;flex-direction:column}.contact .act .btn{justify-content:center}}
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:560px){.contact .btn{width:100%}}
 .ph{background:var(--mark);padding:0 4px;border-radius:3px}
 button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
 dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
@@ -166,12 +164,8 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
     <p>Skicka ett mejl så svarar vi så snart vi kan, oftast inom två arbetsdagar. Beskriv gärna vad du försökte göra, vilken iPhone och iOS-version du har, och bifoga en skärmbild om det går.</p>
     <div class="contact">
       <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-      <div class="who"><b>Mejla support</b><span id="mail">post@trax-dogtracking.no</span></div>
-      <div class="act">
-        <a class="btn" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=Vad%20f%C3%B6rs%C3%B6kte%20du%20g%C3%B6ra%3F%0A%0A%0AiPhone-modell%3A%0AiOS-version%3A%0A">Skriv mejl</a>
-        <button class="btn ghost" id="copy" type="button" aria-label="Kopiera mejladressen">Kopiera adress</button>
-      </div>
-      <span class="vh" id="copied" aria-live="polite"></span>
+      <div class="who"><b>Skriv till oss</b><span>Skicka ett mejl till <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>, så svarar vi oftast inom två arbetsdagar.</span></div>
+      <a class="btn" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=Vad%20f%C3%B6rs%C3%B6kte%20du%20g%C3%B6ra%3F%0A%0A%0AiPhone-modell%3A%0AiOS-version%3A%0A">Skicka mejl</a>
     </div>
 
     <h3>Vanliga frågor</h3>
@@ -226,12 +220,6 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
 </div>
 
 <script>
-document.getElementById('copy').addEventListener('click',function(){
-  var m=document.getElementById('mail'),t=m.textContent.trim(),b=this,live=document.getElementById('copied');
-  function sel(){var r=document.createRange();r.selectNodeContents(m);var s=getSelection();s.removeAllRanges();s.addRange(r);}
-  function ok(){b.textContent='Kopierad ✓';live.textContent='Kopierad';setTimeout(function(){b.textContent='Kopiera adress';live.textContent=''},1800)}
-  try{navigator.clipboard.writeText(t).then(ok,sel)}catch(e){sel()}
-});
 /* Språkvelger: lukk menyen ved klikk utenfor eller Escape */
 (function(){var d=document.querySelector('.lang');if(!d)return;
 document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false});
