@@ -54,6 +54,14 @@ header.hero{padding-block:48px 32px}
 .trackline{display:block;width:100%;height:60px;margin-top:24px}
 .trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
 .trackline circle{fill:var(--accent)}
+/* Poteanimasjon på sporlinja (spor.js): full bredde, ender og poter i riktig form */
+html{overflow-x:clip}
+.spor-js .trackline{width:100vw;margin-left:calc(50% - 50vw);overflow:visible}
+.spor-klar .trackline path,.spor-klar .trackline circle:last-of-type{opacity:0}
+.trackline .paws{fill:var(--accent)}
+.trackline circle{transform-box:fill-box;transform-origin:center}
+.trackline.spiller circle:last-of-type{transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.trackline.spiller.ferdig circle:last-of-type{transform:none}
 section{padding-block:40px;border-top:1px solid var(--line);scroll-margin-top:64px}
 h2{font:700 28px/1.2 var(--display);letter-spacing:-.02em;margin:0 0 8px;text-wrap:balance}
 h3{font:700 18px/1.3 var(--display);margin:28px 0 6px}
@@ -78,6 +86,11 @@ dd{margin:0;color:var(--muted);min-width:0}
 footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
 .updated{font:400 13px var(--mono);color:var(--muted)}
 </style>
+<script>
+/* Klargjør sporanimasjonen før første tegning, så den statiske linja ikke blinker. Vises likevel hvis spor.js ikke lastes. */
+(function(r){r.classList.add('spor-js');var v;try{v=sessionStorage.getItem('trax-spor')}catch(e){}
+if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){r.classList.add('spor-klar');setTimeout(function(){if(!window.traxSpor)r.classList.remove('spor-klar')},3000)}})(document.documentElement);
+</script>
 </head>
 <body>
 <nav><div class="wrap">
@@ -175,5 +188,6 @@ document.getElementById('copy').addEventListener('click',function(){
   try{navigator.clipboard.writeText(t).then(function(){b.textContent='Kopiert';setTimeout(function(){b.textContent='Kopier adresse'},1800)},sel)}catch(e){sel()}
 });
 </script>
+<script src="spor.js" defer></script>
 </body>
 </html>
