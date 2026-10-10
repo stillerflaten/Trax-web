@@ -110,6 +110,8 @@ nav .wrap{position:relative}
 .lang ul a[aria-current]{font-weight:700;color:var(--accent)}
 .lang ul a[aria-current]::after{content:"✓"}
 /* Smal skjerm: menyen skal få plass på én linje */
+/* Mobil: personvernlenken tas ut av menyen (den står i bunnteksten), så Manual får plass på én linje */
+@media (max-width:480px){nav a.l.opt{display:none}}
 @media (max-width:400px){nav .wrap{gap:12px}.lang summary .chev{display:none}}
 @media (max-width:360px){.lang summary svg{display:none}}
 footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
@@ -124,8 +126,9 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
 <body>
 <nav><div class="wrap">
   <a class="brand" href="#top"><img src="../img/icon-192.png" width="32" height="32" alt="">Trax</a>
+  <a class="l" href="manual/">Manual</a>
   <a class="l" href="#support">Support</a>
-  <a class="l" href="#integritet">Integritet</a>
+  <a class="l opt" href="#integritet">Integritet</a>
   <details class="lang">
     <summary aria-label="Välj språk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span>SV</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
     <ul>
@@ -216,7 +219,7 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
 </main>
 
 <div class="wrap">
-  <footer>© 2026 Silje Tillerflaten · <a href="#support">Support</a> · <a href="#integritet">Integritet</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../en/" hreflang="en" lang="en">English</a></footer>
+  <footer>© 2026 Silje Tillerflaten · <a href="manual/">Användarmanual</a> · <a href="#support">Support</a> · <a href="#integritet">Integritet</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../en/" hreflang="en" lang="en">English</a></footer>
 </div>
 
 <script>
