@@ -257,6 +257,7 @@ def render(l, sections, strings, style, app, used, date):
 document.addEventListener('click',function(e){{if(d.open&&!d.contains(e.target))d.open=false}});
 document.addEventListener('keydown',function(e){{if(e.key==='Escape'&&d.open){{d.open=false;d.querySelector('summary').focus()}}}});}})();
 </script>
+<script data-goatcounter="https://trax-dogtracking.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
 """
