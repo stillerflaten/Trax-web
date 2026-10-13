@@ -92,8 +92,28 @@ dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
 dt{font-weight:600}
 dd{margin:0;color:var(--muted);min-width:0}
 @media (max-width:480px){dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
-.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-.shots img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+/* Skjermbildegalleri (galleri.js): sveip på mobil, piler og prikker på PC. Uten JS er det en vanlig vannrett rulleliste. */
+.galleri{margin-top:28px}
+.g-liste{display:flex;gap:16px;margin:0 -16px;padding:4px 16px 8px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;overscroll-behavior-x:contain;scrollbar-width:none}
+.g-liste::-webkit-scrollbar{display:none}
+.g-liste:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:12px}
+.g-liste li{flex:0 0 min(76%,272px);max-width:none;scroll-snap-align:start}
+.g-liste figure{margin:0}
+.g-liste img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#eef0e4}
+.g-liste figcaption{padding:10px 2px 0}
+.g-liste figcaption b{display:block;font:700 17px/1.3 var(--display)}
+.g-liste figcaption span{display:block;color:var(--muted);font-size:15px;line-height:1.45}
+.g-ktrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
+.g-ktrl[hidden]{display:none}
+.g-pil{width:40px;height:40px;padding:0;border-radius:50%;background:var(--surface);color:var(--fg);border:1px solid var(--line);display:grid;place-items:center}
+.g-pil:hover:not(:disabled){color:var(--accent);border-color:var(--accent)}
+.g-pil:disabled{opacity:.35;cursor:default}
+.g-pil svg{width:18px;height:18px}
+.g-prikker{display:flex;gap:2px}
+.g-prikker button{width:24px;height:24px;padding:0;background:none;border-radius:50%;display:grid;place-items:center}
+.g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
+.g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
+@media (hover:none) and (pointer:coarse){.g-pil{display:none}}
 @media (min-width:600px){.feat{grid-template-columns:repeat(3,1fr)}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
@@ -117,6 +137,8 @@ nav .wrap{position:relative}
 @media (max-width:400px){nav .wrap{gap:12px}.lang summary .chev{display:none}}
 @media (max-width:360px){.lang summary svg{display:none}}
 footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
+footer .utvikler{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:13px}
+footer .utvikler img{border-radius:6px;flex:none}
 .updated{font:400 13px var(--mono);color:var(--muted)}
 /* Brukermanual (lages av verktoy/lag-manual.py): innholdsliste, nummererte steg, tips og skjermbilder */
 nav a.l[aria-current]{color:var(--accent)}
@@ -169,7 +191,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">iOS-app for sportrening</p>
     <h1>Brukermanual</h1>
     <p class="lead">Alt du trenger for å legge spor, gå spor og følge treningen over tid.</p>
-    <p class="updated">Sist oppdatert: 10. oktober 2026</p>
+    <p class="updated">Sist oppdatert: 13. oktober 2026</p>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
@@ -516,7 +538,8 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Har ikke sporleggeren iPhone? Da kan sporet legges i en hvilken som helst GPS-app som lagrer GPX-filer. Sporleggeren lagrer et veipunkt der hver gjenstand legges ut, eksporterer sporet som GPX og sender filen med e-post. Du trykker på filen og velger Trax, på samme måte som med en Trax-fil.</p>
     <p>Veipunktene blir gjenstander, med navnet som beskrivelse, og du får varsel når hunden nærmer seg dem. Gjenstander kan ikke legges til i Trax etterpå, så uten veipunkter i filen kommer sporet uten gjenstander. Send ett spor per fil. Har filen to spor, leser Trax det andre som hundens rute.</p>
     <p>Sporet får merket «Eksportert» først når delingen er fullført, enten du deler Trax-fil, GPX eller PDF. Avbryter du delingsarket, blir det ikke merket.</p>
-    <p>Del på sosiale medier: Når du har gått et spor, trykker du «Del på sosiale medier» under «Lagre». Du ser først bildet: satellittkart med sporet og gjenstandene, hundens navn og et kort med lengde, liggetid, antall funnet og sportype. Trykk «Del bildet» og velg Instagram, Facebook, Snapchat eller en annen app, eller «Arkiver bilde» for å lagre det i Bilder. Sporet lagres ikke når du deler, så husk å trykke «Lagre» etterpå. Eldre spor deler du fra delingsknappen øverst i sporoversikten.</p>
+    <p>Del på sosiale medier: Når du har gått et spor, trykker du «Del på sosiale medier» under «Lagre». Øverst velger du utseende: «Spor og tall», «Bare spor», «Liste» og «Bare tall» viser sporet og tallene i hvitt, slik som i Strava, mens «Satellitt» viser satellittkartet med et hvitt kort. Velg «Story (9:16)» eller «Innlegg (4:5)», og trykk «Velg eget bilde» for å legge sporet over et bilde av deg og hunden. Uten eget bilde blir bakgrunnen grønn. Både sporleggerens og hundeførerens spor vises, og du velger hvit, grønn eller oransje for hvert av dem. Trykk «Del bildet» og velg Instagram, Facebook, Snapchat eller en annen app, eller «Arkiver bilde» for å lagre det i Bilder. Sporet lagres ikke når du deler, så husk å trykke «Lagre» etterpå. Eldre spor deler du fra delingsknappen øverst i sporoversikten.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>I Instagram Story kan du bruke sporet som klistremerke: trykk «Kopier klistremerke», åpne Instagram Story, velg et bilde og lim inn. Klistremerket kan flyttes og gjøres større eller mindre.</p></div>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>Vil dere ha et felles arkiv i treningsgruppa? Lag en mappe i iCloud Drive i Filer-appen og del den med gruppa. Velg «Arkiver i Filer» når du eksporterer et spor, og legg Trax-filen i den delte mappen. De andre trykker på filen i mappen og åpner den i Trax, på samme måte som fra e-post.</p></div>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
@@ -565,7 +588,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">23</p>
     <h2>Sikkerhetskopi og ny telefon</h2>
     <p class="intro">Ta vare på sporene dine hvis du mister telefonen eller bytter til en ny.</p>
-    <p>«Automatisk kopi til iCloud Drive» under Innstillinger › Sikkerhetskopi er på som standard. Trax legger da en sikkerhetskopi i mappen «Trax» i din egen iCloud Drive når du legger bort appen etter en endring. Under bryteren står det når siste kopi ble lagt der, eller at iCloud Drive er av på telefonen.</p>
+    <p>«Automatisk kopi til iCloud Drive» under Innstillinger › Sikkerhetskopi er på som standard. Trax legger da en sikkerhetskopi i mappen «Trax» i din egen iCloud Drive noen sekunder etter at et spor eller en hund er lagret eller endret, så du slipper å huske det selv. Mens et spor pågår, venter Trax til sporet er lagret. Under bryteren står det når siste kopi ble lagt der, eller at iCloud Drive er av på telefonen.</p>
     <figure class="shot"><img src="../img/manual/manual-backup.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Innstillinger › Sikkerhetskopi.</figcaption></figure>
     <p>Du kan også lage en sikkerhetskopi selv med «Lag sikkerhetskopi». Du får én fil (.traxbackup) med alle spor og hunder, som du kan lagre i Filer eller iCloud Drive, eller sende til deg selv. Under knappene står det når du sist laget en.</p>
     <ol class="steps">
@@ -604,7 +627,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">26</p>
     <h2>Personvern</h2>
     <p>Alle spor lagres på telefonen din. Trax har ingen konto og ingen egen server. Har du iCloud Drive, legger Trax en sikkerhetskopi i mappen «Trax» i din egen iCloud Drive. Det kan slås av under Innstillinger › Sikkerhetskopi. Sporene dine deles bare når du selv eksporterer dem.</p>
-    <p>Bildet til sosiale medier lages på telefonen. Velger du «Arkiver bilde», spør iOS om Trax kan legge til bilder i Bilder. Trax kan bare legge til bilder, ikke se bildene dine.</p>
+    <p>Bildet til sosiale medier lages på telefonen. Velger du «Arkiver bilde», spør iOS om Trax kan legge til bilder i Bilder. Trax kan bare legge til bilder, ikke se bildene dine. Velger du et eget bilde å legge sporet over, får Trax bare se det ene bildet du velger.</p>
     <p>For å hente vær sendes posisjonen og tidspunktet der sporet startet, og der hunden startet sporet, til Apple Weather. Apple knytter ikke forespørselen til deg eller Apple-kontoen din, og ingen treningsdata sendes med.</p>
     <p>Hele personvernerklæringen finner du under Innstillinger › Om Trax › Personvernerklæring.</p>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
@@ -612,7 +635,9 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 </main>
 
 <div class="wrap">
-  <footer>© 2026 Silje Tillerflaten · <a href="./">Brukermanual</a> · <a href="../#support">Support</a> · <a href="../#personvern">Personvern</a> · <a href="../sv/manual/" hreflang="sv" lang="sv">Svenska</a> · <a href="../en/manual/" hreflang="en" lang="en">English</a></footer>
+  <footer>© 2026 Silje Tillerflaten · <a href="./">Brukermanual</a> · <a href="../#support">Support</a> · <a href="../#personvern">Personvern</a> · <a href="../sv/manual/" hreflang="sv" lang="sv">Svenska</a> · <a href="../en/manual/" hreflang="en" lang="en">English</a>
+    <p class="utvikler"><img src="../img/tillerflaten-digital.png" width="24" height="24" alt="Logo for Tillerflaten Digital"> Utviklet av Tillerflaten Digital</p>
+  </footer>
 </div>
 
 <script>

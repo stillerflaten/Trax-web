@@ -137,6 +137,8 @@ nav .wrap{position:relative}
 @media (max-width:400px){nav .wrap{gap:12px}.lang summary .chev{display:none}}
 @media (max-width:360px){.lang summary svg{display:none}}
 footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
+footer .utvikler{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:13px}
+footer .utvikler img{border-radius:6px;flex:none}
 .updated{font:400 13px var(--mono);color:var(--muted)}
 </style>
 <script>
@@ -246,7 +248,9 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
 </main>
 
 <div class="wrap">
-  <footer>© 2026 Silje Tillerflaten · <a href="manual/">Brukermanual</a> · <a href="#support">Support</a> · <a href="#personvern">Personvern</a> · <a href="sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="en/" hreflang="en" lang="en">English</a></footer>
+  <footer>© 2026 Silje Tillerflaten · <a href="manual/">Brukermanual</a> · <a href="#support">Support</a> · <a href="#personvern">Personvern</a> · <a href="sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="en/" hreflang="en" lang="en">English</a>
+    <p class="utvikler"><img src="img/tillerflaten-digital.png" width="24" height="24" alt="Logo for Tillerflaten Digital"> Utviklet av Tillerflaten Digital</p>
+  </footer>
 </div>
 
 <script>
