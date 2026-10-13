@@ -92,8 +92,28 @@ dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
 dt{font-weight:600}
 dd{margin:0;color:var(--muted);min-width:0}
 @media (max-width:480px){dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
-.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-.shots img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+/* Skjermbildegalleri (galleri.js): sveip på mobil, piler og prikker på PC. Uten JS er det en vanlig vannrett rulleliste. */
+.galleri{margin-top:28px}
+.g-liste{display:flex;gap:16px;margin:0 -16px;padding:4px 16px 8px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;overscroll-behavior-x:contain;scrollbar-width:none}
+.g-liste::-webkit-scrollbar{display:none}
+.g-liste:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:12px}
+.g-liste li{flex:0 0 min(76%,272px);max-width:none;scroll-snap-align:start}
+.g-liste figure{margin:0}
+.g-liste img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#eef0e4}
+.g-liste figcaption{padding:10px 2px 0}
+.g-liste figcaption b{display:block;font:700 17px/1.3 var(--display)}
+.g-liste figcaption span{display:block;color:var(--muted);font-size:15px;line-height:1.45}
+.g-ktrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
+.g-ktrl[hidden]{display:none}
+.g-pil{width:40px;height:40px;padding:0;border-radius:50%;background:var(--surface);color:var(--fg);border:1px solid var(--line);display:grid;place-items:center}
+.g-pil:hover:not(:disabled){color:var(--accent);border-color:var(--accent)}
+.g-pil:disabled{opacity:.35;cursor:default}
+.g-pil svg{width:18px;height:18px}
+.g-prikker{display:flex;gap:2px}
+.g-prikker button{width:24px;height:24px;padding:0;background:none;border-radius:50%;display:grid;place-items:center}
+.g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
+.g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
+@media (hover:none) and (pointer:coarse){.g-pil{display:none}}
 @media (min-width:600px){.feat{grid-template-columns:repeat(3,1fr)}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
@@ -117,6 +137,8 @@ nav .wrap{position:relative}
 @media (max-width:400px){nav .wrap{gap:12px}.lang summary .chev{display:none}}
 @media (max-width:360px){.lang summary svg{display:none}}
 footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
+footer .utvikler{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:13px}
+footer .utvikler img{border-radius:6px;flex:none}
 .updated{font:400 13px var(--mono);color:var(--muted)}
 /* Brukermanual (lages av verktoy/lag-manual.py): innholdsliste, nummererte steg, tips og skjermbilder */
 nav a.l[aria-current]{color:var(--accent)}
@@ -169,7 +191,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">iOS app for tracking training</p>
     <h1>User manual</h1>
     <p class="lead">Everything you need to lay tracks, walk them and follow your training over time.</p>
-    <p class="updated">Last updated: 10 October 2026</p>
+    <p class="updated">Last updated: 13 October 2026</p>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
@@ -516,7 +538,8 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Does the track layer not have an iPhone? Then the track can be laid in any GPS app that saves GPX files. The track layer saves a waypoint where each item is placed, exports the track as GPX and sends the file by email. You tap the file and choose Trax, just as with a Trax file.</p>
     <p>The waypoints become items, with the name as the description, and you get an alert when the dog comes close to them. Items cannot be added in Trax afterwards, so if the file has no waypoints, the track arrives without items. Send one track per file. If the file has two tracks, Trax reads the second one as the dog’s route.</p>
     <p>The track gets the “Exported” badge only when the sharing is completed, whether you share a Trax file, GPX or PDF. If you cancel the share sheet, it is not marked.</p>
-    <p>Share on social media: When you have walked a track, tap “Share on social media” below “Save”. You see the image first: a satellite map with the track and the items, the dog’s name and a card with length, lie time, number found and track type. Tap “Share image” and choose Instagram, Facebook, Snapchat or another app, or “Save Image” to save it to Photos. Sharing does not save the track, so remember to tap “Save” afterwards. To share an older track, use the share button at the top of the track overview.</p>
+    <p>Share on social media: When you have walked a track, tap “Share on social media” below “Save”. At the top you choose the look: “Track and stats”, “Track only”, “List” and “Stats only” show the track and the numbers in white, like Strava, while “Satellite” shows the satellite map with a white card. Choose “Story (9:16)” or “Post (4:5)”, and tap “Choose your own photo” to put the track on top of a photo of you and your dog. Without a photo the background is green. Both the track layer’s and the handler’s tracks are shown, and you choose white, green or orange for each. Tap “Share image” and choose Instagram, Facebook, Snapchat or another app, or “Save Image” to save it to Photos. Sharing does not save the track, so remember to tap “Save” afterwards. To share an older track, use the share button at the top of the track overview.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>In an Instagram Story you can use the track as a sticker: tap “Copy sticker”, open an Instagram Story, pick a photo and paste. You can move and resize the sticker.</p></div>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>Want a shared archive for your training group? Create a folder in iCloud Drive in the Files app and share it with the group. Choose “Save to Files” when you export a track, and put the Trax file in the shared folder. The others tap the file in the folder and open it in Trax, just as from email.</p></div>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
@@ -565,7 +588,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">23</p>
     <h2>Backup and new phone</h2>
     <p class="intro">Keep your tracks safe if you lose your phone or switch to a new one.</p>
-    <p>“Automatic Copy to iCloud Drive” under Settings › Backup is on by default. Trax then puts a backup in the “Trax” folder in your own iCloud Drive when you leave the app after a change. Below the switch it says when the last copy was made, or that iCloud Drive is off on the phone.</p>
+    <p>“Automatic Copy to iCloud Drive” under Settings › Backup is on by default. Trax then puts a backup in the “Trax” folder in your own iCloud Drive a few seconds after a track or a dog is saved or changed, so you don’t have to remember it. While a track is in progress, Trax waits until the track is saved. Below the switch it says when the last copy was made, or that iCloud Drive is off on the phone.</p>
     <figure class="shot"><img src="../../img/manual/manual-backup-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Settings › Backup.</figcaption></figure>
     <p>You can also make a backup yourself with “Create Backup”. You get one file (.traxbackup) with all tracks and dogs, which you can save in Files or iCloud Drive, or send to yourself. Below the buttons it says when you last made one.</p>
     <ol class="steps">
@@ -604,7 +627,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">26</p>
     <h2>Privacy</h2>
     <p>All tracks are stored on your phone. Trax has no account and no server of its own. If you use iCloud Drive, Trax puts a backup in the “Trax” folder in your own iCloud Drive. You can turn this off under Settings › Backup. Your tracks are shared only when you export them yourself.</p>
-    <p>The image for social media is created on your phone. If you choose “Save Image”, iOS asks whether Trax may add photos to Photos. Trax can only add photos, not see your photos.</p>
+    <p>The image for social media is created on your phone. If you choose “Save Image”, iOS asks whether Trax may add photos to Photos. Trax can only add photos, not see your photos. If you choose your own photo to put the track on, Trax only sees the one photo you pick.</p>
     <p>To fetch the weather, the position and time where the track started, and where the dog started the track, are sent to Apple Weather. Apple does not link the request to you or your Apple Account, and no training data is sent.</p>
     <p>You find the full privacy policy under Settings › About Trax › Privacy policy.</p>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
@@ -612,7 +635,9 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 </main>
 
 <div class="wrap">
-  <footer>© 2026 Silje Tillerflaten · <a href="./">User manual</a> · <a href="../../en/#support">Support</a> · <a href="../../en/#privacy">Privacy</a> · <a href="../../manual/" hreflang="nb" lang="nb">Norsk</a> · <a href="../../sv/manual/" hreflang="sv" lang="sv">Svenska</a></footer>
+  <footer>© 2026 Silje Tillerflaten · <a href="./">User manual</a> · <a href="../../en/#support">Support</a> · <a href="../../en/#privacy">Privacy</a> · <a href="../../manual/" hreflang="nb" lang="nb">Norsk</a> · <a href="../../sv/manual/" hreflang="sv" lang="sv">Svenska</a>
+    <p class="utvikler"><img src="../../img/tillerflaten-digital.png" width="24" height="24" alt="Tillerflaten Digital logo"> Developed by Tillerflaten Digital</p>
+  </footer>
 </div>
 
 <script>
