@@ -13,7 +13,7 @@
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
 
   // ---------- 1) Innglidning per seksjon ----------
-  var GRUPPER=['.funk h2,.funk .sub,.fg li','.om-g blockquote,.om-g > div','#support h2,.sup-intro,.post,.faq > div,.pv','footer .stort,footer .rad','.g-liste li'];
+  var GRUPPER=['.funk h2,.funk .sub,.fg li','.del-g > div,.del img','.om-g blockquote,.om-g > div','#support h2,.sup-intro,.post,.faq > div,.pv','footer .stort,footer .rad','.g-liste li'];
   if(!still&&'IntersectionObserver' in window){
     var vh=window.innerHeight, io=new IntersectionObserver(function(en){
       en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}});
@@ -31,7 +31,7 @@
   var tlf=document.querySelector('.flate img'), py=-1;
 
   // ---------- 3) Sporlinja ----------
-  var MAAL=['.funk h2','.om-g blockquote','#support h2','footer .kjop'];
+  var MAAL=['.funk h2','.del h2','.om-g blockquote','#support h2','footer .kjop'];
   var maal=[];MAAL.forEach(function(s){var e=document.querySelector(s);if(e)maal.push(e)});
   var start=document.querySelector('.trackline > circle:last-of-type');
   var svg=el('svg',{'class':'sporlinje','aria-hidden':'true'}), path=el('path',{'class':'spor'});
