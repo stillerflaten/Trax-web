@@ -169,7 +169,7 @@ nav .kj:active{transform:scale(.97)}
 .appstore:active{transform:scale(.97)}
 .appstore img{height:52px;width:auto}
 .flate{background:var(--deep);border-radius:28px 28px 0 0;height:min(76vh,700px);min-height:440px;position:relative;overflow:hidden}
-.flate img{position:absolute;left:50%;top:48px;width:min(74%,400px);height:auto;transform:translateX(-50%) rotate(-3deg);border-radius:28px}
+.flate img{position:absolute;left:50%;top:48px;width:min(74%,400px);height:auto;border-radius:28px}
 @media (max-width:860px){.topp{grid-template-columns:1fr;gap:0}.flate{height:460px;min-height:0}.flate img{width:300px;top:36px}}
 @media (max-width:600px){.topp{padding-top:20px}.topp .lead{font-size:19px;margin-bottom:24px}.topp .tillit{margin:22px 0 28px}
   .flate{height:340px;margin-inline:-16px;border-radius:0}.flate img{width:250px;top:28px}}
@@ -223,10 +223,37 @@ nav .kj:active{transform:scale(.97)}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
 .ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
+/* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
+@keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.bev .topp > div > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
+.bev .topp > div > :nth-child(2){animation-delay:.08s}.bev .topp > div > :nth-child(3){animation-delay:.16s}
+.bev .topp > div > :nth-child(4){animation-delay:.24s}.bev .flate{animation-delay:.12s}
+.bev .inn{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.bev .inn.vis{opacity:1;transform:none}
+.flate img{transform:translateX(-50%) translateY(var(--py,0px)) rotate(-3deg)}
+@media (prefers-reduced-motion:no-preference){
+  .post,.g-pil,.lang summary,footer .rad a{transition:transform .15s,color .15s}
+  .post:active,.g-pil:active,.lang summary:active{transform:scale(.97)}
+  .appstore:hover,nav .kj:hover{transform:translateY(-1px)}
+}
+/* Sporlinja nedover siden (forside.js): i margen til høyre på brede skjermer, ellers prikker foran overskriftene */
+.sporlinje{position:absolute;left:0;top:0;width:100%;height:0;pointer-events:none;z-index:1;overflow:visible}
+.sporlinje .spor{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.sporlinje .m{fill:var(--track);stroke:var(--on-deep);stroke-width:2.5}
+.sporlinje text{fill:#fff;font:800 15px var(--display)}
+.sporlinje .hake{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.sporlinje .hake circle{fill:#2f9e5a;stroke:var(--on-deep);stroke-width:2}
+.sporlinje .hake path{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.sporlinje .funnet .hake{transform:none}
+.gj-prikk{display:inline-block;flex:none;width:.42em;height:.42em;max-width:16px;max-height:16px;min-width:12px;min-height:12px;border-radius:50%;background:var(--track);margin-right:.3em;vertical-align:.12em;position:relative}
+.gj-prikk::after{content:"";position:absolute;right:-7px;top:-7px;width:12px;height:12px;border-radius:50%;background:#2f9e5a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3.3 6.2l1.8 1.8 3.6-3.8' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");transform:scale(0);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.gj-prikk.funnet::after{transform:none}
+.spor-bred .gj-prikk{display:none}
+.spor-still .sporlinje .hake,.spor-still .gj-prikk::after{transition:none}
 </style>
 <script>
 /* Klargjør sporanimasjonen før første tegning, så den statiske linja ikke blinker. Vises likevel hvis spor.js ikke lastes. */
-(function(r){r.classList.add('spor-js');var v;try{v=sessionStorage.getItem('trax-spor')}catch(e){}
+(function(r){r.classList.add('spor-js');if(window.matchMedia&&!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('bev');var v;try{v=sessionStorage.getItem('trax-spor')}catch(e){}
 if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){r.classList.add('spor-klar');setTimeout(function(){if(!window.traxSpor)r.classList.remove('spor-klar')},3000)}})(document.documentElement);
 </script>
 <script>
@@ -353,6 +380,7 @@ if(n>=t+7*864e5){var e=document.querySelectorAll('.kjop .intro,.kjop .ord');for(
 </script>
 <script src="spor.js" defer></script>
 <script src="galleri.js" defer></script>
+<script src="forside.js" defer></script>
 <script data-goatcounter="https://trax-dogtracking.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
