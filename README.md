@@ -49,7 +49,7 @@ Når lenken deles (Facebook, Messenger, iMessage), vises `img/og-image-<språk>.
 
 ## Om Trax
 
-Seksjonen «Laget av en hundefører» (`#om`, engelsk `#about`) har et poteikon i `<span class="bilde">`. Når et bilde finnes, bytt ikonet med `<img src="…/img/silje-quatro.jpg" alt="…">` på alle tre sidene; stilen fyller ruten.
+Seksjonen «Laget av en hundefører» (`#om`, engelsk `#about`) viser foreløpig et bilde av Quatro (`img/quatro.jpg`, 360 × 360, uten metadata). Når et bilde av Silje og Quatro finnes, bytt `src` og `alt` på alle tre sidene; stilen fyller ruten.
 
 ## Bevegelse og sporlinja
 

@@ -193,7 +193,7 @@ nav .kj:active{transform:scale(.97)}
 .om-g{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start;padding-block:136px}
 .om-g blockquote{margin:0;font:700 clamp(26px,2.6vw,36px)/1.25 var(--display);letter-spacing:-.02em;text-wrap:balance}
 .om-g .hvem{display:flex;align-items:center;gap:16px;margin:0 0 18px}
-.om-g .bilde{flex:none;width:72px;height:72px;border-radius:22px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;overflow:hidden}
+.om-g .bilde{flex:none;width:96px;height:96px;border-radius:28px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;overflow:hidden}
 .om-g .bilde svg{width:32px;height:32px}
 .om-g .bilde img{width:100%;height:100%;object-fit:cover}
 .om-g .hvem b{display:block;font:800 21px/1.25 var(--display)}
@@ -225,9 +225,9 @@ nav .kj:active{transform:scale(.97)}
 .ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
 /* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
 @keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.bev .topp > div > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
-.bev .topp > div > :nth-child(2){animation-delay:.08s}.bev .topp > div > :nth-child(3){animation-delay:.16s}
-.bev .topp > div > :nth-child(4){animation-delay:.24s}.bev .flate{animation-delay:.12s}
+.bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
+.bev .topp > div:first-child > :nth-child(2){animation-delay:.08s}.bev .topp > div:first-child > :nth-child(3){animation-delay:.16s}
+.bev .topp > div:first-child > :nth-child(4){animation-delay:.24s}.bev .flate{animation-delay:.12s}
 .bev .inn{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .bev .inn.vis{opacity:1;transform:none}
 .flate img{transform:translateX(-50%) translateY(var(--py,0px)) rotate(-3deg)}
@@ -329,7 +329,7 @@ if(location.hash==='#personvern')location.replace('personvern/');
     <h2 class="sr">Laget av en hundefører</h2>
     <blockquote>«Jeg trener hund nesten hver dag, og spor er noe av det morsomste jeg gjør.»</blockquote>
     <div>
-      <div class="hvem"><span class="bilde"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6" cy="10" rx="2.1" ry="2.7"/><ellipse cx="10" cy="5.8" rx="2.1" ry="2.8"/><ellipse cx="14.6" cy="5.8" rx="2.1" ry="2.8"/><ellipse cx="18.4" cy="10" rx="2.1" ry="2.7"/><path d="M12.2 11.2c-3 0-6.2 4.3-6.2 6.6 0 1.7 1.4 2.4 3 2.4 1.3 0 2.2-.7 3.2-.7s1.9.7 3.2.7c1.6 0 3-.7 3-2.4 0-2.3-3.2-6.6-6.2-6.6z"/></svg></span><div><b>Silje Tillerflaten</b><span>Hundefører og utvikler av Trax</span></div></div>
+      <div class="hvem"><span class="bilde"><img src="img/quatro.jpg" width="96" height="96" loading="lazy" alt="Quatro, min malinois, med en rød leke i munnen"></span><div><b>Silje Tillerflaten</b><span>Hundefører og utvikler av Trax</span></div></div>
       <p>Trax laget jeg fordi jeg ville ha en enkel app som gjør akkurat det sporarbeidet trenger. Jeg bruker den selv når jeg trener med Quatro, min malinois, og jobber hele tiden med å forbedre appen slik at den dekker alle behov. Jeg svarer på alle henvendelser selv.</p>
     </div>
   </div></section>
