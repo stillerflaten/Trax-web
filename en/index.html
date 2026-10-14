@@ -223,6 +223,12 @@ nav .kj:active{transform:scale(.97)}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
 .ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
+.del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
+.del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
+.del img{display:block;width:100%;height:auto;border-radius:28px}
+.del .del-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.del .del-merke[hidden]{display:none}
+@media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
 /* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
 @keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
@@ -323,6 +329,15 @@ if(location.hash==='#privacy')location.replace('privacy/');
       <li><b>Cross tracks</b><span>Lay a fresher track across it, with an alert before the crossing.</span></li>
       <li><b>Track loss</b><span>Your phone vibrates when you drift off the track.</span></li>
     </ul>
+  </div></section>
+
+  <section id="sharing" class="del"><div class="wrap del-g">
+    <div>
+      <span class="del-merke ny-tekst">Coming in the next version</span>
+      <h2>Share the track with a photo of your dog</h2>
+      <p>Pick a photo from your camera roll and Trax puts the track, the items and the numbers on top. Share it as a story or a post, and choose the track colours yourself. If you would rather show just the track, you get it on a green background.</p>
+    </div>
+    <img src="../img/delebilde.webp" width="680" height="1209" loading="lazy" decoding="async" alt="Share image from Trax: the track with four found items on top of a photo of Quatro, with length, track age and items found at the bottom">
   </div></section>
 
   <section id="about"><div class="wrap om-g">

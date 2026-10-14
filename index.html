@@ -223,6 +223,12 @@ nav .kj:active{transform:scale(.97)}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
 .ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
+.del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
+.del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
+.del img{display:block;width:100%;height:auto;border-radius:28px}
+.del .del-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.del .del-merke[hidden]{display:none}
+@media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
 /* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
 @keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
@@ -323,6 +329,15 @@ if(location.hash==='#personvern')location.replace('personvern/');
       <li><b>Kryss-spor</b><span>Legg et ferskere spor på tvers, med varsel før krysset.</span></li>
       <li><b>Sportap</b><span>Telefonen vibrerer når dere kommer bort fra sporet.</span></li>
     </ul>
+  </div></section>
+
+  <section id="deling" class="del"><div class="wrap del-g">
+    <div>
+      <span class="del-merke ny-tekst">Kommer i neste versjon</span>
+      <h2>Del sporet med et bilde av hunden</h2>
+      <p>Velg et bilde fra kamerarullen, så legger Trax sporet, gjenstandene og tallene oppå. Du kan dele det som story eller innlegg, og velge fargene på sporet selv. Vil du heller vise bare sporet, får du det på en grønn bakgrunn.</p>
+    </div>
+    <img src="img/delebilde.webp" width="680" height="1209" loading="lazy" decoding="async" alt="Delebilde fra Trax: sporet med fire funne gjenstander lagt oppå et bilde av Quatro, med lengde, liggetid og funn nederst">
   </div></section>
 
   <section id="om"><div class="wrap om-g">
