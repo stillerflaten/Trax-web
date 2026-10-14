@@ -20,7 +20,7 @@ Språkvelgeren i menyen (`<details class="lang">`) har én linje per språk. Nyt
 
 ## Skjermbildegalleri
 
-Forsiden har et sveipbart galleri med fem skjermbilder (`img/galleri/galleri-<språk>-<nr>-<navn>.webp`, 640 × 999). Bildene er App Store-bildene uten overskrift, laget fra `appstore-bilder/kilde/shot.html` i prosjektmappa, og teksten under hvert bilde står i HTML-en. `galleri.js` legger til piler og prikker og er felles for alle språk. Nytt språk: lag fem nye bilder og kopier `<div class="galleri">` med oversatt tekst.
+Forsiden har et sveipbart galleri med fem skjermbilder (`img/galleri/galleri-<språk>-<nr>-<navn>.webp`, 640 × 999). Bildene er laget fra skjermbildene i det nye designet (`appstore-bilder/kilde/nytt-design/<språk>/`, fra skjermbilde-workflowen i app-repoet), satt i en telefon på samme bakgrunn som App Store-bildene, uten piler og merkelapper. Teksten under hvert bilde står i HTML-en. Toppbildet på forsiden er bilde 5. Før lansering står det «Ny versjon, kommer snart» på toppbildet og en setning over galleriet; begge skjules automatisk fra lanseringsdatoen. `galleri.js` legger til piler og prikker og er felles for alle språk. Nytt språk: lag fem nye bilder og kopier `<div class="galleri">` med oversatt tekst.
 
 ## Brukermanual
 

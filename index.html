@@ -220,6 +220,9 @@ nav .kj:active{transform:scale(.97)}
 .forside footer .liten{margin:40px 0 0;font-size:14px}
 .forside footer .utvikler{font-size:14px}
 @media (max-width:600px){.forside footer{padding-block:64px 32px}}
+/* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
+.ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
 </style>
 <script>
 /* Klargjør sporanimasjonen før første tegning, så den statiske linja ikke blinker. Vises likevel hvis spor.js ikke lastes. */
@@ -262,20 +265,21 @@ if(location.hash==='#personvern')location.replace('personvern/');
       </div>
       <ul class="tillit"><li>Ingen konto</li><li>Ingen reklame</li><li>Dataene blir på telefonen</li></ul>
     </div>
-    <div class="flate"><img src="img/galleri/galleri-nb-4-ga-sporet.webp" width="640" height="999" alt="Hunden på sporet, med det lagte sporet i blått, din vei i rødt og antall funn" decoding="async" fetchpriority="high"></div>
+    <div class="flate"><span class="ny-merke">Ny versjon, kommer snart</span><img src="img/galleri/galleri-nb-5-resultat.webp" width="640" height="999" alt="Resultatet for et fullført spor med kart, funn, lengde, liggetid og vurdering" decoding="async" fetchpriority="high"></div>
   </header>
   <div class="wrap">
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
+    <p class="ny-tekst">Bildene er fra den nye versjonen av Trax, som kommer i App Store snart.</p>
     <div class="galleri" role="region" aria-roledescription="karusell" aria-label="Skjermbilder fra appen" data-forrige="Forrige bilde" data-neste="Neste bilde" data-prikk="Bilde {n} av {t}">
       <ul class="g-liste" tabindex="0" aria-label="Skjermbilder fra appen">
-        <li><figure><img src="img/galleri/galleri-nb-1-oversikt.webp" width="640" height="999" alt="Startsiden i Trax med lista over spor, knapper for å legge og importere spor og filter på hund" decoding="async"><figcaption><b>Full oversikt over sporene dine</b><span>Legg nye spor, importer spor og se resultatene for hver hund.</span></figcaption></figure></li>
+        <li><figure><img src="img/galleri/galleri-nb-1-oversikt.webp" width="640" height="999" alt="Startsiden i Trax med spor som er klare til å gå, de siste sporene og knapp for nytt spor" decoding="async"><figcaption><b>Full oversikt over sporene dine</b><span>Legg nye spor, importer spor og se resultatene for hver hund.</span></figcaption></figure></li>
         <li><figure><img src="img/galleri/galleri-nb-2-legg-spor.webp" width="640" height="999" alt="Et spor som legges, med kart, tid, lengde og antall gjenstander lagt ut" decoding="async" loading="lazy"><figcaption><b>Legg spor med GPS</b><span>Se tid, lengde og antall gjenstander mens du legger sporet.</span></figcaption></figure></li>
         <li><figure><img src="img/galleri/galleri-nb-3-varsel.webp" width="640" height="999" alt="Varsel om at en gjenstand er like i nærheten, med knapp for å merke den som funnet" decoding="async" loading="lazy"><figcaption><b>Varsel når du nærmer deg funn</b><span>Appen sier ifra når du er nær en gjenstand, og du merker den som funnet med ett trykk.</span></figcaption></figure></li>
         <li><figure><img src="img/galleri/galleri-nb-4-ga-sporet.webp" width="640" height="999" alt="Hunden på sporet, med det lagte sporet i blått, din vei i rødt og antall funn" decoding="async" loading="lazy"><figcaption><b>Følg sporet med hunden</b><span>Det lagte sporet vises i blått og din vei i rødt, med funnene underveis.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-nb-5-resultat.webp" width="640" height="999" alt="Resultatet for et fullført spor med kart, funn, liggetid og værforhold" decoding="async" loading="lazy"><figcaption><b>Se resultatet av hvert spor</b><span>Funn, liggetid, lengde og vær samles etter hver økt.</span></figcaption></figure></li>
+        <li><figure><img src="img/galleri/galleri-nb-5-resultat.webp" width="640" height="999" alt="Resultatet for et fullført spor med kart, funn, lengde, liggetid og vurdering" decoding="async" loading="lazy"><figcaption><b>Se resultatet av hvert spor</b><span>Funn, liggetid, lengde og vær samles etter hver økt.</span></figcaption></figure></li>
       </ul>
       <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Forrige bilde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Neste bilde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
@@ -343,6 +347,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.o
 (function(){var d=document.body.getAttribute('data-lansering');if(!d)return;
 var t=new Date(d+'T00:00:00').getTime(),n=Date.now();if(isNaN(t)||n<t)return;
 var k=document.querySelectorAll('.kjop');for(var j=0;j<k.length;j++){k[j].querySelector('.snart').hidden=true;k[j].querySelector('.live').hidden=false}
+var m=document.querySelectorAll('.ny-merke,.ny-tekst');for(var q=0;q<m.length;q++)m[q].hidden=true;
 var a=document.querySelector('nav .kj');if(a)a.href='https://apps.apple.com/app/id6758005408';
 if(n>=t+7*864e5){var e=document.querySelectorAll('.kjop .intro,.kjop .ord');for(var i=0;i<e.length;i++)e[i].hidden=!e[i].hidden}})();
 </script>
