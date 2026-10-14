@@ -46,3 +46,7 @@ Lenken går til `https://apps.apple.com/app/id6758005408`.
 ## Delebilder
 
 Når lenken deles (Facebook, Messenger, iMessage), vises `img/og-image-<språk>.png` (1200 × 630). Manualsidene bruker samme bilder (satt i `verktoy/lag-manual.py`).
+
+## Om Trax
+
+Seksjonen «Laget av en hundefører» (`#om`, engelsk `#about`) har et poteikon i `<span class="bilde">`. Når et bilde finnes, bytt ikonet med `<img src="…/img/silje-quatro.jpg" alt="…">` på alle tre sidene; stilen fyller sirkelen.
