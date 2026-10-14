@@ -1,20 +1,20 @@
 # Trax
 
-Nettside for iOS-appen Trax: support og personvernerklæring.
+Nettside for iOS-appen Trax: forside med support, egne sider for personvernerklæringen, og brukermanual.
 
 Norsk (`index.html`):
 - Support: `/#support`
-- Personvern: `/#personvern`
+- Personvern: `/personvern/` (gamle `/#personvern` sendes dit, App Store lenker dit)
 
 Svensk (`sv/index.html`):
 - Support: `/sv/#support`
-- Integritet: `/sv/#integritet`
+- Integritet: `/sv/integritet/` (gamle `/sv/#integritet` sendes dit)
 
 Engelsk (`en/index.html`):
 - Support: `/en/#support`
-- Privacy: `/en/#privacy`
+- Privacy: `/en/privacy/` (gamle `/en/#privacy` sendes dit)
 
-De tre sidene har samme stil. Endrer du tekst eller utseende på én av dem, gjør det samme på de andre.
+De tre sidene har samme stil. Endrer du tekst eller utseende på én av dem, gjør det samme på de andre. Forsiden har `<body class="forside">` med bred layout og flater; reglene for den står samlet nederst i stilen. Personvernsidene og manualen bruker samme stil uten klassen, som lesesider. Ankeret `#personvern`/`#integritet`/`#privacy` finnes fortsatt på forsiden (kort sammendrag med lenke) i tilfelle skript er slått av.
 
 Språkvelgeren i menyen (`<details class="lang">`) har én linje per språk. Nytt språk: lag `xx/index.html`, legg til en linje i språkvelgeren, bunnteksten og `hreflang`/`og:locale:alternate` på alle sidene.
 
@@ -36,12 +36,12 @@ Skriptet henter stilen fra `index.html`, så endringer i utseendet på forsiden 
 
 ## App Store-knapp og pris
 
-Toppen viser «Snart i App Store» til lanseringsdatoen er satt. Sett datoen i `data-lansering` på `<div class="kjop">` i alle tre sidene (format `ÅÅÅÅ-MM-DD`):
+Toppen viser «Snart i App Store» til lanseringsdatoen er satt. Sett datoen i `data-lansering` på `<body>` i alle tre sidene (format `ÅÅÅÅ-MM-DD`):
 
 - Fra datoen vises App Store-merket (`img/app-store-<språk>.svg`, Apples offisielle merke) og introduksjonsprisen.
 - Introprisen er 129 kr (norsk), 129 kr (svensk) og $9.99 (engelsk). Sju dager etter datoen bytter den norske siden til ordinær pris (149 kr). På svensk og engelsk forsvinner beløpet da, til ordinær pris legges inn som `<b class="ord" hidden>` slik som på norsk.
 
-Lenken går til `https://apps.apple.com/app/id6758005408`.
+Merket vises både øverst og i bunnteksten, og knappen «App Store» i menyen går til appen fra datoen (før det til toppen). Lenken går til `https://apps.apple.com/app/id6758005408`.
 
 ## Delebilder
 
@@ -49,4 +49,4 @@ Når lenken deles (Facebook, Messenger, iMessage), vises `img/og-image-<språk>.
 
 ## Om Trax
 
-Seksjonen «Laget av en hundefører» (`#om`, engelsk `#about`) har et poteikon i `<span class="bilde">`. Når et bilde finnes, bytt ikonet med `<img src="…/img/silje-quatro.jpg" alt="…">` på alle tre sidene; stilen fyller sirkelen.
+Seksjonen «Laget av en hundefører» (`#om`, engelsk `#about`) har et poteikon i `<span class="bilde">`. Når et bilde finnes, bytt ikonet med `<img src="…/img/silje-quatro.jpg" alt="…">` på alle tre sidene; stilen fyller ruten.

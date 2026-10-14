@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Privacy policy for Trax: everything you record is stored only on your own phone.">
+<title>Privacy policy – Trax</title>
+<link rel="alternate" hreflang="nb" href="https://trax-dogtracking.no/personvern/">
+<link rel="alternate" hreflang="sv" href="https://trax-dogtracking.no/sv/integritet/">
+<link rel="alternate" hreflang="en" href="https://trax-dogtracking.no/en/privacy/">
+<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../../img/icon-192.png">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<style>
+/* Engelsk utgave av index.html: samme stil, hold de tre filene i takt */
+:root{
+  --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
+  --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
+  --tile-g:#e4efe7; --tile-o:#fbeadb; --tile-r:#f6e1e1; --tile-b:#e1ebf6; --ink-g:#2f6b45; --ink-o:#a8561a; --ink-r:#a3262b; --ink-b:#2f63a3; --band:#e7ece4; --deep:#1f4d31; --on-deep:#ffffff; --on-deep-2:#c9dccf; --foot:#1d241f; --on-foot:#e6ebe6; --on-foot-2:#a3b0a7;
+  --display:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body);padding-inline:16px}
+.wrap{max-width:720px;margin:0 auto}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:10px 16px}
+nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{font:800 20px var(--display);letter-spacing:-.02em;color:var(--fg);text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:10px}
+.brand img{width:32px;height:32px;border-radius:8px}
+nav a.l{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
+nav a.l:hover,nav a.l:focus-visible{color:var(--accent)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header.hero{padding-block:48px 32px}
+.hero h1{font:800 clamp(40px,9vw,64px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
+.hero p{font-size:20px;color:var(--muted);margin:0;max-width:34ch}
+/* App Store-knapp og pris. Før lanseringsdatoen (data-lansering på <body>, ÅÅÅÅ-MM-DD) vises «Snart i App Store».
+   Fra datoen vises merket og introprisen, og sju dager senere ordinær pris. Uten dato står «Snart» til datoen settes. */
+.tillit{display:flex;flex-wrap:wrap;gap:4px 18px;margin:16px 0 0;padding:0;list-style:none;font-size:15px;color:var(--muted)}
+.tillit li{display:flex;align-items:center;gap:6px}
+.trackline{display:block;width:100%;height:60px;margin-top:24px}
+.trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.trackline circle{fill:var(--accent)}
+/* Poteanimasjon på sporlinja (spor.js): full bredde, ender og poter i riktig form */
+html{overflow-x:clip}
+.spor-js .trackline{width:100vw;margin-left:calc(50% - 50vw);overflow:visible}
+.spor-klar .trackline path,.spor-klar .trackline circle:last-of-type{opacity:0}
+.trackline .paws{fill:var(--accent)}
+.trackline circle{transform-box:fill-box;transform-origin:center}
+.trackline.spiller circle:last-of-type{transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.trackline.spiller.ferdig circle:last-of-type{transform:none}
+section{padding-block:40px;border-top:1px solid var(--line);scroll-margin-top:64px}
+h2{font:700 28px/1.2 var(--display);letter-spacing:-.02em;margin:0 0 8px;text-wrap:balance}
+h3{font:700 18px/1.3 var(--display);margin:28px 0 6px}
+.eyebrow{font:700 13px var(--display);text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin:0 0 6px}
+p,li{max-width:65ch}
+ul{padding-left:1.2em}
+/* Funksjoner: to kolonner på mobil, tre fra 600 px. Ikonfargene følger lys og mørk modus. */
+.funk .sub{color:var(--muted);margin:0}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.fg li{max-width:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.fg b{display:block;font:700 16px/1.25 var(--display);margin-bottom:3px}
+.fg span{display:block;color:var(--muted);font-size:14.5px;line-height:1.45}
+.ph{background:var(--mark);padding:0 4px;border-radius:3px}
+button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
+dt{font-weight:600}
+dd{margin:0;color:var(--muted);min-width:0}
+@media (max-width:480px){dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
+/* Skjermbildegalleri (galleri.js): sveip på mobil, piler og prikker på PC. Uten JS er det en vanlig vannrett rulleliste. */
+.galleri{margin-top:28px}
+.g-liste{display:flex;gap:16px;margin:0 -16px;padding:4px 16px 8px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;overscroll-behavior-x:contain;scrollbar-width:none}
+.g-liste::-webkit-scrollbar{display:none}
+.g-liste:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:12px}
+.g-liste li{flex:0 0 min(76%,272px);max-width:none;scroll-snap-align:start}
+.g-liste figure{margin:0}
+.g-liste img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#eef0e4}
+.g-liste figcaption{padding:10px 2px 0}
+.g-liste figcaption b{display:block;font:700 17px/1.3 var(--display)}
+.g-liste figcaption span{display:block;color:var(--muted);font-size:15px;line-height:1.45}
+.g-ktrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
+.g-ktrl[hidden]{display:none}
+.g-pil{width:40px;height:40px;padding:0;border-radius:50%;background:var(--surface);color:var(--fg);border:1px solid var(--line);display:grid;place-items:center}
+.g-pil:hover:not(:disabled){color:var(--accent);border-color:var(--accent)}
+.g-pil:disabled{opacity:.35;cursor:default}
+.g-pil svg{width:18px;height:18px}
+.g-prikker{display:flex;gap:2px}
+.g-prikker button{width:24px;height:24px;padding:0;background:none;border-radius:50%;display:grid;place-items:center}
+.g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
+.g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
+@media (hover:none) and (pointer:coarse){.g-pil{display:none}}
+@media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
+nav .wrap{position:relative}
+.lang{position:static} /* lista festes til høyre kant av menyen, også hvis menyen bryter over to linjer */
+.lang summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--muted);font:600 15px var(--body);padding:4px 10px;border:1px solid var(--line);border-radius:8px;user-select:none}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary:hover,.lang[open] summary{color:var(--accent);border-color:var(--accent)}
+.lang summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lang summary svg{width:16px;height:16px;flex:none}
+.lang summary .chev{width:10px;height:10px;transition:transform .15s}
+.lang[open] summary .chev{transform:rotate(180deg)}
+.lang ul{position:absolute;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgb(0 0 0/.14);min-width:9.5em;z-index:6}
+.lang li{max-width:none}
+.lang ul a{display:flex;justify-content:space-between;gap:12px;padding:7px 10px;border-radius:6px;color:var(--fg);text-decoration:none;font-size:15px}
+.lang ul a:hover,.lang ul a:focus-visible{background:var(--bg);color:var(--accent)}
+.lang ul a[aria-current]{font-weight:700;color:var(--accent)}
+.lang ul a[aria-current]::after{content:"✓"}
+/* Smal skjerm: menyen skal få plass på én linje */
+/* Mobil: personvernlenken tas ut av menyen (den står i bunnteksten), så Manual får plass på én linje */
+@media (max-width:480px){nav a.l.opt{display:none}}
+@media (max-width:400px){nav .wrap{gap:12px}.lang summary .chev{display:none}}
+@media (max-width:360px){.lang summary svg{display:none}}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
+footer .utvikler{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:13px}
+footer .utvikler img{border-radius:6px;flex:none}
+.updated{font-size:14px;color:var(--muted)}
+/* Forsiden (body.forside): bred layout, flater i stedet for streker og kort, store overskrifter.
+   Manualen og personvernsiden bruker ikke klassen og beholder lesesidestilen over. */
+.forside{padding-inline:0}
+.forside .wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:600px){.forside .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+.forside nav{margin-inline:0;padding-inline:0;border-bottom:0}
+.forside nav a.l{color:var(--fg)}
+.forside nav a.l:hover,.forside nav a.l:focus-visible{color:var(--accent)}
+nav .kj{background:var(--accent);color:var(--accent-ink);font:700 15px/1 var(--display);padding:10px 16px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:transform .15s}
+nav .kj:active{transform:scale(.97)}
+@media (max-width:480px){.forside nav a.l:not([href$="manual/"]){display:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.forside section{border-top:0;padding-block:0}
+.forside p,.forside li{max-width:none}
+.forside h2{font:800 clamp(34px,4.4vw,56px)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 16px}
+/* Toppen: tekst til venstre, appen stor på en grønn flate til høyre (under teksten på mobil) */
+.topp{display:grid;grid-template-columns:1.3fr .9fr;gap:40px;align-items:end;padding-top:40px}
+.topp h1{font:800 clamp(44px,5.5vw,84px)/.95 var(--display);letter-spacing:-.045em;margin:0 0 24px;text-wrap:balance}
+.topp .lead{font-size:21px;line-height:1.45;margin:0 0 32px;max-width:30ch}
+.topp .tillit{margin:28px 0 48px;gap:6px 22px;font-size:17px;color:var(--fg)}
+.tillit li::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--track);margin-right:3px}
+.kjop{margin:0}
+.kjop [hidden]{display:none!important}
+.kjop .snart{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:0}
+.kjop .chip{display:inline-block;background:var(--fg);color:var(--bg);font:700 17px/1 var(--display);padding:16px 24px;border-radius:999px}
+.kjop .snart span:not(.chip){font-size:17px;color:var(--muted)}
+.kjop .live{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.kjop .pris{display:flex;flex-direction:column;margin:0;font-size:16px;line-height:1.4;color:var(--muted)}
+.kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
+.appstore{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
+.appstore:active{transform:scale(.97)}
+.appstore img{height:52px;width:auto}
+.flate{background:var(--deep);border-radius:28px 28px 0 0;height:min(76vh,700px);min-height:440px;position:relative;overflow:hidden}
+.flate img{position:absolute;left:50%;top:48px;width:min(74%,400px);height:auto;transform:translateX(-50%) rotate(-3deg);border-radius:28px}
+@media (max-width:860px){.topp{grid-template-columns:1fr;gap:0}.flate{height:460px;min-height:0}.flate img{width:300px;top:36px}}
+@media (max-width:600px){.topp{padding-top:20px}.topp .lead{font-size:19px;margin-bottom:24px}.topp .tillit{margin:22px 0 28px}
+  .flate{height:340px;margin-inline:-16px;border-radius:0}.flate img{width:250px;top:28px}}
+.forside .trackline{margin-top:28px}
+.forside .galleri{margin-top:12px;padding-bottom:96px}
+.forside .g-liste img{border:0}
+@media (min-width:1000px){.forside .g-liste li{flex:0 0 calc((100% - 64px)/5)}.forside .g-ktrl{display:none!important}}
+@media (max-width:600px){.forside .galleri{padding-bottom:64px}}
+/* Funksjoner: hel grønn flate, oransje gjenstandsmarkør foran hver funksjon som i appen */
+.forside .funk{background:var(--deep);color:var(--on-deep);padding-block:120px 136px}
+.forside .funk h2{max-width:14ch}
+.forside .funk .sub{color:var(--on-deep-2);font-size:21px;margin:0 0 64px}
+.forside .fg{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 56px;margin:0}
+.forside .fg li{background:none;border:0;border-radius:0;padding:0}
+.forside .fg b{display:flex;align-items:center;gap:12px;font:800 25px/1.15 var(--display);letter-spacing:-.02em;margin-bottom:8px}
+.forside .fg b::before{content:"";flex:none;width:14px;height:14px;border-radius:50%;background:var(--track);box-shadow:0 0 0 5px rgb(199 119 46/.3)}
+.forside .fg span{color:var(--on-deep-2);font-size:17px;line-height:1.5;padding-left:26px}
+@media (max-width:860px){.forside .fg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.forside .funk{padding-block:72px 84px}.forside .funk .sub{font-size:19px;margin-bottom:40px}.forside .fg{grid-template-columns:1fr;gap:28px}.forside .fg b{font-size:22px}}
+/* Om: setningen stort til venstre, navn og resten av teksten til høyre. Bytt poten i .bilde med <img> når bildet finnes. */
+.om-g{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start;padding-block:136px}
+.om-g blockquote{margin:0;font:700 clamp(26px,2.6vw,36px)/1.25 var(--display);letter-spacing:-.02em;text-wrap:balance}
+.om-g .hvem{display:flex;align-items:center;gap:16px;margin:0 0 18px}
+.om-g .bilde{flex:none;width:72px;height:72px;border-radius:22px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;overflow:hidden}
+.om-g .bilde svg{width:32px;height:32px}
+.om-g .bilde img{width:100%;height:100%;object-fit:cover}
+.om-g .hvem b{display:block;font:800 21px/1.25 var(--display)}
+.om-g .hvem span{color:var(--muted);font-size:16px}
+.om-g p{margin:0}
+@media (max-width:860px){.om-g{grid-template-columns:1fr;gap:28px;padding-block:80px}}
+/* Support: tonet flate, e-posten som stor lenke, spørsmålene i tre kolonner */
+.forside #support{background:var(--band);padding-block:120px}
+.sup-intro{max-width:60ch;margin:0}
+.post{display:inline-block;font:800 clamp(22px,2.6vw,34px)/1.2 var(--display);color:var(--accent);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:3px;margin:20px 0 72px;overflow-wrap:anywhere}
+.faq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 48px}
+.faq h3,.pv h3{font:800 20px/1.25 var(--display);margin:0 0 6px}
+.faq p{margin:0;font-size:17px}
+.pv{margin-top:64px;max-width:60ch}
+.pv p{margin:0 0 8px;font-size:17px}
+.pv a{font-weight:600}
+@media (max-width:860px){.forside #support{padding-block:72px}.post{margin-bottom:48px}.faq{grid-template-columns:1fr;gap:26px}.pv{margin-top:40px}}
+/* Bunnteksten: navnet stort, App Store-knappen en gang til, og lenkene */
+.forside footer{border-top:0;background:var(--foot);color:var(--on-foot-2);padding-block:96px 40px;font-size:16px}
+.forside footer .stort{font:800 clamp(88px,17vw,240px)/.8 var(--display);letter-spacing:-.06em;margin:0 0 40px;color:var(--on-foot)}
+.forside footer .rad{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
+.forside footer .rad a{color:var(--on-foot)}
+.forside footer .chip{background:var(--on-foot);color:var(--foot)}
+.forside footer .liten{margin:40px 0 0;font-size:14px}
+.forside footer .utvikler{font-size:14px}
+@media (max-width:600px){.forside footer{padding-block:64px 32px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="../"><img src="../../img/icon-192.png" width="32" height="32" alt="">Trax</a>
+  <a class="l" href="../manual/">Manual</a>
+  <a class="l" href="../#support">Support</a>
+  <a class="l opt" href="./" aria-current="page">Privacy</a>
+  <details class="lang">
+    <summary aria-label="Choose language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span>EN</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+    <ul>
+      <li><a href="../../personvern/" hreflang="nb" lang="nb">Norsk</a></li>
+      <li><a href="../../sv/integritet/" hreflang="sv" lang="sv">Svenska</a></li>
+      <li><a href="../../en/privacy/" lang="en" aria-current="page">English</a></li>
+    </ul>
+  </details>
+  <a class="kj" href="../">App Store</a>
+</div></nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <h1>How Trax handles your data</h1>
+  </header>
+  <p class="updated">Last updated: 12 October 2026</p>
+    
+    <p>This policy explains what information Trax collects, why, and what rights you have. Trax is developed by Silje Tillerflaten, who can be reached at <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>.</p>
+
+    <h3>In short</h3>
+    <p>Everything you record in Trax is stored only on your own phone. Trax has no account, no server of its own and no ads, and the developer has no access to your data.</p>
+
+    <h3>What the app stores on your phone</h3>
+    <dl>
+      <dt>Location</dt><dd>GPS points while you record a track or a training session. Location is only used while the app is in use and you have started a session.</dd>
+      <dt>Training data</dt><dd>Tracks, routes, times, track age, weather, notes and information about your dog that you enter yourself.</dd>
+    </dl>
+
+    <h3>When data leaves your phone</h3>
+    <dl>
+      <dt>Weather data</dt><dd>To get the weather for a session, the app sends the location and the time the track started to Apple Weather (WeatherKit). Apple uses the location only to answer the request and does not link it to you or your Apple Account. No names or training data are sent. The weather data that comes back is stored with the session on your phone. Older sessions may have weather data from Open-Meteo (open-meteo.com, CC BY 4.0).</dd>
+      <dt>Export</dt><dd>When you choose to export or share a session, it is sent wherever you choose, for example by email, message or to another app. This only happens when you tap export.</dd>
+      <dt>Backup</dt><dd>If iCloud Backup is turned on, iOS may include your Trax data in your backup. The backup is controlled by Apple and your Apple Account, not by Trax.</dd>
+      <dt>Crash reports</dt><dd>Anonymous crash reports from Apple, only if you have turned on sharing of analytics data on your iPhone.</dd>
+    </dl>
+    <p>Trax does not sell data, does not use it for advertising and does not track you across other apps and websites.</p>
+
+    <h3>This website</h3>
+    <p>This website is hosted on GitHub Pages. GitHub stores visitors' IP addresses in technical logs for security purposes, see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>. The website does not use cookies and does not load fonts from other services. To see how many people visit the site, we use <a href="https://www.goatcounter.com/">GoatCounter</a>, which counts page views anonymously. GoatCounter does not use cookies, does not store your IP address and cannot follow you across websites. The legal basis is our legitimate interest in knowing how the website is used (GDPR Art. 6(1)(f)).</p>
+
+    <h3>How long data is kept</h3>
+    <p>Your data stays on your phone until you delete it. You can delete individual sessions in the app, and everything is removed permanently when you delete the app.</p>
+
+    <h3>Your rights</h3>
+    <p>Since your data is stored only with you, you have full control over it yourself. You can turn off location access at any time under Settings › Trax on your iPhone. If you have questions about privacy, contact <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>. You can also lodge a complaint with a data protection authority, such as the Norwegian Data Protection Authority (<a href="https://www.datatilsynet.no/en/">datatilsynet.no</a>).</p>
+
+    <h3>Children</h3>
+    <p>Trax is not directed at children under 13, and I do not knowingly collect information about them.</p>
+
+    <h3>Changes</h3>
+    <p>I update this policy when needed. The date at the top shows when it was last changed.</p>
+</main>
+
+<div class="wrap">
+  <footer>© 2026 Silje Tillerflaten · <a href="../">Home</a> · <a href="../manual/">User manual</a> · <a href="../#support">Support</a> · <a href="../../personvern/" hreflang="nb" lang="nb">Norsk</a> · <a href="../../sv/integritet/" hreflang="sv" lang="sv">Svenska</a>
+    <p class="utvikler"><img src="../../img/tillerflaten-digital.png" width="24" height="24" alt="Tillerflaten Digital logo"> Developed by Tillerflaten Digital</p>
+  </footer>
+</div>
+
+<script>
+/* Språkvelger: lukk menyen ved klikk utenfor eller Escape */
+(function(){var d=document.querySelector('.lang');if(!d)return;
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus()}});})();
+</script>
+<script data-goatcounter="https://trax-dogtracking.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
