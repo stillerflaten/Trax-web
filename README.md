@@ -49,7 +49,7 @@ Når lenken deles (Facebook, Messenger, iMessage), vises `img/og-image-<språk>.
 
 ## Om Trax
 
-Seksjonen «Laget av en hundefører» (`#om`, engelsk `#about`) viser foreløpig et bilde av Quatro (`img/quatro.jpg`, 360 × 360, uten metadata). Når et bilde av Silje og Quatro finnes, bytt `src` og `alt` på alle tre sidene; stilen fyller ruten.
+Seksjonen «Laget av en hundefører» (`#om`, engelsk `#about`) viser foreløpig et bilde av Quatro (`img/quatro-hode.jpg`, 480 × 480, vist i 160 × 160 (120 på mobil), uten metadata). Når et bilde av Silje og Quatro finnes, bytt `src` og `alt` på alle tre sidene; stilen fyller ruten.
 
 Seksjonen om delebildet (`#deling`, svensk `#delning`, engelsk `#sharing`) viser `img/delebilde.webp` (680 × 1209, laget fra `appstore-bilder/kilde/egne/delebilde-nb.jpg`). Merket «Kommer i neste versjon» har klassen `ny-tekst` og skjules automatisk når `data-lansering` er satt. Bildet har norske tekster på alle tre språkene; bytt til egne svenske og engelske versjoner når de finnes.
 
