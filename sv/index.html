@@ -220,6 +220,9 @@ nav .kj:active{transform:scale(.97)}
 .forside footer .liten{margin:40px 0 0;font-size:14px}
 .forside footer .utvikler{font-size:14px}
 @media (max-width:600px){.forside footer{padding-block:64px 32px}}
+/* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
+.ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
 </style>
 <script>
 /* Klargjør sporanimasjonen før første tegning, så den statiske linja ikke blinker. Vises likevel hvis spor.js ikke lastes. */
@@ -262,20 +265,21 @@ if(location.hash==='#integritet')location.replace('integritet/');
       </div>
       <ul class="tillit"><li>Inget konto</li><li>Ingen reklam</li><li>Datan stannar i telefonen</li></ul>
     </div>
-    <div class="flate"><img src="../img/galleri/galleri-sv-4-ga-sporet.webp" width="640" height="999" alt="Hunden spårar, med det lagda spåret i blått, din väg i rött och antal fynd" decoding="async" fetchpriority="high"></div>
+    <div class="flate"><span class="ny-merke">Ny version, kommer snart</span><img src="../img/galleri/galleri-sv-5-resultat.webp" width="640" height="999" alt="Resultatet för ett avslutat spår med karta, hittade föremål, längd, spårets ålder och bedömning" decoding="async" fetchpriority="high"></div>
   </header>
   <div class="wrap">
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
+    <p class="ny-tekst">Bilderna är från den nya versionen av Trax, som snart kommer till App Store.</p>
     <div class="galleri" role="region" aria-roledescription="karusell" aria-label="Skärmbilder från appen" data-forrige="Föregående bild" data-neste="Nästa bild" data-prikk="Bild {n} av {t}">
       <ul class="g-liste" tabindex="0" aria-label="Skärmbilder från appen">
-        <li><figure><img src="../img/galleri/galleri-sv-1-oversikt.webp" width="640" height="999" alt="Startsidan i Trax med listan över spår, knappar för att lägga och importera spår och filter på hund" decoding="async"><figcaption><b>Full koll på dina spår</b><span>Lägg nya spår, importera spår och se resultaten för varje hund.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-sv-1-oversikt.webp" width="640" height="999" alt="Startsidan i Trax med spår som är klara att spåra, de senaste spåren och knapp för nytt spår" decoding="async"><figcaption><b>Full koll på dina spår</b><span>Lägg nya spår, importera spår och se resultaten för varje hund.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-sv-2-legg-spor.webp" width="640" height="999" alt="Ett spår som läggs, med karta, tid, längd och antal utlagda föremål" decoding="async" loading="lazy"><figcaption><b>Lägg spår med GPS</b><span>Se tid, längd och antal föremål medan du lägger spåret.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-sv-3-varsel.webp" width="640" height="999" alt="En avisering om att ett föremål är nära, med en knapp för att markera det som hittat" decoding="async" loading="lazy"><figcaption><b>Avisering när du närmar dig</b><span>Appen säger till när du är nära ett föremål, och du markerar det som hittat med ett tryck.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-sv-4-ga-sporet.webp" width="640" height="999" alt="Hunden spårar, med det lagda spåret i blått, din väg i rött och antal fynd" decoding="async" loading="lazy"><figcaption><b>Spåra med hunden</b><span>Det lagda spåret visas i blått och din väg i rött, med fynden längs vägen.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-sv-5-resultat.webp" width="640" height="999" alt="Resultatet för ett avslutat spår med karta, hittade föremål, spårets ålder och väder" decoding="async" loading="lazy"><figcaption><b>Se resultatet av varje spår</b><span>Fynd, spårets ålder, längd och väder samlas efter varje pass.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-sv-5-resultat.webp" width="640" height="999" alt="Resultatet för ett avslutat spår med karta, hittade föremål, längd, spårets ålder och bedömning" decoding="async" loading="lazy"><figcaption><b>Se resultatet av varje spår</b><span>Fynd, spårets ålder, längd och väder samlas efter varje pass.</span></figcaption></figure></li>
       </ul>
       <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Föregående bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Nästa bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
@@ -343,6 +347,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.o
 (function(){var d=document.body.getAttribute('data-lansering');if(!d)return;
 var t=new Date(d+'T00:00:00').getTime(),n=Date.now();if(isNaN(t)||n<t)return;
 var k=document.querySelectorAll('.kjop');for(var j=0;j<k.length;j++){k[j].querySelector('.snart').hidden=true;k[j].querySelector('.live').hidden=false}
+var m=document.querySelectorAll('.ny-merke,.ny-tekst');for(var q=0;q<m.length;q++)m[q].hidden=true;
 var a=document.querySelector('nav .kj');if(a)a.href='https://apps.apple.com/app/id6758005408';
 if(n>=t+7*864e5){var e=document.querySelectorAll('.kjop .intro,.kjop .ord');for(var i=0;i<e.length;i++)e[i].hidden=!e[i].hidden}})();
 </script>
