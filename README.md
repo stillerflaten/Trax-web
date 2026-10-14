@@ -39,7 +39,7 @@ Skriptet henter stilen fra `index.html`, så endringer i utseendet på forsiden 
 Toppen viser «Snart i App Store» til lanseringsdatoen er satt. Sett datoen i `data-lansering` på `<body>` i alle tre sidene (format `ÅÅÅÅ-MM-DD`):
 
 - Fra datoen vises App Store-merket (`img/app-store-<språk>.svg`, Apples offisielle merke) og introduksjonsprisen.
-- Introprisen er 129 kr (norsk), 129 kr (svensk) og $9.99 (engelsk). Sju dager etter datoen bytter den norske siden til ordinær pris (149 kr). På svensk og engelsk forsvinner beløpet da, til ordinær pris legges inn som `<b class="ord" hidden>` slik som på norsk.
+- Introprisen er 129 kr (norsk), 129 kr (svensk) og $9.99 (engelsk). Sju dager etter datoen bytter alle tre sidene til ordinær pris: 149 kr, 149 kr og $11.99.
 
 Merket vises både øverst og i bunnteksten, og knappen «App Store» i menyen går til appen fra datoen (før det til toppen). Lenken går til `https://apps.apple.com/app/id6758005408`.
 
