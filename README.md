@@ -33,3 +33,16 @@ python3 verktoy/lag-manual.py ../Trax
 ```
 
 Skriptet henter stilen fra `index.html`, så endringer i utseendet på forsiden følger med neste gang det kjøres. Nytt språk: legg til en linje i `LANGS` øverst i skriptet.
+
+## App Store-knapp og pris
+
+Toppen viser «Snart i App Store» til lanseringsdatoen er satt. Sett datoen i `data-lansering` på `<div class="kjop">` i alle tre sidene (format `ÅÅÅÅ-MM-DD`):
+
+- Fra datoen vises App Store-merket (`img/app-store-<språk>.svg`, Apples offisielle merke) og introduksjonsprisen.
+- Sju dager etter datoen bytter den norske siden til ordinær pris (149 kr). Svensk og engelsk viser ikke beløp, siden prisen er i lokal valuta der.
+
+Lenken går til `https://apps.apple.com/app/id6758005408`.
+
+## Delebilder
+
+Når lenken deles (Facebook, Messenger, iMessage), vises `img/og-image-<språk>.png` (1200 × 630). Manualsidene bruker samme bilder (satt i `verktoy/lag-manual.py`).

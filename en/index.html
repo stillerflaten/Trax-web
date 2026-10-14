@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Trax – an app for scent tracking training with your dog. Support and privacy policy.">
+<meta name="description" content="Trax is an iPhone app for tracking training with your dog. Lay tracks with GPS, get alerted at each item and see how well your dog held the track.">
 <title>Trax – tracking training for dogs</title>
 <link rel="alternate" hreflang="nb" href="https://trax-dogtracking.no/">
 <link rel="alternate" hreflang="sv" href="https://trax-dogtracking.no/sv/">
@@ -17,26 +17,27 @@
 <meta property="og:locale:alternate" content="sv_SE">
 <meta property="og:site_name" content="Trax">
 <meta property="og:title" content="Trax – tracking training for dogs">
-<meta property="og:description" content="iOS app for tracking training: lay tracks, train your dog and follow its progress over time.">
+<meta property="og:description" content="Trax is an iPhone app for tracking training with your dog. Lay tracks with GPS, get alerted at each item and see how well your dog held the track.">
 <meta property="og:url" content="https://trax-dogtracking.no/en/">
-<meta property="og:image" content="https://trax-dogtracking.no/img/og-image.png">
-<meta property="og:image:width" content="512">
-<meta property="og:image:height" content="512">
-<meta property="og:image:alt" content="The Trax app icon: a dog and a location pin">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://trax-dogtracking.no/img/og-image-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Trax: Lay the track. Follow your dog. An iPhone showing a track on the map.">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 /* Engelsk utgave av index.html: samme stil, hold de tre filene i takt */
 :root{
   --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
   --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
+  --tile-g:#e4efe7; --tile-o:#fbeadb; --tile-r:#f6e1e1; --tile-b:#e1ebf6; --ink-g:#2f6b45; --ink-o:#a8561a; --ink-r:#a3262b; --ink-b:#2f63a3;
   --display:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
-  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}}
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
-  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0}
@@ -53,8 +54,19 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 header.hero{padding-block:48px 32px}
 .hero h1{font:800 clamp(40px,9vw,64px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
 .hero p{font-size:20px;color:var(--muted);margin:0;max-width:34ch}
-/* «Snart i App Store»: fjern denne linja og <p class="snart"> i hero når appen er live */
-.hero p.snart{display:inline-block;margin:20px 0 0;padding:6px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--accent);color:var(--accent);font:700 15px/1.4 var(--display)}
+/* App Store-knapp og pris. Før lanseringsdatoen (data-lansering på .kjop, ÅÅÅÅ-MM-DD) vises «Snart i App Store».
+   Fra datoen vises merket og introprisen, og sju dager senere ordinær pris. Uten dato står «Snart» til datoen settes. */
+.kjop{margin-top:20px}
+.kjop .live{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.hero .kjop [hidden]{display:none}
+.appstore{display:inline-block;line-height:0;border-radius:9px}
+.appstore img{height:50px;width:auto}
+.hero .pris{display:flex;flex-direction:column;font-size:15px;line-height:1.4;color:var(--muted)}
+.hero .pris b{font:800 20px/1.2 var(--display);color:var(--fg)}
+.tillit{display:flex;flex-wrap:wrap;gap:4px 18px;margin:16px 0 0;padding:0;list-style:none;font-size:15px;color:var(--muted)}
+.tillit li{display:flex;align-items:center;gap:6px}
+.tillit svg{width:16px;height:16px;flex:none;color:var(--accent)}
+.hero p.snart{display:inline-block;margin:0;padding:6px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--accent);color:var(--accent);font:700 15px/1.4 var(--display)}
 .trackline{display:block;width:100%;height:60px;margin-top:24px}
 .trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
 .trackline circle{fill:var(--accent)}
@@ -72,10 +84,15 @@ h3{font:700 18px/1.3 var(--display);margin:28px 0 6px}
 .eyebrow{font:400 12px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 6px}
 p,li{max-width:65ch}
 ul{padding-left:1.2em}
-.feat{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
-.feat div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
-.feat b{display:block;font-family:var(--display);margin-bottom:2px}
-.feat span{color:var(--muted);font-size:15px}
+/* Funksjoner: to kolonner på mobil, tre fra 600 px. Ikonfargene følger lys og mørk modus. */
+.funk .sub{color:var(--muted);margin:0}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.fg li{max-width:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.fg .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;margin-bottom:8px;background:var(--tile-g);color:var(--ink-g)}
+.fg .ic.o{background:var(--tile-o);color:var(--ink-o)}.fg .ic.r{background:var(--tile-r);color:var(--ink-r)}.fg .ic.b{background:var(--tile-b);color:var(--ink-b)}
+.fg .ic svg{width:20px;height:20px}
+.fg b{display:block;font:700 16px/1.25 var(--display);margin-bottom:3px}
+.fg span{display:block;color:var(--muted);font-size:14.5px;line-height:1.45}
 .contact{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 24px;display:flex;flex-wrap:wrap;gap:16px 20px;align-items:center;margin-top:20px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06)}
 .contact .ic{flex:none;width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#3b8357,#1f4d31);color:#fff;display:grid;place-items:center}
 .contact .ic svg{width:26px;height:26px}
@@ -114,7 +131,7 @@ dd{margin:0;color:var(--muted);min-width:0}
 .g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
 .g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
 @media (hover:none) and (pointer:coarse){.g-pil{display:none}}
-@media (min-width:600px){.feat{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
 .lang{position:static} /* lista festes til høyre kant av menyen, også hvis menyen bryter over to linjer */
@@ -168,16 +185,18 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
     <p class="eyebrow">iOS app for tracking training</p>
     <h1>Follow the track. See the progress.</h1>
     <p>Trax helps you lay tracks, train your dog and follow its progress over time.</p>
-    <p class="snart">Coming soon to the App Store</p>
+    <div class="kjop" data-lansering="">
+      <p class="snart">Coming soon to the App Store</p>
+      <div class="live" hidden>
+        <a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" height="50" loading="lazy" alt="Download on the App Store"></a>
+        <p class="pris"><span class="intro">Introductory price for the first week.</span><span>One-time purchase, no subscription.</span></p>
+      </div>
+    </div>
+    <ul class="tillit"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>No account</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>No ads</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Your data stays on your phone</li></ul>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
-    <div class="feat">
-      <div><b>Lay tracks</b><span>Record the track with GPS as you walk it.</span></div>
-      <div><b>Train your dog</b><span>Follow the dog's route and compare it with the track.</span></div>
-      <div><b>Training log</b><span>Length, track age, weather and notes for every session.</span></div>
-    </div>
     <div class="galleri" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app" data-forrige="Previous image" data-neste="Next image" data-prikk="Image {n} of {t}">
       <ul class="g-liste" tabindex="0" aria-label="Screenshots from the app">
         <li><figure><img src="../img/galleri/galleri-en-1-oversikt.webp" width="640" height="999" alt="The Trax home screen with the list of tracks, buttons to lay and import tracks and a dog filter" decoding="async"><figcaption><b>Every track at a glance</b><span>Lay new tracks, import tracks and see the results for each dog.</span></figcaption></figure></li>
@@ -189,6 +208,20 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
       <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
   </header>
+
+  <section id="features" class="funk">
+    <p class="eyebrow">Features</p>
+    <h2>Built for real tracking training</h2>
+    <p class="sub">More than a GPS log. Trax knows tracking work.</p>
+    <ul class="fg">
+      <li><span class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span><b>Lie time</b><span>A countdown on the lock screen and an alert when the track is ready.</span></li>
+      <li><span class="ic o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></span><b>Voice alerts</b><span>Hear it when you get close to an item.</span></li>
+      <li><span class="ic r"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span><b>Blood tracks</b><span>Wound beds, blood stops, game and flight direction.</span></li>
+      <li><span class="ic b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-6 10-6c2 0 3.7.6 5 1.4M22 12s-3.5 6-10 6c-2 0-3.7-.6-5-1.4M3 3l18 18"/></svg></span><b>Blind tracks</b><span>The track and alerts stay hidden until you stop.</span></li>
+      <li><span class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 20 4M4 4l6 6M14 14l6 6"/></svg></span><b>Cross tracks</b><span>Lay a fresher track across it, with an alert before the crossing.</span></li>
+      <li><span class="ic o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 17v.01"/></svg></span><b>Track loss</b><span>Your phone vibrates when you drift off the track.</span></li>
+    </ul>
+  </section>
 
   <section id="support">
     <p class="eyebrow">Support</p>
@@ -258,6 +291,13 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
 (function(){var d=document.querySelector('.lang');if(!d)return;
 document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus()}});})();
+</script>
+<script>
+/* Lanseringsdato: bytt «Snart i App Store» med App Store-merket fra datoen, og introprisen med ordinær pris etter sju dager */
+(function(){var k=document.querySelector('.kjop'),d=k&&k.getAttribute('data-lansering');if(!d)return;
+var t=new Date(d+'T00:00:00').getTime(),n=Date.now();if(isNaN(t)||n<t)return;
+k.querySelector('.snart').hidden=true;k.querySelector('.live').hidden=false;
+if(n>=t+7*864e5){var e=k.querySelectorAll('.intro,.ord');for(var i=0;i<e.length;i++)e[i].hidden=!e[i].hidden}})();
 </script>
 <script src="../spor.js" defer></script>
 <script src="../galleri.js" defer></script>

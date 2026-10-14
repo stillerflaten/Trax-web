@@ -211,10 +211,10 @@ def render(l, sections, strings, style, app, used, date):
 <meta property="og:title" content="{l["title"]}">
 <meta property="og:description" content="{l["desc"]}">
 <meta property="og:url" content="{BASE_URL}{l["dir"]}manual/">
-<meta property="og:image" content="{BASE_URL}img/og-image.png">
-<meta property="og:image:width" content="512">
-<meta property="og:image:height" content="512">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{BASE_URL}img/og-image-{l["code"]}.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 {style}
 {MANUAL_CSS}
