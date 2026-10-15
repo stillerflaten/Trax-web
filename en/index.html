@@ -223,6 +223,16 @@ nav .kj:active{transform:scale(.97)}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
 .ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
+.v2{padding-block:120px 0}
+.v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
+.v2-liste{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;margin:0;padding:0;list-style:none}
+.v2-liste li{max-width:none}
+.v2-liste b{display:flex;align-items:center;gap:10px;font:800 21px/1.2 var(--display);letter-spacing:-.015em;margin-bottom:6px}
+.v2-liste b::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--track)}
+.v2-liste span{display:block;color:var(--muted);font-size:16px;line-height:1.5;padding-left:22px}
+@media (max-width:1000px){.v2-liste{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.v2{padding-block:80px 0}.v2 .lead{font-size:19px;margin-bottom:36px}.v2-liste{grid-template-columns:1fr;gap:24px}}
 .del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
 .del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
 .del img{display:block;width:100%;height:auto;border-radius:28px}
@@ -331,9 +341,25 @@ if(location.hash==='#privacy')location.replace('privacy/');
     </ul>
   </div></section>
 
+  <section id="version-2" class="v2"><div class="wrap">
+    <span class="v2-merke">Coming right after launch</span>
+    <h2>Version 2.0 is just around the corner</h2>
+    <p class="lead">Trax 1.0 is the first version in the App Store. Version 2.0 is nearly done and follows right after, as a free update for everyone who has the app. Everything in the list above is part of 2.0, and on top of that you get:</p>
+    <ul class="v2-liste">
+      <li><b>New design</b><span>A new home screen with the month in numbers, large map cards for tracks that are ready, and calmer screens while you lay a track and follow it with your dog.</span></li>
+      <li><b>Article and area search</b><span>Mark out an area on the map and search for items or hidden people, with a time limit and separate statistics.</span></li>
+      <li><b>Night mode</b><span>Red light on the screen when you train in the dark, so you can see the map without being dazzled.</span></li>
+      <li><b>Wind and weather</b><span>A wind arrow on the map and the weather as your dog starts the track.</span></li>
+      <li><b>Track assessment</b><span>Give a rating, a difficulty and a learning point after every track.</span></li>
+      <li><b>Edit tracks</b><span>Trim the start and end of a track afterwards.</span></li>
+      <li><b>Several tracks in one PDF</b><span>Export many tracks together, for example for your training log.</span></li>
+      <li><b>Backup</b><span>Automatic copy of all tracks and dogs to iCloud Drive.</span></li>
+    </ul>
+  </div></section>
+
   <section id="sharing" class="del"><div class="wrap del-g">
     <div>
-      <span class="del-merke ny-tekst">Coming in the next version</span>
+      <span class="del-merke">Coming in version 2.0</span>
       <h2>Share the track with a photo of your dog</h2>
       <p>Pick a photo from your camera roll and Trax puts the track, the items and the numbers on top. Share it as a story or a post, and choose the track colours yourself. If you would rather show just the track, you get it on a green background.</p>
     </div>
