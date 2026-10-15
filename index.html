@@ -223,6 +223,16 @@ nav .kj:active{transform:scale(.97)}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
 .ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
+.v2{padding-block:120px 0}
+.v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
+.v2-liste{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;margin:0;padding:0;list-style:none}
+.v2-liste li{max-width:none}
+.v2-liste b{display:flex;align-items:center;gap:10px;font:800 21px/1.2 var(--display);letter-spacing:-.015em;margin-bottom:6px}
+.v2-liste b::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--track)}
+.v2-liste span{display:block;color:var(--muted);font-size:16px;line-height:1.5;padding-left:22px}
+@media (max-width:1000px){.v2-liste{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.v2{padding-block:80px 0}.v2 .lead{font-size:19px;margin-bottom:36px}.v2-liste{grid-template-columns:1fr;gap:24px}}
 .del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
 .del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
 .del img{display:block;width:100%;height:auto;border-radius:28px}
@@ -331,9 +341,25 @@ if(location.hash==='#personvern')location.replace('personvern/');
     </ul>
   </div></section>
 
+  <section id="versjon-2" class="v2"><div class="wrap">
+    <span class="v2-merke">Kommer rett etter lansering</span>
+    <h2>Versjon 2.0 er rett rundt hjørnet</h2>
+    <p class="lead">Trax 1.0 er den første versjonen i App Store. Versjon 2.0 er nesten ferdig og kommer rett etter, som en gratis oppdatering for alle som har appen. Alt i listen over er med i 2.0, og i tillegg kommer dette:</p>
+    <ul class="v2-liste">
+      <li><b>Ny design</b><span>Ny hjemskjerm med månedens tall, store kartkort for klare spor og roligere skjermer mens du legger spor og følger sporet med hunden.</span></li>
+      <li><b>Feltsøk og arealsøk</b><span>Lag et felt på kartet og søk etter gjenstander eller figuranter, med tidsgrense og egen statistikk.</span></li>
+      <li><b>Nattmodus</b><span>Rødt lys på skjermen når du trener i mørket, så du ser kartet uten å bli blendet.</span></li>
+      <li><b>Vind og vær</b><span>Vindpil på kartet og været idet hunden starter sporet.</span></li>
+      <li><b>Vurdering av sporet</b><span>Gi karakter, vanskelighetsgrad og et læringspunkt etter hvert spor.</span></li>
+      <li><b>Rediger spor</b><span>Kutt starten og slutten av et spor i etterkant.</span></li>
+      <li><b>Flere spor i én PDF</b><span>Eksporter mange spor samlet, for eksempel til treningsloggen.</span></li>
+      <li><b>Sikkerhetskopi</b><span>Automatisk kopi av alle spor og hunder til iCloud Drive.</span></li>
+    </ul>
+  </div></section>
+
   <section id="deling" class="del"><div class="wrap del-g">
     <div>
-      <span class="del-merke ny-tekst">Kommer i neste versjon</span>
+      <span class="del-merke">Kommer i versjon 2.0</span>
       <h2>Del sporet med et bilde av hunden</h2>
       <p>Velg et bilde fra kamerarullen, så legger Trax sporet, gjenstandene og tallene oppå. Du kan dele det som story eller innlegg, og velge fargene på sporet selv. Vil du heller vise bare sporet, får du det på en grønn bakgrunn.</p>
     </div>
