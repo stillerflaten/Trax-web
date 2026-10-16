@@ -18,7 +18,7 @@ Tysk (`de/`):
 - Forside: `/de/`
 - Datenschutz: `/de/datenschutz/`
 
-Den tyske siden sier tydelig at appen kommer på tysk med versjon 2.1 (boksen `.de-hinweis` i toppen, en linje under App Store-merket og et avsnitt under versjon 2.0). Til da bruker den de engelske skjermbildene og Apples engelske App Store-merke (`img/app-store-en.svg`), og «Anleitung» lenker til den engelske manualen. Ingen pris står på den tyske siden før europrisen er bestemt. Når appen er på tysk: lag `img/app-store-de.svg` og tyske skjermbilder, legg tysk inn i `LANGS` i `verktoy/lag-manual.py` (og fjern den fra `SITE_ONLY_LANGS`), og fjern 2.1-beskjedene.
+Den tyske siden sier tydelig at appen kommer på tysk med versjon 2.1 (boksen `.de-hinweis` i toppen, en linje under App Store-merket og et avsnitt under versjon 2.0). Til da bruker den de engelske skjermbildene og Apples engelske App Store-merke (`img/app-store-en.svg`), og «Anleitung» lenker til den engelske manualen. Når appen er på tysk: lag `img/app-store-de.svg` og tyske skjermbilder, legg tysk inn i `LANGS` i `verktoy/lag-manual.py` (og fjern den fra `SITE_ONLY_LANGS`), og fjern 2.1-beskjedene.
 
 Språksidene har samme stil. Endrer du tekst eller utseende på én av dem, gjør det samme på de andre. Forsiden har `<body class="forside">` med bred layout og flater; reglene for den står samlet nederst i stilen. Personvernsidene og manualen bruker samme stil uten klassen, som lesesider. Ankeret `#personvern`/`#integritet`/`#privacy` finnes fortsatt på forsiden (kort sammendrag med lenke) i tilfelle skript er slått av.
 
@@ -49,7 +49,7 @@ Forsidene har også Smart App Banner (`<meta name="apple-itunes-app" content="ap
 Fra datoen:
 
 - Fra datoen vises App Store-merket (`img/app-store-<språk>.svg`, Apples offisielle merke) og introduksjonsprisen.
-- Introprisen er 129 kr (norsk), 129 kr (svensk) og $9.99 (engelsk). Sju dager etter datoen bytter alle tre sidene til ordinær pris: 149 kr, 149 kr og $11.99.
+- Introprisen er 129 kr (norsk), 129 kr (svensk), $9.99 (engelsk) og 9,99 € (tysk). Sju dager etter datoen bytter alle sidene til ordinær pris: 149 kr, 149 kr, $11.99 og 12,99 €.
 
 Merket vises både øverst og i bunnteksten, og knappen «App Store» i menyen går til appen fra datoen (før det til toppen). Lenken går til `https://apps.apple.com/app/id6758005408`.
 
