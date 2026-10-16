@@ -14,7 +14,13 @@ Engelsk (`en/index.html`):
 - Support: `/en/#support`
 - Privacy: `/en/privacy/` (gamle `/en/#privacy` sendes dit)
 
-De tre sidene har samme stil. Endrer du tekst eller utseende på én av dem, gjør det samme på de andre. Forsiden har `<body class="forside">` med bred layout og flater; reglene for den står samlet nederst i stilen. Personvernsidene og manualen bruker samme stil uten klassen, som lesesider. Ankeret `#personvern`/`#integritet`/`#privacy` finnes fortsatt på forsiden (kort sammendrag med lenke) i tilfelle skript er slått av.
+Tysk (`de/`):
+- Forside: `/de/`
+- Datenschutz: `/de/datenschutz/`
+
+Den tyske siden sier tydelig at appen kommer på tysk med versjon 2.1 (boksen `.de-hinweis` i toppen, en linje under App Store-merket og et avsnitt under versjon 2.0). Til da bruker den de engelske skjermbildene og Apples engelske App Store-merke (`img/app-store-en.svg`), og «Anleitung» lenker til den engelske manualen. Når appen er på tysk: lag `img/app-store-de.svg` og tyske skjermbilder, legg tysk inn i `LANGS` i `verktoy/lag-manual.py` (og fjern den fra `SITE_ONLY_LANGS`), og fjern 2.1-beskjedene.
+
+Språksidene har samme stil. Endrer du tekst eller utseende på én av dem, gjør det samme på de andre. Forsiden har `<body class="forside">` med bred layout og flater; reglene for den står samlet nederst i stilen. Personvernsidene og manualen bruker samme stil uten klassen, som lesesider. Ankeret `#personvern`/`#integritet`/`#privacy` finnes fortsatt på forsiden (kort sammendrag med lenke) i tilfelle skript er slått av.
 
 Språkvelgeren i menyen (`<details class="lang">`) har én linje per språk. Nytt språk: lag `xx/index.html`, legg til en linje i språkvelgeren, bunnteksten og `hreflang`/`og:locale:alternate` på alle sidene.
 
@@ -43,7 +49,7 @@ Forsidene har også Smart App Banner (`<meta name="apple-itunes-app" content="ap
 Fra datoen:
 
 - Fra datoen vises App Store-merket (`img/app-store-<språk>.svg`, Apples offisielle merke) og introduksjonsprisen.
-- Introprisen er 129 kr (norsk), 129 kr (svensk) og $9.99 (engelsk). Sju dager etter datoen bytter alle tre sidene til ordinær pris: 149 kr, 149 kr og $11.99.
+- Introprisen er 129 kr (norsk), 129 kr (svensk), $9.99 (engelsk) og 9,99 € (tysk). Sju dager etter datoen bytter alle sidene til ordinær pris: 149 kr, 149 kr, $11.99 og 12,99 €.
 
 Merket vises både øverst og i bunnteksten, og knappen «App Store» i menyen går til appen fra datoen (før det til toppen). Lenken går til `https://apps.apple.com/app/id6758005408`.
 
@@ -57,7 +63,7 @@ Seksjonen «Laget av en hundefører» (`#om`, engelsk `#about`) viser foreløpig
 
 Seksjonen om delebildet (`#deling`, svensk `#delning`, engelsk `#sharing`) viser `img/delebilde.webp` (680 × 1209, laget fra `appstore-bilder/kilde/egne/delebilde-nb.jpg`). Merket «Kommer i versjon 2.0» står til det fjernes for hånd. Bildet har norske tekster på alle tre språkene; bytt til egne svenske og engelske versjoner når de finnes.
 
-Seksjonen om å sende spor til en annen Trax-bruker (`#send-spor`, svensk `#skicka-spar`, engelsk `#send-track`) står rett etter delebildet og viser infobildet `img/send-spor-<språk>.webp` (800 × 1000). Det er Instagram-innlegget fra `markedsforing/del-spor/` i prosjektmappen, skalert ned; lag det på nytt der (`kilde/page.html`) og konverter hvis appen endres.
+Seksjonen om å sende spor til en annen Trax-bruker (`#send-spor`, svensk `#skicka-spar`, engelsk `#send-track`, tysk `#fahrte-senden` med det engelske bildet) står rett etter delebildet og viser infobildet `img/send-spor-<språk>.webp` (800 × 1000). Det er Instagram-innlegget fra `markedsforing/del-spor/` i prosjektmappen, skalert ned; lag det på nytt der (`kilde/page.html`) og konverter hvis appen endres.
 
 ## Bevegelse og sporlinja
 
