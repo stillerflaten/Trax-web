@@ -26,25 +26,25 @@ IMG_W, IMG_H = 420, 913  # samme størrelse som skjermbildene på forsiden
 
 LANGS = [
     dict(code="nb", swift="norwegian", lproj="nb", suffix="", dir="", short="NO", name="Norsk",
-         locale="nb_NO", privacy=("personvern", "Personvern"), choose="Velg språk",
+         locale="nb_NO", privacy=("personvern", "Personvern"), badge_alt="Last ned fra App Store", choose="Velg språk",
          contents_back="Til innholdet", updated="Sist oppdatert", tip="Tips", warning="Viktig",
          eyebrow="iOS-app for sportrening", nav="Manual",
          dev_by="Utviklet av Tillerflaten Digital", logo_alt="Logo for Tillerflaten Digital",
-         title="Brukermanual – Trax", desc="Brukermanual for Trax, appen for sportrening med hund: legg spor, gå spor med hunden og følg utviklingen over tid.",
+         title="Brukermanual – Trax", desc="Brukermanual for Trax, appen for sportrening med hund: legg spor, tren hunden og følg utviklingen over tid.",
          months=["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"]),
     dict(code="sv", swift="swedish", lproj="sv", suffix="-sv", dir="sv/", short="SV", name="Svenska",
-         locale="sv_SE", privacy=("integritet", "Integritet"), choose="Välj språk",
+         locale="sv_SE", privacy=("integritet", "Integritet"), badge_alt="Hämta i App Store", choose="Välj språk",
          contents_back="Till innehållet", updated="Senast uppdaterad", tip="Tips", warning="Viktigt",
          eyebrow="iOS-app för spårträning", nav="Manual",
          dev_by="Utvecklad av Tillerflaten Digital", logo_alt="Logotyp för Tillerflaten Digital",
-         title="Användarmanual – Trax", desc="Användarmanual för Trax, appen för spårträning med hund: lägg spår, spåra med hunden och följ utvecklingen över tid.",
+         title="Användarmanual – Trax", desc="Användarmanual för Trax, appen för spårträning med hund: lägg spår, träna hunden och följ utvecklingen över tid.",
          months=["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"]),
     dict(code="en", swift="english", lproj="en", suffix="-en", dir="en/", short="EN", name="English",
-         locale="en_US", privacy=("privacy", "Privacy"), choose="Choose language",
+         locale="en_US", privacy=("privacy", "Privacy"), badge_alt="Download on the App Store", choose="Choose language",
          contents_back="Back to contents", updated="Last updated", tip="Tip", warning="Important",
          eyebrow="iOS app for tracking training", nav="Manual",
          dev_by="Developed by Tillerflaten Digital", logo_alt="Tillerflaten Digital logo",
-         title="User manual – Trax", desc="User manual for Trax, the app for tracking training with your dog: lay tracks, walk them with your dog and follow your progress over time.",
+         title="User manual – Trax", desc="User manual for Trax, the app for tracking training with your dog: lay tracks, train your dog and follow your progress over time.",
          months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]),
 ]
 
@@ -225,8 +225,9 @@ def render(l, sections, strings, style, app, used, date):
   <a class="brand" href="{home}"><img src="{up}img/icon-192.png" width="32" height="32" alt="">Trax</a>
   <a class="l" href="./" aria-current="page">{l["nav"]}</a>
   <a class="l" href="{home}#support">Support</a>
-  <a class="l opt" href="{home}#{pslug}">{pname}</a>
+  <a class="l opt" href="{home}{pslug}/">{pname}</a>
 {nav_lang(l, up)}
+  <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="{up}img/app-store-{l["code"]}.svg" width="120" height="40" alt="{l["badge_alt"]}"></a>
 </div></nav>
 
 <main class="wrap" id="top">
@@ -251,7 +252,7 @@ def render(l, sections, strings, style, app, used, date):
 </main>
 
 <div class="wrap">
-  <footer>© {date.year} Silje Tillerflaten · <a href="./">{esc(strings["manual.title"])}</a> · <a href="{home}#support">Support</a> · <a href="{home}#{pslug}">{pname}</a> · {footer_langs}
+  <footer>© {date.year} Silje Tillerflaten · <a href="./">{esc(strings["manual.title"])}</a> · <a href="{home}#support">Support</a> · <a href="{home}{pslug}/">{pname}</a> · {footer_langs}
     <p class="utvikler"><img src="{up}img/tillerflaten-digital.png" width="24" height="24" alt="{l["logo_alt"]}"> {l["dev_by"]}</p>
   </footer>
 </div>

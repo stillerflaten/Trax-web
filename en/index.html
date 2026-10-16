@@ -145,7 +145,8 @@ footer .utvikler img{border-radius:6px;flex:none}
 .forside nav{margin-inline:0;padding-inline:0;border-bottom:0}
 .forside nav a.l{color:var(--fg)}
 .forside nav a.l:hover,.forside nav a.l:focus-visible{color:var(--accent)}
-nav .kj{background:var(--accent);color:var(--accent-ink);font:700 15px/1 var(--display);padding:10px 16px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:transform .15s}
+nav .kj{display:block;line-height:0;border-radius:7px;transition:transform .15s}
+nav .kj img{height:40px;width:auto}
 nav .kj:active{transform:scale(.97)}
 @media (max-width:480px){.forside nav a.l:not([href$="manual/"]){display:none}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -267,6 +268,15 @@ nav .kj:active{transform:scale(.97)}
 .gj-prikk.funnet::after{transform:none}
 .spor-bred .gj-prikk{display:none}
 .spor-still .sporlinje .hake,.spor-still .gj-prikk::after{transition:none}
+/* Menyen er lik på alle sider, slik den er på forsiden: samme bredde, farger og App Store-merke */
+nav{margin-inline:-16px;padding-inline:0;border-bottom:0}
+.forside nav{margin-inline:0}
+nav .wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+nav a.l{color:var(--fg)}
+nav a.l:hover,nav a.l:focus-visible,nav a.l[aria-current]{color:var(--accent)}
+@media (max-width:600px){nav .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+@media (max-width:480px){nav a.l ~ a.l{display:none}nav .wrap{gap:10px}.lang summary .chev{display:none}}
+@media (max-width:380px){.brand{font-size:0;gap:0}}
 </style>
 <script>
 /* Klargjør sporanimasjonen før første tegning, så den statiske linja ikke blinker. Vises likevel hvis spor.js ikke lastes. */
@@ -292,7 +302,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
       <li><a href="./" lang="en" aria-current="page">English</a></li>
     </ul>
   </details>
-  <a class="kj" href="#top">App Store</a>
+  <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" width="120" height="40" alt="Download on the App Store"></a>
 </div></nav>
 
 <main id="top">
@@ -309,7 +319,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
       </div>
       <ul class="tillit"><li>No account</li><li>No ads</li><li>Your data stays on your phone</li></ul>
     </div>
-    <div class="flate"><span class="ny-merke">New version, coming soon</span><img src="../img/galleri/galleri-en-5-resultat.webp" width="640" height="999" alt="The result of a completed track with map, items found, length, track age and rating" decoding="async" fetchpriority="high"></div>
+    <div class="flate"><span class="ny-merke">New version, coming soon</span><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="The detail card for a long track with map, items found, length, lie time, time used and assessment" decoding="async" fetchpriority="high"></div>
   </header>
   <div class="wrap">
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
@@ -319,11 +329,13 @@ if(location.hash==='#privacy')location.replace('privacy/');
     <p class="ny-tekst">These screenshots are from the new version of Trax, coming soon to the App Store.</p>
     <div class="galleri" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app" data-forrige="Previous image" data-neste="Next image" data-prikk="Image {n} of {t}">
       <ul class="g-liste" tabindex="0" aria-label="Screenshots from the app">
-        <li><figure><img src="../img/galleri/galleri-en-1-oversikt.webp" width="640" height="999" alt="The Trax home screen with tracks ready to run, recent tracks and a button for a new track" decoding="async"><figcaption><b>Every track at a glance</b><span>Lay new tracks, import tracks and see the results for each dog.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-2-legg-spor.webp" width="640" height="999" alt="A track being laid, with map, time, length and number of items placed" decoding="async" loading="lazy"><figcaption><b>Lay tracks with GPS</b><span>See time, length and number of items while you lay the track.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-3-varsel.webp" width="640" height="999" alt="An alert that an item is close by, with a button to mark it as found" decoding="async" loading="lazy"><figcaption><b>Get alerted near each item</b><span>The app tells you when you are close to an item, and you mark it as found with one tap.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-4-ga-sporet.webp" width="640" height="999" alt="The dog on the track, with the laid track in blue, your route in red and the number of finds" decoding="async" loading="lazy"><figcaption><b>Walk the track with your dog</b><span>The laid track shows in blue and your route in red, with finds along the way.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-5-resultat.webp" width="640" height="999" alt="The result of a completed track with map, items found, length, track age and rating" decoding="async" loading="lazy"><figcaption><b>See the result of every track</b><span>Finds, track age, length and weather, collected after each session.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-1-hjem.webp" width="640" height="999" alt="The Trax home screen with this month's numbers, tracks ready to start and recent tracks" decoding="async"><figcaption><b>Everything in one place</b><span>This month's numbers, tracks ready to start and your latest tracks.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="The detail card for a long track with map, items found, length, lie time, time used and assessment" decoding="async" loading="lazy"><figcaption><b>The whole track on one card</b><span>Map, items found, length, lie time and how much of the track your dog followed.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-3-sportyper.webp" width="640" height="999" alt="Choosing the exercise before starting: track, IGP track, blood track and article search, with field size and time limit" decoding="async" loading="lazy"><figcaption><b>Choose the exercise</b><span>Track, IGP track, blood track or article search. Draw the field on the map and set a time limit.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-4-feltsok.webp" width="640" height="999" alt="The result of an article search with field, time limit and the time to each find" decoding="async" loading="lazy"><figcaption><b>Article search and area search</b><span>See which items your dog found and how long each find took.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-5-blodspor.webp" width="640" height="999" alt="A blood track in progress with buttons for wound bed, blood again and game" decoding="async" loading="lazy"><figcaption><b>Blood tracking</b><span>Mark the wound bed, more blood and the game with one tap as you work through the track.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-6-kryss-spor.webp" width="640" height="999" alt="A track with a cross track laid across it and the lie time counting down" decoding="async" loading="lazy"><figcaption><b>Cross tracks</b><span>Lay a fresher track across the first, and watch the lie time count down before you start.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-7-nattmodus.webp" width="640" height="999" alt="Night mode with a dark red screen and map" decoding="async" loading="lazy"><figcaption><b>Night mode</b><span>Red light on the screen when you train in the dark.</span></figcaption></figure></li>
       </ul>
       <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
@@ -416,7 +428,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.o
 (function(){var d=document.body.getAttribute('data-lansering');if(!d)return;
 var t=new Date(d+'T00:00:00').getTime(),n=Date.now();if(isNaN(t)||n<t)return;
 var k=document.querySelectorAll('.kjop');for(var j=0;j<k.length;j++){k[j].querySelector('.snart').hidden=true;k[j].querySelector('.live').hidden=false}
-var a=document.querySelector('nav .kj');if(a)a.href='https://apps.apple.com/app/id6758005408';
 if(n>=t+7*864e5){var e=document.querySelectorAll('.kjop .intro,.kjop .ord');for(var i=0;i<e.length;i++)e[i].hidden=!e[i].hidden}})();
 </script>
 <script src="../spor.js" defer></script>
