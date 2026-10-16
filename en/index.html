@@ -243,6 +243,10 @@ nav .kj:active{transform:scale(.97)}
 .del .del-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .del .del-merke[hidden]{display:none}
 @media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
+.send .del-g{grid-template-columns:minmax(0,440px) 1fr}
+.send .del-g img{order:-1;border-radius:24px}
+.send .tips{font-size:16px;color:var(--muted);margin-top:16px}
+@media (max-width:860px){.send .del-g{grid-template-columns:1fr}.send .del-g img{order:0;max-width:440px}}
 /* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
 @keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
@@ -384,6 +388,15 @@ if(location.hash==='#privacy')location.replace('privacy/');
     <img src="../img/delebilde.webp" width="680" height="1209" loading="lazy" decoding="async" alt="Share image from Trax: the track with four found items on top of a photo of Quatro, with length, track age and items found at the bottom">
   </div></section>
 
+  <section id="send-track" class="del send"><div class="wrap del-g">
+    <div>
+      <h2>Send the track to the handler</h2>
+      <p>The track layer and the handler do not need to use the same phone. Tap “To another Trax user” and send the track with AirDrop or email, and it opens straight in Trax on the other phone, ready to walk. No account and no login.</p>
+      <p class="tips">Use AirDrop or email, not Messages. If the message goes as SMS, the file does not arrive.</p>
+    </div>
+    <img src="../img/send-spor-en.webp" width="800" height="1000" loading="lazy" decoding="async" alt="Three steps to share a track: the track layer taps the share button and chooses “To another Trax user”, sends it with AirDrop or email, and the handler taps “Walk track now” in Trax">
+  </div></section>
+
   <section id="about"><div class="wrap om-g">
     <h2 class="sr">Made by a dog handler</h2>
     <blockquote>“I train dogs almost every day, and tracking is one of my favourite things to do.”</blockquote>
@@ -418,7 +431,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
     <p class="lenker"><a href="manual/">User manual</a> · <a href="privacy/">Privacy</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a></p>
   </div>
   <p class="liten">© 2026 Silje Tillerflaten</p>
-  <p class="utvikler"><img src="../img/tillerflaten-digital.png" width="24" height="24" alt="Tillerflaten Digital logo"> Developed by Tillerflaten Digital</p>
+  <p class="utvikler"><img src="../img/tillerflaten-digital.png" width="24" height="24" alt="Tillerflaten Digital logo"> Developed by Tillerflaten Digital · Org. no. 938 657 742</p>
 </div></footer>
 
 <script>

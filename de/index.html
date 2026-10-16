@@ -243,6 +243,10 @@ nav .kj:active{transform:scale(.97)}
 .del .del-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .del .del-merke[hidden]{display:none}
 @media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
+.send .del-g{grid-template-columns:minmax(0,440px) 1fr}
+.send .del-g img{order:-1;border-radius:24px}
+.send .tips{font-size:16px;color:var(--muted);margin-top:16px}
+@media (max-width:860px){.send .del-g{grid-template-columns:1fr}.send .del-g img{order:0;max-width:440px}}
 /* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
 @keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
@@ -394,6 +398,15 @@ if(location.hash==='#privacy')location.replace('privacy/');
     <img src="../img/delebilde.webp" width="680" height="1209" loading="lazy" decoding="async" alt="Teilbild aus Trax: die Fährte mit vier gefundenen Gegenständen über einem Foto von Quatro, unten Länge, Liegezeit und gefundene Gegenstände">
   </div></section>
 
+  <section id="fahrte-senden" class="del send"><div class="wrap del-g">
+    <div>
+      <h2>Schick die Fährte an den Hundeführer</h2>
+      <p>Fährtenleger und Hundeführer müssen nicht dasselbe Handy benutzen. Tippe auf „To another Trax user“ und schick die Fährte per AirDrop oder E-Mail. Sie öffnet sich auf dem anderen Handy direkt in Trax und ist bereit zum Ausarbeiten. Ohne Konto und ohne Anmeldung.</p>
+      <p class="tips">Nimm AirDrop oder E-Mail, nicht Nachrichten. Wenn die Nachricht als SMS verschickt wird, kommt die Datei nicht an.</p>
+    </div>
+    <img src="../img/send-spor-en.webp" width="800" height="1000" loading="lazy" decoding="async" alt="Drei Schritte zum Teilen einer Fährte: Der Fährtenleger tippt auf Teilen und wählt „To another Trax user“, schickt sie per AirDrop oder E-Mail, und der Hundeführer startet die Fährte in Trax">
+  </div></section>
+
   <section id="ueber"><div class="wrap om-g">
     <h2 class="sr">Gemacht von einer Hundeführerin</h2>
     <blockquote>„Ich trainiere fast jeden Tag mit Hunden, und Fährtenarbeit gehört zu meinen Lieblingsbeschäftigungen.“</blockquote>
@@ -428,7 +441,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
     <p class="lenker"><a href="../en/manual/" hreflang="en">Anleitung (Englisch)</a> · <a href="datenschutz/">Datenschutz</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../en/" hreflang="en" lang="en">English</a></p>
   </div>
   <p class="liten">© 2026 Silje Tillerflaten</p>
-  <p class="utvikler"><img src="../img/tillerflaten-digital.png" width="24" height="24" alt="Logo von Tillerflaten Digital"> Entwickelt von Tillerflaten Digital</p>
+  <p class="utvikler"><img src="../img/tillerflaten-digital.png" width="24" height="24" alt="Logo von Tillerflaten Digital"> Entwickelt von Tillerflaten Digital · Org.-Nr. 938 657 742</p>
 </div></footer>
 
 <script>

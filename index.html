@@ -243,6 +243,10 @@ nav .kj:active{transform:scale(.97)}
 .del .del-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .del .del-merke[hidden]{display:none}
 @media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
+.send .del-g{grid-template-columns:minmax(0,440px) 1fr}
+.send .del-g img{order:-1;border-radius:24px}
+.send .tips{font-size:16px;color:var(--muted);margin-top:16px}
+@media (max-width:860px){.send .del-g{grid-template-columns:1fr}.send .del-g img{order:0;max-width:440px}}
 /* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
 @keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
@@ -384,6 +388,15 @@ if(location.hash==='#personvern')location.replace('personvern/');
     <img src="img/delebilde.webp" width="680" height="1209" loading="lazy" decoding="async" alt="Delebilde fra Trax: sporet med fire funne gjenstander lagt oppå et bilde av Quatro, med lengde, liggetid og funn nederst">
   </div></section>
 
+  <section id="send-spor" class="del send"><div class="wrap del-g">
+    <div>
+      <h2>Send sporet til hundeføreren</h2>
+      <p>Sporlegger og hundefører trenger ikke bruke samme telefon. Trykk «Til en annen Trax-bruker» og send sporet med AirDrop eller e-post, så åpnes det rett i Trax hos mottakeren, klart til å gå. Ingen konto og ingen innlogging.</p>
+      <p class="tips">Bruk AirDrop eller e-post, ikke Meldinger. Går meldingen som SMS, kommer ikke filen fram.</p>
+    </div>
+    <img src="img/send-spor-nb.webp" width="800" height="1000" loading="lazy" decoding="async" alt="Tre steg for å dele et spor: sporleggeren trykker delingsknappen og velger «Til en annen Trax-bruker», sender med AirDrop eller e-post, og hundeføreren trykker «Gå sporet nå» i Trax">
+  </div></section>
+
   <section id="om"><div class="wrap om-g">
     <h2 class="sr">Laget av en hundefører</h2>
     <blockquote>«Jeg trener hund nesten hver dag, og spor er noe av det morsomste jeg gjør.»</blockquote>
@@ -418,7 +431,7 @@ if(location.hash==='#personvern')location.replace('personvern/');
     <p class="lenker"><a href="manual/">Brukermanual</a> · <a href="personvern/">Personvern</a> · <a href="sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="en/" hreflang="en" lang="en">English</a> · <a href="de/" hreflang="de" lang="de">Deutsch</a></p>
   </div>
   <p class="liten">© 2026 Silje Tillerflaten</p>
-  <p class="utvikler"><img src="img/tillerflaten-digital.png" width="24" height="24" alt="Logo for Tillerflaten Digital"> Utviklet av Tillerflaten Digital</p>
+  <p class="utvikler"><img src="img/tillerflaten-digital.png" width="24" height="24" alt="Logo for Tillerflaten Digital"> Utviklet av Tillerflaten Digital · Org.nr. 938 657 742</p>
 </div></footer>
 
 <script>
