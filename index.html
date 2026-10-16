@@ -116,7 +116,7 @@ dd{margin:0;color:var(--muted);min-width:0}
 @media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
-.lang{position:static} /* lista festes til høyre kant av menyen, også hvis menyen bryter over to linjer */
+.lang{position:relative} /* lista åpner rett under knappen, høyrejustert mot den, så det ser ut som knappen utvider seg */
 .lang summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--muted);font:600 15px var(--body);padding:4px 10px;border:1px solid var(--line);border-radius:8px;user-select:none}
 .lang summary::-webkit-details-marker{display:none}
 .lang summary:hover,.lang[open] summary{color:var(--accent);border-color:var(--accent)}
@@ -124,7 +124,7 @@ nav .wrap{position:relative}
 .lang summary svg{width:16px;height:16px;flex:none}
 .lang summary .chev{width:10px;height:10px;transition:transform .15s}
 .lang[open] summary .chev{transform:rotate(180deg)}
-.lang ul{position:absolute;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgb(0 0 0/.14);min-width:9.5em;z-index:6}
+.lang ul{position:absolute;right:0;top:calc(100% + 4px);margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgb(0 0 0/.14);min-width:max(100%,9.5em);z-index:6}
 .lang li{max-width:none}
 .lang ul a{display:flex;justify-content:space-between;gap:12px;padding:7px 10px;border-radius:6px;color:var(--fg);text-decoration:none;font-size:15px}
 .lang ul a:hover,.lang ul a:focus-visible{background:var(--bg);color:var(--accent)}
