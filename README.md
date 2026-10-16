@@ -14,7 +14,13 @@ Engelsk (`en/index.html`):
 - Support: `/en/#support`
 - Privacy: `/en/privacy/` (gamle `/en/#privacy` sendes dit)
 
-De tre sidene har samme stil. Endrer du tekst eller utseende på én av dem, gjør det samme på de andre. Forsiden har `<body class="forside">` med bred layout og flater; reglene for den står samlet nederst i stilen. Personvernsidene og manualen bruker samme stil uten klassen, som lesesider. Ankeret `#personvern`/`#integritet`/`#privacy` finnes fortsatt på forsiden (kort sammendrag med lenke) i tilfelle skript er slått av.
+Tysk (`de/`):
+- Forside: `/de/`
+- Datenschutz: `/de/datenschutz/`
+
+Den tyske siden sier tydelig at appen kommer på tysk med versjon 2.1 (boksen `.de-hinweis` i toppen, en linje under App Store-merket og et avsnitt under versjon 2.0). Til da bruker den de engelske skjermbildene og Apples engelske App Store-merke (`img/app-store-en.svg`), og «Anleitung» lenker til den engelske manualen. Ingen pris står på den tyske siden før europrisen er bestemt. Når appen er på tysk: lag `img/app-store-de.svg` og tyske skjermbilder, legg tysk inn i `LANGS` i `verktoy/lag-manual.py` (og fjern den fra `SITE_ONLY_LANGS`), og fjern 2.1-beskjedene.
+
+Språksidene har samme stil. Endrer du tekst eller utseende på én av dem, gjør det samme på de andre. Forsiden har `<body class="forside">` med bred layout og flater; reglene for den står samlet nederst i stilen. Personvernsidene og manualen bruker samme stil uten klassen, som lesesider. Ankeret `#personvern`/`#integritet`/`#privacy` finnes fortsatt på forsiden (kort sammendrag med lenke) i tilfelle skript er slått av.
 
 Språkvelgeren i menyen (`<details class="lang">`) har én linje per språk. Nytt språk: lag `xx/index.html`, legg til en linje i språkvelgeren, bunnteksten og `hreflang`/`og:locale:alternate` på alle sidene.
 

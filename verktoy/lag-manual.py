@@ -140,6 +140,10 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .back a{text-decoration:none;font-weight:600}"""
 
 
+# Språk som har nettside, men ikke manual ennå (manualen kommer når appen er oversatt). Lenkene går til forsiden.
+SITE_ONLY_LANGS = [dict(code="de", dir="de/", name="Deutsch")]
+
+
 def nav_lang(l, here_prefix):
     """Språkvelgeren med lenker til manualen på de andre språkene."""
     items = []
@@ -149,6 +153,8 @@ def nav_lang(l, here_prefix):
             items.append(f'      <li><a href="./" lang="{o["code"]}" aria-current="page">{o["name"]}</a></li>')
         else:
             items.append(f'      <li><a href="{href}" hreflang="{o["code"]}" lang="{o["code"]}">{o["name"]}</a></li>')
+    for o in SITE_ONLY_LANGS:
+        items.append(f'      <li><a href="{here_prefix}{o["dir"]}" hreflang="{o["code"]}" lang="{o["code"]}">{o["name"]}</a></li>')
     return ("  <details class=\"lang\">\n"
             f'    <summary aria-label="{l["choose"]}">{GLOBE}<span>{l["short"]}</span>{CHEV}</summary>\n'
             "    <ul>\n" + "\n".join(items) + "\n    </ul>\n  </details>")
@@ -190,6 +196,7 @@ def render(l, sections, strings, style, app, used, date):
     alts = "\n".join(f'<link rel="alternate" hreflang="{o["code"]}" href="{BASE_URL}{o["dir"]}manual/">' for o in LANGS)
     loc_alts = "\n".join(f'<meta property="og:locale:alternate" content="{o["locale"]}">' for o in LANGS if o is not l)
     footer_langs = " · ".join(f'<a href="{up}{o["dir"]}manual/" hreflang="{o["code"]}" lang="{o["code"]}">{o["name"]}</a>' for o in LANGS if o is not l)
+    footer_langs += "".join(f' · <a href="{up}{o["dir"]}" hreflang="{o["code"]}" lang="{o["code"]}">{o["name"]}</a>' for o in SITE_ONLY_LANGS)
 
     return f"""<!doctype html>
 <html lang="{l["code"]}">
