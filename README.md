@@ -20,7 +20,7 @@ Språkvelgeren i menyen (`<details class="lang">`) har én linje per språk. Nyt
 
 ## Skjermbildegalleri
 
-Forsiden har et sveipbart galleri med fem skjermbilder (`img/galleri/galleri-<språk>-<nr>-<navn>.webp`, 640 × 999). Bildene er laget fra skjermbildene i det nye designet (`appstore-bilder/kilde/nytt-design/<språk>/`, fra skjermbilde-workflowen i app-repoet), satt i en telefon på samme bakgrunn som App Store-bildene, uten piler og merkelapper. Teksten under hvert bilde står i HTML-en. Toppbildet på forsiden er bilde 5. Før lansering står det «Ny versjon, kommer snart» på toppbildet og en setning over galleriet; begge skjules automatisk fra lanseringsdatoen. `galleri.js` legger til piler og prikker og er felles for alle språk. Nytt språk: lag fem nye bilder og kopier `<div class="galleri">` med oversatt tekst.
+Forsiden har et sveipbart galleri med fem skjermbilder (`img/galleri/galleri-<språk>-<nr>-<navn>.webp`, 640 × 999). Bildene er laget fra skjermbildene i det nye designet (`appstore-bilder/kilde/nytt-design/<språk>/`, fra skjermbilde-workflowen i app-repoet), satt i en telefon på samme bakgrunn som App Store-bildene, uten piler og merkelapper. Teksten under hvert bilde står i HTML-en. Toppbildet på forsiden er bilde 5. Bildene er fra versjon 2.0, så det står «Ny versjon, kommer snart» på toppbildet og en setning over galleriet (`.ny-merke` og `.ny-tekst`). De skjules ikke av lanseringsdatoen, siden 1.0 kommer først; fjern dem for hånd når 2.0 er ute (se «Versjon 2.0»). `galleri.js` legger til piler og prikker og er felles for alle språk. Nytt språk: lag fem nye bilder og kopier `<div class="galleri">` med oversatt tekst.
 
 ## Brukermanual
 
@@ -36,7 +36,11 @@ Skriptet henter stilen fra `index.html`, så endringer i utseendet på forsiden 
 
 ## App Store-knapp og pris
 
-Toppen viser «Snart i App Store» til lanseringsdatoen er satt. Sett datoen i `data-lansering` på `<body>` i alle tre sidene (format `ÅÅÅÅ-MM-DD`):
+Lanseringsdatoen står i `data-lansering` på `<body>` i alle tre sidene (format `ÅÅÅÅ-MM-DD`), nå `2026-10-16`. Uten dato, eller før datoen, vises «Snart i App Store».
+
+Forsidene har også Smart App Banner (`<meta name="apple-itunes-app" content="app-id=6758005408">`), som viser en «Åpne/Hent»-stripe øverst i Safari på iPhone.
+
+Fra datoen:
 
 - Fra datoen vises App Store-merket (`img/app-store-<språk>.svg`, Apples offisielle merke) og introduksjonsprisen.
 - Introprisen er 129 kr (norsk), 129 kr (svensk) og $9.99 (engelsk). Sju dager etter datoen bytter alle tre sidene til ordinær pris: 149 kr, 149 kr og $11.99.
@@ -59,4 +63,4 @@ Seksjonen om delebildet (`#deling`, svensk `#delning`, engelsk `#sharing`) viser
 
 ## Versjon 2.0
 
-Seksjonen «Versjon 2.0 er rett rundt hjørnet» (`#versjon-2`, svensk og engelsk `#version-2`) står mellom funksjonene og delebildet. Den sier at funksjonene i listen over er med i 2.0, og lister det som kommer i tillegg. Den skjules ikke av lanseringsdatoen, siden 1.0 kommer først. Når 2.0 er ute i App Store: fjern seksjonen, `.v2 h2` fra `MAAL` og `.v2 …` fra `GRUPPER` i `forside.js`, og merket «Kommer i versjon 2.0» på delebildet, på alle tre sidene.
+Seksjonen «Versjon 2.0 er rett rundt hjørnet» (`#versjon-2`, svensk og engelsk `#version-2`) står mellom funksjonene og delebildet. Den sier at funksjonene i listen over er med i 2.0, og lister det som kommer i tillegg. Den skjules ikke av lanseringsdatoen, siden 1.0 kommer først. Når 2.0 er ute i App Store: fjern seksjonen, `.v2 h2` fra `MAAL` og `.v2 …` fra `GRUPPER` i `forside.js`, merket «Kommer i versjon 2.0» på delebildet, og `.ny-merke` og `.ny-tekst` i galleriet, på alle tre sidene.

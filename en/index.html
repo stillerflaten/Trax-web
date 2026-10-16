@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-itunes-app" content="app-id=6758005408">
 <meta name="description" content="Trax is an iPhone app for tracking training with your dog. Lay tracks with GPS, get alerted at each item and see how well your dog held the track.">
 <title>Trax – tracking training for dogs</title>
 <link rel="alternate" hreflang="nb" href="https://trax-dogtracking.no/">
@@ -277,7 +278,7 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
 if(location.hash==='#privacy')location.replace('privacy/');
 </script>
 </head>
-<body class="forside" data-lansering="">
+<body class="forside" data-lansering="2026-10-16">
 <nav><div class="wrap">
   <a class="brand" href="#top"><img src="../img/icon-192.png" width="32" height="32" alt="">Trax</a>
   <a class="l" href="manual/">Manual</a>
@@ -415,7 +416,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.o
 (function(){var d=document.body.getAttribute('data-lansering');if(!d)return;
 var t=new Date(d+'T00:00:00').getTime(),n=Date.now();if(isNaN(t)||n<t)return;
 var k=document.querySelectorAll('.kjop');for(var j=0;j<k.length;j++){k[j].querySelector('.snart').hidden=true;k[j].querySelector('.live').hidden=false}
-var m=document.querySelectorAll('.ny-merke,.ny-tekst');for(var q=0;q<m.length;q++)m[q].hidden=true;
 var a=document.querySelector('nav .kj');if(a)a.href='https://apps.apple.com/app/id6758005408';
 if(n>=t+7*864e5){var e=document.querySelectorAll('.kjop .intro,.kjop .ord');for(var i=0;i<e.length;i++)e[i].hidden=!e[i].hidden}})();
 </script>
