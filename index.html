@@ -268,13 +268,15 @@ nav .kj:active{transform:scale(.97)}
 .gj-prikk.funnet::after{transform:none}
 .spor-bred .gj-prikk{display:none}
 .spor-still .sporlinje .hake,.spor-still .gj-prikk::after{transition:none}
-/* Menyen er lik på alle sider, slik den er på forsiden: samme bredde, farger og App Store-merke */
-nav{margin-inline:-16px;padding-inline:0;border-bottom:0}
-.forside nav{margin-inline:0}
-nav .wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+/* Menyen og sidebredden er lik på alle sider, slik den er på forsiden: samme bredde, farger og App Store-merke.
+   På undersidene står teksten til venstre i full bredde, men linjene holdes korte nok til å lese. */
+body{padding-inline:0}
+nav{margin-inline:0;padding-inline:0;border-bottom:0}
+.wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
 nav a.l{color:var(--fg)}
 nav a.l:hover,nav a.l:focus-visible,nav a.l[aria-current]{color:var(--accent)}
-@media (max-width:600px){nav .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+@media (max-width:600px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+body:not(.forside) main > *,body:not(.forside) footer{max-width:760px}
 @media (max-width:480px){nav a.l ~ a.l{display:none}nav .wrap{gap:10px}.lang summary .chev{display:none}}
 @media (max-width:380px){.brand{font-size:0;gap:0}}
 </style>
