@@ -3,11 +3,12 @@
 
 Kilden er ManualContent i Trax/UserManualView.swift og manual-*-bildene i
 Trax/Assets.xcassets i app-repoet (stillerflaten/Trax). Skriptet lager
-manual/index.html, sv/manual/index.html, en/manual/index.html og bildene i
-img/manual/. Stilen hentes fra index.html, så manualen følger resten av siden.
+manual/index.html, sv/manual/index.html, en/manual/index.html,
+de/manual/index.html og bildene i img/manual/. Stilen hentes fra index.html, så manualen følger resten av siden.
 
 Bruk (fra roten av Trax-web):
     python3 verktoy/lag-manual.py ../Trax
+    python3 verktoy/lag-manual.py ../Trax de     (bare ett eller flere språk)
 
 Kjør på nytt hver gang manualen i appen endres, og legg inn alt som endres.
 Krever Pillow (python3 -m pip install pillow) for å skalere bildene.
@@ -46,6 +47,16 @@ LANGS = [
          dev_by="Developed by Tillerflaten Digital · Org. no. 938 657 742", logo_alt="Tillerflaten Digital logo",
          title="User manual – Trax", desc="User manual for Trax, the app for tracking training with your dog: lay tracks, train your dog and follow your progress over time.",
          months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]),
+    dict(code="de", swift="german", lproj="de", suffix="-de", dir="de/", short="DE", name="Deutsch",
+         locale="de_DE", privacy=("datenschutz", "Datenschutz"), badge_alt="Laden im App Store", choose="Sprache wählen",
+         contents_back="Zum Inhalt", updated="Zuletzt aktualisiert", tip="Tipp", warning="Wichtig",
+         eyebrow="iOS-App für die Fährtenarbeit", nav="Handbuch",
+         dev_by="Entwickelt von Tillerflaten Digital · Org.-Nr. 938 657 742", logo_alt="Logo von Tillerflaten Digital",
+         css="/* «Handbuch» er lengre enn «Manual», så navnet ved logoen skjules litt tidligere på smal skjerm */\n@media (max-width:430px){.brand{font-size:0;gap:0}}",
+         og="en",  # delebildet finnes ikke på tysk ennå
+         note="Das Handbuch zeigt Trax auf Deutsch, so wie die App mit Version 2.1 kommt. Bis dahin ist die App auf Englisch, die Funktionen sind dieselben.",
+         title="Handbuch – Trax", desc="Handbuch für Trax, die App für die Fährtenarbeit mit deinem Hund: Fährten legen, den Hund trainieren und den Fortschritt verfolgen.",
+         months=["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]),
 ]
 
 STR = r'"((?:[^"\\]|\\.)*)"'
@@ -137,11 +148,13 @@ figure.shot{margin:20px 0;max-width:260px}
 figure.shot img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.08)}
 figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .back{font-size:14px;margin:20px 0 0}
-.back a{text-decoration:none;font-weight:600}"""
+.back a{text-decoration:none;font-weight:600}
+.hero .callout{margin-top:20px}
+.hero .callout p{font-size:16px;color:var(--fg);max-width:none}"""
 
 
 # Språk som har nettside, men ikke manual ennå (manualen kommer når appen er oversatt). Lenkene går til forsiden.
-SITE_ONLY_LANGS = [dict(code="de", dir="de/", name="Deutsch")]
+SITE_ONLY_LANGS = []
 
 
 def nav_lang(l, here_prefix):
@@ -166,6 +179,9 @@ def render(l, sections, strings, style, app, used, date):
     img = up + "img/manual/"
     pslug, pname = l["privacy"]
     d = f'{date.day}. {l["months"][date.month - 1]} {date.year}' if l["code"] != "en" else f'{date.day} {l["months"][date.month - 1]} {date.year}'
+
+    # Valgfri beskjed øverst, f.eks. når manualen kommer før appen er oversatt (fjern «note» i LANGS når den ikke trengs)
+    note = f'    <div class="callout">{ICON_TIP}<p>{esc(l["note"])}</p></div>\n' if l.get("note") else ""
 
     out = []
     for i, s in enumerate(sections, 1):
@@ -218,13 +234,14 @@ def render(l, sections, strings, style, app, used, date):
 <meta property="og:title" content="{l["title"]}">
 <meta property="og:description" content="{l["desc"]}">
 <meta property="og:url" content="{BASE_URL}{l["dir"]}manual/">
-<meta property="og:image" content="{BASE_URL}img/og-image-{l["code"]}.png">
+<meta property="og:image" content="{BASE_URL}img/og-image-{l.get("og", l["code"])}.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <style>
 {style}
 {MANUAL_CSS}
+{l.get("css", "")}
 </style>
 </head>
 <body>
@@ -243,7 +260,7 @@ def render(l, sections, strings, style, app, used, date):
     <h1>{esc(strings["manual.title"])}</h1>
     <p class="lead">{esc(strings["manual.subtitle"])}</p>
     <p class="updated">{l["updated"]}: {d}</p>
-    <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
+{note}    <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
@@ -277,15 +294,20 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape'&&d.open){{d
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         sys.exit(__doc__)
     app = pathlib.Path(sys.argv[1]).resolve()
+    only = set(sys.argv[2:])
+    if only - {l["code"] for l in LANGS}:
+        sys.exit(f"ukjent språk: {', '.join(sorted(only))}")
     swift = (app / "Trax/UserManualView.swift").read_text(encoding="utf-8")
     style = re.search(r"<style>\n(.*?)\n</style>", (WEB / "index.html").read_text(encoding="utf-8"), re.S).group(1)
     style = style.split("\n", 1)[1]  # dropp forsidens layout-kommentar
     date = datetime.date.today()
     used = set()
     for l in LANGS:
+        if only and l["code"] not in only:
+            continue
         sections = parse_sections(swift, l["swift"])
         strings = read_strings(app / f'Trax/{l["lproj"]}.lproj/Localizable.strings')
         page = render(l, sections, strings, style, app, used, date)
@@ -294,6 +316,8 @@ def main():
         dst.write_text(page, encoding="utf-8")
         shots = sum(1 for s in sections for k, _ in s["blocks"] if k == "screenshot")
         print(f'{dst.relative_to(WEB)}: {len(sections)} avsnitt, {shots} skjermbilder')
+    if only:
+        return  # bildene til de andre språkene er ikke lest inn, så ingenting slettes
     for old in (WEB / "img/manual").glob("*.jpg"):
         if old.name not in used:
             old.unlink()

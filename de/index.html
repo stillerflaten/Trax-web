@@ -291,7 +291,7 @@ body:not(.forside) main > *,body:not(.forside) footer{max-width:760px}
 .v2-de{margin:56px 0 0;font-size:20px;line-height:1.5;max-width:52ch}
 .v2-de b{font-family:var(--display)}
 @media (max-width:600px){.de-hinweis{font-size:16px;margin-bottom:24px}.v2-de{font-size:18px;margin-top:40px}}
-/* Tysk: «Anleitung» er lengre enn «Manual», så navnet ved logoen skjules litt tidligere på smal skjerm */
+/* Tysk: «Handbuch» er lengre enn «Manual», så navnet ved logoen skjules litt tidligere på smal skjerm */
 @media (max-width:430px){.brand{font-size:0;gap:0}}
 </style>
 <script>
@@ -307,7 +307,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
 <body class="forside" data-lansering="2026-10-16">
 <nav><div class="wrap">
   <a class="brand" href="#top"><img src="../img/icon-192.png" width="32" height="32" alt="">Trax</a>
-  <a class="l" href="../en/manual/" hreflang="en">Anleitung</a>
+  <a class="l" href="manual/">Handbuch</a>
   <a class="l" href="#support">Support</a>
   <a class="l opt" href="datenschutz/">Datenschutz</a>
   <details class="lang">
@@ -337,7 +337,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
       </div>
       <ul class="tillit"><li>Kein Konto</li><li>Keine Werbung</li><li>Deine Daten bleiben auf dem Handy</li></ul>
     </div>
-    <div class="flate"><span class="ny-merke">Neue Version, bald verfügbar</span><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer langen Fährte mit Karte, gefundenen Gegenständen, Länge, Liegezeit, Arbeitszeit und Bewertung" decoding="async" fetchpriority="high"></div>
+    <div class="flate"><span class="ny-merke">Neue Version, bald verfügbar</span><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer langen Fährte mit Karte, gefundenen Gegenständen, Länge, Fährtenalter, Arbeitszeit und Bewertung" decoding="async" fetchpriority="high"></div>
   </header>
   <div class="wrap">
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
@@ -348,11 +348,11 @@ if(location.hash==='#privacy')location.replace('privacy/');
     <div class="galleri" role="region" aria-roledescription="Karussell" aria-label="Bildschirmfotos aus der App" data-forrige="Vorheriges Bild" data-neste="Nächstes Bild" data-prikk="Bild {n} von {t}">
       <ul class="g-liste" tabindex="0" aria-label="Bildschirmfotos aus der App">
         <li><figure><img src="../img/galleri/galleri-en-1-hjem.webp" width="640" height="999" alt="Der Startbildschirm von Trax mit den Zahlen des Monats, startbereiten Fährten und den letzten Fährten" decoding="async"><figcaption><b>Alles an einem Ort</b><span>Die Zahlen des Monats, startbereite Fährten und deine letzten Fährten.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer langen Fährte mit Karte, gefundenen Gegenständen, Länge, Liegezeit, Arbeitszeit und Bewertung" decoding="async" loading="lazy"><figcaption><b>Die ganze Fährte auf einen Blick</b><span>Karte, gefundene Gegenstände, Länge, Liegezeit und wie viel der Fährte dein Hund gehalten hat.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer langen Fährte mit Karte, gefundenen Gegenständen, Länge, Fährtenalter, Arbeitszeit und Bewertung" decoding="async" loading="lazy"><figcaption><b>Die ganze Fährte auf einen Blick</b><span>Karte, gefundene Gegenstände, Länge, Fährtenalter und wie viel der Fährte dein Hund gehalten hat.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-en-3-sportyper.webp" width="640" height="999" alt="Auswahl der Übung vor dem Start: Fährte, IGP-Fährte, Schweißfährte und Gegenstandssuche, mit Feldgröße und Zeitlimit" decoding="async" loading="lazy"><figcaption><b>Übung wählen</b><span>Fährte, IGP-Fährte, Schweißfährte oder Gegenstandssuche. Zeichne das Feld auf der Karte und setze ein Zeitlimit.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-en-4-feltsok.webp" width="640" height="999" alt="Das Ergebnis einer Gegenstandssuche mit Feld, Zeitlimit und der Zeit bis zu jedem Fund" decoding="async" loading="lazy"><figcaption><b>Gegenstandssuche und Flächensuche</b><span>Sieh, welche Gegenstände dein Hund gefunden hat und wie lange jeder Fund gedauert hat.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-en-5-blodspor.webp" width="640" height="999" alt="Eine laufende Schweißfährte mit Knöpfen für Anschuss, Schweiß und Wild" decoding="async" loading="lazy"><figcaption><b>Schweißfährte</b><span>Markiere Anschuss, erneuten Schweiß und das Wild mit einem Tippen, während ihr die Fährte ausarbeitet.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-6-kryss-spor.webp" width="640" height="999" alt="Eine Fährte mit einer quer gelegten Verleitungsfährte und der herunterzählenden Liegezeit" decoding="async" loading="lazy"><figcaption><b>Verleitungsfährten</b><span>Lege eine frischere Fährte quer über die erste und sieh die Liegezeit bis zum Start herunterzählen.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-en-6-kryss-spor.webp" width="640" height="999" alt="Eine Fährte mit einer quer gelegten Verleitungsfährte und dem herunterzählenden Fährtenalter" decoding="async" loading="lazy"><figcaption><b>Verleitungsfährten</b><span>Lege eine frischere Fährte quer über die erste und sieh das Fährtenalter bis zum Start herunterzählen.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-en-7-nattmodus.webp" width="640" height="999" alt="Nachtmodus mit dunkelrotem Bildschirm und Karte" decoding="async" loading="lazy"><figcaption><b>Nachtmodus</b><span>Rotes Licht auf dem Bildschirm, wenn du im Dunkeln trainierst.</span></figcaption></figure></li>
       </ul>
       <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
@@ -363,7 +363,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
     <h2>Gemacht für echte Fährtenarbeit</h2>
     <p class="sub">Mehr als ein GPS-Protokoll. Trax versteht Fährtenarbeit.</p>
     <ul class="fg">
-      <li><b>Liegezeit</b><span>Ein Countdown auf dem Sperrbildschirm und eine Meldung, wenn die Fährte bereit ist.</span></li>
+      <li><b>Fährtenalter</b><span>Ein Countdown auf dem Sperrbildschirm und eine Meldung, wenn die Fährte bereit ist.</span></li>
       <li><b>Sprachansagen</b><span>Du hörst es, wenn du dich einem Gegenstand näherst.</span></li>
       <li><b>Schweißfährten</b><span>Anschuss, Wundbett, Wild und Fluchtrichtung.</span></li>
       <li><b>Blindfährten</b><span>Fährte und Meldungen bleiben verborgen, bis du stoppst.</span></li>
@@ -395,7 +395,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
       <h2>Teile die Fährte mit einem Foto deines Hundes</h2>
       <p>Wähle ein Foto aus deiner Mediathek, und Trax legt die Fährte, die Gegenstände und die Zahlen darüber. Teile es als Story oder Beitrag und wähle die Farben der Fährte selbst. Wenn du lieber nur die Fährte zeigen willst, bekommst du sie auf grünem Hintergrund.</p>
     </div>
-    <img src="../img/delebilde.webp" width="680" height="1209" loading="lazy" decoding="async" alt="Teilbild aus Trax: die Fährte mit vier gefundenen Gegenständen über einem Foto von Quatro, unten Länge, Liegezeit und gefundene Gegenstände">
+    <img src="../img/delebilde.webp" width="680" height="1209" loading="lazy" decoding="async" alt="Teilbild aus Trax: die Fährte mit vier gefundenen Gegenständen über einem Foto von Quatro, unten Länge, Fährtenalter und gefundene Gegenstände">
   </div></section>
 
   <section id="fahrte-senden" class="del send"><div class="wrap del-g">
@@ -438,7 +438,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
   <p class="stort" aria-hidden="true">Trax</p>
   <div class="rad">
     <div class="kjop"><p class="snart"><span class="chip">Bald im App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-de.svg" height="52" loading="lazy" alt="Laden im App Store"></a></div></div>
-    <p class="lenker"><a href="../en/manual/" hreflang="en">Anleitung (Englisch)</a> · <a href="datenschutz/">Datenschutz</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../en/" hreflang="en" lang="en">English</a></p>
+    <p class="lenker"><a href="manual/">Handbuch</a> · <a href="datenschutz/">Datenschutz</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../en/" hreflang="en" lang="en">English</a></p>
   </div>
   <p class="liten">© 2026 Silje Tillerflaten</p>
   <p class="utvikler"><img src="../img/tillerflaten-digital.png" width="24" height="24" alt="Logo von Tillerflaten Digital"> Entwickelt von Tillerflaten Digital · Org.-Nr. 938 657 742</p>

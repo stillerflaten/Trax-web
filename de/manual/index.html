@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Handbuch für Trax, die App für die Fährtenarbeit mit deinem Hund: Fährten legen, den Hund trainieren und den Fortschritt verfolgen.">
+<title>Handbuch – Trax</title>
+<!-- Lages av verktoy/lag-manual.py fra manualen i appen. Ikke rediger for hånd; endre appen og kjør skriptet på nytt. -->
+<link rel="canonical" href="https://trax-dogtracking.no/de/manual/">
+<link rel="alternate" hreflang="nb" href="https://trax-dogtracking.no/manual/">
+<link rel="alternate" hreflang="sv" href="https://trax-dogtracking.no/sv/manual/">
+<link rel="alternate" hreflang="en" href="https://trax-dogtracking.no/en/manual/">
+<link rel="alternate" hreflang="de" href="https://trax-dogtracking.no/de/manual/">
+<link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../../img/icon-192.png">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="nb_NO">
+<meta property="og:locale:alternate" content="sv_SE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Trax">
+<meta property="og:title" content="Handbuch – Trax">
+<meta property="og:description" content="Handbuch für Trax, die App für die Fährtenarbeit mit deinem Hund: Fährten legen, den Hund trainieren und den Fortschritt verfolgen.">
+<meta property="og:url" content="https://trax-dogtracking.no/de/manual/">
+<meta property="og:image" content="https://trax-dogtracking.no/img/og-image-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
+  --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
+  --tile-g:#e4efe7; --tile-o:#fbeadb; --tile-r:#f6e1e1; --tile-b:#e1ebf6; --ink-g:#2f6b45; --ink-o:#a8561a; --ink-r:#a3262b; --ink-b:#2f63a3; --band:#e7ece4; --deep:#1f4d31; --on-deep:#ffffff; --on-deep-2:#c9dccf; --foot:#1d241f; --on-foot:#e6ebe6; --on-foot-2:#a3b0a7;
+  --display:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body);padding-inline:16px}
+.wrap{max-width:720px;margin:0 auto}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:10px 16px}
+nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{font:800 20px var(--display);letter-spacing:-.02em;color:var(--fg);text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:10px}
+.brand img{width:32px;height:32px;border-radius:8px}
+nav a.l{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
+nav a.l:hover,nav a.l:focus-visible{color:var(--accent)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header.hero{padding-block:48px 32px}
+.hero h1{font:800 clamp(40px,9vw,64px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
+.hero p{font-size:20px;color:var(--muted);margin:0;max-width:34ch}
+/* App Store-knapp og pris. Før lanseringsdatoen (data-lansering på <body>, ÅÅÅÅ-MM-DD) vises «Snart i App Store».
+   Fra datoen vises merket og introprisen, og sju dager senere ordinær pris. Uten dato står «Snart» til datoen settes. */
+.tillit{display:flex;flex-wrap:wrap;gap:4px 18px;margin:16px 0 0;padding:0;list-style:none;font-size:15px;color:var(--muted)}
+.tillit li{display:flex;align-items:center;gap:6px}
+.trackline{display:block;width:100%;height:60px;margin-top:24px}
+.trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.trackline circle{fill:var(--accent)}
+/* Poteanimasjon på sporlinja (spor.js): full bredde, ender og poter i riktig form */
+html{overflow-x:clip}
+.spor-js .trackline{width:100vw;margin-left:calc(50% - 50vw);overflow:visible}
+.spor-klar .trackline path,.spor-klar .trackline circle:last-of-type{opacity:0}
+.trackline .paws{fill:var(--accent)}
+.trackline circle{transform-box:fill-box;transform-origin:center}
+.trackline.spiller circle:last-of-type{transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.trackline.spiller.ferdig circle:last-of-type{transform:none}
+section{padding-block:40px;border-top:1px solid var(--line);scroll-margin-top:64px}
+h2{font:700 28px/1.2 var(--display);letter-spacing:-.02em;margin:0 0 8px;text-wrap:balance}
+h3{font:700 18px/1.3 var(--display);margin:28px 0 6px}
+.eyebrow{font:700 13px var(--display);text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin:0 0 6px}
+p,li{max-width:65ch}
+ul{padding-left:1.2em}
+/* Funksjoner: to kolonner på mobil, tre fra 600 px. Ikonfargene følger lys og mørk modus. */
+.funk .sub{color:var(--muted);margin:0}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.fg li{max-width:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.fg b{display:block;font:700 16px/1.25 var(--display);margin-bottom:3px}
+.fg span{display:block;color:var(--muted);font-size:14.5px;line-height:1.45}
+.ph{background:var(--mark);padding:0 4px;border-radius:3px}
+button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
+dt{font-weight:600}
+dd{margin:0;color:var(--muted);min-width:0}
+@media (max-width:480px){dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
+/* Skjermbildegalleri (galleri.js): sveip på mobil, piler og prikker på PC. Uten JS er det en vanlig vannrett rulleliste. */
+.galleri{margin-top:28px}
+.g-liste{display:flex;gap:16px;margin:0 -16px;padding:4px 16px 8px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;overscroll-behavior-x:contain;scrollbar-width:none}
+.g-liste::-webkit-scrollbar{display:none}
+.g-liste:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:12px}
+.g-liste li{flex:0 0 min(76%,272px);max-width:none;scroll-snap-align:start}
+.g-liste figure{margin:0}
+.g-liste img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#eef0e4}
+.g-liste figcaption{padding:10px 2px 0}
+.g-liste figcaption b{display:block;font:700 17px/1.3 var(--display)}
+.g-liste figcaption span{display:block;color:var(--muted);font-size:15px;line-height:1.45}
+.g-ktrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
+.g-ktrl[hidden]{display:none}
+.g-pil{width:40px;height:40px;padding:0;border-radius:50%;background:var(--surface);color:var(--fg);border:1px solid var(--line);display:grid;place-items:center}
+.g-pil:hover:not(:disabled){color:var(--accent);border-color:var(--accent)}
+.g-pil:disabled{opacity:.35;cursor:default}
+.g-pil svg{width:18px;height:18px}
+.g-prikker{display:flex;gap:2px}
+.g-prikker button{width:24px;height:24px;padding:0;background:none;border-radius:50%;display:grid;place-items:center}
+.g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
+.g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
+@media (hover:none) and (pointer:coarse){.g-pil{display:none}}
+@media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
+nav .wrap{position:relative}
+.lang{position:relative} /* lista åpner rett under knappen, høyrejustert mot den, så det ser ut som knappen utvider seg */
+.lang summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--muted);font:600 15px var(--body);padding:4px 10px;border:1px solid var(--line);border-radius:8px;user-select:none}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary:hover,.lang[open] summary{color:var(--accent);border-color:var(--accent)}
+.lang summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lang summary svg{width:16px;height:16px;flex:none}
+.lang summary .chev{width:10px;height:10px;transition:transform .15s}
+.lang[open] summary .chev{transform:rotate(180deg)}
+.lang ul{position:absolute;right:0;top:calc(100% + 4px);margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgb(0 0 0/.14);min-width:max(100%,9.5em);z-index:6}
+.lang li{max-width:none}
+.lang ul a{display:flex;justify-content:space-between;gap:12px;padding:7px 10px;border-radius:6px;color:var(--fg);text-decoration:none;font-size:15px}
+.lang ul a:hover,.lang ul a:focus-visible{background:var(--bg);color:var(--accent)}
+.lang ul a[aria-current]{font-weight:700;color:var(--accent)}
+.lang ul a[aria-current]::after{content:"✓"}
+/* Smal skjerm: menyen skal få plass på én linje */
+/* Mobil: personvernlenken tas ut av menyen (den står i bunnteksten), så Manual får plass på én linje */
+@media (max-width:480px){nav a.l.opt{display:none}}
+@media (max-width:400px){nav .wrap{gap:12px}.lang summary .chev{display:none}}
+@media (max-width:360px){.lang summary svg{display:none}}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
+footer .utvikler{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:13px}
+footer .utvikler img{border-radius:6px;flex:none}
+.updated{font-size:14px;color:var(--muted)}
+/* Forsiden (body.forside): bred layout, flater i stedet for streker og kort, store overskrifter.
+   Manualen og personvernsiden bruker ikke klassen og beholder lesesidestilen over. */
+.forside{padding-inline:0}
+.forside .wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:600px){.forside .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+.forside nav{margin-inline:0;padding-inline:0;border-bottom:0}
+.forside nav a.l{color:var(--fg)}
+.forside nav a.l:hover,.forside nav a.l:focus-visible{color:var(--accent)}
+nav .kj{display:block;line-height:0;border-radius:7px;transition:transform .15s}
+nav .kj img{height:40px;width:auto}
+nav .kj:active{transform:scale(.97)}
+@media (max-width:480px){.forside nav a.l:not([href$="manual/"]){display:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.forside section{border-top:0;padding-block:0}
+.forside p,.forside li{max-width:none}
+.forside h2{font:800 clamp(34px,4.4vw,56px)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 16px}
+/* Toppen: tekst til venstre, appen stor på en grønn flate til høyre (under teksten på mobil) */
+.topp{display:grid;grid-template-columns:1.3fr .9fr;gap:40px;align-items:end;padding-top:40px}
+.topp h1{font:800 clamp(44px,5.5vw,84px)/.95 var(--display);letter-spacing:-.045em;margin:0 0 24px;text-wrap:balance}
+.topp .lead{font-size:21px;line-height:1.45;margin:0 0 32px;max-width:30ch}
+.topp .tillit{margin:28px 0 48px;gap:6px 22px;font-size:17px;color:var(--fg)}
+.tillit li::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--track);margin-right:3px}
+.kjop{margin:0}
+.kjop [hidden]{display:none!important}
+.kjop .snart{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:0}
+.kjop .chip{display:inline-block;background:var(--fg);color:var(--bg);font:700 17px/1 var(--display);padding:16px 24px;border-radius:999px}
+.kjop .snart span:not(.chip){font-size:17px;color:var(--muted)}
+.kjop .live{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.kjop .pris{display:flex;flex-direction:column;margin:0;font-size:16px;line-height:1.4;color:var(--muted)}
+.kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
+.appstore{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
+.appstore:active{transform:scale(.97)}
+.appstore img{height:52px;width:auto}
+.flate{background:var(--deep);border-radius:28px 28px 0 0;height:min(76vh,700px);min-height:440px;position:relative;overflow:hidden}
+.flate img{position:absolute;left:50%;top:48px;width:min(74%,400px);height:auto;border-radius:28px}
+@media (max-width:860px){.topp{grid-template-columns:1fr;gap:0}.flate{height:460px;min-height:0}.flate img{width:300px;top:36px}}
+@media (max-width:600px){.topp{padding-top:20px}.topp .lead{font-size:19px;margin-bottom:24px}.topp .tillit{margin:22px 0 28px}
+  .flate{height:340px;margin-inline:-16px;border-radius:0}.flate img{width:250px;top:28px}}
+.forside .trackline{margin-top:28px}
+.forside .galleri{margin-top:12px;padding-bottom:96px}
+.forside .g-liste img{border:0}
+@media (min-width:1000px){.forside .g-liste li{flex:0 0 calc((100% - 64px)/5)}.forside .g-ktrl{display:none!important}}
+@media (max-width:600px){.forside .galleri{padding-bottom:64px}}
+/* Funksjoner: hel grønn flate, oransje gjenstandsmarkør foran hver funksjon som i appen */
+.forside .funk{background:var(--deep);color:var(--on-deep);padding-block:120px 136px}
+.forside .funk h2{max-width:14ch}
+.forside .funk .sub{color:var(--on-deep-2);font-size:21px;margin:0 0 64px}
+.forside .fg{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 56px;margin:0}
+.forside .fg li{background:none;border:0;border-radius:0;padding:0}
+.forside .fg b{display:flex;align-items:center;gap:12px;font:800 25px/1.15 var(--display);letter-spacing:-.02em;margin-bottom:8px}
+.forside .fg b::before{content:"";flex:none;width:14px;height:14px;border-radius:50%;background:var(--track);box-shadow:0 0 0 5px rgb(199 119 46/.3)}
+.forside .fg span{color:var(--on-deep-2);font-size:17px;line-height:1.5;padding-left:26px}
+@media (max-width:860px){.forside .fg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.forside .funk{padding-block:72px 84px}.forside .funk .sub{font-size:19px;margin-bottom:40px}.forside .fg{grid-template-columns:1fr;gap:28px}.forside .fg b{font-size:22px}}
+/* Om: setningen stort til venstre, navn og resten av teksten til høyre. Bytt poten i .bilde med <img> når bildet finnes. */
+.om-g{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start;padding-block:136px}
+.om-g blockquote{margin:0;font:700 clamp(26px,2.6vw,36px)/1.25 var(--display);letter-spacing:-.02em;text-wrap:balance}
+.om-g .hvem{display:flex;align-items:center;gap:16px;margin:0 0 18px}
+.om-g .bilde{flex:none;width:160px;height:160px;border-radius:32px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;overflow:hidden}
+.om-g .bilde svg{width:32px;height:32px}
+.om-g .bilde img{width:100%;height:100%;object-fit:cover}
+.om-g .hvem b{display:block;font:800 21px/1.25 var(--display)}
+.om-g .hvem span{color:var(--muted);font-size:16px}
+.om-g p{margin:0}
+@media (max-width:860px){.om-g{grid-template-columns:1fr;gap:28px;padding-block:80px}.om-g .bilde{width:120px;height:120px;border-radius:26px}}
+/* Support: tonet flate, e-posten som stor lenke, spørsmålene i tre kolonner */
+.forside #support{background:var(--band);padding-block:120px}
+.sup-intro{max-width:60ch;margin:0}
+.post{display:inline-block;font:800 clamp(22px,2.6vw,34px)/1.2 var(--display);color:var(--accent);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:3px;margin:20px 0 72px;overflow-wrap:anywhere}
+.faq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 48px}
+.faq h3,.pv h3{font:800 20px/1.25 var(--display);margin:0 0 6px}
+.faq p{margin:0;font-size:17px}
+.pv{margin-top:64px;max-width:60ch}
+.pv p{margin:0 0 8px;font-size:17px}
+.pv a{font-weight:600}
+@media (max-width:860px){.forside #support{padding-block:72px}.post{margin-bottom:48px}.faq{grid-template-columns:1fr;gap:26px}.pv{margin-top:40px}}
+/* Bunnteksten: navnet stort, App Store-knappen en gang til, og lenkene */
+.forside footer{border-top:0;background:var(--foot);color:var(--on-foot-2);padding-block:96px 40px;font-size:16px}
+.forside footer .stort{font:800 clamp(88px,17vw,240px)/.8 var(--display);letter-spacing:-.06em;margin:0 0 40px;color:var(--on-foot)}
+.forside footer .rad{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
+.forside footer .rad a{color:var(--on-foot)}
+.forside footer .chip{background:var(--on-foot);color:var(--foot)}
+.forside footer .liten{margin:40px 0 0;font-size:14px}
+.forside footer .utvikler{font-size:14px}
+@media (max-width:600px){.forside footer{padding-block:64px 32px}}
+/* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
+.ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
+.v2{padding-block:120px 0}
+.v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
+.v2-liste{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;margin:0;padding:0;list-style:none}
+.v2-liste li{max-width:none}
+.v2-liste b{display:flex;align-items:center;gap:10px;font:800 21px/1.2 var(--display);letter-spacing:-.015em;margin-bottom:6px}
+.v2-liste b::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--track)}
+.v2-liste span{display:block;color:var(--muted);font-size:16px;line-height:1.5;padding-left:22px}
+@media (max-width:1000px){.v2-liste{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.v2{padding-block:80px 0}.v2 .lead{font-size:19px;margin-bottom:36px}.v2-liste{grid-template-columns:1fr;gap:24px}}
+.del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
+.del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
+.del img{display:block;width:100%;height:auto;border-radius:28px}
+.del .del-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.del .del-merke[hidden]{display:none}
+@media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
+.send .del-g{grid-template-columns:minmax(0,440px) 1fr}
+.send .del-g img{order:-1;border-radius:24px}
+.send .tips{font-size:16px;color:var(--muted);margin-top:16px}
+@media (max-width:860px){.send .del-g{grid-template-columns:1fr}.send .del-g img{order:0;max-width:440px}}
+/* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
+@keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
+.bev .topp > div:first-child > :nth-child(2){animation-delay:.08s}.bev .topp > div:first-child > :nth-child(3){animation-delay:.16s}
+.bev .topp > div:first-child > :nth-child(4){animation-delay:.24s}.bev .flate{animation-delay:.12s}
+.bev .inn{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.bev .inn.vis{opacity:1;transform:none}
+.flate img{transform:translateX(-50%) translateY(var(--py,0px)) rotate(-3deg)}
+@media (prefers-reduced-motion:no-preference){
+  .post,.g-pil,.lang summary,footer .rad a{transition:transform .15s,color .15s}
+  .post:active,.g-pil:active,.lang summary:active{transform:scale(.97)}
+  .appstore:hover,nav .kj:hover{transform:translateY(-1px)}
+}
+/* Sporlinja nedover siden (forside.js): i margen til høyre på brede skjermer, ellers prikker foran overskriftene */
+.sporlinje{position:absolute;left:0;top:0;width:100%;height:0;pointer-events:none;z-index:1;overflow:visible}
+.sporlinje .spor{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.sporlinje .m{fill:var(--track);stroke:var(--on-deep);stroke-width:2.5}
+.sporlinje text{fill:#fff;font:800 15px var(--display)}
+.sporlinje .hake{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.sporlinje .hake circle{fill:#2f9e5a;stroke:var(--on-deep);stroke-width:2}
+.sporlinje .hake path{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.sporlinje .funnet .hake{transform:none}
+.gj-prikk{display:inline-block;flex:none;width:.42em;height:.42em;max-width:16px;max-height:16px;min-width:12px;min-height:12px;border-radius:50%;background:var(--track);margin-right:.3em;vertical-align:.12em;position:relative}
+.gj-prikk::after{content:"";position:absolute;right:-7px;top:-7px;width:12px;height:12px;border-radius:50%;background:#2f9e5a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3.3 6.2l1.8 1.8 3.6-3.8' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");transform:scale(0);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.gj-prikk.funnet::after{transform:none}
+.spor-bred .gj-prikk{display:none}
+.spor-still .sporlinje .hake,.spor-still .gj-prikk::after{transition:none}
+/* Menyen og sidebredden er lik på alle sider, slik den er på forsiden: samme bredde, farger og App Store-merke.
+   På undersidene står teksten til venstre i full bredde, men linjene holdes korte nok til å lese. */
+body{padding-inline:0}
+nav{margin-inline:0;padding-inline:0;border-bottom:0}
+.wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+nav a.l{color:var(--fg)}
+nav a.l:hover,nav a.l:focus-visible,nav a.l[aria-current]{color:var(--accent)}
+@media (max-width:600px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+body:not(.forside) main > *,body:not(.forside) footer{max-width:760px}
+@media (max-width:480px){nav a.l ~ a.l{display:none}nav .wrap{gap:10px}.lang summary .chev{display:none}}
+@media (max-width:380px){.brand{font-size:0;gap:0}}
+/* Brukermanual (lages av verktoy/lag-manual.py): innholdsliste, nummererte steg, tips og skjermbilder */
+nav a.l[aria-current]{color:var(--accent)}
+.hero .lead{font-size:20px;color:var(--muted);margin:0;max-width:40ch}
+.hero p.updated{font-size:13px;margin-top:12px;max-width:none}
+.toc,.m{scroll-margin-top:64px}
+.toc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-top:28px}
+.toc ol{margin:0;padding:0;list-style:none;columns:1;column-gap:28px;counter-reset:toc}
+.toc li{counter-increment:toc;break-inside:avoid;max-width:none}
+.toc a{display:flex;gap:10px;padding:5px 0;text-decoration:none;color:var(--fg);font-weight:500}
+.toc a::before{content:counter(toc,decimal-leading-zero);font:400 13px/1.9 var(--mono);color:var(--muted);flex:none}
+.toc a:hover,.toc a:focus-visible{color:var(--accent)}
+@media (min-width:600px){.toc ol{columns:2}}
+.m .intro{font-size:18px;color:var(--muted)}
+.m ol.steps{list-style:none;padding:0;counter-reset:st;margin:16px 0}
+.m ol.steps li{counter-increment:st;position:relative;padding-left:40px;margin-bottom:10px}
+.m ol.steps li::before{content:counter(st);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font:700 14px/26px var(--display);text-align:center}
+.m ul li{margin-bottom:6px}
+.callout{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;margin:16px 0;max-width:65ch}
+.callout svg{flex:none;width:22px;height:22px;color:var(--accent);margin-top:2px}
+.callout p{margin:0}
+.callout.warn{border-left-color:var(--track)}
+.callout.warn svg{color:var(--track)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+figure.shot{margin:20px 0;max-width:260px}
+figure.shot img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.back{font-size:14px;margin:20px 0 0}
+.back a{text-decoration:none;font-weight:600}
+.hero .callout{margin-top:20px}
+.hero .callout p{font-size:16px;color:var(--fg);max-width:none}
+/* «Handbuch» er lengre enn «Manual», så navnet ved logoen skjules litt tidligere på smal skjerm */
+@media (max-width:430px){.brand{font-size:0;gap:0}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="../../de/"><img src="../../img/icon-192.png" width="32" height="32" alt="">Trax</a>
+  <a class="l" href="./" aria-current="page">Handbuch</a>
+  <a class="l" href="../../de/#support">Support</a>
+  <a class="l opt" href="../../de/datenschutz/">Datenschutz</a>
+  <details class="lang">
+    <summary aria-label="Sprache wählen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span>DE</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+    <ul>
+      <li><a href="../../manual/" hreflang="nb" lang="nb">Norsk</a></li>
+      <li><a href="../../sv/manual/" hreflang="sv" lang="sv">Svenska</a></li>
+      <li><a href="../../en/manual/" hreflang="en" lang="en">English</a></li>
+      <li><a href="./" lang="de" aria-current="page">Deutsch</a></li>
+    </ul>
+  </details>
+  <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="../../img/app-store-de.svg" width="120" height="40" alt="Laden im App Store"></a>
+</div></nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <p class="eyebrow">iOS-App für die Fährtenarbeit</p>
+    <h1>Handbuch</h1>
+    <p class="lead">Alles, was du brauchst, um Fährten zu legen, sie zu arbeiten und dein Training langfristig zu verfolgen.</p>
+    <p class="updated">Zuletzt aktualisiert: 16. Oktober 2026</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p>Das Handbuch zeigt Trax auf Deutsch, so wie die App mit Version 2.1 kommt. Bis dahin ist die App auf Englisch, die Funktionen sind dieselben.</p></div>
+    <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
+      <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
+    </svg>
+    <div class="toc" id="innhold" role="navigation" aria-labelledby="innhold-tittel">
+      <p class="eyebrow" id="innhold-tittel">Inhalt</p>
+      <ol>
+      <li><a href="#kom-i-gang">Erste Schritte</a></li>
+      <li><a href="#hjem">Startbildschirm</a></li>
+      <li><a href="#legge-spor">Fährte legen</a></li>
+      <li><a href="#sportype">Fährtenart und Schweißfährten</a></li>
+      <li><a href="#sok">Suche: Gegenstandssuche und Flächensuche</a></li>
+      <li><a href="#gjenstander">Gegenstände</a></li>
+      <li><a href="#lagre">Fährte sichern</a></li>
+      <li><a href="#liggetid">Fährtenalter</a></li>
+      <li><a href="#kryss-spor">Verleitungsfährten</a></li>
+      <li><a href="#ga-spor">Fährte arbeiten</a></li>
+      <li><a href="#blindt-spor">Blindfährte</a></li>
+      <li><a href="#nattmodus">Nachtmodus</a></li>
+      <li><a href="#funn">Funde erfassen</a></li>
+      <li><a href="#varsler">Hinweise und Sprachansagen</a></li>
+      <li><a href="#sporoversikt">Fährtenübersicht</a></li>
+      <li><a href="#vurdering">Bewertung und Winkel</a></li>
+      <li><a href="#avspilling">Fährte abspielen</a></li>
+      <li><a href="#rediger">Fährte bearbeiten</a></li>
+      <li><a href="#avvik">Abweichung von der Fährte</a></li>
+      <li><a href="#vaer">Wetter</a></li>
+      <li><a href="#sosiale-medier">In sozialen Medien teilen</a></li>
+      <li><a href="#dele">Fährten teilen und empfangen</a></li>
+      <li><a href="#pdf">PDF-Bericht</a></li>
+      <li><a href="#hunder">Hunde</a></li>
+      <li><a href="#innstillinger">Einstellungen</a></li>
+      <li><a href="#sikkerhetskopi">Backup und neues iPhone</a></li>
+      <li><a href="#administrere">Fährten löschen und wiederherstellen</a></li>
+      <li><a href="#feilsoking">Tipps und Fehlerbehebung</a></li>
+      <li><a href="#personvern">Datenschutz</a></li>
+      </ol>
+    </div>
+  </header>
+
+  <section class="m" id="kom-i-gang">
+    <p class="eyebrow">01</p>
+    <h2>Erste Schritte</h2>
+    <p class="intro">Trax ist für Hundeführer gemacht, die Fährtenarbeit trainieren. Du legst die Fährte mit dem Handy in der Tasche, markierst unterwegs Gegenstände und arbeitest die Fährte danach mit deinem Hund, während die App zeigt, wo der Fährtenleger gegangen ist.</p>
+    <ol class="steps">
+      <li>Wenn du die App zum ersten Mal öffnest, bekommst du eine kurze Einführung. Tippe auf „Weiter“, um sie durchzugehen.</li>
+      <li>Tippe auf „Standortzugriff erlauben“ und wähle „Beim Verwenden der App erlauben“.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-onboarding-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Die Einführung zeigt den Status des Standortzugriffs.</figcaption></figure>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>„Beim Verwenden der App“ reicht aus. Sobald du auf „Start“ getippt hast, läuft die Aufzeichnung auch bei gesperrtem Bildschirm oder wenn du die App wechselst weiter, und iOS zeigt oben auf dem Bildschirm eine blaue Markierung. Den Zugriff änderst du auf dem iPhone unter Einstellungen › Trax › Standort.</p></div>
+    <p>Trax braucht „Genauer Standort“. Ohne ihn kann die Position mehrere hundert Meter danebenliegen. Ist er ausgeschaltet, fragt die App nach dem genauen Standort, wenn du eine Fährte legst oder arbeitest, und zeigt die Karte „Genauer Standort ist aus“ mit einem Link zu den Einstellungen. Schalte dort „Genauer Standort“ für Trax ein.</p>
+    <p>Trax und das Handbuch folgen der Sprache des Handys: Deutsch, Englisch, Norwegisch (Bokmål) oder Schwedisch.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="hjem">
+    <p class="eyebrow">02</p>
+    <h2>Startbildschirm</h2>
+    <p class="intro">Hier beginnt alles, und hier findest du alle deine Fährten.</p>
+    <p>Der grüne Kopfbereich zeigt die Zahlen für diesen Monat: Anzahl der Fährten, Gesamtlänge, Funde und wie viele Fährten bereit sind. Die Symbole oben rechts sind Importieren, Handbuch und Einstellungen. „Importieren“ öffnet eine Fährte aus einer Trax- oder GPX-Datei, zum Beispiel eine Fährte, die dir jemand geschickt hat.</p>
+    <ul>
+      <li>„Bereite Fährten“ sind Fährten, die gelegt, aber vom Hund noch nicht gearbeitet wurden. Sie erscheinen oben als große Kartenkarten, und wenn du mehrere hast, wischst du seitwärts. Die Karte zeigt den Status („Bereit“, „Bereit in …“, während das Fährtenalter heruntergezählt wird, oder „Fährte läuft“, wenn die Fährte gestartet, aber nicht gestoppt wurde), das Fährtenalter, die Länge und die Anzahl der Gegenstände.</li>
+      <li>„Start“ auf der Karte bringt dich direkt zur Fährte. Tippst du sonst auf die Karte, öffnet sich die Fährtenübersicht. Halte den Finger auf der Karte und wähle „Löschen“, um die Fährte zu löschen.</li>
+      <li>„Letzte Fährten“ zeigt die drei zuletzt abgeschlossenen Fährten. Jede Zeile hat eine kleine Karte mit der Fährtenart als Abzeichen, Datum, Länge und Hund in einer Zeile und rechts die Funde, zum Beispiel 3/3. Tippe auf eine Fährte, um die Details zu sehen.</li>
+      <li>Mit „Bearbeiten“ neben „Letzte Fährten“ wählst du Fährten aus und löschst sie. „Alle“ öffnet die Seite „Fertige Fährten“ mit allen deinen Fährten.</li>
+      <li>„Neue Fährte“ ist der grüne Knopf unten und startet das Fährtenlegen.</li>
+    </ul>
+    <figure class="shot"><img src="../../img/manual/manual-home-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Der Startbildschirm mit bereiten Fährten oben und den letzten Fährten darunter.</figcaption></figure>
+    <p>Auf der Seite „Fertige Fährten“ sind die Fährten nach Monat gruppiert. Oben rechts findest du den Dokumentknopf für ein PDF pro Hund und „Bearbeiten“, um mehrere Fährten zu löschen.</p>
+    <ul>
+      <li>Hast du Hunde angelegt, erscheinen oben Knöpfe: „Alle“ und einer für jeden Hund, mit dem Anfangsbuchstaben des Hundes in Farbe. Fährten ohne Hund stehen unter „Alle“. Wählst du einen Hund, siehst du nur seine Fährten und eine Zusammenfassung mit der Anzahl der Fährten, dem Anteil gefundener Gegenstände, der Anzahl der Fährten in den letzten 30 Tagen und „Auf der Fährte“, dazu eine Grafik der Entwicklung (siehe „Hunde“). Hat der Hund keine abgeschlossenen Fährten, steht dort „… hat noch keine abgeschlossenen Fährten.“</li>
+      <li>Hunde, die du gelöscht hast, behalten ihren Knopf, solange sie Fährten haben. Um einen solchen Hund auszublenden, hältst du den Finger auf seinem Knopf und wählst „Im Filter ausblenden“. Unter Einstellungen › Meine Hunde › „Frühere Hunde“ kannst du ihn wieder einblenden.</li>
+      <li>Haben die Fährten auf der Seite mindestens zwei Fährtenarten, erscheinen unter der Zusammenfassung Knöpfe für die Fährtenart: „Fährte“, „IGP-Fährte“, „Schweißfährte“, „Gegenstandssuche“ und „Flächensuche“. Gibt es mindestens zwei Arten von Fährten (Fährte, IGP-Fährte oder Schweißfährte), steht außerdem „Alle Fährten“ an erster Stelle. Dort siehst du nur Fährten. Gegenstandssuche und Flächensuche sind eigene Übungen und erscheinen nur unter ihren eigenen Knöpfen, mit eigener Statistik (siehe „Suche: Gegenstandssuche und Flächensuche“).</li>
+      <li>Kleine Symbole in der Zeile zeigen, ob die Fährte importiert wurde (Pfeil hinein) und ob du sie exportiert hast (Pfeil hinaus).</li>
+    </ul>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="legge-spor">
+    <p class="eyebrow">03</p>
+    <h2>Fährte legen</h2>
+    <p class="intro">Als Fährtenleger gehst du die Fährte zuerst, während die App die Route per GPS aufzeichnet.</p>
+    <ol class="steps">
+      <li>Tippe auf dem Startbildschirm auf „Neue Fährte“.</li>
+      <li>Wähle die Übung mit den großen Knöpfen: „Fährte“, „IGP-Fährte“, „Schweißfährte“ oder „Suche“. „Fährte“ ist vorausgewählt (siehe „Fährtenart und Schweißfährten“ und „Suche: Gegenstandssuche und Flächensuche“).</li>
+      <li>Das GPS startet, sobald sich der Bildschirm öffnet. Warte, bis der GPS-Punkt oben grün oder gelb ist, und tippe auf den großen grünen Knopf „Start“.</li>
+      <li>Geh die Fährte. Die Route wird beim Gehen auf der Karte gezeichnet.</li>
+      <li>Tippe auf „Gegenstand“, um dort, wo du stehst, einen Gegenstand abzulegen (siehe „Gegenstände“).</li>
+      <li>Brauchst du eine Pause, tippst du auf „Pause“. Tippe auf „Fortsetzen“, um weiterzugehen. Die Strecke während der Pause wird nicht aufgezeichnet.</li>
+      <li>Tippe auf „Stopp“, wenn die Fährte fertig gelegt ist.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-lay-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Die Fährte wird gelegt. Das Feld oben zeigt Zeit, Länge und Anzahl der Gegenstände.</figcaption></figure>
+    <p>Ist das GPS-Signal vor dem Start schwach, erscheint unter dem Feld oben ein Kasten. Rot bedeutet, dass du auf ein besseres Signal warten solltest, Gelb, dass du starten kannst, die Fährte aber genauer wird, wenn du wartest. Der Kasten schließt sich von selbst, wenn das Signal gut ist, oder wenn du auf „OK, verstanden“ tippst. Starten kannst du immer.</p>
+    <p>Das Feld oben zeigt Zeit, Länge und Anzahl der Gegenstände in großen Zahlen, wie genau das GPS ist, und den Akkustand. Ein grüner Punkt bedeutet besser als 10 Meter, Gelb 10–25 Meter und Rot mehr als 25 Meter. „Kein GPS“ heißt, dass das Handy seit mehr als 15 Sekunden keine Position hat. Tippe auf das Feld, um zu sehen, wann die Fährte gestartet wurde, wann die Position zuletzt aktualisiert wurde und auf welcher Koordinate du stehst.</p>
+    <p>Wenn du auf „Start“ tippst, zoomt die Karte auf dich, immer auf denselben Ausschnitt. Zoomst du während der Fährte, behält die Karte den Zoom, den du gewählt hast.</p>
+    <p>Die Kartenknöpfe rechts sind in einer Kapsel zusammengefasst. Der oberste Knopf öffnet das Kartenmenü, in dem du „Karte“, „Topo“ oder „Satellit“ wählst und „Nachtmodus“ ein- oder ausschaltest (siehe „Nachtmodus“). Topo ist die topografische Karte der norwegischen Landesvermessung (Kartverket) mit Höhenlinien und Wegen. Sie braucht Internet, zeigt unten „© Kartverket“ und gibt es nur in Norwegen. Der N-Knopf wechselt die Kartenausrichtung: Norden oben oder eine Karte, die sich mit deiner Blickrichtung dreht. Deine Wahl wird gespeichert und lässt sich auch unter Einstellungen › Karte und Fährten ändern. Der unterste Knopf zentriert die Karte wieder auf dich.</p>
+    <p>Der Pfeil über den Kartenknöpfen zeigt den Wind (siehe „Wetter“).</p>
+    <p>Während du die Fährte legst, erscheint sie auf dem Sperrbildschirm und in der Dynamic Island mit Zeit, Länge und Anzahl der Gegenstände. Auf dem Sperrbildschirm kannst du auf „Pause“ oder „Fortsetzen“ tippen und auf „Gegenstand“, um einen Gegenstand abzulegen, ohne das Handy zu entsperren.</p>
+    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Wichtig: </span>Tippst du auf den Zurückpfeil oben links im Feld, bevor die Fährte gestoppt ist, fragt die App, ob du die Fährte verwerfen oder stoppen und sichern willst. Eine verworfene Fährte lässt sich nicht wiederherstellen.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="sportype">
+    <p class="eyebrow">04</p>
+    <h2>Fährtenart und Schweißfährten</h2>
+    <p class="intro">Wähle, ob die Fährte eine normale Fährte, eine IGP-Fährte oder eine Schweißfährte ist. Schweißfährten haben eigene Knöpfe und eigene Optionen. Gegenstandssuche und Flächensuche findest du unter „Suche“ (siehe „Suche: Gegenstandssuche und Flächensuche“).</p>
+    <p>Die Fährtenart wählst du mit den großen Knöpfen unter „Wähle die Übung vor dem Start“ auf dem Bildschirm zum Fährtenlegen, bevor du auf „Start“ tippst. Ändern kannst du sie danach in der Karte „Fährtenart“ in der Fährtenübersicht. Die Fährtenart steht bei der Fährte, im PDF und in der Datei, wenn du die Fährte verschickst.</p>
+    <figure class="shot"><img src="../../img/manual/manual-tracktype-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Wähle die Übung vor dem Start.</figcaption></figure>
+    <p>Bei einer Schweißfährte wird „Gegenstand“ durch drei Knöpfe ersetzt:</p>
+    <ul>
+      <li>„Wundbett“ setzt dort, wo du stehst, ein Wundbett. Es erscheint als dunkelroter Tropfen auf der Karte.</li>
+      <li>„Schweißpause“ markiert, dass ab hier kein Schweiß liegt. Solange die Schweißpause dauert, heißt der Knopf „Schweiß wieder“. Tippe darauf, wo der Schweiß wieder beginnt. Die Schweißpause erscheint als gestrichelte weiße Linie auf der Fährte.</li>
+      <li>„Stück“ markiert, wo das Stück liegt, mit einer braunen Zielflagge auf der Karte.</li>
+    </ul>
+    <figure class="shot"><img src="../../img/manual/manual-blood-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Eine Schweißfährte wird gelegt, mit den Knöpfen für Wundbett, Schweißpause und Stück.</figcaption></figure>
+    <p>Wo die Schweißfährte beginnt, erscheint der „Anschuss“ mit einem Pfeil für die Fluchtrichtung. Nach „Stopp“ und später in der Fährtenübersicht wählst du die „Fluchtrichtung“: „Automatisch“ (aus den ersten 15 Metern der Fährte), eine Himmelsrichtung oder „Kein Pfeil“. Schalte „Fluchtrichtung für Hundeführer zeigen“ aus, wenn die Fluchtrichtung nicht markiert sein soll, zum Beispiel bei einer Nachsuche. Anschuss und Pfeil erscheinen auch, wenn die Fährte blind gearbeitet wird.</p>
+    <p>In der Karte „Schweiß und Fährtenschuh“ trägst du die Schweißmenge in dl ein (optional) und schaltest „Fährtenschuh/Schalen“ ein oder aus. Unter dem Feld siehst du den Schweiß pro 100 Meter Fährte. Weniger Schweiß pro 100 Meter macht die Fährte schwerer. Deine letzten Werte werden beim nächsten Mal vorgeschlagen.</p>
+    <p>Schweißfährten haben eigene Optionen für das Fährtenalter, von 30 Minuten bis 24 Stunden (siehe „Fährtenalter“).</p>
+    <p>Wird die Schweißfährte gearbeitet, zählen Wundbett und Stück als Gegenstände. Der Hinweis lautet „Nahe am Wundbett“ oder „Nahe am Stück“, und der Fund wird als „Wundbett als gefunden erfasst“ registriert. Vor einer Schweißpause und bevor der Schweiß wieder beginnt, gibt die App die Hinweise „Schweißpause“ und „Schweiß wieder“ (siehe „Hinweise und Sprachansagen“).</p>
+    <p>Die Fährtenübersicht und das PDF zeigen „Wundbetten, Stück und Schweißpausen“ mit der Länge jeder Schweißpause sowie Schweißmenge und Fährtenschuh. Die Schweißmenge steht auch im Hundebericht und auf dem Bild für soziale Medien.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="sok">
+    <p class="eyebrow">05</p>
+    <h2>Suche: Gegenstandssuche und Flächensuche</h2>
+    <p class="intro">Suchen sind eigene Übungen, keine Fährten. Du legst ein Feld oder eine Fläche auf die Karte, legst Gegenstände aus oder stellst Personen auf, und der Hund sucht innerhalb eines Zeitlimits.</p>
+    <ol class="steps">
+      <li>Tippe auf „Neue Fährte“ und dann auf „Suche“. Wähle „Gegenstandssuche“ oder „Flächensuche“. Deine Wahl steht dann an der Stelle des Knopfes „Suche“, und du kannst erneut darauf tippen, um zu wechseln.</li>
+      <li>Das Feld (oder die Fläche) wird dort auf die Karte gelegt, wo du stehst, mit der Startlinie bei dir. Ist das Wetter abgerufen, wird es so gedreht, dass der Hund gegen den Wind geschickt wird. Sonst zeigt es nach Norden.</li>
+      <li>Wähle die Größe im Menü links: Die Gegenstandssuche hat „Feld 50 × 50 m“ und „Korridor 10 × 50 m“, die Flächensuche „Fläche 100 × 100 m“ und „Fläche 100 × 200 m“. Du kannst Breite und Länge auch selbst wählen.</li>
+      <li>Wähle das Zeitlimit im Menü rechts. Standard sind 15 Minuten für die Gegenstandssuche und 1 Stunde für die Flächensuche. Die Auswahl wird für Gegenstandssuche und Flächensuche getrennt gespeichert.</li>
+      <li>Passe die Lage mit den Knöpfen darunter an: „Links drehen“ und „Rechts drehen“ drehen das Feld schrittweise, „Gegen den Wind“ dreht es gegen den Wind, und „Hier starten“ verschiebt die Startlinie dorthin, wo du stehst.</li>
+      <li>Tippe auf „Start“, wenn das Feld richtig liegt. Die Knöpfe für Größe, Zeit und Lage verschwinden dann.</li>
+      <li>Geh in das Feld und tippe auf „Gegenstand“, wo du jeden Gegenstand ablegst. Bei der Flächensuche gibt es außerdem den Knopf „Versteckperson“, um dort, wo du stehst, eine Person zu platzieren.</li>
+      <li>Tippe auf „Stopp“ und sichere wie gewohnt.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-search-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Gegenstandssuche vor dem Start: Größe und Zeitlimit wählen, Feld drehen oder verschieben.</figcaption></figure>
+    <p>Das Feld muss nicht rechteckig sein. Halte und ziehe die Ecken, um sie zu verschieben, und ziehe das + in der Mitte einer Kante, um eine neue Ecke zu erstellen. Im Größenmenü steht dann „Eigene Form“, und „Zurück zum Rechteck“ im selben Menü macht es rückgängig. Die Form kannst du ändern, bis du auf „Stopp“ tippst.</p>
+    <p>Wenn der Hund suchen soll, öffnest du die Suche unter „Bereite Fährten“ und tippst auf „Start“. „Blind arbeiten“ ist bereits eingeschaltet, da der Hundeführer meist nicht weiß, wo die Gegenstände liegen (siehe „Blindfährte“). Das Feld oben zeigt Restzeit, benötigte Zeit und Anzahl der Funde. Das Handy gibt eine Minute vor Ablauf der Zeit und bei Ablauf einen Hinweis, mit Vibration und mit Sprache, wenn „Hinweise vorlesen“ eingeschaltet ist. Ist die Zeit um, steht dort „Zeit überschritten“, und die Uhr läuft weiter.</p>
+    <p>Tippe auf „Gefunden“, wenn der Hund einen Gegenstand bringt oder eine Person anzeigt. Die App fragt, welchen Gegenstand der Hund gefunden hat, und die Zeit seit dem Start der Suche wird mit dem Fund gespeichert. Dein Abstand spielt keine Rolle, da du meist am Feld stehst, während der Hund sucht.</p>
+    <figure class="shot"><img src="../../img/manual/manual-search-find-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>„Gefunden“ fragt, welchen Gegenstand der Hund gefunden hat.</figcaption></figure>
+    <p>Suchen haben keine Fährtenhinweise, keine Abweichungsanalyse und keine Winkel. Auf der Karte ist die Route der Person, die die Gegenstände ausgelegt hat, dünn und blass, und bei der Gegenstandssuche wird die Route des Hundeführers nicht gezeigt.</p>
+    <p>Das Ergebnis in der Fährtenübersicht zeigt die Größe des Feldes, das Zeitlimit, die benötigte Zeit und jeden Fund mit der Zeit, die er gedauert hat, in der Reihenfolge, in der der Hund sie gefunden hat. Bei der Flächensuche werden Personen und Gegenstände getrennt gezählt. Nicht gefundene Gegenstände stehen darunter.</p>
+    <figure class="shot"><img src="../../img/manual/manual-search-result-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Das Ergebnis einer Gegenstandssuche mit der Zeit bis zu jedem Fund.</figcaption></figure>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Gegenstandssuche, Flächensuche und Fährten werden in der Statistik immer getrennt gehalten. „Alle Fährten“ auf der Seite „Fertige Fährten“ zeigt nur Fährten, und die Hundekarte für Suchen zeigt „Anzahl“ statt „Fährten“, ohne „Auf der Fährte“.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="gjenstander">
+    <p class="eyebrow">06</p>
+    <h2>Gegenstände</h2>
+    <ol class="steps">
+      <li>Stell dich dorthin, wo der Gegenstand liegt, und tippe auf „Gegenstand“. Der Gegenstand wird sofort gespeichert, mit Nummer und Position.</li>
+      <li>Möchtest du eine Beschreibung hinzufügen, zum Beispiel „Socke“ oder „Holzklotz“, tippst du in der eingeblendeten Meldung auf „Beschreiben“.</li>
+      <li>Aus Versehen getippt? Tippe in der Meldung auf „Widerrufen“.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-marker-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Der Gegenstand ist hinzugefügt. Beschreibe ihn oder widerrufe.</figcaption></figure>
+    <p>Die Gegenstände werden in der Reihenfolge nummeriert, in der du sie ablegst. Die Beschreibung kannst du auch später in der Fährtenübersicht unter „Gegenstände“ schreiben oder ändern.</p>
+    <p>Farbe und Symbol der Gegenstände wählst du unter Einstellungen › Karte und Fährten. Deine Wahl gilt für alle Karten, auch im PDF und auf dem Bild für soziale Medien.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Hat das Handy deine Position noch nicht gefunden, wird der Gegenstand nicht gespeichert. Warte ein paar Sekunden, bis die Fährte gezeichnet wird, und versuche es noch einmal.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="lagre">
+    <p class="eyebrow">07</p>
+    <h2>Fährte sichern</h2>
+    <p class="intro">Wenn du auf „Stopp“ tippst, öffnet sich das Blatt „Fährte sichern“. Oben siehst du die Länge, die Anzahl der Gegenstände und die Zeit.</p>
+    <ul>
+      <li>„Fährte sichern“ steht fest unten im Blatt. Damit sicherst du die Fährte und kehrst zum Startbildschirm zurück, wo die Fährte unter „Bereite Fährten“ steht.</li>
+      <li>Bei „Exportieren“ wählst du Trax-Datei, GPX oder PDF. Wähle „An andere Trax-Nutzer“, um die Fährte an den Hundeführer zu schicken.</li>
+      <li>„Fährte fortsetzen“ bringt dich zurück zur Karte, falls du zu früh auf „Stopp“ getippt hast.</li>
+    </ul>
+    <p>Du kannst der Fährte einen Namen geben. Lässt du das Feld leer, bekommt die Fährte einen Namen mit Datum und Uhrzeit.</p>
+    <p>Unter „Untergrund“ kannst du eintragen, worüber die Fährte führt, zum Beispiel Waldboden, Schotter oder Wiese. Der Hundeführer sieht den Untergrund bei der Fährte, auch wenn du sie an ein anderes Handy schickst.</p>
+    <p>Unter „Fährtenalter“ tippst du auf den Knopf für die Zeit, die die Fährte liegen soll, bevor der Hund sie arbeitet (siehe „Fährtenalter“). Bei einer Schweißfährte erscheinen außerdem die Karten „Anschuss“ und „Schweiß und Fährtenschuh“ (siehe „Fährtenart und Schweißfährten“).</p>
+    <figure class="shot"><img src="../../img/manual/manual-save-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Fährte sichern, exportieren oder weiter legen.</figcaption></figure>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="liggetid">
+    <p class="eyebrow">08</p>
+    <h2>Fährtenalter</h2>
+    <p>Das Fährtenalter ist die Zeit vom Beginn des Fährtenlegens, bis der Hundeführer beginnt, die Fährte zu arbeiten. Es zählt von selbst hoch und wird angezeigt, während die Fährte wartet und während sie gearbeitet wird. Ist die Fährte gearbeitet, wird das Fährtenalter festgeschrieben und mit der Fährte gespeichert.</p>
+    <p>Willst du Bescheid bekommen, wenn die Fährte lange genug gelegen hat, wählst du das Fährtenalter mit den Knöpfen im Blatt „Fährte sichern“: „Keins“, 15, 30, 45, 60 oder 90 Minuten, 2 Stunden oder „Eigene …“ mit Stunden und Minuten (höchstens 48 Stunden). Deine letzte Wahl wird gespeichert. Bei Schweißfährten gibt es 30 Minuten und 1, 2, 3, 6, 12, 18 und 24 Stunden, und Schweißfährten speichern ihre eigene Wahl.</p>
+    <p>Beim ersten Mal fragt das Handy, ob Trax Mitteilungen senden darf. Drei Minuten bevor das Fährtenalter erreicht ist, bekommst du die Mitteilung „Die Fährte ‚…‘ ist in 3 min bereit (Fährtenalter 30 min). Mach den Hund fertig.“ Sperrbildschirm und Dynamic Island zählen herunter und zeigen dann „Fährte ist bereit“ mit dem Fährtenalter, bis die Fährte gestartet wird. Tippe auf die Mitteilung oder den Countdown, um die Fährte zu öffnen.</p>
+    <p>Bei mehr als 8 Stunden Fährtenalter gibt es keinen Countdown auf dem Sperrbildschirm, nur die Mitteilung, bevor die Fährte bereit ist.</p>
+    <p>Bei wartenden Fährten zeigt die Fährtenübersicht das Fährtenalter groß an, mit dem Ziel und wie weit es schon ist. Tippe auf die Karte, um das Fährtenalter zu ändern oder „Keins“ zu wählen. Mitteilung und Countdown verschwinden, wenn die Fährte gestartet oder gelöscht wird.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Die Mitteilung ist zeitkritisch und kommt auch durch Fokus-Modi wie „Schlafen“, wenn „Dringende Mitteilungen“ für Trax eingeschaltet ist. Hast du Mitteilungen für Trax ausgeschaltet, sagt dir die Karte das, mit einem Knopf zu den Einstellungen.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="kryss-spor">
+    <p class="eyebrow">09</p>
+    <h2>Verleitungsfährten</h2>
+    <p class="intro">Eine Verleitungsfährte ist eine frischere Fährte, die die Hauptfährte kreuzt, um den Hund darin zu trainieren, auf der richtigen Fährte zu bleiben.</p>
+    <ol class="steps">
+      <li>Lege die Hauptfährte wie gewohnt und sichere sie.</li>
+      <li>Öffne die Fährte unter „Bereite Fährten“ auf dem Startbildschirm und tippe in der Karte „Verleitungsfährten“ auf „Verleitungsfährte legen“.</li>
+      <li>Die Hauptfährte erscheint blass auf der Karte. Tippe auf „Start“ und geh quer über die Hauptfährte. „Pause“ und „Stopp“ funktionieren wie beim Legen einer normalen Fährte, aber Verleitungsfährten haben keine Gegenstände.</li>
+      <li>Tippe auf „Stopp“. Unter „Gelegt von“ kannst du eintragen, wer die Verleitungsfährte gelegt hat. Tippe dann auf „Verleitungsfährte sichern“.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-crosstrack-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Die Verleitungsfährte ist gestrichelt, mit einem Kreuz dort, wo sie die Hauptfährte kreuzt.</figcaption></figure>
+    <p>Verleitungsfährten erscheinen gestrichelt in einer eigenen Farbe, mit einem kleinen Kreuz dort, wo sie die Hauptfährte kreuzen. Die Karte zeigt die Länge und das eigene Fährtenalter der Verleitungsfährte. Du kannst mehrere Verleitungsfährten legen und eine mit dem Papierkorb löschen, bevor die Fährte gearbeitet wird.</p>
+    <p>Arbeitet der Hund die Fährte, gibt die App 12 Meter vor jeder Kreuzung den Hinweis „Kreuzende Fährte“ (siehe „Hinweise und Sprachansagen“). Verleitungsfährten erscheinen auch in der Wiedergabe, im PDF und auf dem Bild für soziale Medien und werden mitgeschickt, wenn du die Fährte verschickst. Bei einer Blindfährte sind sie verborgen, bis die Fährte gestoppt wird.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="ga-spor">
+    <p class="eyebrow">10</p>
+    <h2>Fährte arbeiten</h2>
+    <p class="intro">Als Hundeführer arbeitest du die Fährte mit deinem Hund. Die Route des Fährtenlegers und die Gegenstände erscheinen auf der Karte, und deine eigene Route wird in einer anderen Farbe gezeichnet.</p>
+    <ol class="steps">
+      <li>Tippe auf dem Startbildschirm unter „Bereite Fährten“ bei der Fährte auf „Start“. Du kannst die Fährte auch öffnen und unten auf „Fährte starten“ tippen.</li>
+      <li>Wähle den Hund, der die Fährte arbeitet. Hast du nur einen Hund, ist er schon ausgewählt. Hast du keine Hunde angelegt, kannst du sofort starten.</li>
+      <li>Willst du arbeiten, ohne die Fährte zu sehen, schalte „Blind arbeiten“ ein (siehe „Blindfährte“).</li>
+      <li>Tippe auf „Start“.</li>
+      <li>Folge deinem Hund. Nutze bei Bedarf „Pause“ und „Fortsetzen“.</li>
+      <li>Tippe auf „Gefunden“, wenn der Hund einen Gegenstand anzeigt.</li>
+      <li>Tippe auf „Stopp“, wenn die Fährte gearbeitet ist.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-walk-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Fährte arbeiten: die Route des Fährtenlegers, die Gegenstände und deine eigene Route.</figcaption></figure>
+    <p>Vor dem Start zeigt das Feld oben, wie alt die Fährte ist, wie lang sie ist und wie viele Gegenstände sie hat. Während der Arbeit zeigt es die Zeit, wie weit du gegangen bist und wie viele Gegenstände gefunden wurden. Tippe auf das Feld, um das Fährtenalter zu sehen. Ist das GPS-Signal schwach, erscheint derselbe Kasten wie beim Fährtenlegen.</p>
+    <p>Wenn du auf „Start“ tippst, zoomt die Karte jedes Mal mit demselben Ausschnitt auf dich. Die Karte folgt dir beim Gehen, und wenn du hinein- oder herauszoomst, behält die Karte den Zoom, den du gewählt hast. Das Kartenmenü oben in den Kartenknöpfen hat die Standardkarte, Topo (nur in Norwegen), Satellit und Nachtmodus, und der N-Knopf wechselt zwischen Norden oben und einer Karte, die sich mit deiner Richtung dreht. Der Pfeil über den Kartenknöpfen zeigt den Wind beim Start der Fährte.</p>
+    <p>Entfernst du dich zu weit von der gelegten Fährte, vibriert das Handy, und oben erscheint die Karte „Fährte verloren“ mit deinem Abstand. Die Karte verschwindet, wenn du wieder auf der Fährte bist oder auf das Kreuz tippst. Mehr dazu und zu den anderen Hinweisen findest du unter „Hinweise und Sprachansagen“.</p>
+    <p>Die Aufzeichnung läuft weiter, wenn der Bildschirm gesperrt ist oder du die App wechselst. Die Fährte erscheint auf dem Sperrbildschirm und in der Dynamic Island, und auf dem Sperrbildschirm kannst du auf „Pause“, „Fortsetzen“ und „Gefunden“ tippen.</p>
+    <p>Tippst du nach dem Start auf den Zurückpfeil, fragt die App „Hundefährte beenden?“. Du kannst stoppen und sichern, die Fährte pausieren oder „Hundefährte verwerfen“ wählen. Eine pausierte Fährte setzt du fort, indem du die Fährte wieder öffnest. „Hundefährte verwerfen“ löscht nur das, was du gearbeitet hast. Die gelegte Fährte bleibt unter „Bereite Fährten“.</p>
+    <p>Stoppt die App mitten in einer Fährte, zum Beispiel weil der Akku leer war, ist die Fährte unterwegs gespeichert worden. Sie steht unter „Bereite Fährten“ mit „Fährte läuft“. Öffne die Fährte und tippe auf „Fortsetzen“, dann geht die Fährte aus der Pause weiter. Die Zeit, in der die App gestoppt war, zählt nicht zur benötigten Zeit.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="blindt-spor">
+    <p class="eyebrow">11</p>
+    <h2>Blindfährte</h2>
+    <p class="intro">Arbeite die Fährte, ohne zu sehen, wo der Fährtenleger gegangen ist, so wie bei einer Prüfung.</p>
+    <p>Schalte „Blind arbeiten“ ein, bevor du auf „Start“ tippst. Der Schalter ist immer aus, wenn du die Fährte öffnest, du musst ihn also jedes Mal einschalten.</p>
+    <figure class="shot"><img src="../../img/manual/manual-blind-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Schalte „Blind arbeiten“ vor dem Start ein.</figcaption></figure>
+    <ul>
+      <li>Die gelegte Fährte, die Gegenstände, Schweißpausen, Verleitungsfährten und Winkel sind auf der Karte verborgen, bis du auf „Stopp“ tippst. Anschuss und Fluchtrichtung einer Schweißfährte werden trotzdem gezeigt.</li>
+      <li>Du bekommst unterwegs keine Hinweise, weder zu Gegenständen, Schweißpausen, verlorener Fährte noch zu kreuzenden Fährten, und Gegenstände werden nicht angesagt.</li>
+      <li>Das Feld oben zeigt nur, wie viele Gegenstände gefunden wurden, nicht wie viele es gibt.</li>
+      <li>„Gefunden“ erfasst den nächstgelegenen Gegenstand, egal wie weit entfernt er ist.</li>
+    </ul>
+    <p>Musst du die Fährte sehen, zum Beispiel weil ihr euch verlaufen habt, tippst du auf „Fährte zeigen“. Dann wird alles gezeigt, und die Fährte zählt nicht mehr als blind.</p>
+    <p>Die Fährtenübersicht und das PDF zeigen „Blind gearbeitet“ und, falls du auf „Fährte zeigen“ getippt hast, wann die Fährte gezeigt wurde.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="nattmodus">
+    <p class="eyebrow">12</p>
+    <h2>Nachtmodus</h2>
+    <p class="intro">Trainierst du im Dunkeln, macht der Nachtmodus den Bildschirm dunkel und rot, damit deine Nachtsicht erhalten bleibt.</p>
+    <ol class="steps">
+      <li>Tippe auf den obersten Kartenknopf rechts auf der Karte, während du eine Fährte legst oder arbeitest.</li>
+      <li>Schalte im Menü „Nachtmodus“ ein.</li>
+      <li>Ausschalten geht auf die gleiche Weise.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-mapmenu-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Das Kartenmenü: Karte, Topo oder Satellit wählen und den Nachtmodus ein- oder ausschalten.</figcaption></figure>
+    <p>Der Nachtmodus macht den ganzen Bildschirm rot und dunkel: die Karte, das Feld oben und die Knöpfe. Deine Wahl wird bis zum nächsten Mal gespeichert, wenn du eine Fährte legst oder arbeitest. Der Rest der App sieht aus wie gewohnt.</p>
+    <figure class="shot"><img src="../../img/manual/manual-night-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Nachtmodus beim Fährtenlegen.</figcaption></figure>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Dreh zusätzlich die Bildschirmhelligkeit herunter. Der Nachtmodus ändert die Farben, nicht wie hell der Bildschirm leuchtet.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="funn">
+    <p class="eyebrow">13</p>
+    <h2>Funde erfassen</h2>
+    <p>Kommst du in den gewählten Abstand zu einem Gegenstand (standardmäßig 12 Meter), erscheint ein Banner mit Nummer, Beschreibung und Abstand. Das Handy vibriert, auch bei gesperrtem Bildschirm. Ist das GPS ungenau, wartet die App mit dem Hinweis, bis die Position besser ist. Abstand und Hinweisart wählst du unter Einstellungen › Hinweise (siehe „Hinweise und Sprachansagen“).</p>
+    <ul>
+      <li>Tippe im Banner auf „Als gefunden markieren“ oder unten auf den großen Knopf „Gefunden“. Wähle „Später“, wenn du warten willst.</li>
+      <li>Tippst du nichts an, schließt sich das Banner von selbst, wenn du ein Stück am Gegenstand vorbei bist (25 Meter oder der doppelte gewählte Abstand, falls das mehr ist), oder wenn du dich dem nächsten Gegenstand näherst. Der Gegenstand wird dann nicht als gefunden erfasst, aber du kannst ihn beim Stoppen abhaken.</li>
+      <li>„Gefunden“ lässt sich nur antippen, wenn du innerhalb des gewählten Abstands zu einem noch nicht gefundenen Gegenstand bist, in der App wie auf dem Sperrbildschirm. Ist kein Banner zu sehen, wird der nächstgelegene erfasst.</li>
+      <li>Aus Versehen getippt? Tippe in der Meldung, die unten erscheint, auf „Widerrufen“.</li>
+    </ul>
+    <figure class="shot"><img src="../../img/manual/manual-found-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Das Banner erscheint, wenn du in der Nähe eines Gegenstands bist.</figcaption></figure>
+    <p>Wenn du stoppst, zeigt das Blatt „Fährte abgeschlossen“ eine Liste der Gegenstände. Funde, die du unterwegs erfasst hast, sind schon abgehakt. Korrigiere, falls etwas fehlt.</p>
+    <p>Im selben Blatt kannst du der Fährte eine Bewertung geben (siehe „Bewertung und Winkel“) und Notizen schreiben, zum Beispiel zu den Bedingungen oder dazu, wie der Hund gearbeitet hat. Die Notizen kommen ins PDF. Hat der Fährtenleger den Untergrund leer gelassen, kannst du ihn hier eintragen. Tippe auf „Sichern“, wenn du fertig bist.</p>
+    <p>„Exportieren“ im selben Blatt teilt die Fährte sofort als Trax-Datei, GPX oder PDF. Willst du die Fährte zeigen, tippe auf „In sozialen Medien teilen“ (siehe „In sozialen Medien teilen“).</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Willst du die Fährte ohne Hinweise und ohne sie zu sehen arbeiten, schalte vor dem Start „Blind arbeiten“ ein (siehe „Blindfährte“).</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="varsler">
+    <p class="eyebrow">14</p>
+    <h2>Hinweise und Sprachansagen</h2>
+    <p class="intro">Während der Hund die Fährte arbeitet, kann dich das Handy mit Vibration, Ton und Sprache hinweisen. Alle Hinweise stellst du unter Einstellungen › Hinweise ein.</p>
+    <ul>
+      <li>„Gegenstand in der Nähe“: wenn du innerhalb von „Abstand zum Gegenstand“ bist (5–50 Meter, standardmäßig 12 Meter). Bei einer Schweißfährte gilt das für Wundbett und Stück.</li>
+      <li>„Schweißpause“ und „Schweiß wieder“ (Schweißfährten): bevor du eine Schweißpause erreichst und bevor der Schweiß danach wieder beginnt. Den Abstand wählst du unter „Abstand zur Schweißpause“ (standardmäßig 20 Meter).</li>
+      <li>„Fährte verloren“: wenn du eine Weile weiter von der gelegten Fährte entfernt warst als „Abstand von der Fährte“ (5–30 Meter, standardmäßig 15 Meter). Die App gibt erst einen Hinweis, wenn du einmal auf der Fährte warst.</li>
+      <li>„Kreuzende Fährte“: 12 Meter vor jeder Stelle, an der eine Verleitungsfährte die Fährte kreuzt. Kreuzungen, die dicht beieinander liegen, ergeben einen Hinweis.</li>
+    </ul>
+    <p>Alle sind standardmäßig eingeschaltet. Der Hauptschalter „Hinweise“ oben schaltet alle Hinweise ein und aus, auch die Sprachansagen. Hinweise erscheinen auch auf dem Sperrbildschirm. Bei einer Blindfährte gibt es keine Hinweise. Änderungen bei Schweißpause, verlorener Fährte und kreuzender Fährte gelten ab dem nächsten Start einer Fährte.</p>
+    <figure class="shot"><img src="../../img/manual/manual-alerts-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Einstellungen › Hinweise.</figcaption></figure>
+    <p>Unter „Hinweisart“ wählst du „Nur Vibration“ oder „Vibration und Ton“. Der Ton ist nur zu hören, wenn das Handy nicht stumm geschaltet ist und nicht auf „Nicht stören“ steht.</p>
+    <p>Sprachansagen: Schalte unter „Hinweisart“ „Hinweise vorlesen“ ein. Dann sagt das Handy alle Hinweise an, die du eingeschaltet hast, zum Beispiel „Gegenstand 3, etwa 11 Meter entfernt“, „Schweißpause in 20 Metern“ oder „Fährte verloren, etwa 18 Meter von der Fährte“. Tippe auf „Beispiel anhören“, um die Stimme zu hören. Sprachansagen sind in AirPods oder im Lautsprecher zu hören, auch bei gesperrtem Bildschirm und wenn das Handy stumm geschaltet ist. Musik wird leiser, während die Ansage läuft.</p>
+    <p>Schaltest du unter Hinweise „Strecke ansagen“ ein, sagt das Handy auch an, wie weit du gegangen bist, zum Beispiel „300 Meter gearbeitet“. Unter „Wie oft“ wählst du alle 100, 200 oder 500 Meter oder jeden Kilometer. Das gilt nur, wenn „Hinweise vorlesen“ eingeschaltet ist.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Mit AirPods im Ohr hörst du die Sprachansagen, ohne das Handy herauszunehmen, und der Hund wird nicht durch Ton aus dem Lautsprecher gestört.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="sporoversikt">
+    <p class="eyebrow">15</p>
+    <h2>Fährtenübersicht</h2>
+    <p class="intro">Tippe auf dem Startbildschirm auf eine Fährte, um alles über sie zu sehen.</p>
+    <ul>
+      <li>Die Karte oben zeigt beide Routen und alle Gegenstände. Tippe auf „Vollbild“ für eine größere Karte. Dort wechselt die Kartentaste unten rechts zwischen Standardkarte, Topo und Satellit. Der Vollbildmodus öffnet immer mit der Standardkarte.</li>
+      <li>„Optionen“ oben links auf der Karte enthält „Fährte abspielen“ und „Fährte bearbeiten“. Bei einer Fährte, die noch nicht gearbeitet wurde, steht „Fährte bearbeiten“ dort direkt.</li>
+      <li>Die Ergebniskarte unter dem Titel zeigt die Funde in einem Ring (zum Beispiel „4/4 gefunden“), die Länge, das Fährtenalter, die benötigte Zeit und wie viel deiner Route auf der Fährte lag. Bei einer Suche zeigt die Karte statt der Länge die Größe des Felds, und eine eigene Karte zeigt die Zeit bis zu jedem Fund (siehe „Suche: Gegenstandssuche und Flächensuche“).</li>
+      <li>Mit dem falschen Hund gearbeitet oder vergessen, einen Hund zu wählen? Tippe in der Zeile für den Hund auf „Hund wechseln“ oder „Hund wählen“ und wähle einen anderen Hund oder „Kein Hund“. Hast du keine Hunde angelegt, steht dort „Hund hinzufügen“.</li>
+      <li>Auf der Karte bekommen gefundene Gegenstände einen kleinen grünen Haken in der Ecke und behalten ihre Farbe und ihr Symbol, sodass du siehst, ob es ein Wundbett oder das Stück war. Nicht gefundene Gegenstände sind grau. Die Route des Hundeführers ist danach eingefärbt, wie weit sie von der Fährte abwich (siehe „Abweichung von der Fährte“), und kleine nummerierte Kreise zeigen die Winkel in der Fährte (siehe „Bewertung und Winkel“).</li>
+      <li>„Bewertung“ unter dem Ergebnis zeigt Bewertung, Schwierigkeitsgrad und Lernpunkt.</li>
+      <li>„Abweichung von der Fährte“ zeigt, wie genau du und dein Hund der Fährte gefolgt seid.</li>
+      <li>Bei wartenden Fährten zeigt die Karte das Fährtenalter groß an, mit dem Ziel und wie weit es schon ist, und „Fährte starten“ bleibt unten auf dem Bildschirm stehen. Hier findest du auch die Karte „Verleitungsfährten“ (siehe „Fährtenalter“ und „Verleitungsfährten“).</li>
+      <li>Unter „Gegenstände“ siehst du jeden Gegenstand mit Beschreibung und Ergebnis. Tippe auf einen Gegenstand, um die Beschreibung zu schreiben oder zu ändern. Bei einer Schweißfährte heißt die Karte „Wundbetten, Stück und Schweißpausen“.</li>
+      <li>„Fährtenart“, Untergrund und Notiz stehen weiter unten. Tippe darauf, um sie zu ändern.</li>
+      <li>Die Teilen-Taste oben exportiert die Fährte als Trax-Datei, GPX oder PDF und erstellt bei abgeschlossenen Fährten das Bild für soziale Medien.</li>
+      <li>„Details“ zeigt „Legen gestartet“, „Legen beendet“, „Fährtenarbeit gestartet“ und „Fährtenarbeit beendet“, die Anzahl der Winkel und ob die Fährte blind gearbeitet wurde. Tippe auf „Umbenennen“, um der Fährte einen neuen Namen zu geben.</li>
+      <li>„Fährte löschen“ ganz unten löscht die Fährte, nachdem du bestätigt hast.</li>
+    </ul>
+    <figure class="shot"><img src="../../img/manual/manual-detail-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Die Fährtenübersicht mit Karte, Ergebnis und Bewertung.</figcaption></figure>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="vurdering">
+    <p class="eyebrow">16</p>
+    <h2>Bewertung und Winkel</h2>
+    <p class="intro">Gib jeder Fährte eine Bewertung und sieh, wie viele Winkel die Fährte hatte.</p>
+    <p>Die Karte „Bewertung“ findest du im Fenster „Fährte abgeschlossen“ und unter dem Ergebnis in der Fährtenübersicht. Alles ist freiwillig:</p>
+    <ul>
+      <li>„Bewertung“: 1 bis 5 Sterne.</li>
+      <li>„Schwierigkeitsgrad“: „Leicht“, „Mittel“ oder „Schwer“.</li>
+      <li>„Lernpunkt“: eine Zeile dazu, was gut lief oder woran noch gearbeitet werden muss.</li>
+    </ul>
+    <figure class="shot"><img src="../../img/manual/manual-assessment-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Gib der Fährte eine Bewertung, einen Schwierigkeitsgrad und einen Lernpunkt.</figcaption></figure>
+    <p>Tippe noch einmal auf den gewählten Stern oder Grad, um die Auswahl zu entfernen. In der Fährtenübersicht tippst du auf die Sterne oder den Grad, um sie zu ändern, und auf den Lernpunkt, um ihn zu schreiben.</p>
+    <p>Das Entwicklungsdiagramm des Hundes hat die Option „Bewertung“, mit den Punkten nach Schwierigkeitsgrad eingefärbt: Grün ist leicht, Orange mittel und Rot schwer. Das PDF zeigt Bewertung und Schwierigkeitsgrad und den Lernpunkt als eigenen Abschnitt. Der Hundebericht hat die Durchschnittsbewertung auf dem Deckblatt. Die Bewertung ist dabei, wenn du die Fährte als Trax-Datei sendest.</p>
+    <p>Winkel: Trax zählt die Winkel in der gelegten Fährte selbst, dort, wo die Fährte um mindestens 45 Grad abbiegt. Kleine Bögen und GPS-Rauschen werden nicht gezählt. „Details“ in der Fährtenübersicht zeigt „Winkel“, und die Karte hat an jedem Winkel kleine nummerierte Kreise. Das PDF hat die Zeile „Winkel in der Fährte“. Fährten unter 30 Metern bekommen keine Winkel, und bei einer Blindfährte sind sie verborgen, bis die Fährte gestoppt wird.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="avspilling">
+    <p class="eyebrow">17</p>
+    <h2>Fährte abspielen</h2>
+    <p class="intro">Sieh dir an, wie der Hund gearbeitet hat, über der Fährte, die der Fährtenleger gelegt hat.</p>
+    <ol class="steps">
+      <li>Öffne eine abgeschlossene Fährte, tippe oben links auf der Karte auf „Optionen“ und wähle „Fährte abspielen“.</li>
+      <li>Tippe auf die Wiedergabetaste. Eine Pfote zeigt, wo der Hund war, und die Route wird nach und nach gezeichnet.</li>
+      <li>Ziehe an der Zeitleiste, um vor- oder zurückzuspringen. Unter der Zeitleiste siehst du, wie weit du in der Fährte bist, und die Uhrzeit.</li>
+      <li>Tippe auf die Geschwindigkeitstaste, um 5-, 10-, 30- oder 60-mal schneller als in Echtzeit abzuspielen.</li>
+    </ol>
+    <p>Gegenstände bekommen einen grünen Haken, wenn sie gefunden werden. Bei älteren Fährten, bei denen der Zeitpunkt des Fundes nicht gespeichert wurde, gilt der Gegenstand dort als gefunden, wo der Hund ihm am nächsten kam.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="rediger">
+    <p class="eyebrow">18</p>
+    <h2>Fährte bearbeiten</h2>
+    <p class="intro">Schneide den Anfang oder das Ende einer Fährte ab, zum Beispiel ein langes Endstück, weil du vergessen hast, auf Stopp zu tippen.</p>
+    <ol class="steps">
+      <li>Öffne die Fährte, tippe oben links auf der Karte auf „Optionen“ und dann auf „Fährte bearbeiten“. Bei einer Fährte, die noch nicht gearbeitet wurde, steht „Fährte bearbeiten“ dort direkt.</li>
+      <li>Enthält die Fährte sowohl die Route des Fährtenlegers als auch die des Hundeführers, wählst du oben, welche du kürzen willst. Du kannst beide kürzen, bevor du sicherst.</li>
+      <li>Ziehe die Griffe unter der Karte: Der linke ist der neue Anfang, der rechte das neue Ende. Was abgeschnitten wird, wird auf der Karte grau. Mit den Pfeilen verschiebst du jeweils um einen Punkt.</li>
+      <li>Tippe auf „Sichern“. Länge, Dauer und Fährtenalter werden neu berechnet, und die Abweichung von der Fährte wird angepasst.</li>
+    </ol>
+    <p>Liegen Gegenstände oder Funde im abgeschnittenen Teil, fragt die App, ob sie zum nächsten Punkt verschoben oder entfernt werden sollen. Ein entfernter Fund zählt als nicht gefunden.</p>
+    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Wichtig: </span>Das Kürzen kann nach dem Sichern nicht rückgängig gemacht werden. Die abgeschnittenen Punkte werden gelöscht.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="avvik">
+    <p class="eyebrow">19</p>
+    <h2>Abweichung von der Fährte</h2>
+    <p class="intro">Sieh, wie genau du und dein Hund der Fährte gefolgt seid, die der Fährtenleger gelegt hat.</p>
+    <p>Die Karte „Abweichung von der Fährte“ steht bei abgeschlossenen Fährten unter dem Ergebnis in der Fährtenübersicht. Sie zeigt:</p>
+    <ul>
+      <li>Wie viel deiner Route innerhalb der Grenze für „auf der Fährte“ lag.</li>
+      <li>„Fährte verloren“: wie oft der Hundeführer mindestens 20 Meter am Stück außerhalb der Grenze war (oder die doppelte Grenze, wenn das länger ist), und wie weit in der Fährte das zum ersten Mal passierte.</li>
+      <li>Durchschnittliche und größte Abweichung.</li>
+    </ul>
+    <p>Die Grenze wählst du mit der Taste oben rechts in der Karte: 5, 10, 15, 20 oder 30 Meter. Standard sind 15 Meter. Deine Wahl wird gespeichert und gilt auch für das PDF und für „Auf der Fährte“ in der Hundeübersicht. Der Hinweis „Fährte verloren“ während der Arbeit hat eine eigene Grenze unter Einstellungen › Hinweise.</p>
+    <p>Auf der Karte, im Vollbildmodus und bei der Wiedergabe ist die Route des Hundeführers eingefärbt: Grün innerhalb der Grenze, Orange bis zur doppelten Grenze und Rot weiter weg. Während du die Fährte arbeitest, wird weiterhin die Farbe verwendet, die du unter Einstellungen › Karte und Fährten gewählt hast.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Die Abweichung wird anhand der GPS-Aufzeichnung des Hundeführers gemessen, nicht der des Hundes. GPS liegt oft ein paar Meter daneben, kleine Abweichungen spielen also kaum eine Rolle.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="vaer">
+    <p class="eyebrow">20</p>
+    <h2>Wetter</h2>
+    <p>Trax ruft das Wetter an dem Ort ab, an dem die Fährte begann, für den Zeitpunkt, an dem du gestartet bist: Temperatur, Wind und Windrichtung, Niederschlag und Luftfeuchtigkeit. Wenn der Hund die Fährte startet, wird das Wetter erneut abgerufen, da der Wind während des Fährtenalters gedreht oder zugenommen haben kann. Die Wetterdaten werden mit der Fährte gespeichert und sind im PDF-Export enthalten, in den Spalten „Gelegt“ und „Gearbeitet“.</p>
+    <p>Während die Fährte gelegt wird und während der Hund arbeitet, zeigt ein kleiner Pfeil auf der Karte über den Kartentasten, wohin der Wind weht und wie stark in m/s. Der Pfeil zeigt dorthin, wohin der Wind weht, also wohin die Witterung zieht, und dreht sich mit der Karte. Tippe auf den Pfeil, um zum Beispiel „Wind aus SW, 4 m/s“ zu sehen. Der Wind wird einmal beim Start abgerufen und unterwegs nicht aktualisiert. Der Pfeil ist auch auf der Karte im PDF und auf dem Bild für soziale Medien zu sehen.</p>
+    <p>Fehlen einer Fährte die Wetterdaten, zum Beispiel weil du keinen Empfang hattest, tippe in der Fährtenübersicht auf „Wetter abrufen“. Dafür ist eine Internetverbindung nötig.</p>
+    <p>Die Wetterdaten stammen von Apple Wetter. Unter der Wetterkarte findest du das Apple Wetter-Logo und einen Link zu Apples Übersicht über weitere Datenquellen.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="sosiale-medier">
+    <p class="eyebrow">21</p>
+    <h2>In sozialen Medien teilen</h2>
+    <p class="intro">Zeig deine Fährte: Trax erstellt ein Bild mit der Fährte, der Länge, dem Fährtenalter und den Funden, gern über einem Foto von dir und deinem Hund.</p>
+    <ol class="steps">
+      <li>Wenn du eine Fährte gearbeitet hast, tippe im Fenster „Fährte sichern“ auf „In sozialen Medien teilen“. Ältere Fährten teilst du über die Teilen-Taste oben in der Fährtenübersicht.</li>
+      <li>Wähle oben das Aussehen. „Fährte und Zahlen“, „Nur Fährte“, „Liste“ und „Nur Zahlen“ zeigen die Fährte und die Zahlen in Weiß, wie bei Strava. „Satellit“ zeigt die Satellitenkarte mit einer weißen Karte.</li>
+      <li>Wähle „Story (9:16)“ oder „Beitrag (4:5)“.</li>
+      <li>Tippe auf „Foto aufnehmen“ oder „Foto auswählen“, um die Fährte über ein Foto von dir und deinem Hund zu legen. Ohne eigenes Foto ist der Hintergrund grün. „Foto entfernen“ nimmt es wieder weg.</li>
+      <li>Wähle die Farbe für „Fährtenleger“, „Hundeführer“ und „Gegenstände“: Weiß, Grün oder Orange.</li>
+      <li>Tippe auf „Bild teilen“ und wähle Instagram, Facebook, Snapchat oder eine andere App, oder „Bild sichern“, um es in Fotos zu speichern.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-share-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Wähle Aussehen, Format und Farben und lege die Fährte über ein eigenes Foto.</figcaption></figure>
+    <p>Bei der Gegenstandssuche und der Flächensuche zeigt das Bild den Feldrand und die Gegenstände ohne Fährte, und „Größe“ statt „Länge“. Die Sticker haben dann eine Farboption, „Feld“.</p>
+    <p>Hast du ein eigenes Foto verwendet, fragt Trax am Ende „Bild mit der Fährte sichern?“. Wählst du „Sichern“, wird das Bild oben in der Fährtenübersicht angezeigt, und du wischst zwischen Bild und Karte. Tippe auf das Bild, um es in voller Größe zu sehen. Unter „Bild“ kannst du das Bild erneut teilen oder von der Fährte entfernen. Das Bild ist im Backup enthalten.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>In einer Instagram-Story kannst du die Fährte als Sticker verwenden: Tippe auf „Sticker kopieren“, öffne eine Instagram-Story, wähle ein Foto und füge ein. Den Sticker kannst du verschieben und größer oder kleiner machen.</p></div>
+    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Wichtig: </span>Beim Teilen wird die Fährte nicht gesichert. Denk daran, danach auf „Fährte sichern“ zu tippen.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="dele">
+    <p class="eyebrow">22</p>
+    <h2>Fährten teilen und empfangen</h2>
+    <p class="intro">Fährtenleger und Hundeführer müssen nicht dasselbe iPhone verwenden. Der Fährtenleger sendet die Fährte als Trax-Datei.</p>
+    <ol class="steps">
+      <li>Wenn die Fährte gelegt ist, tippt der Fährtenleger auf „Exportieren“ › „An andere Trax-Nutzer“ oder auf die Teilen-Taste oben in der Fährtenübersicht.</li>
+      <li>Sende die Datei per AirDrop oder E-Mail. AirDrop funktioniert am besten, denn dann öffnet sich die Fährte beim Empfänger direkt in Trax.</li>
+      <li>Aus einer E-Mail oder aus Dateien tippt der Empfänger auf die Datei. Eine Vorschau zeigt Karte, Länge, Anzahl der Gegenstände und Untergrund. Tippe auf die Teilen-Taste und wähle Trax.</li>
+      <li>Trax zeigt „Fährte empfangen“ mit Länge und Anzahl der Gegenstände. Wähle „Fährte jetzt arbeiten“ oder „Für später sichern“. „Abbrechen“ schließt, ohne zu importieren.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-received-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Eine empfangene Fährte, bereit zum Arbeiten.</figcaption></figure>
+    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Wichtig: </span>Sende die Fährte nicht mit Nachrichten. Geht die Nachricht als SMS statt als iMessage raus, kommt die Datei nicht an, und es ist schwer, vorher zu erkennen, was passiert.</p></div>
+    <p>Die Datei enthält die Route des Fährtenlegers, die Gegenstände mit Beschreibung, den Untergrund, die Fährtenart, die Verleitungsfährten und alles, was zu einer Schweißfährte gehört. Wurde die Fährte schon gearbeitet, sind auch die Route des Hundes und die Bewertung dabei, und der Empfänger bekommt nur die Option „Sichern“. Die Fährte landet dann unter „Fertige Fährten“.</p>
+    <p>Du kannst auch auf dem Startbildschirm auf „Importieren“ tippen und eine Datei aus der App „Dateien“ wählen. GPX-Dateien aus anderen Apps und von GPS-Geräten funktionieren auch. Wähle „GPX (andere Apps)“, wenn du die Fährte in einer anderen Karten-App öffnen willst.</p>
+    <p>Hat der Fährtenleger kein iPhone? Dann kann die Fährte in jeder GPS-App gelegt werden, die GPX-Dateien speichert. Der Fährtenleger speichert an jedem ausgelegten Gegenstand einen Wegpunkt, exportiert die Fährte als GPX und sendet die Datei per E-Mail. Du tippst auf die Datei und wählst Trax, genau wie bei einer Trax-Datei.</p>
+    <p>Die Wegpunkte werden zu Gegenständen, mit dem Namen als Beschreibung, und du bekommst einen Hinweis, wenn der Hund sich ihnen nähert. Gegenstände können in Trax nicht nachträglich hinzugefügt werden. Hat die Datei keine Wegpunkte, kommt die Fährte also ohne Gegenstände an. Sende eine Fährte pro Datei. Enthält die Datei zwei Fährten, liest Trax die zweite als Route des Hundes.</p>
+    <p>Die Fährte bekommt die Markierung „Exportiert“ erst, wenn das Teilen abgeschlossen ist, egal ob du eine Trax-Datei, GPX oder PDF teilst. Brichst du das Teilen-Menü ab, wird sie nicht markiert.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Ihr wollt ein gemeinsames Archiv für eure Trainingsgruppe? Erstelle in der App „Dateien“ einen Ordner in iCloud Drive und teile ihn mit der Gruppe. Wähle „In Dateien sichern“, wenn du eine Fährte exportierst, und lege die Trax-Datei in den geteilten Ordner. Die anderen tippen auf die Datei im Ordner und öffnen sie in Trax, genau wie aus einer E-Mail.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="pdf">
+    <p class="eyebrow">23</p>
+    <h2>PDF-Bericht</h2>
+    <p>Tippe in der Fährtenübersicht oben auf die Teilen-Taste, wähle „PDF (mehrere)“ und wähle eine oder mehrere abgeschlossene Fährten aus. Du bekommst ein PDF mit einer Fährte pro Seite, die älteste zuerst, mit Karte, Kennzahlen, Gegenständen, Funden, Untergrund, Notiz, Bewertung und Wetter, fertig zum Senden oder Drucken.</p>
+    <p>Die Kennzahlen enthalten auch Fährtenart, Winkel, „Innerhalb X m der Fährte“ und „Fährte verloren“, und die Route des Hundeführers ist auf der Karte nach Abweichung eingefärbt, mit der Grenze, die du in der Fährtenübersicht gewählt hast (siehe „Abweichung von der Fährte“). Schweißfährten enthalten auch die Schweißmenge, Fährtenschuh/Schalen und die Schweißpausen. Jeder Gegenstand steht mit seiner Koordinate in dem Format, das du unter Einstellungen › Karte und Fährten gewählt hast, und wie genau das GPS war, als der Gegenstand ausgelegt wurde, zum Beispiel „±4 m Genauigkeit“. Ältere Fährten haben die Genauigkeit nicht gespeichert, dann steht dort „Genauigkeit unbekannt“.</p>
+    <p>Für alle Fährten eines Hundes tippst du auf dem Startbildschirm neben „Letzte Fährten“ auf „Alle“ und dann oben rechts auf die Dokumenttaste. Wähle den Hund und schalte „Zeitraum wählen“ ein, wenn du nur die Fährten zwischen zwei Daten willst. Das PDF bekommt ein Deckblatt mit Zusammenfassung, Durchschnittsbewertung und einer Liste der Fährten, danach eine Seite pro Fährte. Die Fährten im Bericht bekommen die Markierung „Exportiert“.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Der PDF-Bericht eignet sich gut als Trainingstagebuch oder um ihn deinem Ausbilder zu zeigen.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="hunder">
+    <p class="eyebrow">24</p>
+    <h2>Hunde</h2>
+    <p class="intro">Lege die Hunde an, mit denen du trainierst, dann siehst du, welcher Hund welche Fährte gearbeitet hat.</p>
+    <ol class="steps">
+      <li>Gehe zu Einstellungen › Meine Hunde.</li>
+      <li>Tippe auf „Hund hinzufügen“ und gib den Namen ein.</li>
+      <li>Tippe auf „Sichern“.</li>
+    </ol>
+    <p>Wenn du Hunde angelegt hast, wählst du den Hund, wenn du mit dem Arbeiten einer Fährte beginnst, nicht beim Legen. Hast du nur einen Hund, ist er schon ausgewählt. Der Hund wird in der Fährtenübersicht und im PDF-Bericht angezeigt.</p>
+    <p>Du kannst den Hund nachträglich in der Fährtenübersicht ändern. Auf der Seite „Fertige Fährten“ (tippe auf dem Startbildschirm auf „Alle“) kannst du mit den Tasten oben die Fährten jeweils eines Hundes anzeigen.</p>
+    <p>Wählst du einen Hund, zeigt die Karte vier Zahlen: „Fährten“, „Gefunden“, „Letzte 30 Tage“ und „Auf der Fährte“ (der Durchschnitt, wie viel jeder Fährte innerhalb der Grenze für die Abweichung lag). Darunter steht „Entwicklung“: ein Diagramm der abgeschlossenen Fährten des Hundes über die Zeit. Wähle, was das Diagramm zeigen soll: „Alter“, „Länge“, „Funde“, „Auf Fährte“, „Sterne“ oder „Schweiß“ (Schweißmenge pro 100 Meter, wenn der Hund mindestens zwei Schweißfährten mit Schweißmenge hat). Das Diagramm erscheint, sobald der Hund mindestens zwei Fährten hat. Fehlt den Fährten der gewählte Wert, steht dort, dass es zu wenige Fährten für ein Diagramm gibt.</p>
+    <p>Wählst du beim Hund „Gegenstandssuche“ oder „Flächensuche“, zeigt die Karte „Anzahl“ statt „Fährten“ und nicht „Auf der Fährte“. Das Diagramm für Suchen erscheint, sobald der Hund mindestens zwei Suchen hat. Suchen werden nie in der Statistik für Fährten mitgezählt.</p>
+    <p>Löschst du einen Hund, behalten seine Fährten den Hundenamen. Der Hund steht unter Einstellungen › Meine Hunde › „Frühere Hunde“, solange er Fährten hat, und dort kannst du den Schalter ausschalten, um ihn im Hundefilter auszublenden. Die Fährten stehen weiterhin unter „Alle“.</p>
+    <figure class="shot"><img src="../../img/manual/manual-dogs-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Die Hunde, mit denen du trainierst.</figcaption></figure>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="innstillinger">
+    <p class="eyebrow">25</p>
+    <h2>Einstellungen</h2>
+    <p>Ganz oben in den Einstellungen steht „Meine Hunde“, darunter eine Zeile für jede Seite: Hinweise, Karte und Fährten, Batterie, Backup und Über Trax. Tippe auf eine Zeile, um die Seite zu öffnen.</p>
+    <ul>
+      <li>Hinweise: Hinweise für Gegenstände in der Nähe, Schweißpause und Schweiß wieder, verlorene und kreuzende Fährten, Ansage der gearbeiteten Strecke sowie die Hinweisart mit Sprachansagen. Siehe „Hinweise und Sprachansagen“.</li>
+      <li>Karte und Fährten: Wähle Farbe und Symbol der Gegenstandsmarkierungen (Zahl, Stecknadel, Fahne, Pfote oder Beutel), „Farbe Fährtenleger“ und „Farbe Hundeführer“. „Karte nach Blickrichtung drehen“ dreht die Karte in die Richtung, in die du beim Legen oder Arbeiten einer Fährte schaust; ist es aus, ist Norden immer oben. Hier wählst du auch das Koordinatenformat: Dezimalgrad (DD), UTM, Grad/Minuten/Sekunden (DMS) oder MGRS.</li>
+      <li>Batterie: „GPS-Stromsparmodus“ verbraucht auf langen Fährten weniger Strom. Die Fährte wird etwas gröber, aber der Näherungshinweis und „Gefunden“ funktionieren wie bisher. Während der Aufzeichnung wird oben der Akkustand angezeigt, und die App warnt bei 20 und 10 Prozent, auch bei gesperrtem Bildschirm.</li>
+      <li>Backup: automatische Kopie in iCloud Drive und Backups, die du selbst erstellst. Siehe „Backup und neues iPhone“.</li>
+      <li>Meine Hunde: Hunde hinzufügen, umbenennen oder löschen. Unter „Frühere Hunde“ kannst du gelöschte Hunde im Hundefilter ausblenden.</li>
+      <li>Über Trax: „Feedback senden“ öffnet eine E-Mail an mich, in der App-Version, iOS-Version und iPhone-Modell schon ausgefüllt sind. Schreib deine Frage, deinen Fehler oder deinen Wunsch oben hinein. „Bewertung schreiben“ öffnet Trax im App Store, wo du Sterne vergeben und eine Rezension schreiben kannst. „Datenschutzerklärung“ öffnet die Datenschutzerklärung auf der Website von Trax.</li>
+    </ul>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Tippe neben einem Abschnitt auf „?“, um eine Erklärung der Einstellungen dort zu sehen. Tippe erneut, um sie auszublenden.</p></div>
+    <figure class="shot"><img src="../../img/manual/manual-settings-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Die Einstellungen mit einer Zeile für jede Seite.</figcaption></figure>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="sikkerhetskopi">
+    <p class="eyebrow">26</p>
+    <h2>Backup und neues iPhone</h2>
+    <p class="intro">Sichere deine Fährten, falls du dein iPhone verlierst oder auf ein neues wechselst.</p>
+    <p>„Automatische Kopie in iCloud Drive“ unter Einstellungen › Backup ist standardmäßig eingeschaltet. Trax legt dann ein Backup im Ordner „Trax“ in deinem eigenen iCloud Drive ab, wenige Sekunden nachdem eine Fährte oder ein Hund gespeichert oder geändert wurde, sodass du nicht selbst daran denken musst. Während eine Fährte läuft, wartet Trax, bis die Fährte gespeichert ist. Unter dem Schalter steht, wann die letzte Kopie abgelegt wurde, oder dass iCloud Drive auf dem iPhone ausgeschaltet ist.</p>
+    <figure class="shot"><img src="../../img/manual/manual-backup-de.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Einstellungen › Backup.</figcaption></figure>
+    <p>Du kannst auch selbst ein Backup erstellen, mit „Backup erstellen“. Du bekommst eine Datei (.traxbackup) mit allen Fährten und Hunden, die du in Dateien oder iCloud Drive sichern oder dir selbst senden kannst. Unter den Tasten steht, wann du zuletzt eines erstellt hast.</p>
+    <ol class="steps">
+      <li>Neues iPhone oder Trax neu installiert: Trax fragt einmal, ob deine Fährten aus iCloud Drive geholt werden sollen. Wähle „Wiederherstellen“.</li>
+      <li>Hast du ein Backup, das du selbst erstellt hast, tippe auf die Datei (sie öffnet sich in Trax) oder wähle „Aus Backup wiederherstellen“ unter Einstellungen › Backup.</li>
+      <li>Trax zeigt, wie viele Fährten und Hunde das Backup enthält, und fragt, bevor etwas hinzugefügt wird.</li>
+    </ol>
+    <p>Beim Wiederherstellen werden nur Fährten und Hunde hinzugefügt, die fehlen. Nichts wird gelöscht oder überschrieben. Ein Hund mit demselben Namen wie ein Hund auf dem iPhone wird zum selben Hund. Alles passiert auf dem iPhone und in deinem eigenen iCloud Drive, ohne Konto.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="administrere">
+    <p class="eyebrow">27</p>
+    <h2>Fährten löschen und wiederherstellen</h2>
+    <p>Tippe auf dem Startbildschirm auf „Bearbeiten“, um eine oder mehrere Fährten auszuwählen und zu löschen. Du kannst auch eine Fährte öffnen und ganz unten auf der Seite auf „Fährte löschen“ tippen. Du wirst immer gefragt, bevor etwas gelöscht wird.</p>
+    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Wichtig: </span>Gelöschte Fährten können nicht wiederhergestellt werden, es sei denn, sie sind in einem Backup. Exportiere die Fährte vorher als GPX oder PDF, wenn du sie behalten willst.</p></div>
+    <p>Stoppt die App mitten beim Legen einer Fährte, zum Beispiel weil der Akku des iPhone leer war, ist die Fährte unterwegs gespeichert worden. Wenn du Trax das nächste Mal öffnest, steht oben „Unfertig gelegte Fährte“. Wähle „Fortsetzen“, um weiterzulegen, „Beenden“, um die Fährte so zu sichern, wie sie ist, oder „Löschen“.</p>
+    <p>Stoppt die App mitten beim Arbeiten einer Fährte, steht die Fährte unter „Bereite Fährten“ mit „Fährte läuft“. Öffne sie und tippe auf „Fortsetzen“, um aus der Pause weiterzumachen. Willst du lieber neu beginnen, tippe auf den Zurückpfeil und auf „Hundefährte verwerfen“.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="feilsoking">
+    <p class="eyebrow">28</p>
+    <h2>Tipps und Fehlerbehebung</h2>
+    <ul>
+      <li>Die Fährte ist zackig oder hat Lücken: Prüfe, ob Trax Zugriff auf deinen Standort hat und „Genauer Standort“ eingeschaltet ist.</li>
+      <li>GPS ist in dichtem Wald, in steilen Tälern und zwischen hohen Gebäuden ungenauer. Warte am besten, bis sich die Position stabilisiert hat, bevor du auf „Start“ tippst.</li>
+      <li>Der Stromsparmodus kann zu weniger GPS-Punkten führen. Lade das iPhone vor langen Fährten oder schalte „GPS-Stromsparmodus“ unter Einstellungen › Batterie ein.</li>
+      <li>Du siehst die Fährte nicht auf dem Sperrbildschirm? Prüfe, ob Live-Aktivitäten unter Einstellungen › Trax auf deinem iPhone eingeschaltet sind.</li>
+      <li>Die Mitteilung, dass das Fährtenalter erreicht ist, kommt nicht? Prüfe, ob Mitteilungen für Trax unter Einstellungen › Trax › Mitteilungen auf deinem iPhone eingeschaltet sind, und schalte „Dringende Mitteilungen“ ein, wenn du Fokus verwendest.</li>
+      <li>Du hörst die Sprachansagen nicht? Prüfe, ob „Hinweise“ und „Hinweise vorlesen“ unter Einstellungen › Hinweise › Hinweisart eingeschaltet sind und die Lautstärke aufgedreht ist. Tippe auf „Beispiel anhören“, um es zu testen.</li>
+      <li>Du empfängst die Fährte nicht? Sende sie per AirDrop oder E-Mail, nicht mit Nachrichten. Prüfe, ob der Dateiname auf .trax oder .gpx endet, und versuche es mit „Importieren“ auf dem Startbildschirm.</li>
+      <li>Fragen oder Probleme? Tippe auf „Feedback senden“ unter Einstellungen › Über Trax oder sende eine E-Mail an <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>.</li>
+    </ul>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="personvern">
+    <p class="eyebrow">29</p>
+    <h2>Datenschutz</h2>
+    <p>Alle Fährten werden auf deinem iPhone gespeichert. Trax hat kein Konto und keinen eigenen Server. Nutzt du iCloud Drive, legt Trax ein Backup im Ordner „Trax“ in deinem eigenen iCloud Drive ab. Das kannst du unter Einstellungen › Backup ausschalten. Deine Fährten werden nur geteilt, wenn du sie selbst exportierst.</p>
+    <p>Das Bild für soziale Medien wird auf deinem iPhone erstellt. Wählst du „Bild sichern“, fragt iOS, ob Trax Fotos zu „Fotos“ hinzufügen darf. Trax kann nur Fotos hinzufügen, deine Fotos aber nicht sehen. Wählst du ein eigenes Foto, über das die Fährte gelegt wird, sieht Trax nur dieses eine Foto.</p>
+    <p>Um das Wetter abzurufen, werden Position und Zeitpunkt an Apple Wetter gesendet, wo die Fährte begann und wo der Hund die Fährte startete. Apple verknüpft die Anfrage nicht mit dir oder deinem Apple Account, und es werden keine Trainingsdaten gesendet.</p>
+    <p>Die vollständige Datenschutzerklärung findest du unter Einstellungen › Über Trax › Datenschutzerklärung.</p>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>© 2026 Silje Tillerflaten · <a href="./">Handbuch</a> · <a href="../../de/#support">Support</a> · <a href="../../de/datenschutz/">Datenschutz</a> · <a href="../../manual/" hreflang="nb" lang="nb">Norsk</a> · <a href="../../sv/manual/" hreflang="sv" lang="sv">Svenska</a> · <a href="../../en/manual/" hreflang="en" lang="en">English</a>
+    <p class="utvikler"><img src="../../img/tillerflaten-digital.png" width="24" height="24" alt="Logo von Tillerflaten Digital"> Entwickelt von Tillerflaten Digital · Org.-Nr. 938 657 742</p>
+  </footer>
+</div>
+
+<script>
+/* Språkvelger: lukk menyen ved klikk utenfor eller Escape */
+(function(){var d=document.querySelector('.lang');if(!d)return;
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus()}});})();
+</script>
+<script data-goatcounter="https://trax-dogtracking.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

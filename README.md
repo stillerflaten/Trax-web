@@ -18,7 +18,7 @@ Tysk (`de/`):
 - Forside: `/de/`
 - Datenschutz: `/de/datenschutz/`
 
-Den tyske siden sier tydelig at appen kommer på tysk med versjon 2.1 (boksen `.de-hinweis` i toppen, en linje under App Store-merket og et avsnitt under versjon 2.0). Til da bruker den de engelske skjermbildene (App Store-merket er Apples tyske, `img/app-store-de.svg`), og «Anleitung» lenker til den engelske manualen. Når appen er på tysk: lag tyske skjermbilder, legg tysk inn i `LANGS` i `verktoy/lag-manual.py` (og fjern den fra `SITE_ONLY_LANGS`), og fjern 2.1-beskjedene.
+Den tyske siden sier tydelig at appen kommer på tysk med versjon 2.1 (boksen `.de-hinweis` i toppen, en linje under App Store-merket og et avsnitt under versjon 2.0). Til da bruker den de engelske skjermbildene (App Store-merket er Apples tyske, `img/app-store-de.svg`), og den tyske manualen (`/de/manual/`, «Handbuch») viser appen på tysk med en beskjed om at appen er på engelsk til 2.1. Når appen er på tysk: lag tyske skjermbilder til galleriet, fjern `note` og `og` for tysk i `LANGS` i `verktoy/lag-manual.py` (lag `img/og-image-de.png` først), kjør skriptet og fjern 2.1-beskjedene.
 
 Språksidene har samme stil. Endrer du tekst eller utseende på én av dem, gjør det samme på de andre. Forsiden har `<body class="forside">` med bred layout og flater; reglene for den står samlet nederst i stilen. Personvernsidene og manualen bruker samme stil uten klassen, som lesesider. Ankeret `#personvern`/`#integritet`/`#privacy` finnes fortsatt på forsiden (kort sammendrag med lenke) i tilfelle skript er slått av.
 
@@ -30,12 +30,14 @@ Forsiden har et sveipbart galleri med sju skjermbilder: hjemskjerm, detaljkort, 
 
 ## Brukermanual
 
-Brukermanualen ligger på `/manual/`, `/sv/manual/` og `/en/manual/`, med bilder i `img/manual/`. Den lages automatisk fra manualen i appen (`ManualContent` i `Trax/UserManualView.swift` og `manual-*`-bildene i app-repoet), så nettmanualen og appen sier det samme. Ikke rediger manualsidene for hånd.
+Brukermanualen ligger på `/manual/`, `/sv/manual/`, `/en/manual/` og `/de/manual/`, med bilder i `img/manual/`. Den lages automatisk fra manualen i appen (`ManualContent` i `Trax/UserManualView.swift` og `manual-*`-bildene i app-repoet), så nettmanualen og appen sier det samme. Ikke rediger manualsidene for hånd.
 
 Når manualen i appen er endret, kjør fra roten av dette repoet (med app-repoet klonet ved siden av):
 
 ```
 python3 verktoy/lag-manual.py ../Trax
+# eller bare noen språk, f.eks.:
+python3 verktoy/lag-manual.py ../Trax de
 ```
 
 Skriptet henter stilen fra `index.html`, så endringer i utseendet på forsiden følger med neste gang det kjøres. Nytt språk: legg til en linje i `LANGS` øverst i skriptet.
