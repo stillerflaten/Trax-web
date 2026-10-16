@@ -130,7 +130,8 @@ footer .utvikler img{border-radius:6px;flex:none}
 .forside nav{margin-inline:0;padding-inline:0;border-bottom:0}
 .forside nav a.l{color:var(--fg)}
 .forside nav a.l:hover,.forside nav a.l:focus-visible{color:var(--accent)}
-nav .kj{background:var(--accent);color:var(--accent-ink);font:700 15px/1 var(--display);padding:10px 16px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:transform .15s}
+nav .kj{display:block;line-height:0;border-radius:7px;transition:transform .15s}
+nav .kj img{height:40px;width:auto}
 nav .kj:active{transform:scale(.97)}
 @media (max-width:480px){.forside nav a.l:not([href$="manual/"]){display:none}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -206,6 +207,15 @@ nav .kj:active{transform:scale(.97)}
 .forside footer .liten{margin:40px 0 0;font-size:14px}
 .forside footer .utvikler{font-size:14px}
 @media (max-width:600px){.forside footer{padding-block:64px 32px}}
+/* Menyen er lik på alle sider, slik den er på forsiden: samme bredde, farger og App Store-merke */
+nav{margin-inline:-16px;padding-inline:0;border-bottom:0}
+.forside nav{margin-inline:0}
+nav .wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+nav a.l{color:var(--fg)}
+nav a.l:hover,nav a.l:focus-visible,nav a.l[aria-current]{color:var(--accent)}
+@media (max-width:600px){nav .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+@media (max-width:480px){nav a.l ~ a.l{display:none}nav .wrap{gap:10px}.lang summary .chev{display:none}}
+@media (max-width:380px){.brand{font-size:0;gap:0}}
 </style>
 </head>
 <body>
@@ -222,7 +232,7 @@ nav .kj:active{transform:scale(.97)}
       <li><a href="../../en/privacy/" hreflang="en" lang="en">English</a></li>
     </ul>
   </details>
-  <a class="kj" href="../">App Store</a>
+  <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="../../img/app-store-sv.svg" width="120" height="40" alt="Hämta i App Store"></a>
 </div></nav>
 
 <main class="wrap" id="top">
