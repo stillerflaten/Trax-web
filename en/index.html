@@ -225,8 +225,6 @@ nav .kj:active{transform:scale(.97)}
 .forside footer .utvikler{font-size:14px}
 @media (max-width:600px){.forside footer{padding-block:64px 32px}}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
-.ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
-.ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
 .v2{padding-block:120px 0}
 .v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
@@ -240,8 +238,6 @@ nav .kj:active{transform:scale(.97)}
 .del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
 .del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
 .del img{display:block;width:100%;height:auto;border-radius:28px}
-.del .del-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
-.del .del-merke[hidden]{display:none}
 @media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
 .send .del-g{grid-template-columns:minmax(0,440px) 1fr}
 .send .del-g img{order:-1;border-radius:24px}
@@ -328,14 +324,13 @@ if(location.hash==='#privacy')location.replace('privacy/');
       </div>
       <ul class="tillit"><li>No account</li><li>No ads</li><li>Your data stays on your phone</li></ul>
     </div>
-    <div class="flate"><span class="ny-merke">New version, coming soon</span><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="The detail card for a long track with map, items found, length, lie time, time used and assessment" decoding="async" fetchpriority="high"></div>
+    <div class="flate"><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="The detail card for a long track with map, items found, length, lie time, time used and assessment" decoding="async" fetchpriority="high"></div>
   </header>
   <div class="wrap">
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
-    <p class="ny-tekst">These screenshots are from the new version of Trax, coming soon to the App Store.</p>
     <div class="galleri" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app" data-forrige="Previous image" data-neste="Next image" data-prikk="Image {n} of {t}">
       <ul class="g-liste" tabindex="0" aria-label="Screenshots from the app">
         <li><figure><img src="../img/galleri/galleri-en-1-hjem.webp" width="640" height="999" alt="The Trax home screen with this month's numbers, tracks ready to start and recent tracks" decoding="async"><figcaption><b>Everything in one place</b><span>This month's numbers, tracks ready to start and your latest tracks.</span></figcaption></figure></li>
@@ -364,9 +359,9 @@ if(location.hash==='#privacy')location.replace('privacy/');
   </div></section>
 
   <section id="version-2" class="v2"><div class="wrap">
-    <span class="v2-merke">Coming right after launch</span>
-    <h2>Version 2.0 is just around the corner</h2>
-    <p class="lead">Trax 1.0 is the first version in the App Store. Version 2.0 is nearly done and follows right after, as a free update for everyone who has the app. Everything in the list above is part of 2.0, and on top of that you get:</p>
+    <span class="v2-merke">Out now</span>
+    <h2>New in version 2.0</h2>
+    <p class="lead">Version 2.0 is out now in the App Store, as a free update for everyone who has the app. On top of everything in the list above, you get:</p>
     <ul class="v2-liste">
       <li><b>New design</b><span>A new home screen with the month in numbers, large map cards for tracks that are ready, and calmer screens while you lay a track and follow it with your dog.</span></li>
       <li><b>Article and area search</b><span>Mark out an area on the map and search for items or hidden people, with a time limit and separate statistics.</span></li>
@@ -381,7 +376,6 @@ if(location.hash==='#privacy')location.replace('privacy/');
 
   <section id="sharing" class="del"><div class="wrap del-g">
     <div>
-      <span class="del-merke">Coming in version 2.0</span>
       <h2>Share the track with a photo of your dog</h2>
       <p>Pick a photo from your camera roll and Trax puts the track, the items and the numbers on top. Share it as a story or a post, and choose the track colours yourself. If you would rather show just the track, you get it on a green background.</p>
     </div>

@@ -225,8 +225,6 @@ nav .kj:active{transform:scale(.97)}
 .forside footer .utvikler{font-size:14px}
 @media (max-width:600px){.forside footer{padding-block:64px 32px}}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
-.ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
-.ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
 .v2{padding-block:120px 0}
 .v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
@@ -240,8 +238,6 @@ nav .kj:active{transform:scale(.97)}
 .del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
 .del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
 .del img{display:block;width:100%;height:auto;border-radius:28px}
-.del .del-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
-.del .del-merke[hidden]{display:none}
 @media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
 .send .del-g{grid-template-columns:minmax(0,440px) 1fr}
 .send .del-g img{order:-1;border-radius:24px}
@@ -328,14 +324,13 @@ if(location.hash==='#integritet')location.replace('integritet/');
       </div>
       <ul class="tillit"><li>Inget konto</li><li>Ingen reklam</li><li>Datan stannar i telefonen</li></ul>
     </div>
-    <div class="flate"><span class="ny-merke">Ny version, kommer snart</span><img src="../img/galleri/galleri-sv-2-detaljkort.webp" width="640" height="999" alt="Detaljkortet för ett långt spår med karta, hittade föremål, längd, spårets ålder, spårtid och bedömning" decoding="async" fetchpriority="high"></div>
+    <div class="flate"><img src="../img/galleri/galleri-sv-2-detaljkort.webp" width="640" height="999" alt="Detaljkortet för ett långt spår med karta, hittade föremål, längd, spårets ålder, spårtid och bedömning" decoding="async" fetchpriority="high"></div>
   </header>
   <div class="wrap">
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
-    <p class="ny-tekst">Bilderna är från den nya versionen av Trax, som snart kommer till App Store.</p>
     <div class="galleri" role="region" aria-roledescription="karusell" aria-label="Skärmbilder från appen" data-forrige="Föregående bild" data-neste="Nästa bild" data-prikk="Bild {n} av {t}">
       <ul class="g-liste" tabindex="0" aria-label="Skärmbilder från appen">
         <li><figure><img src="../img/galleri/galleri-sv-1-hjem.webp" width="640" height="999" alt="Startsidan i Trax med månadens siffror, spår som är redo att starta och de senaste spåren" decoding="async"><figcaption><b>Allt på ett ställe</b><span>Månadens siffror, spår som är redo att starta och dina senaste spår.</span></figcaption></figure></li>
@@ -364,9 +359,9 @@ if(location.hash==='#integritet')location.replace('integritet/');
   </div></section>
 
   <section id="version-2" class="v2"><div class="wrap">
-    <span class="v2-merke">Kommer direkt efter lanseringen</span>
-    <h2>Version 2.0 är precis runt hörnet</h2>
-    <p class="lead">Trax 1.0 är den första versionen i App Store. Version 2.0 är nästan klar och kommer direkt efter, som en gratis uppdatering för alla som har appen. Allt i listan ovan ingår i 2.0, och dessutom kommer detta:</p>
+    <span class="v2-merke">Ute nu</span>
+    <h2>Nytt i version 2.0</h2>
+    <p class="lead">Version 2.0 finns nu i App Store, som en gratis uppdatering för alla som har appen. Utöver allt i listan ovan får du detta:</p>
     <ul class="v2-liste">
       <li><b>Ny design</b><span>Ny startskärm med månadens siffror, stora kartkort för spår som är klara och lugnare skärmar när du lägger spår och följer spåret med hunden.</span></li>
       <li><b>Föremålssök och ytsök</b><span>Gör ett område på kartan och sök efter föremål eller figuranter, med tidsgräns och egen statistik.</span></li>
@@ -381,7 +376,6 @@ if(location.hash==='#integritet')location.replace('integritet/');
 
   <section id="delning" class="del"><div class="wrap del-g">
     <div>
-      <span class="del-merke">Kommer i version 2.0</span>
       <h2>Dela spåret med en bild på hunden</h2>
       <p>Välj en bild från kamerarullen, så lägger Trax spåret, föremålen och siffrorna ovanpå. Du kan dela den som story eller inlägg och välja färgerna på spåret själv. Vill du hellre visa bara spåret får du det på en grön bakgrund.</p>
     </div>

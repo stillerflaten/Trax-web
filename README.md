@@ -26,7 +26,7 @@ Språkvelgeren i menyen (`<details class="lang">`) har én linje per språk. Nyt
 
 ## Skjermbildegalleri
 
-Forsiden har et sveipbart galleri med sju skjermbilder: hjemskjerm, detaljkort, valg av øvelse (sportypene), feltsøk, blodspor, kryss-spor og nattmodus (`img/galleri/galleri-<språk>-<nr>-<navn>.webp`, 640 × 999). Bildene er laget fra skjermbildene i det nye designet (`appstore-bilder/kilde/nytt-design/<språk>/`, fra skjermbilde-workflowen i app-repoet), satt i en telefon på samme bakgrunn som App Store-bildene, uten piler og merkelapper. Teksten under hvert bilde står i HTML-en. Toppbildet på forsiden er bilde 2 (detaljkortet). Bildene er fra versjon 2.0, så det står «Ny versjon, kommer snart» på toppbildet og en setning over galleriet (`.ny-merke` og `.ny-tekst`). De skjules ikke av lanseringsdatoen, siden 1.0 kommer først; fjern dem for hånd når 2.0 er ute (se «Versjon 2.0»). `galleri.js` legger til piler og prikker og er felles for alle språk. Nytt språk: lag sju nye bilder og kopier `<div class="galleri">` med oversatt tekst.
+Forsiden har et sveipbart galleri med sju skjermbilder: hjemskjerm, detaljkort, valg av øvelse (sportypene), feltsøk, blodspor, kryss-spor og nattmodus (`img/galleri/galleri-<språk>-<nr>-<navn>.webp`, 640 × 999). Bildene er laget fra skjermbildene i det nye designet (`appstore-bilder/kilde/nytt-design/<språk>/`, fra skjermbilde-workflowen i app-repoet), satt i en telefon på samme bakgrunn som App Store-bildene, uten piler og merkelapper. Teksten under hvert bilde står i HTML-en. Toppbildet på forsiden er bilde 2 (detaljkortet). Bildene er fra versjon 2.0. På den tyske siden står en setning over galleriet (`.ny-tekst`) om at bildene er på engelsk til 2.1. `galleri.js` legger til piler og prikker og er felles for alle språk. Nytt språk: lag sju nye bilder og kopier `<div class="galleri">` med oversatt tekst.
 
 ## Brukermanual
 
@@ -63,7 +63,7 @@ Når lenken deles (Facebook, Messenger, iMessage), vises `img/og-image-<språk>.
 
 Seksjonen «Laget av en hundefører» (`#om`, engelsk `#about`) viser foreløpig et bilde av Quatro (`img/quatro-hode.jpg`, 480 × 480, vist i 160 × 160 (120 på mobil), uten metadata). Når et bilde av Silje og Quatro finnes, bytt `src` og `alt` på alle tre sidene; stilen fyller ruten.
 
-Seksjonen om delebildet (`#deling`, svensk `#delning`, engelsk `#sharing`) viser `img/delebilde.webp` (680 × 1209, laget fra `appstore-bilder/kilde/egne/delebilde-nb.jpg`). Merket «Kommer i versjon 2.0» står til det fjernes for hånd. Bildet har norske tekster på alle tre språkene; bytt til egne svenske og engelske versjoner når de finnes.
+Seksjonen om delebildet (`#deling`, svensk `#delning`, engelsk `#sharing`) viser `img/delebilde.webp` (680 × 1209, laget fra `appstore-bilder/kilde/egne/delebilde-nb.jpg`). Bildet har norske tekster på alle tre språkene; bytt til egne svenske og engelske versjoner når de finnes.
 
 Seksjonen om å sende spor til en annen Trax-bruker (`#send-spor`, svensk `#skicka-spar`, engelsk `#send-track`, tysk `#fahrte-senden` med det engelske bildet) står rett etter delebildet og viser infobildet `img/send-spor-<språk>.webp` (800 × 1000). Det er Instagram-innlegget fra `markedsforing/del-spor/` i prosjektmappen, skalert ned; lag det på nytt der (`kilde/page.html`) og konverter hvis appen endres.
 
@@ -73,4 +73,4 @@ Seksjonen om å sende spor til en annen Trax-bruker (`#send-spor`, svensk `#skic
 
 ## Versjon 2.0
 
-Seksjonen «Versjon 2.0 er rett rundt hjørnet» (`#versjon-2`, svensk og engelsk `#version-2`) står mellom funksjonene og delebildet. Den sier at funksjonene i listen over er med i 2.0, og lister det som kommer i tillegg. Den skjules ikke av lanseringsdatoen, siden 1.0 kommer først. Når 2.0 er ute i App Store: fjern seksjonen, `.v2 h2` fra `MAAL` og `.v2 …` fra `GRUPPER` i `forside.js`, merket «Kommer i versjon 2.0» på delebildet, og `.ny-merke` og `.ny-tekst` i galleriet, på alle tre sidene.
+Seksjonen «Nytt i versjon 2.0» (`#versjon-2`, svensk, tysk og engelsk `#version-2`) står mellom funksjonene og delebildet. Den sier at 2.0 er ute som gratis oppdatering, og lister det nye som ikke står i funksjonslisten over. «Kommer snart»-tekstene for 2.0 ble fjernet da 2.0 kom ut (17. oktober 2026). Den tyske siden har i tillegg et avsnitt om at tysk kommer i 2.1.
