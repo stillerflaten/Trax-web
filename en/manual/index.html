@@ -31,14 +31,15 @@
 :root{
   --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
   --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
+  --tile-g:#e4efe7; --tile-o:#fbeadb; --tile-r:#f6e1e1; --tile-b:#e1ebf6; --ink-g:#2f6b45; --ink-o:#a8561a; --ink-r:#a3262b; --ink-b:#2f63a3; --band:#e7ece4; --deep:#1f4d31; --on-deep:#ffffff; --on-deep-2:#c9dccf; --foot:#1d241f; --on-foot:#e6ebe6; --on-foot-2:#a3b0a7;
   --display:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
-  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}}
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
-  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0}
@@ -55,8 +56,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 header.hero{padding-block:48px 32px}
 .hero h1{font:800 clamp(40px,9vw,64px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
 .hero p{font-size:20px;color:var(--muted);margin:0;max-width:34ch}
-/* «Snart i App Store»: fjern denne linja og <p class="snart"> i hero når appen er live */
-.hero p.snart{display:inline-block;margin:20px 0 0;padding:6px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--accent);color:var(--accent);font:700 15px/1.4 var(--display)}
+/* App Store-knapp og pris. Før lanseringsdatoen (data-lansering på <body>, ÅÅÅÅ-MM-DD) vises «Snart i App Store».
+   Fra datoen vises merket og introprisen, og sju dager senere ordinær pris. Uten dato står «Snart» til datoen settes. */
+.tillit{display:flex;flex-wrap:wrap;gap:4px 18px;margin:16px 0 0;padding:0;list-style:none;font-size:15px;color:var(--muted)}
+.tillit li{display:flex;align-items:center;gap:6px}
 .trackline{display:block;width:100%;height:60px;margin-top:24px}
 .trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
 .trackline circle{fill:var(--accent)}
@@ -74,20 +77,12 @@ h3{font:700 18px/1.3 var(--display);margin:28px 0 6px}
 .eyebrow{font:700 13px var(--display);text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin:0 0 6px}
 p,li{max-width:65ch}
 ul{padding-left:1.2em}
-.feat{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
-.feat div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
-.feat b{display:block;font-family:var(--display);margin-bottom:2px}
-.feat span{color:var(--muted);font-size:15px}
-.contact{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 24px;display:flex;flex-wrap:wrap;gap:16px 20px;align-items:center;margin-top:20px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06)}
-.contact .ic{flex:none;width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#3b8357,#1f4d31);color:#fff;display:grid;place-items:center}
-.contact .ic svg{width:26px;height:26px}
-.contact .who{flex:1 1 16em;min-width:0}
-.contact .who b{display:block;font:700 20px/1.25 var(--display);letter-spacing:-.01em;margin-bottom:2px}
-.contact .who span{color:var(--muted);font-size:16px}
-.contact .who a{font-weight:600;text-decoration:none;white-space:nowrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;font:600 17px var(--body);background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:14px 28px;text-decoration:none;white-space:nowrap}
-.btn:hover{filter:brightness(1.08)}
-@media (max-width:560px){.contact .btn{width:100%}}
+/* Funksjoner: to kolonner på mobil, tre fra 600 px. Ikonfargene følger lys og mørk modus. */
+.funk .sub{color:var(--muted);margin:0}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.fg li{max-width:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.fg b{display:block;font:700 16px/1.25 var(--display);margin-bottom:3px}
+.fg span{display:block;color:var(--muted);font-size:14.5px;line-height:1.45}
 .ph{background:var(--mark);padding:0 4px;border-radius:3px}
 button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
 dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
@@ -116,7 +111,7 @@ dd{margin:0;color:var(--muted);min-width:0}
 .g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
 .g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
 @media (hover:none) and (pointer:coarse){.g-pil{display:none}}
-@media (min-width:600px){.feat{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
 .lang{position:relative} /* lista åpner rett under knappen, høyrejustert mot den, så det ser ut som knappen utvider seg */
@@ -141,11 +136,138 @@ nav .wrap{position:relative}
 footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
 footer .utvikler{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:13px}
 footer .utvikler img{border-radius:6px;flex:none}
-.updated{font:400 13px var(--mono);color:var(--muted)}
+.updated{font-size:14px;color:var(--muted)}
+/* Forsiden (body.forside): bred layout, flater i stedet for streker og kort, store overskrifter.
+   Manualen og personvernsiden bruker ikke klassen og beholder lesesidestilen over. */
+.forside{padding-inline:0}
+.forside .wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:600px){.forside .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+.forside nav{margin-inline:0;padding-inline:0;border-bottom:0}
+.forside nav a.l{color:var(--fg)}
+.forside nav a.l:hover,.forside nav a.l:focus-visible{color:var(--accent)}
 nav .kj{display:block;line-height:0;border-radius:7px;transition:transform .15s}
 nav .kj img{height:40px;width:auto}
-@media (hover:hover){nav .kj:hover{transform:translateY(-1px)}}
 nav .kj:active{transform:scale(.97)}
+@media (max-width:480px){.forside nav a.l:not([href$="manual/"]){display:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.forside section{border-top:0;padding-block:0}
+.forside p,.forside li{max-width:none}
+.forside h2{font:800 clamp(34px,4.4vw,56px)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 16px}
+/* Toppen: tekst til venstre, appen stor på en grønn flate til høyre (under teksten på mobil) */
+.topp{display:grid;grid-template-columns:1.3fr .9fr;gap:40px;align-items:end;padding-top:40px}
+.topp h1{font:800 clamp(44px,5.5vw,84px)/.95 var(--display);letter-spacing:-.045em;margin:0 0 24px;text-wrap:balance}
+.topp .lead{font-size:21px;line-height:1.45;margin:0 0 32px;max-width:30ch}
+.topp .tillit{margin:28px 0 48px;gap:6px 22px;font-size:17px;color:var(--fg)}
+.tillit li::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--track);margin-right:3px}
+.kjop{margin:0}
+.kjop [hidden]{display:none!important}
+.kjop .snart{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:0}
+.kjop .chip{display:inline-block;background:var(--fg);color:var(--bg);font:700 17px/1 var(--display);padding:16px 24px;border-radius:999px}
+.kjop .snart span:not(.chip){font-size:17px;color:var(--muted)}
+.kjop .live{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.kjop .pris{display:flex;flex-direction:column;margin:0;font-size:16px;line-height:1.4;color:var(--muted)}
+.kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
+.appstore{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
+.appstore:active{transform:scale(.97)}
+.appstore img{height:52px;width:auto}
+.flate{background:var(--deep);border-radius:28px 28px 0 0;height:min(76vh,700px);min-height:440px;position:relative;overflow:hidden}
+.flate img{position:absolute;left:50%;top:48px;width:min(74%,400px);height:auto;border-radius:28px}
+@media (max-width:860px){.topp{grid-template-columns:1fr;gap:0}.flate{height:460px;min-height:0}.flate img{width:300px;top:36px}}
+@media (max-width:600px){.topp{padding-top:20px}.topp .lead{font-size:19px;margin-bottom:24px}.topp .tillit{margin:22px 0 28px}
+  .flate{height:340px;margin-inline:-16px;border-radius:0}.flate img{width:250px;top:28px}}
+.forside .trackline{margin-top:28px}
+.forside .galleri{margin-top:12px;padding-bottom:96px}
+.forside .g-liste img{border:0}
+@media (min-width:1000px){.forside .g-liste li{flex:0 0 calc((100% - 64px)/5)}.forside .g-ktrl{display:none!important}}
+@media (max-width:600px){.forside .galleri{padding-bottom:64px}}
+/* Funksjoner: hel grønn flate, oransje gjenstandsmarkør foran hver funksjon som i appen */
+.forside .funk{background:var(--deep);color:var(--on-deep);padding-block:120px 136px}
+.forside .funk h2{max-width:14ch}
+.forside .funk .sub{color:var(--on-deep-2);font-size:21px;margin:0 0 64px}
+.forside .fg{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 56px;margin:0}
+.forside .fg li{background:none;border:0;border-radius:0;padding:0}
+.forside .fg b{display:flex;align-items:center;gap:12px;font:800 25px/1.15 var(--display);letter-spacing:-.02em;margin-bottom:8px}
+.forside .fg b::before{content:"";flex:none;width:14px;height:14px;border-radius:50%;background:var(--track);box-shadow:0 0 0 5px rgb(199 119 46/.3)}
+.forside .fg span{color:var(--on-deep-2);font-size:17px;line-height:1.5;padding-left:26px}
+@media (max-width:860px){.forside .fg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.forside .funk{padding-block:72px 84px}.forside .funk .sub{font-size:19px;margin-bottom:40px}.forside .fg{grid-template-columns:1fr;gap:28px}.forside .fg b{font-size:22px}}
+/* Om: setningen stort til venstre, navn og resten av teksten til høyre. Bytt poten i .bilde med <img> når bildet finnes. */
+.om-g{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start;padding-block:136px}
+.om-g blockquote{margin:0;font:700 clamp(26px,2.6vw,36px)/1.25 var(--display);letter-spacing:-.02em;text-wrap:balance}
+.om-g .hvem{display:flex;align-items:center;gap:16px;margin:0 0 18px}
+.om-g .bilde{flex:none;width:160px;height:160px;border-radius:32px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;overflow:hidden}
+.om-g .bilde svg{width:32px;height:32px}
+.om-g .bilde img{width:100%;height:100%;object-fit:cover}
+.om-g .hvem b{display:block;font:800 21px/1.25 var(--display)}
+.om-g .hvem span{color:var(--muted);font-size:16px}
+.om-g p{margin:0}
+@media (max-width:860px){.om-g{grid-template-columns:1fr;gap:28px;padding-block:80px}.om-g .bilde{width:120px;height:120px;border-radius:26px}}
+/* Support: tonet flate, e-posten som stor lenke, spørsmålene i tre kolonner */
+.forside #support{background:var(--band);padding-block:120px}
+.sup-intro{max-width:60ch;margin:0}
+.post{display:inline-block;font:800 clamp(22px,2.6vw,34px)/1.2 var(--display);color:var(--accent);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:3px;margin:20px 0 72px;overflow-wrap:anywhere}
+.faq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 48px}
+.faq h3,.pv h3{font:800 20px/1.25 var(--display);margin:0 0 6px}
+.faq p{margin:0;font-size:17px}
+.pv{margin-top:64px;max-width:60ch}
+.pv p{margin:0 0 8px;font-size:17px}
+.pv a{font-weight:600}
+@media (max-width:860px){.forside #support{padding-block:72px}.post{margin-bottom:48px}.faq{grid-template-columns:1fr;gap:26px}.pv{margin-top:40px}}
+/* Bunnteksten: navnet stort, App Store-knappen en gang til, og lenkene */
+.forside footer{border-top:0;background:var(--foot);color:var(--on-foot-2);padding-block:96px 40px;font-size:16px}
+.forside footer .stort{font:800 clamp(88px,17vw,240px)/.8 var(--display);letter-spacing:-.06em;margin:0 0 40px;color:var(--on-foot)}
+.forside footer .rad{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
+.forside footer .rad a{color:var(--on-foot)}
+.forside footer .chip{background:var(--on-foot);color:var(--foot)}
+.forside footer .liten{margin:40px 0 0;font-size:14px}
+.forside footer .utvikler{font-size:14px}
+@media (max-width:600px){.forside footer{padding-block:64px 32px}}
+/* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
+.v2{padding-block:120px 0}
+.v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
+.v2-liste{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;margin:0;padding:0;list-style:none}
+.v2-liste li{max-width:none}
+.v2-liste b{display:flex;align-items:center;gap:10px;font:800 21px/1.2 var(--display);letter-spacing:-.015em;margin-bottom:6px}
+.v2-liste b::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--track)}
+.v2-liste span{display:block;color:var(--muted);font-size:16px;line-height:1.5;padding-left:22px}
+@media (max-width:1000px){.v2-liste{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.v2{padding-block:80px 0}.v2 .lead{font-size:19px;margin-bottom:36px}.v2-liste{grid-template-columns:1fr;gap:24px}}
+.del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
+.del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
+.del img{display:block;width:100%;height:auto;border-radius:28px}
+@media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
+.send .del-g{grid-template-columns:minmax(0,440px) 1fr}
+.send .del-g img{order:-1;border-radius:24px}
+.send .tips{font-size:16px;color:var(--muted);margin-top:16px}
+@media (max-width:860px){.send .del-g{grid-template-columns:1fr}.send .del-g img{order:0;max-width:440px}}
+/* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
+@keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
+.bev .topp > div:first-child > :nth-child(2){animation-delay:.08s}.bev .topp > div:first-child > :nth-child(3){animation-delay:.16s}
+.bev .topp > div:first-child > :nth-child(4){animation-delay:.24s}.bev .flate{animation-delay:.12s}
+.bev .inn{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.bev .inn.vis{opacity:1;transform:none}
+.flate img{transform:translateX(-50%) translateY(var(--py,0px)) rotate(-3deg)}
+@media (prefers-reduced-motion:no-preference){
+  .post,.g-pil,.lang summary,footer .rad a{transition:transform .15s,color .15s}
+  .post:active,.g-pil:active,.lang summary:active{transform:scale(.97)}
+  .appstore:hover,nav .kj:hover{transform:translateY(-1px)}
+}
+/* Sporlinja nedover siden (forside.js): i margen til høyre på brede skjermer, ellers prikker foran overskriftene */
+.sporlinje{position:absolute;left:0;top:0;width:100%;height:0;pointer-events:none;z-index:1;overflow:visible}
+.sporlinje .spor{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.sporlinje .m{fill:var(--track);stroke:var(--on-deep);stroke-width:2.5}
+.sporlinje text{fill:#fff;font:800 15px var(--display)}
+.sporlinje .hake{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.sporlinje .hake circle{fill:#2f9e5a;stroke:var(--on-deep);stroke-width:2}
+.sporlinje .hake path{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.sporlinje .funnet .hake{transform:none}
+.gj-prikk{display:inline-block;flex:none;width:.42em;height:.42em;max-width:16px;max-height:16px;min-width:12px;min-height:12px;border-radius:50%;background:var(--track);margin-right:.3em;vertical-align:.12em;position:relative}
+.gj-prikk::after{content:"";position:absolute;right:-7px;top:-7px;width:12px;height:12px;border-radius:50%;background:#2f9e5a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3.3 6.2l1.8 1.8 3.6-3.8' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");transform:scale(0);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.gj-prikk.funnet::after{transform:none}
+.spor-bred .gj-prikk{display:none}
+.spor-still .sporlinje .hake,.spor-still .gj-prikk::after{transition:none}
 /* Menyen og sidebredden er lik på alle sider, slik den er på forsiden: samme bredde, farger og App Store-merke.
    På undersidene står teksten til venstre i full bredde, men linjene holdes korte nok til å lese. */
 body{padding-inline:0}
@@ -185,6 +307,11 @@ figure.shot img{display:block;width:100%;height:auto;border-radius:18px;border:1
 figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .back{font-size:14px;margin:20px 0 0}
 .back a{text-decoration:none;font-weight:600}
+.hero .callout{margin-top:20px}
+.hero .callout p{font-size:16px;color:var(--fg);max-width:none}
+.kommer{display:inline-block;vertical-align:middle;font:600 13px/1 var(--display);letter-spacing:0;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:5px 10px;margin-left:8px;white-space:nowrap}
+.toc .kommer{font-size:11px;padding:3px 7px;margin-left:6px}
+
 </style>
 </head>
 <body>
@@ -210,7 +337,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">iOS app for tracking training</p>
     <h1>User manual</h1>
     <p class="lead">Everything you need to lay tracks, walk them and follow your training over time.</p>
-    <p class="updated">Last updated: 13 October 2026</p>
+    <p class="updated">Last updated: 17 October 2026</p>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
@@ -222,20 +349,24 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <li><a href="#hjem">Home screen</a></li>
       <li><a href="#legge-spor">Laying a track</a></li>
       <li><a href="#sportype">Track type and blood tracks</a></li>
+      <li><a href="#sok">Search: article and area search</a></li>
       <li><a href="#gjenstander">Items</a></li>
       <li><a href="#lagre">Saving the track</a></li>
       <li><a href="#liggetid">Lie time</a></li>
       <li><a href="#kryss-spor">Cross tracks</a></li>
       <li><a href="#ga-spor">Walking a track</a></li>
       <li><a href="#blindt-spor">Blind tracks</a></li>
+      <li><a href="#nattmodus">Night mode</a></li>
       <li><a href="#funn">Recording finds</a></li>
       <li><a href="#varsler">Alerts and voice alerts</a></li>
       <li><a href="#sporoversikt">Track overview</a></li>
       <li><a href="#vurdering">Assessment and corners</a></li>
       <li><a href="#avspilling">Playing back the walk</a></li>
+      <li><a href="#hundens-spor">Dog’s track from a GPS collar <span class="kommer">Coming in v2.1</span></a></li>
       <li><a href="#rediger">Editing a track</a></li>
       <li><a href="#avvik">Deviation from track</a></li>
       <li><a href="#vaer">Weather</a></li>
+      <li><a href="#sosiale-medier">Share on social media</a></li>
       <li><a href="#dele">Sharing and receiving tracks</a></li>
       <li><a href="#pdf">PDF report</a></li>
       <li><a href="#hunder">Dogs</a></li>
@@ -259,25 +390,29 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <figure class="shot"><img src="../../img/manual/manual-onboarding-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The introduction shows the status of location access.</figcaption></figure>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>“While Using App” is enough. Once you have tapped “Start”, tracking continues when the screen is locked or you switch apps, and iOS shows a blue indicator at the top of the screen. You can change access under Settings › Trax › Location on your iPhone.</p></div>
     <p>Trax needs “Precise Location”. Without it, the position can be several hundred metres off. If it is turned off, the app asks for precise location when you lay or walk a track, and shows the card “Precise Location is off” with a link to Settings. Turn on “Precise Location” for Trax there.</p>
-    <p>Trax and the user manual follow the language of your phone: English, Norwegian (Bokmål) or Swedish.</p>
+    <p>Trax and the user manual follow the language of your phone: English, Norwegian (Bokmål), Swedish or German.</p>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="hjem">
     <p class="eyebrow">02</p>
     <h2>Home screen</h2>
     <p class="intro">Everything starts here, and this is where you find all your tracks.</p>
+    <p>The green header shows this month’s figures: the number of tracks, the total length, finds and how many tracks are ready. The icons at the top right are Import, User manual and Settings. “Import” opens a track from a Trax or GPX file, for example a track someone has sent you.</p>
     <ul>
-      <li>“New track” starts laying a track.</li>
-      <li>“Import” opens a track from a Trax or GPX file, for example a track someone has sent you.</li>
-      <li>“Ready to walk” lists tracks that have been laid but not walked, and how long ago they were laid. “Walk in progress” means the walk has been started but not stopped.</li>
-      <li>“Recent tracks” lists the three latest tracks that have been both laid and walked, with the number of finds. Tap a track to see the details.</li>
-      <li>“See all” next to “Recent tracks” opens the “Completed tracks” page with all your tracks. At the top right of that page you find the document button for a PDF per dog and “Edit” to delete several tracks.</li>
-      <li>If you have registered dogs, buttons appear at the top of the “Completed tracks” page: “All” and one for each dog. Tracks without a dog are listed under “All”. When you choose a dog, you only see its tracks and a summary with the number of tracks, the share of items found, the number of tracks in the last 30 days and “On track”, and a progress chart (see “Dogs”). If the dog has no completed tracks, it says “… has no finished tracks yet”. Dogs you have deleted keep their button as long as they have tracks. To hide such a dog, press and hold its button and choose “Hide from filter”. You can show it again under Settings › My dogs › “Previous dogs”.</li>
-      <li>If the tracks on the page have at least two track types, buttons for the track type appear below the dog buttons: “All types”, “Track”, “IGP track” and “Blood track”.</li>
-      <li>Small icons on each track show the track type (a figure for a track, a rosette for an IGP track, a drop for a blood track), the dog (a paw), whether the track was imported (arrow in) and whether you have exported it (arrow out).</li>
+      <li>“Ready to walk” lists tracks that have been laid but not walked yet. They are shown as large map cards at the top, and you swipe sideways if you have several. The card shows the status (“Ready”, “Ready in …” while the lie time counts down, or “Walk in progress” if the walk has been started but not stopped), the lie time, the length and the number of items.</li>
+      <li>“Start” on the card takes you straight to the track. Otherwise, tap the card to open the track overview. Press and hold the card and choose “Delete” to delete the track.</li>
+      <li>“Recent tracks” lists the three latest completed tracks. Each row has a small map with the track type as a badge, the date, length and dog on one line, and the finds on the right, for example 3/3. Tap a track to see the details.</li>
+      <li>“Edit” next to “Recent tracks” lets you select and delete tracks. “See all” opens the “Completed tracks” page with all your tracks.</li>
+      <li>“New track” is the green button at the bottom, and starts laying a track.</li>
     </ul>
-    <p>At the top right you find Settings (the gear) and the User manual (the book).</p>
-    <figure class="shot"><img src="../../img/manual/manual-home-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The home screen with tracks ready to walk and recent tracks.</figcaption></figure>
+    <figure class="shot"><img src="../../img/manual/manual-home-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The home screen with ready tracks at the top and recent tracks below.</figcaption></figure>
+    <p>On the “Completed tracks” page the tracks are grouped by month. At the top right you find the document button for a PDF per dog and “Edit” to delete several tracks.</p>
+    <ul>
+      <li>If you have registered dogs, buttons appear at the top: “All” and one for each dog, with the dog’s initial in colour. Tracks without a dog are listed under “All”. When you choose a dog, you only see its tracks and a summary with the number of tracks, the share of items found, the number of tracks in the last 30 days and “On track”, and a progress chart (see “Dogs”). If the dog has no completed tracks, it says “… has no finished tracks yet”.</li>
+      <li>Dogs you have deleted keep their button as long as they have tracks. To hide such a dog, press and hold its button and choose “Hide from filter”. You can show it again under Settings › My dogs › “Previous dogs”.</li>
+      <li>If the tracks on the page have at least two track types, buttons for the track type appear below the summary: “Track”, “IGP track”, “Blood track”, “Article search” and “Area search”. If there are at least two kinds of track (track, IGP track or blood track), “All tracks” comes first. It only shows tracks. Article search and area search are separate exercises, and are only shown under their own buttons, with their own statistics (see “Search: article and area search”).</li>
+      <li>Small icons on the row show whether the track was imported (arrow in) and whether you have exported it (arrow out).</li>
+    </ul>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="legge-spor">
@@ -286,8 +421,8 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="intro">As the track layer, you walk the track first while the app records the route with GPS.</p>
     <ol class="steps">
       <li>Tap “New track” on the home screen.</li>
-      <li>Choose the track type with the three large buttons: “Track”, “IGP track” or “Blood track”. “Track” is chosen by default (see “Track type and blood tracks”).</li>
-      <li>The GPS starts as soon as the screen opens. Wait until the GPS dot at the top is green or yellow, then tap the large “Start” button.</li>
+      <li>Choose the exercise with the large buttons: “Track”, “IGP track”, “Blood track” or “Search”. “Track” is chosen by default (see “Track type and blood tracks” and “Search: article and area search”).</li>
+      <li>The GPS starts as soon as the screen opens. Wait until the GPS dot at the top is green or yellow, then tap the large green “Start” button.</li>
       <li>Walk the track. The route is drawn on the map as you go.</li>
       <li>Tap “Item” to drop an item where you are standing (see “Items”).</li>
       <li>If you need a break, tap “Pause”. Tap “Resume” to carry on. The distance covered while paused is not recorded.</li>
@@ -297,18 +432,18 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>If the GPS signal is weak before you start, a box appears below the panel at the top. Red means you should wait for a better signal, yellow that you can start, but the track will be more accurate if you wait. The box closes by itself when the signal is good, or when you tap “OK, got it”. You can always start.</p>
     <p>The panel at the top shows time, length and number of items in large numbers, how accurate the GPS is, and the battery level. A green dot means better than 10 metres, yellow 10–25 metres and red more than 25 metres. “No GPS” means the phone has had no position for more than 15 seconds. Tap the panel to see when the track started, when the position was last updated, and the coordinate where you are standing.</p>
     <p>When you tap “Start”, the map zooms in on you, always to the same view. If you zoom during the track, the map keeps the zoom you chose.</p>
-    <p>The buttons on the right of the map change the map and centre it on you again. The map button cycles between the standard map, topo and satellite. Topo is the topographic map from the Norwegian Mapping Authority (Kartverket), with contour lines and paths. It needs internet access and shows “© Kartverket” at the bottom. Outside Norway topo is not available, and the button goes straight from map to satellite. The N button switches the map direction: north up, or a map that turns with the direction you face. Your choice is remembered, and you can also change it under Settings › Map and tracks.</p>
+    <p>The map buttons on the right are grouped in one capsule. The top button opens the map menu, where you choose “Map”, “Topo” or “Satellite”, and turn “Night mode” on or off (see “Night mode”). Topo is the topographic map from the Norwegian Mapping Authority (Kartverket), with contour lines and paths. It needs internet access, shows “© Kartverket” at the bottom and is only available in Norway. The N button switches the map direction: north up, or a map that turns with the direction you face. Your choice is remembered, and you can also change it under Settings › Map and tracks. The bottom button centres the map on you again.</p>
     <p>The arrow above the map buttons shows the wind (see “Weather”).</p>
     <p>While you lay the track, it is shown on the lock screen and in the Dynamic Island with time, length and number of items. On the lock screen you can tap “Pause” or “Resume”, and “Item” to drop an item without unlocking the phone.</p>
-    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Important: </span>If you tap “Back” before the track is stopped, the app asks whether you want to discard the track or stop and save it. A discarded track cannot be recovered.</p></div>
+    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Important: </span>If you tap the back arrow at the top left of the panel before the track is stopped, the app asks whether you want to discard the track or stop and save it. A discarded track cannot be recovered.</p></div>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="sportype">
     <p class="eyebrow">04</p>
     <h2>Track type and blood tracks</h2>
-    <p class="intro">Choose whether the track is a regular track, an IGP track or a blood track. Blood tracks have their own buttons and options.</p>
-    <p>You choose the track type with the three large buttons on the laying screen before you tap “Start”. You can change it afterwards in the “Track type” card in the track overview. The track type is shown on the track, in the PDF and in the file when you send the track.</p>
-    <figure class="shot"><img src="../../img/manual/manual-tracktype-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Choose the track type before you start.</figcaption></figure>
+    <p class="intro">Choose whether the track is a regular track, an IGP track or a blood track. Blood tracks have their own buttons and options. Article search and area search are under “Search” (see “Search: article and area search”).</p>
+    <p>You choose the track type with the large buttons under “Choose the exercise before you start” on the laying screen, before you tap “Start”. You can change it afterwards in the “Track type” card in the track overview. The track type is shown on the track, in the PDF and in the file when you send the track.</p>
+    <figure class="shot"><img src="../../img/manual/manual-tracktype-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Choose the exercise before you start.</figcaption></figure>
     <p>On a blood track, “Item” is replaced by three buttons:</p>
     <ul>
       <li>“Wound bed” places a wound bed where you are standing. It is shown as a dark red drop on the map.</li>
@@ -323,8 +458,33 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>The track overview and the PDF list “Wound beds, game and blood stops” with the length of each blood stop, plus the blood amount and tracking shoe. The blood amount is also in the dog report and on the image for social media.</p>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
-  <section class="m" id="gjenstander">
+  <section class="m" id="sok">
     <p class="eyebrow">05</p>
+    <h2>Search: article and area search</h2>
+    <p class="intro">Search exercises are not tracks. You place a field or an area on the map and put out articles or people, and the dog searches within a time limit.</p>
+    <ol class="steps">
+      <li>Tap “New track” and then “Search”. Choose “Article search” or “Area search”. Your choice then takes the place of the “Search” button, and you can tap it again to change.</li>
+      <li>The field (or area) is placed on the map where you are standing, with the start line where you are. If the weather has been fetched, it is turned so the dog is sent in against the wind. Otherwise it faces north.</li>
+      <li>Choose the size in the menu on the left: article search has “Field 50 × 50 m” and “Corridor 10 × 50 m”, area search has “Area 100 × 100 m” and “Area 100 × 200 m”. You can also choose the width and length yourself.</li>
+      <li>Choose the time limit in the menu on the right. The default is 15 minutes for article search and 1 hour for area search. The choices are remembered separately for article search and area search.</li>
+      <li>Adjust the position with the buttons below: “Turn left” and “Turn right” turn the field a little at a time, “Into wind” turns it into the wind, and “Start here” moves the start line to where you are standing.</li>
+      <li>Tap “Start” when the field is in the right place. The buttons for size, time and position then disappear.</li>
+      <li>Walk into the field and tap “Item” where you put each article. In area search there is also a “Person” button for placing a person where you stand.</li>
+      <li>Tap “Stop” and save as usual.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-search-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Article search before the start: choose the size and time limit, and turn or move the field.</figcaption></figure>
+    <p>The field does not have to be rectangular. Press and drag the corners to move them, and drag the + in the middle of an edge to make a new corner. The size menu then says “Custom shape”, and “Back to rectangle” in the same menu undoes it. You can change the shape until you tap “Stop”.</p>
+    <p>When the dog is going to search, open the search from “Ready to walk” and tap “Start”. “Walk blind” is already on, since the handler usually does not know where the articles are (see “Blind tracks”). The panel at the top shows the time left, the time used and the number of finds. The phone alerts you one minute before the time is up and when the time is up, with vibration, and with speech if “Read alerts aloud” is on. When the time is up it says “Over time”, and the clock keeps running.</p>
+    <p>Tap “Found” when the dog brings an article or indicates a person. The app asks which article the dog found, and the time since the search started is saved with the find. Your distance does not matter, since you usually stand by the field while the dog searches.</p>
+    <figure class="shot"><img src="../../img/manual/manual-search-find-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>“Found” asks which article the dog found.</figcaption></figure>
+    <p>Searches have no track alerts, deviation analysis or corners. On the map, the route of the person who placed the articles is thin and faded, and in article search the handler’s route is not shown.</p>
+    <p>The result in the track overview shows the size of the field, the time limit, the time used and each find with the time it took, in the order the dog found them. In area search, people and articles are counted separately. Articles that were not found are listed below.</p>
+    <figure class="shot"><img src="../../img/manual/manual-search-result-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The result of an article search with the time to each find.</figcaption></figure>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>Article search, area search and tracks are always kept apart in the statistics. “All tracks” on the “Completed tracks” page only shows tracks, and the dog card for searches shows “Count” instead of “Tracks”, without “On track”.</p></div>
+    <p class="back"><a href="#innhold">↑ Back to contents</a></p>
+  </section>
+  <section class="m" id="gjenstander">
+    <p class="eyebrow">06</p>
     <h2>Items</h2>
     <ol class="steps">
       <li>Stand where the item is placed and tap “Item”. The item is saved at once, with a number and position.</li>
@@ -338,38 +498,38 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="lagre">
-    <p class="eyebrow">06</p>
+    <p class="eyebrow">07</p>
     <h2>Saving the track</h2>
-    <p class="intro">When you tap “Stop”, the “Save track” sheet opens.</p>
+    <p class="intro">When you tap “Stop”, the “Save track” sheet opens. At the top you see the length, the number of items and the time.</p>
     <ul>
-      <li>“Save” saves the track and takes you back to the home screen. The track is listed under “Ready to walk”.</li>
+      <li>“Save track” stays at the bottom of the sheet. It saves the track and takes you back to the home screen, where the track is listed under “Ready to walk”.</li>
       <li>“Export” lets you choose Trax file, GPX or PDF. Choose “To another Trax user” to send the track to the handler.</li>
       <li>“Continue track” takes you back to the map if you tapped “Stop” too early.</li>
     </ul>
     <p>You can give the track a name. If you leave the field empty, the track is named with the date and time.</p>
     <p>Under “Surface” you can write what the track goes over, for example forest floor, gravel or meadow. The handler sees the surface on the track, also when you send it to another phone.</p>
-    <p>Under “Lie time” you choose how long the track should lie before the dog walks it (see “Lie time”). On a blood track, the “Shot site” and “Blood and tracking shoe” cards are also shown (see “Track type and blood tracks”).</p>
+    <p>Under “Lie time” you tap the button for how long the track should lie before the dog walks it (see “Lie time”). On a blood track, the “Shot site” and “Blood and tracking shoe” cards are also shown (see “Track type and blood tracks”).</p>
     <figure class="shot"><img src="../../img/manual/manual-save-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Save the track, export it or continue laying.</figcaption></figure>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="liggetid">
-    <p class="eyebrow">07</p>
+    <p class="eyebrow">08</p>
     <h2>Lie time</h2>
     <p>Lie time (track age) is the time from when you started laying the track until the handler starts walking it. It counts up by itself and is shown both while the track is waiting and while it is being walked. When the track has been walked, the lie time is locked and saved with the track.</p>
-    <p>To be told when the track has lain long enough, choose a lie time in the “Save track” sheet: “None”, 15, 30, 45, 60 or 90 minutes, 2 hours, or “Custom …” with hours and minutes (up to 48 hours). Your last choice is remembered. On blood tracks the choices are 30 minutes and 1, 2, 3, 6, 12, 18 and 24 hours, and blood tracks remember their own choice.</p>
+    <p>To be told when the track has lain long enough, choose a lie time with the buttons in the “Save track” sheet: “None”, 15, 30, 45, 60 or 90 minutes, 2 hours, or “Custom …” with hours and minutes (up to 48 hours). Your last choice is remembered. On blood tracks the choices are 30 minutes and 1, 2, 3, 6, 12, 18 and 24 hours, and blood tracks remember their own choice.</p>
     <p>The first time, the phone asks whether Trax may send notifications. Three minutes before the lie time is up, you get the notification “The track “…” is ready in 3 min (lie time 30 min). Get the dog ready.” The lock screen and the Dynamic Island count down, then show “Track is ready” with the track age until the track is started. Tap the notification or the countdown to open the track.</p>
     <p>A lie time over 8 hours has no countdown on the lock screen, only the notification before the track is ready.</p>
-    <p>The “Lie time” card in the track overview shows the countdown for tracks that are waiting. There you can change the lie time or choose “None”. The notification and countdown disappear when the track is started or deleted.</p>
+    <p>For tracks that are waiting, the track overview shows the lie time in large figures, with the goal and how far it has come. Tap the card to change the lie time or choose “None”. The notification and countdown disappear when the track is started or deleted.</p>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>The notification is time sensitive and gets through Focus modes such as Sleep when “Time Sensitive Notifications” is on for Trax. If notifications are turned off for Trax, the card tells you, with a button to Settings.</p></div>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="kryss-spor">
-    <p class="eyebrow">08</p>
+    <p class="eyebrow">09</p>
     <h2>Cross tracks</h2>
     <p class="intro">A cross track is a fresher track that crosses the main track, to train the dog to stay on the right track.</p>
     <ol class="steps">
       <li>Lay the main track as usual and save it.</li>
-      <li>Open the track from “Ready to walk” and tap “Lay cross track” in the “Cross tracks” card.</li>
+      <li>Open the track from “Ready to walk” on the home screen and tap “Lay cross track” in the “Cross tracks” card.</li>
       <li>The main track is shown faintly on the map. Tap “Start” and walk across the main track. “Pause” and “Stop” work as when you lay a regular track, but cross tracks have no items.</li>
       <li>Tap “Stop”. You can enter who laid the cross track under “Laid by”. Then tap “Save cross track”.</li>
     </ol>
@@ -379,11 +539,11 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="ga-spor">
-    <p class="eyebrow">09</p>
+    <p class="eyebrow">10</p>
     <h2>Walking a track</h2>
     <p class="intro">As the handler, you walk the track with your dog. The track layer’s route and the items are shown on the map, and your own route is drawn in a different colour.</p>
     <ol class="steps">
-      <li>Open the track from “Ready to walk” and tap “Walk track”.</li>
+      <li>Tap “Start” on the track under “Ready to walk” on the home screen. You can also open the track and tap “Start track” at the bottom.</li>
       <li>Choose the dog that will walk the track. If you only have one dog, it is already chosen. If you have not registered any dogs, you can start right away.</li>
       <li>To walk without seeing the track, turn on “Walk blind” (see “Blind tracks”).</li>
       <li>Tap “Start”.</li>
@@ -393,15 +553,15 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     </ol>
     <figure class="shot"><img src="../../img/manual/manual-walk-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Walking a track: the layer’s route, the items and your own route.</figcaption></figure>
     <p>Before you start, the panel at the top shows how old the track is, how long it is and how many items it has. While walking, it shows time, how far you have walked and how many items have been found. Tap the panel to see the lie time. If the GPS signal is weak, the same box is shown as when you lay a track.</p>
-    <p>When you tap “Start”, the map zooms in on you, to the same view every time. The map follows you as you walk, and if you zoom in or out, the map keeps the zoom you chose. The map button cycles between the standard map, topo (Norway only) and satellite, and the N button switches between north up and a map that turns with your direction. The arrow above the map buttons shows the wind when the dog started the track.</p>
+    <p>When you tap “Start”, the map zooms in on you, to the same view every time. The map follows you as you walk, and if you zoom in or out, the map keeps the zoom you chose. The map menu at the top of the map buttons has the standard map, topo (Norway only), satellite and night mode, and the N button switches between north up and a map that turns with your direction. The arrow above the map buttons shows the wind when the dog started the track.</p>
     <p>If you get too far from the laid track, the phone vibrates and the “Track lost” card appears at the top with how far away you are. The card disappears when you are back on the track, or when you tap the cross. Read more about this and the other alerts in “Alerts and voice alerts”.</p>
     <p>Recording continues when the screen is locked or you switch apps. The walk is shown on the lock screen and in the Dynamic Island, and on the lock screen you can tap “Pause”, “Resume” and “Found”.</p>
-    <p>If you tap “Back” after you have started, the app asks “End the dog track?”. You can stop and save, pause the walk or choose “Discard dog track”. A paused walk continues when you open the track again. “Discard dog track” only deletes what you have walked. The track that was laid stays under “Ready to walk”.</p>
-    <p>If the app stops in the middle of a walk, for example because the phone ran out of battery, the walk has been saved along the way. The track is listed under “Ready to walk” with “Walk in progress”. Open the track and tap “Walk track”, and the walk continues from pause. The time the app was stopped is not counted in the time spent.</p>
+    <p>If you tap the back arrow after you have started, the app asks “End the dog track?”. You can stop and save, pause the walk or choose “Discard dog track”. A paused walk continues when you open the track again. “Discard dog track” only deletes what you have walked. The track that was laid stays under “Ready to walk”.</p>
+    <p>If the app stops in the middle of a walk, for example because the phone ran out of battery, the walk has been saved along the way. The track is listed under “Ready to walk” with “Walk in progress”. Open the track and tap “Continue”, and the walk continues from pause. The time the app was stopped is not counted in the time spent.</p>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="blindt-spor">
-    <p class="eyebrow">10</p>
+    <p class="eyebrow">11</p>
     <h2>Blind tracks</h2>
     <p class="intro">Walk the track without seeing where the track layer went, as in a trial.</p>
     <p>Turn on “Walk blind” before you tap “Start”. The switch is always off when you open the track, so you turn it on each time.</p>
@@ -416,8 +576,23 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>The track overview and the PDF show “Walked blind”, and when the track was shown if you tapped “Show track”.</p>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
+  <section class="m" id="nattmodus">
+    <p class="eyebrow">12</p>
+    <h2>Night mode</h2>
+    <p class="intro">When you train in the dark, night mode makes the screen dark and red, so your night vision is not ruined.</p>
+    <ol class="steps">
+      <li>Tap the top map button on the right of the map while you lay or walk a track.</li>
+      <li>Turn on “Night mode” in the menu.</li>
+      <li>Turn it off the same way.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-mapmenu-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The map menu: choose map, topo or satellite, and turn night mode on or off.</figcaption></figure>
+    <p>Night mode makes the whole screen red and dark: the map, the panel at the top and the buttons. Your choice is remembered until the next time you lay or walk a track. The rest of the app looks as usual.</p>
+    <figure class="shot"><img src="../../img/manual/manual-night-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Night mode while laying a track.</figcaption></figure>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>Turn down the screen brightness as well. Night mode changes the colours, not how bright the screen is.</p></div>
+    <p class="back"><a href="#innhold">↑ Back to contents</a></p>
+  </section>
   <section class="m" id="funn">
-    <p class="eyebrow">11</p>
+    <p class="eyebrow">13</p>
     <h2>Recording finds</h2>
     <p>When you come within the chosen distance of an item (12 metres by default), a banner shows its number, description and distance. The phone vibrates, also with the screen locked. If GPS is inaccurate, the app waits with the alert until the position is better. You choose the distance and alert type under Settings › Alerts (see “Alerts and voice alerts”).</p>
     <ul>
@@ -429,12 +604,12 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <figure class="shot"><img src="../../img/manual/manual-found-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The banner appears when you are near an item.</figcaption></figure>
     <p>When you stop, the “Walk completed” sheet shows a list of the items. Finds you recorded along the way are already ticked. Correct anything that is missing.</p>
     <p>In the same sheet you can give the track an assessment (see “Assessment and corners”) and write notes, for example about the conditions or how the dog worked. The notes are included in the PDF. If the track layer left the surface empty, you can fill it in here. Tap “Save” when you are done.</p>
-    <p>“Export” in the same sheet shares the track as a Trax file, GPX or PDF right away. To show off the track, tap “Share on social media” (see “Sharing and receiving tracks”).</p>
+    <p>“Export” in the same sheet shares the track as a Trax file, GPX or PDF right away. To show off the track, tap “Share on social media” (see “Share on social media”).</p>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>To walk the track without alerts and without seeing it, turn on “Walk blind” before you start (see “Blind tracks”).</p></div>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="varsler">
-    <p class="eyebrow">12</p>
+    <p class="eyebrow">14</p>
     <h2>Alerts and voice alerts</h2>
     <p class="intro">While the dog walks the track, the phone can alert you with vibration, sound and voice. All alerts are set under Settings › Alerts.</p>
     <ul>
@@ -452,18 +627,18 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="sporoversikt">
-    <p class="eyebrow">13</p>
+    <p class="eyebrow">15</p>
     <h2>Track overview</h2>
     <p class="intro">Tap a track on the home screen to see everything about it.</p>
     <ul>
-      <li>The map shows both routes and all items. Tap “Fullscreen” for a larger map. There, the map button at the bottom right switches between the standard map, topo and satellite. Fullscreen always opens on the standard map.</li>
+      <li>The map at the top shows both routes and all items. Tap “Fullscreen” for a larger map. There, the map button at the bottom right switches between the standard map, topo and satellite. Fullscreen always opens on the standard map.</li>
       <li>“Options” in the top left corner of the map has “Play back walk” and “Edit track”. On a track that has not been walked yet, “Edit track” is shown there directly.</li>
-      <li>The result shows how many items were found, the length, the lie time, the time spent and the dog.</li>
+      <li>The result card below the title shows the finds in a ring (for example “4/4 found”), the length, the lie time, the time spent and how much of your route was on the track. For searches the card shows the size of the field instead of the length, and a separate card shows the time to each find (see “Search: article and area search”).</li>
       <li>Walked with the wrong dog, or forgot to choose one? Tap “Change dog” or “Choose dog” in the dog row, and pick another dog or “No dog”. If you have not registered any dogs, it says “Add dog”.</li>
       <li>On the map, found items get a small green tick in the corner and keep their colour and symbol, so you can see whether it was a wound bed or game. Items that were not found are grey. The handler’s route is coloured by how far from the track it went (see “Deviation from track”), and small numbered circles show the corners in the track (see “Assessment and corners”).</li>
       <li>“Assessment” below the result shows the rating, difficulty and learning point.</li>
       <li>“Deviation from track” shows how closely the walk followed the track.</li>
-      <li>Tracks that are waiting have the “Lie time” and “Cross tracks” cards (see those sections).</li>
+      <li>For tracks that are waiting, the card shows the lie time in large figures, with the goal and how far it has come, and “Start track” stays at the bottom of the screen. This is also where you find the “Cross tracks” card (see “Lie time” and “Cross tracks”).</li>
       <li>Under “Items” you see each item with its description and result. Tap an item to write or change its description. On a blood track the card is called “Wound beds, game and blood stops”.</li>
       <li>“Track type”, surface and notes are further down. Tap them to change them.</li>
       <li>The share button at the top exports the track as a Trax file, GPX or PDF, and creates the image for social media for completed tracks.</li>
@@ -474,7 +649,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="vurdering">
-    <p class="eyebrow">14</p>
+    <p class="eyebrow">16</p>
     <h2>Assessment and corners</h2>
     <p class="intro">Give each track an assessment, and see how many corners the track had.</p>
     <p>The “Assessment” card is in the “Walk completed” sheet and below the result in the track overview. Everything is optional:</p>
@@ -490,7 +665,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="avspilling">
-    <p class="eyebrow">15</p>
+    <p class="eyebrow">17</p>
     <h2>Playing back the walk</h2>
     <p class="intro">See how the dog worked, on top of the track that was laid.</p>
     <ol class="steps">
@@ -502,8 +677,24 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Items get a green tick when they are found. On older tracks, where the time of the find was not saved, the item is found where the dog came closest to it.</p>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
+  <section class="m" id="hundens-spor">
+    <p class="eyebrow">18</p>
+    <h2>Dog’s track from a GPS collar <span class="kommer">Coming in v2.1</span></h2>
+    <p class="intro">Does your dog wear a GPS collar, for example from Garmin or Tractive? Add the GPX file from the collar to see where the dog went compared with you and the track.</p>
+    <ol class="steps">
+      <li>Export the outing as a GPX file from the collar or the collar’s app, and save it in Files or AirDrop it to the phone.</li>
+      <li>Open the completed track and tap “Add dog’s track” in the “Dog’s track” card. Choose the GPX file.</li>
+      <li>If the file has several dogs, choose the one that ran the track. The dog with the same name as on the track is at the top.</li>
+    </ol>
+    <p>You can also open the GPX file directly from Files or AirDrop. If the times in the file match a track you have walked, Trax asks “Is this the dog’s track?”. Tap “Add dog’s track”, or “Import as new track” if the file is an ordinary track.</p>
+    <p>Trax only uses the part of the file from when you walked the track, with two extra minutes at each end. The rest of the outing is left out. The file must be from the same track: if the times don’t match, you are told so.</p>
+    <p>The “Dog’s track” card shows the length of the dog’s track and how far the dog was from you at most. “Show on map” hides or shows the dog’s line. “Replace” chooses a new file, and “Remove” deletes the dog’s track without touching the rest of the track.</p>
+    <p>In “Play back walk” the dog is shown as a paw and you as a separate dot, and below the timeline you see how far the dog was from you at that moment. The dog’s track is also on the map in the PDF and is included when you send the track to another Trax user.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>If the file has no times, the dog’s track is shown on the map, but not in playback.</p></div>
+    <p class="back"><a href="#innhold">↑ Back to contents</a></p>
+  </section>
   <section class="m" id="rediger">
-    <p class="eyebrow">16</p>
+    <p class="eyebrow">19</p>
     <h2>Editing a track</h2>
     <p class="intro">Trim the start or end of a track, for example a long tail because you forgot to tap Stop.</p>
     <ol class="steps">
@@ -517,7 +708,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="avvik">
-    <p class="eyebrow">17</p>
+    <p class="eyebrow">20</p>
     <h2>Deviation from track</h2>
     <p class="intro">See how closely the walk followed the track that was laid.</p>
     <p>The “Deviation from track” card is below the result in the track overview for completed tracks. It shows:</p>
@@ -532,7 +723,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="vaer">
-    <p class="eyebrow">18</p>
+    <p class="eyebrow">21</p>
     <h2>Weather</h2>
     <p>Trax fetches the weather where the track started, for the time you started: temperature, wind and wind direction, precipitation and humidity. When the dog starts the track, the weather is fetched again, since the wind may have turned or picked up during the lie time. The weather is saved with the track and included in the PDF export, in the columns “Laid” and “Tracked”.</p>
     <p>While the track is laid and while the dog is tracking, a small arrow on the map, above the map buttons, shows where the wind is blowing and its strength in m/s. The arrow points where the wind is blowing, which is where the scent goes, and turns with the map. Tap the arrow to see, for example, “Wind from SW, 4 m/s”. The wind is fetched once at the start and is not updated along the way. The arrow is also shown on the map in the PDF and on the image for social media.</p>
@@ -540,8 +731,27 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Weather data comes from Apple Weather. Below the weather card you find the Apple Weather mark and a link to Apple’s list of other data sources.</p>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
+  <section class="m" id="sosiale-medier">
+    <p class="eyebrow">22</p>
+    <h2>Share on social media</h2>
+    <p class="intro">Show off the track: Trax makes an image with the track, the length, the lie time and the finds, ideally on top of a photo of you and your dog.</p>
+    <ol class="steps">
+      <li>When you have walked a track, tap “Share on social media” in the “Save track” sheet. To share an older track, use the share button at the top of the track overview.</li>
+      <li>Choose the look at the top. “Track and stats”, “Track only”, “List” and “Stats only” show the track and the numbers in white, like Strava. “Satellite” shows the satellite map with a white card.</li>
+      <li>Choose “Story (9:16)” or “Post (4:5)”.</li>
+      <li>Tap “Take Photo” or “Choose Photo” to put the track on top of a photo of you and your dog. Without a photo the background is green. “Remove photo” takes it away again.</li>
+      <li>Choose the colour for “Track layer”, “Handler” and “Items”: white, green or orange.</li>
+      <li>Tap “Share image” and choose Instagram, Facebook, Snapchat or another app, or “Save Image” to save it to Photos.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-share-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Choose the look, format and colours, and put the track on top of your own photo.</figcaption></figure>
+    <p>For article search and area search, the image shows the edge of the field and the articles without a track, and “Size” instead of “Length”. The stickers then have one colour choice, “Area”.</p>
+    <p>If you used your own photo, Trax asks “Save the image with the track?” when you are done. Choose “Save” and the image is shown at the top of the track overview, and you swipe between the image and the map. Tap the image to see it full size. Under “Image” you can share it again or remove it from the track. The image is included in the backup.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>In an Instagram Story you can use the track as a sticker: tap “Copy sticker”, open an Instagram Story, pick a photo and paste. You can move and resize the sticker.</p></div>
+    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Important: </span>Sharing does not save the track. Remember to tap “Save track” afterwards.</p></div>
+    <p class="back"><a href="#innhold">↑ Back to contents</a></p>
+  </section>
   <section class="m" id="dele">
-    <p class="eyebrow">19</p>
+    <p class="eyebrow">23</p>
     <h2>Sharing and receiving tracks</h2>
     <p class="intro">The track layer and the handler do not need to use the same phone. The track layer sends the track as a Trax file.</p>
     <ol class="steps">
@@ -557,22 +767,20 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Does the track layer not have an iPhone? Then the track can be laid in any GPS app that saves GPX files. The track layer saves a waypoint where each item is placed, exports the track as GPX and sends the file by email. You tap the file and choose Trax, just as with a Trax file.</p>
     <p>The waypoints become items, with the name as the description, and you get an alert when the dog comes close to them. Items cannot be added in Trax afterwards, so if the file has no waypoints, the track arrives without items. Send one track per file. If the file has two tracks, Trax reads the second one as the dog’s route.</p>
     <p>The track gets the “Exported” badge only when the sharing is completed, whether you share a Trax file, GPX or PDF. If you cancel the share sheet, it is not marked.</p>
-    <p>Share on social media: When you have walked a track, tap “Share on social media” below “Save”. At the top you choose the look: “Track and stats”, “Track only”, “List” and “Stats only” show the track and the numbers in white, like Strava, while “Satellite” shows the satellite map with a white card. Choose “Story (9:16)” or “Post (4:5)”, and tap “Choose your own photo” to put the track on top of a photo of you and your dog. Without a photo the background is green. Both the track layer’s and the handler’s tracks are shown, and you choose white, green or orange for each. Tap “Share image” and choose Instagram, Facebook, Snapchat or another app, or “Save Image” to save it to Photos. Sharing does not save the track, so remember to tap “Save” afterwards. To share an older track, use the share button at the top of the track overview.</p>
-    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>In an Instagram Story you can use the track as a sticker: tap “Copy sticker”, open an Instagram Story, pick a photo and paste. You can move and resize the sticker.</p></div>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>Want a shared archive for your training group? Create a folder in iCloud Drive in the Files app and share it with the group. Choose “Save to Files” when you export a track, and put the Trax file in the shared folder. The others tap the file in the folder and open it in Trax, just as from email.</p></div>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="pdf">
-    <p class="eyebrow">20</p>
+    <p class="eyebrow">24</p>
     <h2>PDF report</h2>
-    <p>In the track overview, tap the share button at the top, choose “PDF (multiple)” and select one or more completed tracks. You get one PDF with the map, key figures, items, finds, surface, notes, assessment and weather for each track, ready to send or print.</p>
+    <p>In the track overview, tap the share button at the top, choose “PDF (multiple)” and select one or more completed tracks. You get one PDF with one track per page, oldest first, with the map, key figures, items, finds, surface, notes, assessment and weather, ready to send or print.</p>
     <p>The key figures also include the track type, corners, “Within X m of the track” and “Lost the track”, and the walk is coloured by deviation on the map, using the limit you chose in the track overview (see “Deviation from track”). Blood tracks also have the blood amount, tracking shoe/hoof and the blood stops. Each item is listed with its coordinate in the format you chose under Settings › Map and tracks, and how accurate the GPS was when the item was dropped, for example “±4 m accuracy”. Older tracks did not save the accuracy, and then it says “accuracy unknown”.</p>
     <p>For all the tracks of one dog, tap “See all” next to “Recent tracks” on the home screen, then the document button at the top right. Choose the dog, and turn on “Choose period” if you only want the tracks between two dates. The PDF gets a cover page with a summary, the average rating and a list of the tracks, followed by one page per track. The tracks in the report get the “Exported” badge.</p>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>The PDF report works well as a training log or to show your instructor.</p></div>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="hunder">
-    <p class="eyebrow">21</p>
+    <p class="eyebrow">25</p>
     <h2>Dogs</h2>
     <p class="intro">Register the dogs you train with, so you can see which dog walked each track.</p>
     <ol class="steps">
@@ -583,12 +791,13 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Once you have registered dogs, you choose the dog when you start walking a track, not when the track is laid. If you only have one dog, it is chosen for you. The dog is shown in the track overview and in the PDF report.</p>
     <p>You can change the dog afterwards in the track overview. On the “Completed tracks” page (tap “See all” on the home screen) you can show the tracks of one dog at a time with the buttons at the top.</p>
     <p>When you choose one dog, the card shows four figures: “Tracks”, “Found”, “Last 30 days” and “On track” (the average share of each track that was within the deviation limit). Below is “Progress”: a chart of the dog’s completed tracks over time. Choose what the chart shows: “Track age” (lie time), “Length”, “Found”, “On track”, “Rating” or “Blood” (blood amount per 100 metres, when the dog has at least two blood tracks with a blood amount). The chart appears once the dog has at least two tracks. If the tracks lack the value you chose, it says there are too few tracks to show a chart.</p>
+    <p>If you choose “Article search” or “Area search” for the dog, the card shows “Count” instead of “Tracks”, and not “On track”. The chart for searches appears once the dog has at least two searches. Searches are never counted in the statistics for tracks.</p>
     <p>If you delete a dog, its tracks keep the dog’s name. The dog is listed under Settings › My dogs › “Previous dogs” as long as it has tracks, and there you can turn off the switch to hide it from the dog filter. The tracks are still listed under “All”.</p>
     <figure class="shot"><img src="../../img/manual/manual-dogs-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The dogs you train with.</figcaption></figure>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="innstillinger">
-    <p class="eyebrow">22</p>
+    <p class="eyebrow">26</p>
     <h2>Settings</h2>
     <p>At the top of Settings is “My dogs”, and below it one row for each page: Alerts, Map and tracks, Battery, Backup and About Trax. Tap a row to open the page.</p>
     <ul>
@@ -604,7 +813,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="sikkerhetskopi">
-    <p class="eyebrow">23</p>
+    <p class="eyebrow">27</p>
     <h2>Backup and new phone</h2>
     <p class="intro">Keep your tracks safe if you lose your phone or switch to a new one.</p>
     <p>“Automatic Copy to iCloud Drive” under Settings › Backup is on by default. Trax then puts a backup in the “Trax” folder in your own iCloud Drive a few seconds after a track or a dog is saved or changed, so you don’t have to remember it. While a track is in progress, Trax waits until the track is saved. Below the switch it says when the last copy was made, or that iCloud Drive is off on the phone.</p>
@@ -619,16 +828,16 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="administrere">
-    <p class="eyebrow">24</p>
+    <p class="eyebrow">28</p>
     <h2>Deleting and recovering tracks</h2>
     <p>Tap “Edit” on the home screen to select and delete one or more tracks. You can also open a track and tap “Delete track” at the bottom of the page. You are always asked before anything is deleted.</p>
     <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Important: </span>Deleted tracks cannot be recovered unless they are in a backup. Export the track as GPX or PDF first if you want to keep it.</p></div>
     <p>If the app stops in the middle of laying a track, for example because the phone ran out of battery, the track has been saved along the way. The next time you open Trax, “Unfinished track” is shown at the top. Choose “Continue” to keep laying, “Finish” to save the track as it is, or “Delete”.</p>
-    <p>If the app stops in the middle of a walk, the track is listed under “Ready to walk” with “Walk in progress”. Open it and tap “Walk track” to continue from pause. If you would rather start over, tap “Back” and “Discard dog track”.</p>
+    <p>If the app stops in the middle of a walk, the track is listed under “Ready to walk” with “Walk in progress”. Open it and tap “Continue” to continue from pause. If you would rather start over, tap the back arrow and “Discard dog track”.</p>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="feilsoking">
-    <p class="eyebrow">25</p>
+    <p class="eyebrow">29</p>
     <h2>Tips and troubleshooting</h2>
     <ul>
       <li>The track is jagged or has gaps: check that Trax has location access and that “Precise Location” is on.</li>
@@ -643,7 +852,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="personvern">
-    <p class="eyebrow">26</p>
+    <p class="eyebrow">30</p>
     <h2>Privacy</h2>
     <p>All tracks are stored on your phone. Trax has no account and no server of its own. If you use iCloud Drive, Trax puts a backup in the “Trax” folder in your own iCloud Drive. You can turn this off under Settings › Backup. Your tracks are shared only when you export them yourself.</p>
     <p>The image for social media is created on your phone. If you choose “Save Image”, iOS asks whether Trax may add photos to Photos. Trax can only add photos, not see your photos. If you choose your own photo to put the track on, Trax only sees the one photo you pick.</p>
