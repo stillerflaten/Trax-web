@@ -28,6 +28,10 @@ Språkvelgeren i menyen (`<details class="lang">`) har én linje per språk. Nyt
 
 Forsiden har et sveipbart galleri med sju skjermbilder: hjemskjerm, detaljkort, valg av øvelse (sportypene), feltsøk, blodspor, kryss-spor og nattmodus (`img/galleri/galleri-<språk>-<nr>-<navn>.webp`, 640 × 999). Bildene er laget fra skjermbildene i det nye designet (`appstore-bilder/kilde/nytt-design/<språk>/`, fra skjermbilde-workflowen i app-repoet), satt i en telefon på samme bakgrunn som App Store-bildene, uten piler og merkelapper. Teksten under hvert bilde står i HTML-en. Toppbildet på forsiden er bilde 2 (detaljkortet). Bildene er fra versjon 2.0. På den tyske siden står en setning over galleriet (`.ny-tekst`) om at bildene er på engelsk til 2.1. `galleri.js` legger til piler og prikker og er felles for alle språk. Nytt språk: lag sju nye bilder og kopier `<div class="galleri">` med oversatt tekst.
 
+## Lanseringsvideo
+
+I «Nytt i versjon 2.0» på forsiden står lanseringsvideoen for 2.0 (`<div class="v2-film">`), én per språk: `img/video/trax-2-<nb|sv|en>.mp4` (720 × 1280, 30 fps, ca. 3 MB) med plakatbilde `.jpg`. Den tyske siden bruker den engelske til appen er på tysk. `film.js` spiller videoen lydløst i loop mens den er synlig, og knappen slår på lyd fra starten. Uten skript vises vanlige videokontroller, og med «Reduser bevegelse» starter den ikke av seg selv. Videoene lages i videoprosjektet (`video/trax-2-lansering/kilde/` i prosjektmappa, `scripts/web_version.sh`).
+
 ## Brukermanual
 
 Brukermanualen ligger på `/manual/`, `/sv/manual/`, `/en/manual/` og `/de/manual/`, med bilder i `img/manual/`. Den lages automatisk fra manualen i appen (`ManualContent` i `Trax/UserManualView.swift` og `manual-*`-bildene i app-repoet), så nettmanualen og appen sier det samme. Ikke rediger manualsidene for hånd.

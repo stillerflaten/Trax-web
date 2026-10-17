@@ -235,6 +235,17 @@ nav .kj:active{transform:scale(.97)}
 .v2-liste span{display:block;color:var(--muted);font-size:16px;line-height:1.5;padding-left:22px}
 @media (max-width:1000px){.v2-liste{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.v2{padding-block:80px 0}.v2 .lead{font-size:19px;margin-bottom:36px}.v2-liste{grid-template-columns:1fr;gap:24px}}
+.v2-g{display:grid;grid-template-columns:minmax(0,1fr) 320px;grid-template-areas:"tekst film" "liste film";column-gap:72px;align-items:start}
+.v2-tekst{grid-area:tekst}.v2-g .v2-liste{grid-area:liste;grid-template-columns:repeat(2,minmax(0,1fr))}
+.v2-film{grid-area:film;position:relative;width:320px;aspect-ratio:9/16;border-radius:32px;overflow:hidden;background:#0d1410;box-shadow:0 30px 70px rgba(19,38,28,.28)}
+.v2-film video{display:block;width:100%;height:100%;object-fit:cover}
+.v2-lyd{position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:10px 14px 10px 12px;background:rgba(10,16,12,.62);color:#fff;font:700 14px/1 var(--display);cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.v2-lyd[hidden]{display:none}
+.v2-lyd svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.v2-lyd .bolge{display:none}.v2-lyd.paa .bolge{display:inline}.v2-lyd.paa .kryss{display:none}
+.v2-lyd:focus-visible{outline:3px solid var(--track);outline-offset:3px}
+@media (max-width:900px){.v2-g{grid-template-columns:1fr;grid-template-areas:"tekst" "film" "liste"}.v2-film{justify-self:center;width:min(320px,100%);margin-bottom:56px}}
+@media (max-width:600px){.v2-g .v2-liste{grid-template-columns:1fr}.v2-film{margin-bottom:40px}}
 .del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
 .del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
 .del img{display:block;width:100%;height:auto;border-radius:28px}
@@ -359,19 +370,29 @@ if(location.hash==='#personvern')location.replace('personvern/');
   </div></section>
 
   <section id="versjon-2" class="v2"><div class="wrap">
-    <span class="v2-merke">Ute nå</span>
-    <h2>Nytt i versjon 2.0</h2>
-    <p class="lead">Versjon 2.0 er ute i App Store, som en gratis oppdatering for alle som har appen. I tillegg til alt i listen over får du dette:</p>
-    <ul class="v2-liste">
-      <li><b>Ny design</b><span>Ny hjemskjerm med månedens tall, store kartkort for klare spor og roligere skjermer mens du legger spor og følger sporet med hunden.</span></li>
-      <li><b>Feltsøk og arealsøk</b><span>Lag et felt på kartet og søk etter gjenstander eller figuranter, med tidsgrense og egen statistikk.</span></li>
-      <li><b>Nattmodus</b><span>Rødt lys på skjermen når du trener i mørket, så du ser kartet uten å bli blendet.</span></li>
-      <li><b>Vind og vær</b><span>Vindpil på kartet og været idet hunden starter sporet.</span></li>
-      <li><b>Vurdering av sporet</b><span>Gi karakter, vanskelighetsgrad og et læringspunkt etter hvert spor.</span></li>
-      <li><b>Rediger spor</b><span>Kutt starten og slutten av et spor i etterkant.</span></li>
-      <li><b>Flere spor i én PDF</b><span>Eksporter mange spor samlet, for eksempel til treningsloggen.</span></li>
-      <li><b>Sikkerhetskopi</b><span>Automatisk kopi av alle spor og hunder til iCloud Drive.</span></li>
-    </ul>
+    <div class="v2-g">
+    <div class="v2-tekst">
+      <span class="v2-merke">Ute nå</span>
+      <h2>Nytt i versjon 2.0</h2>
+      <p class="lead">Versjon 2.0 er ute i App Store, som en gratis oppdatering for alle som har appen. I tillegg til alt i listen over får du dette:</p>
+    </div>
+    <div class="v2-film">
+      <video controls muted loop playsinline preload="metadata" poster="img/video/trax-2-nb.jpg" width="720" height="1280" aria-label="Lanseringsvideo for Trax 2.0: plakaten for versjon 1.0 knuses av en ny iPhone, og fem nyheter vises: feltsøk, nattmodus, blodspor, blindt spor og talevarsler.">
+        <source src="img/video/trax-2-nb.mp4" type="video/mp4">
+      </video>
+      <button class="v2-lyd" type="button" hidden data-paa="Slå på lyd" data-av="Slå av lyd" data-spill="Spill av"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="bolge" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="kryss" d="m16 9 6 6m0-6-6 6"/></svg>Slå på lyd</button>
+    </div>
+      <ul class="v2-liste">
+        <li><b>Ny design</b><span>Ny hjemskjerm med månedens tall, store kartkort for klare spor og roligere skjermer mens du legger spor og følger sporet med hunden.</span></li>
+        <li><b>Feltsøk og arealsøk</b><span>Lag et felt på kartet og søk etter gjenstander eller figuranter, med tidsgrense og egen statistikk.</span></li>
+        <li><b>Nattmodus</b><span>Rødt lys på skjermen når du trener i mørket, så du ser kartet uten å bli blendet.</span></li>
+        <li><b>Vind og vær</b><span>Vindpil på kartet og været idet hunden starter sporet.</span></li>
+        <li><b>Vurdering av sporet</b><span>Gi karakter, vanskelighetsgrad og et læringspunkt etter hvert spor.</span></li>
+        <li><b>Rediger spor</b><span>Kutt starten og slutten av et spor i etterkant.</span></li>
+        <li><b>Flere spor i én PDF</b><span>Eksporter mange spor samlet, for eksempel til treningsloggen.</span></li>
+        <li><b>Sikkerhetskopi</b><span>Automatisk kopi av alle spor og hunder til iCloud Drive.</span></li>
+      </ul>
+    </div>
   </div></section>
 
   <section id="deling" class="del"><div class="wrap del-g">
@@ -445,6 +466,7 @@ if(n>=t+7*864e5){var e=document.querySelectorAll('.kjop .intro,.kjop .ord');for(
 <script src="spor.js" defer></script>
 <script src="galleri.js" defer></script>
 <script src="forside.js" defer></script>
+<script src="film.js" defer></script>
 <script data-goatcounter="https://trax-dogtracking.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
