@@ -155,8 +155,9 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .back a{text-decoration:none;font-weight:600}
 .hero .callout{margin-top:20px}
 .hero .callout p{font-size:16px;color:var(--fg);max-width:none}
-.kommer{display:inline-block;vertical-align:middle;font:600 13px/1 var(--display);letter-spacing:0;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:5px 10px;margin-left:8px;white-space:nowrap}
-.toc .kommer{font-size:11px;padding:3px 7px;margin-left:6px}"""
+/* «Kommer i v. 2.1»: samme stil som «Ute nå»-merket på forsiden (.v2-merke) */
+.kommer{display:inline-block;margin:0 0 10px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px;white-space:nowrap}
+.toc .kommer{flex:none;align-self:center;margin:0 0 0 auto;font-size:12px;padding:5px 9px}"""
 
 
 # Avsnitt om funksjoner som ikke er i App Store ennå, med versjonen de kommer i. Avsnittet merkes
@@ -197,7 +198,8 @@ def render(l, sections, strings, style, app, used, date):
     for i, s in enumerate(sections, 1):
         h = [f'  <section class="m" id="{s["id"]}">',
              f'    <p class="eyebrow">{i:02d}</p>',
-             f'    <h2>{esc(s["title"])}' + (f' <span class="kommer">{l["coming"]}</span>' if s["id"] in COMING else "") + '</h2>']
+             *([f'    <span class="kommer">{l["coming"]}</span>'] if s["id"] in COMING else []),
+             f'    <h2>{esc(s["title"])}</h2>']
         if s["intro"]:
             h.append(f'    <p class="intro">{esc(s["intro"])}</p>')
         for kind, val in s["blocks"]:
