@@ -31,14 +31,15 @@
 :root{
   --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
   --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
+  --tile-g:#e4efe7; --tile-o:#fbeadb; --tile-r:#f6e1e1; --tile-b:#e1ebf6; --ink-g:#2f6b45; --ink-o:#a8561a; --ink-r:#a3262b; --ink-b:#2f63a3; --band:#e7ece4; --deep:#1f4d31; --on-deep:#ffffff; --on-deep-2:#c9dccf; --foot:#1d241f; --on-foot:#e6ebe6; --on-foot-2:#a3b0a7;
   --display:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
-  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}}
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
-  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; color-scheme:dark}
+  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0}
@@ -55,8 +56,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 header.hero{padding-block:48px 32px}
 .hero h1{font:800 clamp(40px,9vw,64px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
 .hero p{font-size:20px;color:var(--muted);margin:0;max-width:34ch}
-/* «Snart i App Store»: fjern denne linja og <p class="snart"> i hero når appen er live */
-.hero p.snart{display:inline-block;margin:20px 0 0;padding:6px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--accent);color:var(--accent);font:700 15px/1.4 var(--display)}
+/* App Store-knapp og pris. Før lanseringsdatoen (data-lansering på <body>, ÅÅÅÅ-MM-DD) vises «Snart i App Store».
+   Fra datoen vises merket og introprisen, og sju dager senere ordinær pris. Uten dato står «Snart» til datoen settes. */
+.tillit{display:flex;flex-wrap:wrap;gap:4px 18px;margin:16px 0 0;padding:0;list-style:none;font-size:15px;color:var(--muted)}
+.tillit li{display:flex;align-items:center;gap:6px}
 .trackline{display:block;width:100%;height:60px;margin-top:24px}
 .trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
 .trackline circle{fill:var(--accent)}
@@ -74,20 +77,12 @@ h3{font:700 18px/1.3 var(--display);margin:28px 0 6px}
 .eyebrow{font:700 13px var(--display);text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin:0 0 6px}
 p,li{max-width:65ch}
 ul{padding-left:1.2em}
-.feat{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
-.feat div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
-.feat b{display:block;font-family:var(--display);margin-bottom:2px}
-.feat span{color:var(--muted);font-size:15px}
-.contact{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 24px;display:flex;flex-wrap:wrap;gap:16px 20px;align-items:center;margin-top:20px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06)}
-.contact .ic{flex:none;width:56px;height:56px;border-radius:14px;background:linear-gradient(145deg,#3b8357,#1f4d31);color:#fff;display:grid;place-items:center}
-.contact .ic svg{width:26px;height:26px}
-.contact .who{flex:1 1 16em;min-width:0}
-.contact .who b{display:block;font:700 20px/1.25 var(--display);letter-spacing:-.01em;margin-bottom:2px}
-.contact .who span{color:var(--muted);font-size:16px}
-.contact .who a{font-weight:600;text-decoration:none;white-space:nowrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;font:600 17px var(--body);background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:14px 28px;text-decoration:none;white-space:nowrap}
-.btn:hover{filter:brightness(1.08)}
-@media (max-width:560px){.contact .btn{width:100%}}
+/* Funksjoner: to kolonner på mobil, tre fra 600 px. Ikonfargene følger lys og mørk modus. */
+.funk .sub{color:var(--muted);margin:0}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.fg li{max-width:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.fg b{display:block;font:700 16px/1.25 var(--display);margin-bottom:3px}
+.fg span{display:block;color:var(--muted);font-size:14.5px;line-height:1.45}
 .ph{background:var(--mark);padding:0 4px;border-radius:3px}
 button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
 dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
@@ -116,7 +111,7 @@ dd{margin:0;color:var(--muted);min-width:0}
 .g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
 .g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
 @media (hover:none) and (pointer:coarse){.g-pil{display:none}}
-@media (min-width:600px){.feat{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
 .lang{position:relative} /* lista åpner rett under knappen, høyrejustert mot den, så det ser ut som knappen utvider seg */
@@ -141,11 +136,138 @@ nav .wrap{position:relative}
 footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
 footer .utvikler{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:13px}
 footer .utvikler img{border-radius:6px;flex:none}
-.updated{font:400 13px var(--mono);color:var(--muted)}
+.updated{font-size:14px;color:var(--muted)}
+/* Forsiden (body.forside): bred layout, flater i stedet for streker og kort, store overskrifter.
+   Manualen og personvernsiden bruker ikke klassen og beholder lesesidestilen over. */
+.forside{padding-inline:0}
+.forside .wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:600px){.forside .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+.forside nav{margin-inline:0;padding-inline:0;border-bottom:0}
+.forside nav a.l{color:var(--fg)}
+.forside nav a.l:hover,.forside nav a.l:focus-visible{color:var(--accent)}
 nav .kj{display:block;line-height:0;border-radius:7px;transition:transform .15s}
 nav .kj img{height:40px;width:auto}
-@media (hover:hover){nav .kj:hover{transform:translateY(-1px)}}
 nav .kj:active{transform:scale(.97)}
+@media (max-width:480px){.forside nav a.l:not([href$="manual/"]){display:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.forside section{border-top:0;padding-block:0}
+.forside p,.forside li{max-width:none}
+.forside h2{font:800 clamp(34px,4.4vw,56px)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 16px}
+/* Toppen: tekst til venstre, appen stor på en grønn flate til høyre (under teksten på mobil) */
+.topp{display:grid;grid-template-columns:1.3fr .9fr;gap:40px;align-items:end;padding-top:40px}
+.topp h1{font:800 clamp(44px,5.5vw,84px)/.95 var(--display);letter-spacing:-.045em;margin:0 0 24px;text-wrap:balance}
+.topp .lead{font-size:21px;line-height:1.45;margin:0 0 32px;max-width:30ch}
+.topp .tillit{margin:28px 0 48px;gap:6px 22px;font-size:17px;color:var(--fg)}
+.tillit li::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--track);margin-right:3px}
+.kjop{margin:0}
+.kjop [hidden]{display:none!important}
+.kjop .snart{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:0}
+.kjop .chip{display:inline-block;background:var(--fg);color:var(--bg);font:700 17px/1 var(--display);padding:16px 24px;border-radius:999px}
+.kjop .snart span:not(.chip){font-size:17px;color:var(--muted)}
+.kjop .live{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.kjop .pris{display:flex;flex-direction:column;margin:0;font-size:16px;line-height:1.4;color:var(--muted)}
+.kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
+.appstore{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
+.appstore:active{transform:scale(.97)}
+.appstore img{height:52px;width:auto}
+.flate{background:var(--deep);border-radius:28px 28px 0 0;height:min(76vh,700px);min-height:440px;position:relative;overflow:hidden}
+.flate img{position:absolute;left:50%;top:48px;width:min(74%,400px);height:auto;border-radius:28px}
+@media (max-width:860px){.topp{grid-template-columns:1fr;gap:0}.flate{height:460px;min-height:0}.flate img{width:300px;top:36px}}
+@media (max-width:600px){.topp{padding-top:20px}.topp .lead{font-size:19px;margin-bottom:24px}.topp .tillit{margin:22px 0 28px}
+  .flate{height:340px;margin-inline:-16px;border-radius:0}.flate img{width:250px;top:28px}}
+.forside .trackline{margin-top:28px}
+.forside .galleri{margin-top:12px;padding-bottom:96px}
+.forside .g-liste img{border:0}
+@media (min-width:1000px){.forside .g-liste li{flex:0 0 calc((100% - 64px)/5)}.forside .g-ktrl{display:none!important}}
+@media (max-width:600px){.forside .galleri{padding-bottom:64px}}
+/* Funksjoner: hel grønn flate, oransje gjenstandsmarkør foran hver funksjon som i appen */
+.forside .funk{background:var(--deep);color:var(--on-deep);padding-block:120px 136px}
+.forside .funk h2{max-width:14ch}
+.forside .funk .sub{color:var(--on-deep-2);font-size:21px;margin:0 0 64px}
+.forside .fg{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 56px;margin:0}
+.forside .fg li{background:none;border:0;border-radius:0;padding:0}
+.forside .fg b{display:flex;align-items:center;gap:12px;font:800 25px/1.15 var(--display);letter-spacing:-.02em;margin-bottom:8px}
+.forside .fg b::before{content:"";flex:none;width:14px;height:14px;border-radius:50%;background:var(--track);box-shadow:0 0 0 5px rgb(199 119 46/.3)}
+.forside .fg span{color:var(--on-deep-2);font-size:17px;line-height:1.5;padding-left:26px}
+@media (max-width:860px){.forside .fg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.forside .funk{padding-block:72px 84px}.forside .funk .sub{font-size:19px;margin-bottom:40px}.forside .fg{grid-template-columns:1fr;gap:28px}.forside .fg b{font-size:22px}}
+/* Om: setningen stort til venstre, navn og resten av teksten til høyre. Bytt poten i .bilde med <img> når bildet finnes. */
+.om-g{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start;padding-block:136px}
+.om-g blockquote{margin:0;font:700 clamp(26px,2.6vw,36px)/1.25 var(--display);letter-spacing:-.02em;text-wrap:balance}
+.om-g .hvem{display:flex;align-items:center;gap:16px;margin:0 0 18px}
+.om-g .bilde{flex:none;width:160px;height:160px;border-radius:32px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;overflow:hidden}
+.om-g .bilde svg{width:32px;height:32px}
+.om-g .bilde img{width:100%;height:100%;object-fit:cover}
+.om-g .hvem b{display:block;font:800 21px/1.25 var(--display)}
+.om-g .hvem span{color:var(--muted);font-size:16px}
+.om-g p{margin:0}
+@media (max-width:860px){.om-g{grid-template-columns:1fr;gap:28px;padding-block:80px}.om-g .bilde{width:120px;height:120px;border-radius:26px}}
+/* Support: tonet flate, e-posten som stor lenke, spørsmålene i tre kolonner */
+.forside #support{background:var(--band);padding-block:120px}
+.sup-intro{max-width:60ch;margin:0}
+.post{display:inline-block;font:800 clamp(22px,2.6vw,34px)/1.2 var(--display);color:var(--accent);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:3px;margin:20px 0 72px;overflow-wrap:anywhere}
+.faq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 48px}
+.faq h3,.pv h3{font:800 20px/1.25 var(--display);margin:0 0 6px}
+.faq p{margin:0;font-size:17px}
+.pv{margin-top:64px;max-width:60ch}
+.pv p{margin:0 0 8px;font-size:17px}
+.pv a{font-weight:600}
+@media (max-width:860px){.forside #support{padding-block:72px}.post{margin-bottom:48px}.faq{grid-template-columns:1fr;gap:26px}.pv{margin-top:40px}}
+/* Bunnteksten: navnet stort, App Store-knappen en gang til, og lenkene */
+.forside footer{border-top:0;background:var(--foot);color:var(--on-foot-2);padding-block:96px 40px;font-size:16px}
+.forside footer .stort{font:800 clamp(88px,17vw,240px)/.8 var(--display);letter-spacing:-.06em;margin:0 0 40px;color:var(--on-foot)}
+.forside footer .rad{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
+.forside footer .rad a{color:var(--on-foot)}
+.forside footer .chip{background:var(--on-foot);color:var(--foot)}
+.forside footer .liten{margin:40px 0 0;font-size:14px}
+.forside footer .utvikler{font-size:14px}
+@media (max-width:600px){.forside footer{padding-block:64px 32px}}
+/* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
+.v2{padding-block:120px 0}
+.v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
+.v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
+.v2-liste{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;margin:0;padding:0;list-style:none}
+.v2-liste li{max-width:none}
+.v2-liste b{display:flex;align-items:center;gap:10px;font:800 21px/1.2 var(--display);letter-spacing:-.015em;margin-bottom:6px}
+.v2-liste b::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--track)}
+.v2-liste span{display:block;color:var(--muted);font-size:16px;line-height:1.5;padding-left:22px}
+@media (max-width:1000px){.v2-liste{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.v2{padding-block:80px 0}.v2 .lead{font-size:19px;margin-bottom:36px}.v2-liste{grid-template-columns:1fr;gap:24px}}
+.del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
+.del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
+.del img{display:block;width:100%;height:auto;border-radius:28px}
+@media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
+.send .del-g{grid-template-columns:minmax(0,440px) 1fr}
+.send .del-g img{order:-1;border-radius:24px}
+.send .tips{font-size:16px;color:var(--muted);margin-top:16px}
+@media (max-width:860px){.send .del-g{grid-template-columns:1fr}.send .del-g img{order:0;max-width:440px}}
+/* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
+@keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
+.bev .topp > div:first-child > :nth-child(2){animation-delay:.08s}.bev .topp > div:first-child > :nth-child(3){animation-delay:.16s}
+.bev .topp > div:first-child > :nth-child(4){animation-delay:.24s}.bev .flate{animation-delay:.12s}
+.bev .inn{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.bev .inn.vis{opacity:1;transform:none}
+.flate img{transform:translateX(-50%) translateY(var(--py,0px)) rotate(-3deg)}
+@media (prefers-reduced-motion:no-preference){
+  .post,.g-pil,.lang summary,footer .rad a{transition:transform .15s,color .15s}
+  .post:active,.g-pil:active,.lang summary:active{transform:scale(.97)}
+  .appstore:hover,nav .kj:hover{transform:translateY(-1px)}
+}
+/* Sporlinja nedover siden (forside.js): i margen til høyre på brede skjermer, ellers prikker foran overskriftene */
+.sporlinje{position:absolute;left:0;top:0;width:100%;height:0;pointer-events:none;z-index:1;overflow:visible}
+.sporlinje .spor{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.sporlinje .m{fill:var(--track);stroke:var(--on-deep);stroke-width:2.5}
+.sporlinje text{fill:#fff;font:800 15px var(--display)}
+.sporlinje .hake{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.sporlinje .hake circle{fill:#2f9e5a;stroke:var(--on-deep);stroke-width:2}
+.sporlinje .hake path{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.sporlinje .funnet .hake{transform:none}
+.gj-prikk{display:inline-block;flex:none;width:.42em;height:.42em;max-width:16px;max-height:16px;min-width:12px;min-height:12px;border-radius:50%;background:var(--track);margin-right:.3em;vertical-align:.12em;position:relative}
+.gj-prikk::after{content:"";position:absolute;right:-7px;top:-7px;width:12px;height:12px;border-radius:50%;background:#2f9e5a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3.3 6.2l1.8 1.8 3.6-3.8' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");transform:scale(0);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.gj-prikk.funnet::after{transform:none}
+.spor-bred .gj-prikk{display:none}
+.spor-still .sporlinje .hake,.spor-still .gj-prikk::after{transition:none}
 /* Menyen og sidebredden er lik på alle sider, slik den er på forsiden: samme bredde, farger og App Store-merke.
    På undersidene står teksten til venstre i full bredde, men linjene holdes korte nok til å lese. */
 body{padding-inline:0}
@@ -185,6 +307,11 @@ figure.shot img{display:block;width:100%;height:auto;border-radius:18px;border:1
 figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .back{font-size:14px;margin:20px 0 0}
 .back a{text-decoration:none;font-weight:600}
+.hero .callout{margin-top:20px}
+.hero .callout p{font-size:16px;color:var(--fg);max-width:none}
+.kommer{display:inline-block;vertical-align:middle;font:600 13px/1 var(--display);letter-spacing:0;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:5px 10px;margin-left:8px;white-space:nowrap}
+.toc .kommer{font-size:11px;padding:3px 7px;margin-left:6px}
+
 </style>
 </head>
 <body>
@@ -210,7 +337,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">iOS-app for sportrening</p>
     <h1>Brukermanual</h1>
     <p class="lead">Alt du trenger for å legge spor, gå spor og følge treningen over tid.</p>
-    <p class="updated">Sist oppdatert: 13. oktober 2026</p>
+    <p class="updated">Sist oppdatert: 17. oktober 2026</p>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
@@ -222,20 +349,24 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <li><a href="#hjem">Hjem-skjermen</a></li>
       <li><a href="#legge-spor">Legge spor</a></li>
       <li><a href="#sportype">Sportype og blodspor</a></li>
+      <li><a href="#sok">Søk: feltsøk og arealsøk</a></li>
       <li><a href="#gjenstander">Gjenstander</a></li>
       <li><a href="#lagre">Lagre sporet</a></li>
       <li><a href="#liggetid">Liggetid</a></li>
       <li><a href="#kryss-spor">Kryss-spor</a></li>
       <li><a href="#ga-spor">Gå spor</a></li>
       <li><a href="#blindt-spor">Blindt spor</a></li>
+      <li><a href="#nattmodus">Nattmodus</a></li>
       <li><a href="#funn">Registrere funn</a></li>
       <li><a href="#varsler">Varsler og talevarsler</a></li>
       <li><a href="#sporoversikt">Sporoversikten</a></li>
       <li><a href="#vurdering">Vurdering og vinkler</a></li>
       <li><a href="#avspilling">Spill av sporet</a></li>
+      <li><a href="#hundens-spor">Hundens spor fra GPS-halsbånd <span class="kommer">Kommer i v. 2.1</span></a></li>
       <li><a href="#rediger">Rediger spor</a></li>
       <li><a href="#avvik">Avvik fra sporet</a></li>
       <li><a href="#vaer">Vær</a></li>
+      <li><a href="#sosiale-medier">Del på sosiale medier</a></li>
       <li><a href="#dele">Dele og motta spor</a></li>
       <li><a href="#pdf">PDF-rapport</a></li>
       <li><a href="#hunder">Hunder</a></li>
@@ -259,25 +390,29 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <figure class="shot"><img src="../img/manual/manual-onboarding.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Introduksjonen viser status for stedstilgang.</figcaption></figure>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>«Ved bruk av appen» er nok. Når du har trykket «Start», fortsetter sporingen også når skjermen er låst eller du bytter app, og iOS viser en blå markering øverst på skjermen. Du kan endre tilgangen under Innstillinger › Trax › Posisjon på iPhonen.</p></div>
     <p>Trax trenger «Presis posisjon». Uten den kan posisjonen bomme med flere hundre meter. Er den slått av, ber appen om presis posisjon når du skal legge eller gå et spor, og viser kortet «Presis posisjon er av» med en lenke til Innstillinger. Slå på «Presis posisjon» for Trax der.</p>
-    <p>Trax og brukermanualen følger språket på telefonen: norsk bokmål, svensk eller engelsk.</p>
+    <p>Trax og brukermanualen følger språket på telefonen: norsk bokmål, svensk, tysk eller engelsk.</p>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="hjem">
     <p class="eyebrow">02</p>
     <h2>Hjem-skjermen</h2>
     <p class="intro">Herfra starter du alt, og her finner du alle sporene dine.</p>
+    <p>Den grønne toppen viser tallene for denne måneden: antall spor, lengde totalt, funn og hvor mange spor som er klare. Ikonene øverst til høyre er Importer, Brukermanual og Innstillinger. «Importer» henter et spor fra en Trax- eller GPX-fil, for eksempel et spor noen har sendt deg.</p>
     <ul>
-      <li>«Nytt spor» starter sporlegging.</li>
-      <li>«Importer» henter et spor fra en Trax- eller GPX-fil, for eksempel et spor noen har sendt deg.</li>
-      <li>«Klar til å gås» viser spor som er lagt, men ikke gått, og hvor lenge siden de ble lagt. Står det «Spor pågår», er sporet startet, men ikke stoppet.</li>
-      <li>«Siste spor» viser de tre siste sporene som er både lagt og gått, med antall funn. Trykk på et spor for å se detaljene.</li>
-      <li>«Se alle» ved «Siste spor» åpner siden «Fullførte spor» med alle sporene dine. Øverst til høyre der finner du dokumentknappen for PDF per hund og «Rediger» for å slette flere spor.</li>
-      <li>Har du registrert hunder, vises knapper øverst på siden «Fullførte spor»: «Alle» og én for hver hund. Spor uten hund ligger under «Alle». Velger du en hund, ser du bare sporene dens og et sammendrag med antall spor, hvor stor del av gjenstandene som er funnet, antall spor de siste 30 dagene og «På sporet», og en graf over utviklingen (se «Hunder»). Har hunden ingen fullførte spor, står det «… har ingen fullførte spor ennå». Hunder du har slettet, beholder knappen sin så lenge de har spor. Vil du skjule en slik hund, holder du fingeren på knappen og velger «Skjul fra filteret». Under Innstillinger › Mine hunder › «Tidligere hunder» kan du vise den igjen.</li>
-      <li>Har sporene på siden minst to sportyper, kommer det knapper for sportype under hundeknappene: «Alle typer», «Spor», «IGP-spor» og «Blodspor».</li>
-      <li>Små ikoner på hvert spor viser sportypen (figur for spor, rosett for IGP-spor, bloddråpe for blodspor), hunden (pote), om sporet er importert (pil inn) og om du har eksportert det (pil ut).</li>
+      <li>«Klare spor» er spor som er lagt, men som hunden ikke har gått ennå. De vises som store kartkort øverst, og du blar sidelengs hvis du har flere. Kortet viser status («Klart», «Klar om …» mens liggetiden telles ned, eller «Spor pågår» hvis sporet er startet, men ikke stoppet), liggetiden, lengden og antall gjenstander.</li>
+      <li>«Start» på kortet tar deg rett til sporet. Trykk ellers på kortet for å åpne sporoversikten. Hold fingeren på kortet og velg «Slett» for å slette sporet.</li>
+      <li>«Siste spor» viser de tre siste fullførte sporene. Hver rad har et lite kart med sportypen som merke, dato, lengde og hund på én linje, og funnene til høyre, for eksempel 3/3. Trykk på et spor for å se detaljene.</li>
+      <li>«Rediger» ved «Siste spor» lar deg velge og slette spor. «Se alle» åpner siden «Fullførte spor» med alle sporene dine.</li>
+      <li>«Nytt spor» er den grønne knappen nederst, og starter sporlegging.</li>
     </ul>
-    <p>Øverst til høyre finner du Innstillinger (tannhjulet) og Brukermanual (boken).</p>
-    <figure class="shot"><img src="../img/manual/manual-home.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Hjem-skjermen med spor som er klare til å gås, og de siste sporene.</figcaption></figure>
+    <figure class="shot"><img src="../img/manual/manual-home.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Hjem-skjermen med klare spor øverst og de siste sporene under.</figcaption></figure>
+    <p>På siden «Fullførte spor» er sporene gruppert per måned. Øverst til høyre finner du dokumentknappen for PDF per hund og «Rediger» for å slette flere spor.</p>
+    <ul>
+      <li>Har du registrert hunder, vises knapper øverst: «Alle» og én for hver hund, med hundens forbokstav i farge. Spor uten hund ligger under «Alle». Velger du en hund, ser du bare sporene dens og et sammendrag med antall spor, hvor stor del av gjenstandene som er funnet, antall spor de siste 30 dagene og «På sporet», og en graf over utviklingen (se «Hunder»). Har hunden ingen fullførte spor, står det «… har ingen fullførte spor ennå».</li>
+      <li>Hunder du har slettet, beholder knappen sin så lenge de har spor. Vil du skjule en slik hund, holder du fingeren på knappen og velger «Skjul fra filteret». Under Innstillinger › Mine hunder › «Tidligere hunder» kan du vise den igjen.</li>
+      <li>Har sporene på siden minst to sportyper, kommer det knapper for sportype under sammendraget: «Spor», «IGP-spor», «Blodspor», «Feltsøk» og «Arealsøk». Finnes det minst to typer spor (spor, IGP-spor eller blodspor), kommer også «Alle spor» først. Den viser bare spor. Feltsøk og arealsøk er egne øvelser, og vises bare under sine egne knapper, med egen statistikk (se «Søk: feltsøk og arealsøk»).</li>
+      <li>Små ikoner på raden viser om sporet er importert (pil inn) og om du har eksportert det (pil ut).</li>
+    </ul>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="legge-spor">
@@ -286,8 +421,8 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="intro">Som sporlegger går du sporet først, mens appen registrerer ruten med GPS.</p>
     <ol class="steps">
       <li>Trykk «Nytt spor» på hjem-skjermen.</li>
-      <li>Velg sportype med de tre store knappene: «Spor», «IGP-spor» eller «Blodspor». «Spor» er valgt fra før (se «Sportype og blodspor»).</li>
-      <li>GPS-en starter så snart skjermen åpnes. Vent til GPS-prikken øverst er grønn eller gul, og trykk den store «Start»-knappen.</li>
+      <li>Velg øvelse med de store knappene: «Spor», «IGP-spor», «Blodspor» eller «Søk». «Spor» er valgt fra før (se «Sportype og blodspor» og «Søk: feltsøk og arealsøk»).</li>
+      <li>GPS-en starter så snart skjermen åpnes. Vent til GPS-prikken øverst er grønn eller gul, og trykk den store grønne «Start»-knappen.</li>
       <li>Gå sporet. Ruten tegnes på kartet mens du går.</li>
       <li>Trykk «Gjenstand» for å legge ut en gjenstand der du står (se «Gjenstander»).</li>
       <li>Trenger du en pause, trykker du «Pause». Trykk «Fortsett» for å gå videre. Strekningen mens sporet er pauset, blir ikke registrert.</li>
@@ -297,18 +432,18 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Er GPS-signalet svakt før du starter, vises en boks under feltet øverst. Rød betyr at du bør vente på bedre signal, gul at du kan starte, men at sporet blir mer nøyaktig om du venter. Boksen lukkes av seg selv når signalet blir godt, eller når du trykker «OK, forstått». Du kan alltid starte.</p>
     <p>Feltet øverst viser tid, lengde og antall gjenstander med store tall, hvor nøyaktig GPS-en er, og batterinivået. Grønn prikk betyr under 10 meter, gul 10–25 meter og rød over 25 meter. Står det «Ingen GPS», har telefonen ikke fått posisjon på over 15 sekunder. Trykk på feltet for å se når sporet startet, når posisjonen sist ble oppdatert, og koordinaten du står på.</p>
     <p>Når du trykker «Start», zoomer kartet inn på deg, alltid med samme utsnitt. Zoomer du under sporet, beholdes zoomen du valgte.</p>
-    <p>Knappene på høyre side av kartet bytter kart og sentrerer kartet på deg igjen. Kartknappen går i ring mellom vanlig kart, topo og satellitt. Topo er Kartverkets topografiske kart med høydekurver og stier. Det krever nett og viser «© Kartverket» nederst. Utenfor Norge finnes ikke topo, og da går knappen rett fra kart til satellitt. N-knappen bytter kartretning: nord opp, eller et kart som snur seg etter retningen du står. Valget huskes, og kan også endres under Innstillinger › Kart og spor.</p>
+    <p>Kartknappene på høyre side er samlet i én kapsel. Den øverste knappen åpner kartmenyen, der du velger «Kart», «Topo» eller «Satellitt», og slår «Nattmodus» av eller på (se «Nattmodus»). Topo er Kartverkets topografiske kart med høydekurver og stier. Det krever nett og viser «© Kartverket» nederst, og finnes bare i Norge. N-knappen bytter kartretning: nord opp, eller et kart som snur seg etter retningen du står. Valget huskes, og kan også endres under Innstillinger › Kart og spor. Den nederste knappen sentrerer kartet på deg igjen.</p>
     <p>Pila over kartknappene viser vinden (se «Vær»).</p>
     <p>Mens du legger sporet, vises det på låseskjermen og i Dynamic Island med tid, lengde og antall gjenstander. På låseskjermen kan du trykke «Pause» eller «Fortsett», og «Gjenstand» for å legge ut en gjenstand uten å låse opp telefonen.</p>
-    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Viktig: </span>Trykker du «Tilbake» før sporet er stoppet, spør appen om du vil forkaste sporet eller stoppe og lagre det. Et forkastet spor kan ikke hentes tilbake.</p></div>
+    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Viktig: </span>Trykker du på tilbakepila øverst til venstre i feltet før sporet er stoppet, spør appen om du vil forkaste sporet eller stoppe og lagre det. Et forkastet spor kan ikke hentes tilbake.</p></div>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="sportype">
     <p class="eyebrow">04</p>
     <h2>Sportype og blodspor</h2>
-    <p class="intro">Velg om sporet er et vanlig spor, et IGP-spor eller et blodspor. Blodspor har egne knapper og egne valg.</p>
-    <p>Sportypen velges med de tre store knappene på «Legg spor» før du trykker «Start». Den kan endres etterpå i kortet «Sportype» i sporoversikten. Sportypen står på sporet, i PDF-en og i filen når du sender sporet.</p>
-    <figure class="shot"><img src="../img/manual/manual-tracktype.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Velg sportype før du starter.</figcaption></figure>
+    <p class="intro">Velg om sporet er et vanlig spor, et IGP-spor eller et blodspor. Blodspor har egne knapper og egne valg. Feltsøk og arealsøk ligger under «Søk» (se «Søk: feltsøk og arealsøk»).</p>
+    <p>Sportypen velges med de store knappene under «Velg øvelse før du starter» på «Legg spor», før du trykker «Start». Den kan endres etterpå i kortet «Sportype» i sporoversikten. Sportypen står på sporet, i PDF-en og i filen når du sender sporet.</p>
+    <figure class="shot"><img src="../img/manual/manual-tracktype.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Velg øvelse før du starter.</figcaption></figure>
     <p>På blodspor er «Gjenstand» byttet ut med tre knapper:</p>
     <ul>
       <li>«Sårleie» legger ut et sårleie der du står. Det vises som en mørk rød dråpe på kartet.</li>
@@ -323,8 +458,33 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Sporoversikten og PDF-en viser «Sårleie, vilt og blodstopp» med lengden på hver blodstopp, og blodmengde og sporsko. Blodmengden er også med i hunderapporten og på bildet til sosiale medier.</p>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
-  <section class="m" id="gjenstander">
+  <section class="m" id="sok">
     <p class="eyebrow">05</p>
+    <h2>Søk: feltsøk og arealsøk</h2>
+    <p class="intro">Søk er egne øvelser, ikke spor. Du legger et felt eller en teig på kartet og legger ut gjenstander eller figuranter, og hunden søker innenfor en tidsgrense.</p>
+    <ol class="steps">
+      <li>Trykk «Nytt spor» og så «Søk». Velg «Feltsøk» eller «Arealsøk». Valget står da på «Søk»-knappens plass, og du kan trykke der igjen for å bytte.</li>
+      <li>Feltet (eller teigen) legges på kartet der du står, med startlinjen der du er. Er været hentet, snus det så hunden sendes inn mot vinden. Ellers vender det mot nord.</li>
+      <li>Velg størrelse i menyen til venstre: feltsøk har «Felt 50 × 50 m» og «Korridor 10 × 50 m», arealsøk har «Teig 100 × 100 m» og «Teig 100 × 200 m». Du kan også velge bredde og lengde selv.</li>
+      <li>Velg tidsgrense i menyen til høyre. Standard er 15 minutter for feltsøk og 1 time for arealsøk. Valgene huskes hver for seg for feltsøk og arealsøk.</li>
+      <li>Juster plasseringen med knappene under: «Snu venstre» og «Snu høyre» snur feltet litt om gangen, «Mot vinden» snur det mot vinden, og «Start her» flytter startlinjen dit du står.</li>
+      <li>Trykk «Start» når feltet ligger riktig. Knappene for størrelse, tid og plassering forsvinner da.</li>
+      <li>Gå inn i feltet og trykk «Gjenstand» der hver gjenstand legges. I arealsøk har du også knappen «Figurant» for å legge ut en figurant der du står.</li>
+      <li>Trykk «Stopp» og lagre som vanlig.</li>
+    </ol>
+    <figure class="shot"><img src="../img/manual/manual-search.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Feltsøk før start: velg størrelse og tidsgrense, og snu eller flytt feltet.</figcaption></figure>
+    <p>Feltet trenger ikke være firkantet. Hold og dra i hjørnene for å flytte dem, og dra i + på midten av en kant for å lage et nytt hjørne. Da står det «Egen form» i størrelsesmenyen, og «Tilbake til firkant» i samme meny angrer. Formen kan endres helt til du trykker «Stopp».</p>
+    <p>Når hunden skal søke, åpner du søket fra «Klare spor» og trykker «Start». «Gå blindt» er slått på fra før, siden føreren vanligvis ikke vet hvor gjenstandene ligger (se «Blindt spor»). Feltet øverst viser tid igjen, tid brukt og antall funn. Telefonen varsler ett minutt før tiden er ute og når tiden er ute, med vibrasjon, og med tale hvis «Les opp varsler» er på. Når tiden er ute, står det «Over tiden», og tiden teller videre.</p>
+    <p>Trykk «Funnet» når hunden kommer med en gjenstand eller markerer en figurant. Appen spør hvilken gjenstand hunden fant, og tiden fra søket startet lagres med funnet. Avstanden din spiller ingen rolle, siden du som regel står ved feltet mens hunden søker.</p>
+    <figure class="shot"><img src="../img/manual/manual-search-find.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>«Funnet» spør hvilken gjenstand hunden fant.</figcaption></figure>
+    <p>Søk har ingen sporvarsler, avviksanalyse eller vinkler. På kartet er utleggerens rute tynn og dempet, og i feltsøk vises ikke førerens rute.</p>
+    <p>Resultatet i sporoversikten viser feltets størrelse, tidsgrensen, tiden brukt og hvert funn med tiden det tok, i den rekkefølgen hunden fant dem. I arealsøk telles figuranter og gjenstander hver for seg. Gjenstander som ikke ble funnet, står under.</p>
+    <figure class="shot"><img src="../img/manual/manual-search-result.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Resultatet av et feltsøk med tiden til hvert funn.</figcaption></figure>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>Feltsøk, arealsøk og spor holdes alltid hver for seg i statistikken. «Alle spor» på siden «Fullførte spor» viser bare spor, og hundekortet for søk viser «Antall» i stedet for «Spor», uten «På sporet».</p></div>
+    <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
+  </section>
+  <section class="m" id="gjenstander">
+    <p class="eyebrow">06</p>
     <h2>Gjenstander</h2>
     <ol class="steps">
       <li>Stå der gjenstanden legges, og trykk «Gjenstand». Gjenstanden lagres med en gang, med nummer og posisjon.</li>
@@ -338,38 +498,38 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="lagre">
-    <p class="eyebrow">06</p>
+    <p class="eyebrow">07</p>
     <h2>Lagre sporet</h2>
-    <p class="intro">Når du trykker «Stopp», får du opp arket «Lagre spor».</p>
+    <p class="intro">Når du trykker «Stopp», får du opp arket «Lagre spor». Øverst ser du lengden, antall gjenstander og tiden.</p>
     <ul>
-      <li>«Lagre» lagrer sporet og tar deg tilbake til hjem-skjermen. Sporet ligger under «Klar til å gås».</li>
+      <li>«Lagre spor» står fast nederst i arket. Den lagrer sporet og tar deg tilbake til hjem-skjermen, der sporet ligger under «Klare spor».</li>
       <li>«Eksporter» lar deg velge Trax-fil, GPX eller PDF. Velg «Til en annen Trax-bruker» for å sende sporet til hundeføreren.</li>
       <li>«Fortsett sporet» tar deg tilbake til kartet hvis du trykket «Stopp» for tidlig.</li>
     </ul>
     <p>Du kan gi sporet et navn. Lar du feltet stå tomt, får sporet et navn med dato og klokkeslett.</p>
     <p>Under «Underlag» kan du skrive hva sporet går over, for eksempel skogsbunn, grus eller eng. Hundeføreren ser underlaget på sporet, også når du sender det til en annen telefon.</p>
-    <p>Under «Liggetid» velger du hvor lenge sporet skal ligge før hunden går det (se «Liggetid»). På blodspor kommer også kortene «Skuddplass» og «Blod og sporsko» (se «Sportype og blodspor»).</p>
+    <p>Under «Liggetid» trykker du på knappen for hvor lenge sporet skal ligge før hunden går det (se «Liggetid»). På blodspor kommer også kortene «Skuddplass» og «Blod og sporsko» (se «Sportype og blodspor»).</p>
     <figure class="shot"><img src="../img/manual/manual-save.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Lagre sporet, eksporter det eller fortsett å legge.</figcaption></figure>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="liggetid">
-    <p class="eyebrow">07</p>
+    <p class="eyebrow">08</p>
     <h2>Liggetid</h2>
     <p>Liggetid er tiden fra du startet å legge sporet, til hundeføreren starter å gå det. Den telles opp av seg selv og vises både mens sporet venter og mens det gås. Når sporet er gått, låses liggetiden og lagres sammen med sporet.</p>
-    <p>Vil du ha beskjed når sporet har ligget lenge nok, velger du liggetid i arket «Lagre spor»: «Ingen», 15, 30, 45, 60 eller 90 minutter, 2 timer, eller «Egendefinert …» med timer og minutter (høyst 48 timer). Sist valgte liggetid huskes. På blodspor er valgene 30 minutter og 1, 2, 3, 6, 12, 18 og 24 timer, og blodspor husker sitt eget valg.</p>
+    <p>Vil du ha beskjed når sporet har ligget lenge nok, velger du liggetid med knappene i arket «Lagre spor»: «Ingen», 15, 30, 45, 60 eller 90 minutter, 2 timer, eller «Egen …» med timer og minutter (høyst 48 timer). Sist valgte liggetid huskes. På blodspor er valgene 30 minutter og 1, 2, 3, 6, 12, 18 og 24 timer, og blodspor husker sitt eget valg.</p>
     <p>Første gang spør telefonen om Trax kan sende varsler. Tre minutter før liggetiden er ute får du varselet «Sporet «…» er klart om 3 min (liggetid 30 min). Gjør klar hunden.» Låseskjermen og Dynamic Island teller ned, og viser «Sporet er klart» med sporalderen til sporet startes. Trykk på varselet eller nedtellingen for å åpne sporet.</p>
     <p>Liggetid over 8 timer får ingen nedtelling på låseskjermen, bare varselet før sporet er klart.</p>
-    <p>Kortet «Liggetid» i sporoversikten viser nedtellingen for spor som venter. Der kan du endre liggetiden eller velge «Ingen». Varselet og nedtellingen forsvinner når sporet startes eller slettes.</p>
+    <p>For spor som venter, viser sporoversikten liggetiden stort, med målet og hvor langt den har kommet. Trykk på kortet for å endre liggetiden eller velge «Ingen». Varselet og nedtellingen forsvinner når sporet startes eller slettes.</p>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>Varselet er tidssensitivt og kommer gjennom Fokus, for eksempel Søvn, når «Tidssensitive varslinger» er på for Trax. Har du slått av varsler for Trax, sier kortet fra, med en knapp til Innstillinger.</p></div>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="kryss-spor">
-    <p class="eyebrow">08</p>
+    <p class="eyebrow">09</p>
     <h2>Kryss-spor</h2>
     <p class="intro">Et kryss-spor er et ferskere spor som krysser hovedsporet, for å trene hunden i å holde seg på riktig spor.</p>
     <ol class="steps">
       <li>Legg hovedsporet som vanlig, og lagre det.</li>
-      <li>Åpne sporet fra «Klar til å gås», og trykk «Legg kryss-spor» i kortet «Kryss-spor».</li>
+      <li>Åpne sporet fra «Klare spor» på hjem-skjermen, og trykk «Legg kryss-spor» i kortet «Kryss-spor».</li>
       <li>Hovedsporet vises svakt på kartet. Trykk «Start» og gå på tvers av hovedsporet. «Pause» og «Stopp» virker som når du legger et vanlig spor, men kryss-spor har ingen gjenstander.</li>
       <li>Trykk «Stopp». Skriv gjerne hvem som la kryss-sporet under «Lagt av», og trykk «Lagre kryss-spor».</li>
     </ol>
@@ -379,11 +539,11 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="ga-spor">
-    <p class="eyebrow">09</p>
+    <p class="eyebrow">10</p>
     <h2>Gå spor</h2>
     <p class="intro">Som hundefører går du sporet med hunden. Sporleggerens rute og gjenstandene vises på kartet, og din egen rute tegnes i en annen farge.</p>
     <ol class="steps">
-      <li>Åpne sporet fra «Klar til å gås» og trykk «Gå spor».</li>
+      <li>Trykk «Start» på sporet under «Klare spor» på hjem-skjermen. Du kan også åpne sporet og trykke «Start spor» nederst.</li>
       <li>Velg hunden som skal gå sporet. Har du bare én hund, er den valgt allerede. Har du ikke registrert hunder, kan du starte med en gang.</li>
       <li>Vil du gå uten å se sporet, slår du på «Gå blindt» (se «Blindt spor»).</li>
       <li>Trykk «Start».</li>
@@ -393,15 +553,15 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     </ol>
     <figure class="shot"><img src="../img/manual/manual-walk.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Gå spor: sporleggerens rute, gjenstander og din egen rute.</figcaption></figure>
     <p>Før du starter, viser feltet øverst hvor gammelt sporet er, hvor langt det er og hvor mange gjenstander det har. Under sporet viser det tid, hvor langt du har gått og hvor mange gjenstander som er funnet. Liggetiden ser du ved å trykke på feltet. Er GPS-signalet svakt, vises samme boks som når du legger spor.</p>
-    <p>Når du trykker «Start», zoomer kartet inn på deg med samme utsnitt hver gang. Kartet følger deg mens du går, og zoomer du inn eller ut, beholder kartet zoomen du valgte. Kartknappen går i ring mellom vanlig kart, topo (bare i Norge) og satellitt, og N-knappen bytter mellom nord opp og et kart som snur seg etter retningen din. Pila over kartknappene viser vinden da hunden startet sporet.</p>
+    <p>Når du trykker «Start», zoomer kartet inn på deg med samme utsnitt hver gang. Kartet følger deg mens du går, og zoomer du inn eller ut, beholder kartet zoomen du valgte. Kartmenyen øverst i kartknappene har vanlig kart, topo (bare i Norge), satellitt og nattmodus, og N-knappen bytter mellom nord opp og et kart som snur seg etter retningen din. Pila over kartknappene viser vinden da hunden startet sporet.</p>
     <p>Kommer du for langt fra det lagte sporet, vibrerer telefonen og kortet «Sportap» vises øverst med hvor langt unna du er. Kortet forsvinner når du er tilbake på sporet, eller når du trykker på krysset. Les mer om dette og de andre varslene i «Varsler og talevarsler».</p>
     <p>Opptaket fortsetter når skjermen er låst eller du bytter app. Sporet vises på låseskjermen og i Dynamic Island, og på låseskjermen kan du trykke «Pause», «Fortsett» og «Funnet».</p>
-    <p>Trykker du «Tilbake» etter at du har startet, kommer spørsmålet «Avslutte hundesporet?». Du kan stoppe og lagre, sette sporet på pause eller velge «Forkast hundespor». Står sporet på pause, fortsetter du det ved å åpne sporet igjen. «Forkast hundespor» sletter bare det du har gått. Sporet sporleggeren la, blir liggende under «Klar til å gås».</p>
-    <p>Stopper appen midt i et spor, for eksempel fordi telefonen gikk tom for strøm, er sporet lagret underveis. Det står under «Klar til å gås» med «Spor pågår». Åpne sporet og trykk «Gå spor», så fortsetter sporet fra pause. Tiden appen var stoppet, regnes ikke med i tiden brukt.</p>
+    <p>Trykker du på tilbakepila etter at du har startet, kommer spørsmålet «Avslutte hundesporet?». Du kan stoppe og lagre, sette sporet på pause eller velge «Forkast hundespor». Står sporet på pause, fortsetter du det ved å åpne sporet igjen. «Forkast hundespor» sletter bare det du har gått. Sporet sporleggeren la, blir liggende under «Klare spor».</p>
+    <p>Stopper appen midt i et spor, for eksempel fordi telefonen gikk tom for strøm, er sporet lagret underveis. Det står under «Klare spor» med «Spor pågår». Åpne sporet og trykk «Fortsett», så fortsetter sporet fra pause. Tiden appen var stoppet, regnes ikke med i tiden brukt.</p>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="blindt-spor">
-    <p class="eyebrow">10</p>
+    <p class="eyebrow">11</p>
     <h2>Blindt spor</h2>
     <p class="intro">Gå sporet uten å se hvor sporleggeren gikk, slik du gjør på prøve.</p>
     <p>Slå på «Gå blindt» før du trykker «Start». Bryteren er alltid av når du åpner sporet, så du må slå den på hver gang.</p>
@@ -416,8 +576,23 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Sporoversikten og PDF-en viser «Gått blindt», og når sporet ble vist hvis du trykket «Vis sporet».</p>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
+  <section class="m" id="nattmodus">
+    <p class="eyebrow">12</p>
+    <h2>Nattmodus</h2>
+    <p class="intro">Trener du i mørket, gjør nattmodus skjermen mørk og rød, så nattsynet ditt ikke ødelegges.</p>
+    <ol class="steps">
+      <li>Trykk på den øverste kartknappen på høyre side av kartet, mens du legger spor eller sporer.</li>
+      <li>Slå på «Nattmodus» i menyen.</li>
+      <li>Slå den av på samme måte.</li>
+    </ol>
+    <figure class="shot"><img src="../img/manual/manual-mapmenu.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Kartmenyen: velg kart, topo eller satellitt, og slå nattmodus av eller på.</figcaption></figure>
+    <p>Nattmodus gjør hele skjermen rød og mørk: kartet, feltet øverst og knappene. Valget huskes til neste gang du legger spor eller sporer. Resten av appen ser ut som vanlig.</p>
+    <figure class="shot"><img src="../img/manual/manual-night.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Nattmodus under sporlegging.</figcaption></figure>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>Skru gjerne ned lysstyrken på telefonen i tillegg. Nattmodus endrer fargene, ikke hvor sterkt skjermen lyser.</p></div>
+    <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
+  </section>
   <section class="m" id="funn">
-    <p class="eyebrow">11</p>
+    <p class="eyebrow">13</p>
     <h2>Registrere funn</h2>
     <p>Når du kommer innenfor valgt avstand av en gjenstand (12 meter som standard), vises et banner med nummer, beskrivelse og avstand. Telefonen vibrerer, også med låst skjerm. Er GPS-en unøyaktig, venter appen med varselet til posisjonen er bedre. Avstanden og varseltypen velger du under Innstillinger › Varsler (se «Varsler og talevarsler»).</p>
     <ul>
@@ -429,12 +604,12 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <figure class="shot"><img src="../img/manual/manual-found.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Banneret vises når du er nær en gjenstand.</figcaption></figure>
     <p>Når du stopper, kommer arket «Sporet er ferdig» med en oversikt over gjenstandene. Funn du registrerte underveis, er allerede krysset av. Rett opp hvis noe mangler.</p>
     <p>I samme ark kan du gi sporet en vurdering (se «Vurdering og vinkler») og skrive et notat, for eksempel om forholdene eller hvordan hunden arbeidet. Notatet kommer med i PDF-en. Fylte ikke sporleggeren ut underlaget, kan du skrive det her. Trykk «Lagre» når du er ferdig.</p>
-    <p>«Eksporter» i samme ark deler sporet som Trax-fil, GPX eller PDF med en gang. Vil du vise fram sporet, trykker du «Del på sosiale medier» (se «Dele og motta spor»).</p>
+    <p>«Eksporter» i samme ark deler sporet som Trax-fil, GPX eller PDF med en gang. Vil du vise fram sporet, trykker du «Del på sosiale medier» (se «Del på sosiale medier»).</p>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>Vil du gå sporet uten varsler og uten å se det, slår du på «Gå blindt» før start (se «Blindt spor»).</p></div>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="varsler">
-    <p class="eyebrow">12</p>
+    <p class="eyebrow">14</p>
     <h2>Varsler og talevarsler</h2>
     <p class="intro">Mens hunden går sporet, kan telefonen varsle deg med vibrasjon, lyd og tale. Alle varslene stilles inn under Innstillinger › Varsler.</p>
     <ul>
@@ -452,18 +627,18 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="sporoversikt">
-    <p class="eyebrow">13</p>
+    <p class="eyebrow">15</p>
     <h2>Sporoversikten</h2>
     <p class="intro">Trykk på et spor på hjem-skjermen for å se alt om det.</p>
     <ul>
-      <li>Kartet viser begge rutene og alle gjenstandene. Trykk «Fullskjerm» for et større kart. Der bytter kartknappen nede til høyre mellom kart, topo og satellitt. Fullskjerm åpner alltid på vanlig kart.</li>
+      <li>Kartet øverst viser begge rutene og alle gjenstandene. Trykk «Fullskjerm» for et større kart. Der bytter kartknappen nede til høyre mellom kart, topo og satellitt. Fullskjerm åpner alltid på vanlig kart.</li>
       <li>«Valg» øverst til venstre på kartet har «Spill av sporet» og «Rediger spor». På et spor som ikke er gått ennå, står «Rediger spor» der direkte.</li>
-      <li>Resultatet viser hvor mange gjenstander som ble funnet, lengden, liggetiden, tiden brukt og hunden.</li>
+      <li>Resultatkortet under tittelen viser funnene i en ring (for eksempel «4/4 funnet»), lengden, liggetiden, tiden brukt og hvor stor del av ruten din som var på sporet. På søk viser kortet feltets størrelse i stedet for lengden, og et eget kort viser tiden til hvert funn (se «Søk: feltsøk og arealsøk»).</li>
       <li>Gikk du med feil hund, eller glemte å velge hund? Trykk «Bytt hund» eller «Velg hund» i raden for hund, og velg en annen hund eller «Ingen hund». Har du ikke registrert hunder, står det «Legg til hund».</li>
       <li>På kartet får funnede gjenstander en liten grønn hake i hjørnet og beholder fargen og symbolet sitt, så du ser om det var sårleie eller vilt. Gjenstander som ikke ble funnet, er grå. Hundeførerens rute er fargelagt etter hvor langt fra sporet den gikk (se «Avvik fra sporet»), og små nummererte sirkler viser vinklene i sporet (se «Vurdering og vinkler»).</li>
       <li>«Vurdering» under resultatet viser karakter, vanskelighetsgrad og læringspunkt.</li>
       <li>«Avvik fra sporet» viser hvor godt du og hunden fulgte sporet.</li>
-      <li>For spor som venter, finner du kortene «Liggetid» og «Kryss-spor» (se de avsnittene).</li>
+      <li>For spor som venter, viser kortet liggetiden stort, med målet og hvor langt den har kommet, og «Start spor» står fast nederst på skjermen. Her finner du også kortet «Kryss-spor» (se «Liggetid» og «Kryss-spor»).</li>
       <li>Under «Gjenstander» ser du hver gjenstand med beskrivelse og resultat. Trykk på en gjenstand for å skrive eller endre beskrivelsen. På blodspor heter kortet «Sårleie, vilt og blodstopp».</li>
       <li>«Sportype», underlag og notat står lenger ned. Trykk på dem for å endre.</li>
       <li>Delingsknappen øverst eksporterer sporet som Trax-fil, GPX eller PDF, og lager bildet til sosiale medier for fullførte spor.</li>
@@ -474,7 +649,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="vurdering">
-    <p class="eyebrow">14</p>
+    <p class="eyebrow">16</p>
     <h2>Vurdering og vinkler</h2>
     <p class="intro">Gi hvert spor en vurdering, og se hvor mange vinkler sporet hadde.</p>
     <p>Kortet «Vurdering» står i arket «Sporet er ferdig» og under resultatet i sporoversikten. Alt er valgfritt:</p>
@@ -490,7 +665,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="avspilling">
-    <p class="eyebrow">15</p>
+    <p class="eyebrow">17</p>
     <h2>Spill av sporet</h2>
     <p class="intro">Se hvordan hunden arbeidet, over sporet sporleggeren la.</p>
     <ol class="steps">
@@ -502,8 +677,27 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Gjenstandene får en grønn hake når de blir funnet. På eldre spor, der tidspunktet for funnet ikke er lagret, blir gjenstanden funnet der hunden var nærmest den.</p>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
+  <section class="m" id="hundens-spor">
+    <p class="eyebrow">18</p>
+    <h2>Hundens spor fra GPS-halsbånd <span class="kommer">Kommer i v. 2.1</span></h2>
+    <p class="intro">Har hunden GPS-halsbånd, for eksempel fra Garmin eller Tractive? Legg til GPX-fila fra halsbåndet, så ser du hvor hunden gikk i forhold til deg og sporet.</p>
+    <ol class="steps">
+      <li>Eksporter turen som GPX-fil fra halsbåndet eller appen til halsbåndet, og lagre den i Filer eller send den til telefonen med AirDrop.</li>
+      <li>Åpne det fullførte sporet og trykk «Legg til hundens spor» i kortet «Hundens spor». Velg GPX-fila.</li>
+      <li>Har fila flere hunder, velger du hvem som gikk sporet. Hunden med samme navn som på sporet står øverst.</li>
+    </ol>
+    <figure class="shot"><img src="../img/manual/manual-dogtrack.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Hundens spor vises som en egen linje oppå sporet og ruten din.</figcaption></figure>
+    <p>Du kan også åpne GPX-fila rett fra Filer eller AirDrop. Passer tidene i fila med et spor du har gått, spør Trax «Er dette hundens spor?». Trykk «Legg til hundens spor», eller «Importer som nytt spor» hvis fila er et vanlig spor.</p>
+    <p>Trax bruker bare den delen av fila som er fra da du gikk sporet, med to minutter ekstra i hver ende. Resten av turen tas ikke med. Fila må være fra samme spor: passer ikke tidene, får du beskjed om det.</p>
+    <p>Kortet «Hundens spor» viser lengden på hundens spor og hvor langt hunden var lengst fra deg. Med «Vis på kartet» skjuler eller viser du hundens linje. «Bytt» velger en ny fil, og «Fjern» sletter hundens spor uten å røre resten av sporet.</p>
+    <figure class="shot"><img src="../img/manual/manual-dogtrack-card.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Kortet «Hundens spor» med bryteren «Vis på kartet».</figcaption></figure>
+    <figure class="shot"><img src="../img/manual/manual-dogtrack-playback.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>I avspillingen vises hunden og føreren hver for seg, med avstanden mellom dem.</figcaption></figure>
+    <p>I «Spill av sporet» vises hunden som en pote og du som en egen prikk, og under tidslinjen står hvor langt hunden var fra deg akkurat da. Hundens spor er også med på kartet i PDF-en og følger med når du sender sporet til en annen Trax-bruker.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>Har fila ikke tider, vises hundens spor på kartet, men ikke i avspillingen.</p></div>
+    <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
+  </section>
   <section class="m" id="rediger">
-    <p class="eyebrow">16</p>
+    <p class="eyebrow">19</p>
     <h2>Rediger spor</h2>
     <p class="intro">Kutt bort starten eller slutten av et spor, for eksempel en lang hale fordi du glemte å trykke Stopp.</p>
     <ol class="steps">
@@ -517,7 +711,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="avvik">
-    <p class="eyebrow">17</p>
+    <p class="eyebrow">20</p>
     <h2>Avvik fra sporet</h2>
     <p class="intro">Se hvor godt du og hunden fulgte sporet sporleggeren la.</p>
     <p>Kortet «Avvik fra sporet» står under resultatet i sporoversikten for fullførte spor. Det viser:</p>
@@ -532,7 +726,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="vaer">
-    <p class="eyebrow">18</p>
+    <p class="eyebrow">21</p>
     <h2>Vær</h2>
     <p>Trax henter været på stedet der sporet startet, for tidspunktet du startet: temperatur, vind og vindretning, nedbør og luftfuktighet. Når hunden starter sporet, hentes været på nytt, siden vinden kan ha snudd eller økt i løpet av liggetiden. Værdata lagres sammen med sporet og er med i PDF-eksporten, med kolonnene «Lagt» og «Sporet».</p>
     <p>Mens sporet legges og mens hunden sporer, viser en liten pil på kartet, over kartknappene, hvor vinden blåser og styrken i m/s. Pila peker dit vinden blåser, altså dit lukten går, og snur seg med kartet. Trykk på pila for å se for eksempel «Vind fra SV, 4 m/s». Vinden hentes én gang ved start og oppdateres ikke underveis. Pila er også med på kartet i PDF-en og på bildet til sosiale medier.</p>
@@ -540,8 +734,27 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Værdata kommer fra Apple Weather. Under værkortet finner du Apple Weather-merket og en lenke til Apples oversikt over andre datakilder.</p>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
+  <section class="m" id="sosiale-medier">
+    <p class="eyebrow">22</p>
+    <h2>Del på sosiale medier</h2>
+    <p class="intro">Vis fram sporet: Trax lager et bilde med sporet, lengden, liggetiden og funnene, gjerne oppå et bilde av deg og hunden.</p>
+    <ol class="steps">
+      <li>Når du har gått et spor, trykker du «Del på sosiale medier» i arket «Lagre spor». Eldre spor deler du fra delingsknappen øverst i sporoversikten.</li>
+      <li>Velg utseende øverst. «Spor og tall», «Bare spor», «Liste» og «Bare tall» viser sporet og tallene i hvitt, slik som i Strava. «Satellitt» viser satellittkartet med et hvitt kort.</li>
+      <li>Velg «Story (9:16)» eller «Innlegg (4:5)».</li>
+      <li>Trykk «Ta bilde» eller «Velg bilde» for å legge sporet oppå et bilde av deg og hunden. Uten eget bilde blir bakgrunnen grønn. «Fjern bildet» tar det bort igjen.</li>
+      <li>Velg farge for «Sporlegger», «Hundefører» og «Gjenstander»: hvit, grønn eller oransje.</li>
+      <li>Trykk «Del bildet» og velg Instagram, Facebook, Snapchat eller en annen app, eller «Arkiver bilde» for å lagre det i Bilder.</li>
+    </ol>
+    <figure class="shot"><img src="../img/manual/manual-share.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Velg utseende, format og farger, og legg sporet oppå et eget bilde.</figcaption></figure>
+    <p>På feltsøk og arealsøk viser bildet feltkanten og gjenstandene uten spor, og «Størrelse» i stedet for «Lengde». Klistremerkene har da ett fargevalg, «Felt».</p>
+    <p>Har du brukt et eget bilde, spør Trax «Lagre bildet på sporet?» når du er ferdig. Velger du «Lagre», vises bildet øverst i sporoversikten, og du sveiper mellom bildet og kartet. Trykk på bildet for å se det i fullt format. Under «Bilde» kan du dele bildet på nytt eller fjerne det fra sporet. Bildet er med i sikkerhetskopien.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>I Instagram Story kan du bruke sporet som klistremerke: trykk «Kopier klistremerke», åpne Instagram Story, velg et bilde og lim inn. Klistremerket kan flyttes og gjøres større eller mindre.</p></div>
+    <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Viktig: </span>Sporet lagres ikke når du deler. Husk å trykke «Lagre spor» etterpå.</p></div>
+    <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
+  </section>
   <section class="m" id="dele">
-    <p class="eyebrow">19</p>
+    <p class="eyebrow">23</p>
     <h2>Dele og motta spor</h2>
     <p class="intro">Sporlegger og hundefører trenger ikke bruke samme telefon. Sporleggeren sender sporet som en Trax-fil.</p>
     <ol class="steps">
@@ -557,22 +770,20 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Har ikke sporleggeren iPhone? Da kan sporet legges i en hvilken som helst GPS-app som lagrer GPX-filer. Sporleggeren lagrer et veipunkt der hver gjenstand legges ut, eksporterer sporet som GPX og sender filen med e-post. Du trykker på filen og velger Trax, på samme måte som med en Trax-fil.</p>
     <p>Veipunktene blir gjenstander, med navnet som beskrivelse, og du får varsel når hunden nærmer seg dem. Gjenstander kan ikke legges til i Trax etterpå, så uten veipunkter i filen kommer sporet uten gjenstander. Send ett spor per fil. Har filen to spor, leser Trax det andre som hundens rute.</p>
     <p>Sporet får merket «Eksportert» først når delingen er fullført, enten du deler Trax-fil, GPX eller PDF. Avbryter du delingsarket, blir det ikke merket.</p>
-    <p>Del på sosiale medier: Når du har gått et spor, trykker du «Del på sosiale medier» under «Lagre». Øverst velger du utseende: «Spor og tall», «Bare spor», «Liste» og «Bare tall» viser sporet og tallene i hvitt, slik som i Strava, mens «Satellitt» viser satellittkartet med et hvitt kort. Velg «Story (9:16)» eller «Innlegg (4:5)», og trykk «Velg eget bilde» for å legge sporet over et bilde av deg og hunden. Uten eget bilde blir bakgrunnen grønn. Både sporleggerens og hundeførerens spor vises, og du velger hvit, grønn eller oransje for hvert av dem. Trykk «Del bildet» og velg Instagram, Facebook, Snapchat eller en annen app, eller «Arkiver bilde» for å lagre det i Bilder. Sporet lagres ikke når du deler, så husk å trykke «Lagre» etterpå. Eldre spor deler du fra delingsknappen øverst i sporoversikten.</p>
-    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>I Instagram Story kan du bruke sporet som klistremerke: trykk «Kopier klistremerke», åpne Instagram Story, velg et bilde og lim inn. Klistremerket kan flyttes og gjøres større eller mindre.</p></div>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>Vil dere ha et felles arkiv i treningsgruppa? Lag en mappe i iCloud Drive i Filer-appen og del den med gruppa. Velg «Arkiver i Filer» når du eksporterer et spor, og legg Trax-filen i den delte mappen. De andre trykker på filen i mappen og åpner den i Trax, på samme måte som fra e-post.</p></div>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="pdf">
-    <p class="eyebrow">20</p>
+    <p class="eyebrow">24</p>
     <h2>PDF-rapport</h2>
-    <p>I sporoversikten kan du trykke på delingsknappen øverst og velge «PDF (flere)» og velge ett eller flere fullførte spor. Du får én PDF med kart, nøkkeltall, gjenstander, funn, underlag, notat, vurdering og vær for hvert spor, klar til å sende eller skrive ut.</p>
+    <p>I sporoversikten kan du trykke på delingsknappen øverst og velge «PDF (flere)» og velge ett eller flere fullførte spor. Du får én PDF med ett spor per side, eldste først, med kart, nøkkeltall, gjenstander, funn, underlag, notat, vurdering og vær, klar til å sende eller skrive ut.</p>
     <p>Nøkkeltallene har også sportype, vinkler, «Innenfor X m av sporet» og «Tapte sporet», og hundeførerens rute er fargelagt etter avvik i kartet, med grensen du har valgt i sporoversikten (se «Avvik fra sporet»). Blodspor har også blodmengde, sporsko/klauv og blodstoppene. Hver gjenstand står med koordinat i formatet du har valgt under Innstillinger › Kart og spor, og hvor nøyaktig GPS-en var da gjenstanden ble lagt, for eksempel «±4 m nøyaktighet». Eldre spor har ikke lagret nøyaktigheten, og da står det «nøyaktighet ukjent».</p>
     <p>Vil du ha alle sporene til én hund, trykker du på «Se alle» ved «Siste spor» på hjem-skjermen og deretter på dokumentknappen øverst til høyre. Velg hund, og slå på «Velg periode» hvis du bare vil ha sporene mellom to datoer. PDF-en får en forside med oppsummering, snittkarakter og liste over sporene, og deretter én side per spor. Sporene i rapporten får merket «Eksportert».</p>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>PDF-rapporten passer godt som treningsdagbok eller til å vise instruktøren.</p></div>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="hunder">
-    <p class="eyebrow">21</p>
+    <p class="eyebrow">25</p>
     <h2>Hunder</h2>
     <p class="intro">Registrer hundene du trener med, så ser du hvilken hund som gikk hvert spor.</p>
     <ol class="steps">
@@ -583,12 +794,13 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Når du har registrert hunder, velger du hund når du starter å gå et spor, ikke når sporet legges. Har du bare én hund, er den valgt på forhånd. Hunden vises i sporoversikten og i PDF-rapporten.</p>
     <p>Hunden kan byttes etterpå i sporoversikten. På siden «Fullførte spor» (trykk «Se alle» på hjem-skjermen) kan du vise sporene til én hund om gangen med knappene øverst.</p>
     <p>Når du velger én hund, viser kortet fire tall: «Spor», «Funnet», «Siste 30 dager» og «På sporet» (snittet av hvor stor del av hvert spor som var innenfor grensen for avvik). Under står «Utvikling»: en graf over hundens fullførte spor over tid. Velg hva grafen skal vise: «Sporalder» (liggetid), «Lengde», «Funnet», «På sporet», «Karakter» eller «Blod» (blodmengde per 100 meter, når hunden har minst to blodspor med blodmengde). Grafen kommer når hunden har minst to spor. Mangler sporene verdien du har valgt, står det at det er for få spor til å vise en graf.</p>
+    <p>Velger du «Feltsøk» eller «Arealsøk» under hunden, viser kortet «Antall» i stedet for «Spor», og ikke «På sporet». Grafen for søk kommer når hunden har minst to søk. Søk telles aldri med i statistikken for spor.</p>
     <p>Sletter du en hund, beholder sporene hundenavnet. Hunden vises under Innstillinger › Mine hunder › «Tidligere hunder» så lenge den har spor, og der kan du slå av bryteren for å skjule den fra hundefilteret. Sporene ligger fortsatt under «Alle».</p>
     <figure class="shot"><img src="../img/manual/manual-dogs.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Hundene du trener med.</figcaption></figure>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="innstillinger">
-    <p class="eyebrow">22</p>
+    <p class="eyebrow">26</p>
     <h2>Innstillinger</h2>
     <p>Øverst i Innstillinger står «Mine hunder», og under den én rad for hver side: Varsler, Kart og spor, Batteri, Sikkerhetskopi og Om Trax. Trykk på en rad for å åpne siden.</p>
     <ul>
@@ -604,7 +816,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="sikkerhetskopi">
-    <p class="eyebrow">23</p>
+    <p class="eyebrow">27</p>
     <h2>Sikkerhetskopi og ny telefon</h2>
     <p class="intro">Ta vare på sporene dine hvis du mister telefonen eller bytter til en ny.</p>
     <p>«Automatisk kopi til iCloud Drive» under Innstillinger › Sikkerhetskopi er på som standard. Trax legger da en sikkerhetskopi i mappen «Trax» i din egen iCloud Drive noen sekunder etter at et spor eller en hund er lagret eller endret, så du slipper å huske det selv. Mens et spor pågår, venter Trax til sporet er lagret. Under bryteren står det når siste kopi ble lagt der, eller at iCloud Drive er av på telefonen.</p>
@@ -619,16 +831,16 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="administrere">
-    <p class="eyebrow">24</p>
+    <p class="eyebrow">28</p>
     <h2>Slette og gjenopprette spor</h2>
     <p>Trykk «Rediger» på hjem-skjermen for å velge og slette ett eller flere spor. Du kan også åpne et spor og trykke «Slett spor» nederst på siden. Du blir alltid spurt før noe slettes.</p>
     <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Viktig: </span>Slettede spor kan ikke hentes tilbake, med mindre de finnes i en sikkerhetskopi. Eksporter sporet som GPX eller PDF først hvis du vil ta vare på det.</p></div>
     <p>Stopper appen midt i en sporlegging, for eksempel fordi telefonen gikk tom for strøm, er sporet lagret underveis. Neste gang du åpner Trax, vises «Uferdig sporlegging» øverst. Velg «Fortsett» for å legge videre, «Avslutt» for å lagre sporet slik det er, eller «Slett».</p>
-    <p>Stopper appen midt i et spor, står sporet under «Klar til å gås» med «Spor pågår». Åpne det og trykk «Gå spor» for å fortsette fra pause. Vil du heller begynne på nytt, trykker du «Tilbake» og «Forkast hundespor».</p>
+    <p>Stopper appen midt i et spor, står sporet under «Klare spor» med «Spor pågår». Åpne det og trykk «Fortsett» for å fortsette fra pause. Vil du heller begynne på nytt, trykker du på tilbakepila og «Forkast hundespor».</p>
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="feilsoking">
-    <p class="eyebrow">25</p>
+    <p class="eyebrow">29</p>
     <h2>Tips og feilsøking</h2>
     <ul>
       <li>Sporet blir hakkete eller får hull: sjekk at Trax har stedstilgang og at «Presis posisjon» er på.</li>
@@ -643,7 +855,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Til innholdet</a></p>
   </section>
   <section class="m" id="personvern">
-    <p class="eyebrow">26</p>
+    <p class="eyebrow">30</p>
     <h2>Personvern</h2>
     <p>Alle spor lagres på telefonen din. Trax har ingen konto og ingen egen server. Har du iCloud Drive, legger Trax en sikkerhetskopi i mappen «Trax» i din egen iCloud Drive. Det kan slås av under Innstillinger › Sikkerhetskopi. Sporene dine deles bare når du selv eksporterer dem.</p>
     <p>Bildet til sosiale medier lages på telefonen. Velger du «Arkiver bilde», spør iOS om Trax kan legge til bilder i Bilder. Trax kan bare legge til bilder, ikke se bildene dine. Velger du et eget bilde å legge sporet over, får Trax bare se det ene bildet du velger.</p>

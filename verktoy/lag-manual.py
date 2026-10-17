@@ -26,28 +26,28 @@ BASE_URL = "https://trax-dogtracking.no/"
 IMG_W, IMG_H = 420, 913  # samme størrelse som skjermbildene på forsiden
 
 LANGS = [
-    dict(code="nb", swift="norwegian", lproj="nb", suffix="", dir="", short="NO", name="Norsk",
+    dict(code="nb", coming="Kommer i v. 2.1", swift="norwegian", lproj="nb", suffix="", dir="", short="NO", name="Norsk",
          locale="nb_NO", privacy=("personvern", "Personvern"), badge_alt="Last ned fra App Store", choose="Velg språk",
          contents_back="Til innholdet", updated="Sist oppdatert", tip="Tips", warning="Viktig",
          eyebrow="iOS-app for sportrening", nav="Manual",
          dev_by="Utviklet av Tillerflaten Digital · Org.nr. 938 657 742", logo_alt="Logo for Tillerflaten Digital",
          title="Brukermanual – Trax", desc="Brukermanual for Trax, appen for sportrening med hund: legg spor, tren hunden og følg utviklingen over tid.",
          months=["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"]),
-    dict(code="sv", swift="swedish", lproj="sv", suffix="-sv", dir="sv/", short="SV", name="Svenska",
+    dict(code="sv", coming="Kommer i v. 2.1", swift="swedish", lproj="sv", suffix="-sv", dir="sv/", short="SV", name="Svenska",
          locale="sv_SE", privacy=("integritet", "Integritet"), badge_alt="Hämta i App Store", choose="Välj språk",
          contents_back="Till innehållet", updated="Senast uppdaterad", tip="Tips", warning="Viktigt",
          eyebrow="iOS-app för spårträning", nav="Manual",
          dev_by="Utvecklad av Tillerflaten Digital · Org.nr. 938 657 742", logo_alt="Logotyp för Tillerflaten Digital",
          title="Användarmanual – Trax", desc="Användarmanual för Trax, appen för spårträning med hund: lägg spår, träna hunden och följ utvecklingen över tid.",
          months=["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"]),
-    dict(code="en", swift="english", lproj="en", suffix="-en", dir="en/", short="EN", name="English",
+    dict(code="en", coming="Coming in v2.1", swift="english", lproj="en", suffix="-en", dir="en/", short="EN", name="English",
          locale="en_US", privacy=("privacy", "Privacy"), badge_alt="Download on the App Store", choose="Choose language",
          contents_back="Back to contents", updated="Last updated", tip="Tip", warning="Important",
          eyebrow="iOS app for tracking training", nav="Manual",
          dev_by="Developed by Tillerflaten Digital · Org. no. 938 657 742", logo_alt="Tillerflaten Digital logo",
          title="User manual – Trax", desc="User manual for Trax, the app for tracking training with your dog: lay tracks, train your dog and follow your progress over time.",
          months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]),
-    dict(code="de", swift="german", lproj="de", suffix="-de", dir="de/", short="DE", name="Deutsch",
+    dict(code="de", coming="Kommt mit v2.1", swift="german", lproj="de", suffix="-de", dir="de/", short="DE", name="Deutsch",
          locale="de_DE", privacy=("datenschutz", "Datenschutz"), badge_alt="Laden im App Store", choose="Sprache wählen",
          contents_back="Zum Inhalt", updated="Zuletzt aktualisiert", tip="Tipp", warning="Wichtig",
          eyebrow="iOS-App für die Fährtenarbeit", nav="Handbuch",
@@ -108,12 +108,16 @@ def esc(s):
 
 
 def copy_image(app, name, used):
+    """Kopierer skjermbildet til nettsiden. Gir False når bildet ikke finnes i appen (som i appen vises det da ikke)."""
     src = app / "Trax/Assets.xcassets" / f"{name}.imageset" / f"{name}.jpg"
+    if not src.exists():
+        return False
     dst = WEB / "img/manual" / f"{name}.jpg"
     dst.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(src) as im:
         im.convert("RGB").resize((IMG_W, IMG_H), Image.LANCZOS).save(dst, "JPEG", quality=80, optimize=True, progressive=True)
     used.add(dst.name)
+    return True
 
 
 ICON_TIP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg>'
@@ -150,8 +154,14 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .back{font-size:14px;margin:20px 0 0}
 .back a{text-decoration:none;font-weight:600}
 .hero .callout{margin-top:20px}
-.hero .callout p{font-size:16px;color:var(--fg);max-width:none}"""
+.hero .callout p{font-size:16px;color:var(--fg);max-width:none}
+.kommer{display:inline-block;vertical-align:middle;font:600 13px/1 var(--display);letter-spacing:0;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:5px 10px;margin-left:8px;white-space:nowrap}
+.toc .kommer{font-size:11px;padding:3px 7px;margin-left:6px}"""
 
+
+# Avsnitt om funksjoner som ikke er i App Store ennå, med versjonen de kommer i. Avsnittet merkes
+# «Kommer i v. 2.1» (teksten står i «coming» i LANGS). Fjern linjen når versjonen er ute.
+COMING = {"hundens-spor"}
 
 # Språk som har nettside, men ikke manual ennå (manualen kommer når appen er oversatt). Lenkene går til forsiden.
 SITE_ONLY_LANGS = []
@@ -187,7 +197,7 @@ def render(l, sections, strings, style, app, used, date):
     for i, s in enumerate(sections, 1):
         h = [f'  <section class="m" id="{s["id"]}">',
              f'    <p class="eyebrow">{i:02d}</p>',
-             f'    <h2>{esc(s["title"])}</h2>']
+             f'    <h2>{esc(s["title"])}' + (f' <span class="kommer">{l["coming"]}</span>' if s["id"] in COMING else "") + '</h2>']
         if s["intro"]:
             h.append(f'    <p class="intro">{esc(s["intro"])}</p>')
         for kind, val in s["blocks"]:
@@ -202,13 +212,14 @@ def render(l, sections, strings, style, app, used, date):
                 h.append("    <ul>\n" + "\n".join(f"      <li>{esc(x)}</li>" for x in val) + "\n    </ul>")
             else:
                 name, cap = val
-                copy_image(app, name, used)
+                if not copy_image(app, name, used):
+                    continue
                 h.append(f'    <figure class="shot"><img src="{img}{name}.jpg" width="{IMG_W}" height="{IMG_H}" alt="" loading="lazy"><figcaption>{esc(cap)}</figcaption></figure>')
         h.append(f'    <p class="back"><a href="#innhold">↑ {l["contents_back"]}</a></p>')
         h.append("  </section>")
         out.append("\n".join(h))
 
-    toc = "\n".join(f'      <li><a href="#{s["id"]}">{esc(s["title"])}</a></li>' for s in sections)
+    toc = "\n".join(f'      <li><a href="#{s["id"]}">{esc(s["title"])}' + (f' <span class="kommer">{l["coming"]}</span>' if s["id"] in COMING else "") + '</a></li>' for s in sections)
     alts = "\n".join(f'<link rel="alternate" hreflang="{o["code"]}" href="{BASE_URL}{o["dir"]}manual/">' for o in LANGS)
     loc_alts = "\n".join(f'<meta property="og:locale:alternate" content="{o["locale"]}">' for o in LANGS if o is not l)
     footer_langs = " · ".join(f'<a href="{up}{o["dir"]}manual/" hreflang="{o["code"]}" lang="{o["code"]}">{o["name"]}</a>' for o in LANGS if o is not l)

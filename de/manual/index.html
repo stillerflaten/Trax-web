@@ -223,8 +223,6 @@ nav .kj:active{transform:scale(.97)}
 .forside footer .utvikler{font-size:14px}
 @media (max-width:600px){.forside footer{padding-block:64px 32px}}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
-.ny-merke{position:absolute;left:20px;top:20px;z-index:1;background:var(--on-deep);color:var(--deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
-.ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
 .v2{padding-block:120px 0}
 .v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
@@ -238,8 +236,6 @@ nav .kj:active{transform:scale(.97)}
 .del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
 .del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
 .del img{display:block;width:100%;height:auto;border-radius:28px}
-.del .del-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
-.del .del-merke[hidden]{display:none}
 @media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
 .send .del-g{grid-template-columns:minmax(0,440px) 1fr}
 .send .del-g img{order:-1;border-radius:24px}
@@ -313,6 +309,8 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .back a{text-decoration:none;font-weight:600}
 .hero .callout{margin-top:20px}
 .hero .callout p{font-size:16px;color:var(--fg);max-width:none}
+.kommer{display:inline-block;vertical-align:middle;font:600 13px/1 var(--display);letter-spacing:0;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:5px 10px;margin-left:8px;white-space:nowrap}
+.toc .kommer{font-size:11px;padding:3px 7px;margin-left:6px}
 /* «Handbuch» er lengre enn «Manual», så navnet ved logoen skjules litt tidligere på smal skjerm */
 @media (max-width:430px){.brand{font-size:0;gap:0}}
 </style>
@@ -340,7 +338,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">iOS-App für die Fährtenarbeit</p>
     <h1>Handbuch</h1>
     <p class="lead">Alles, was du brauchst, um Fährten zu legen, sie zu arbeiten und dein Training langfristig zu verfolgen.</p>
-    <p class="updated">Zuletzt aktualisiert: 16. Oktober 2026</p>
+    <p class="updated">Zuletzt aktualisiert: 17. Oktober 2026</p>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p>Das Handbuch zeigt Trax auf Deutsch, so wie die App mit Version 2.1 kommt. Bis dahin ist die App auf Englisch, die Funktionen sind dieselben.</p></div>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
@@ -366,6 +364,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <li><a href="#sporoversikt">Fährtenübersicht</a></li>
       <li><a href="#vurdering">Bewertung und Winkel</a></li>
       <li><a href="#avspilling">Fährte abspielen</a></li>
+      <li><a href="#hundens-spor">Fährte des Hundes vom GPS-Halsband <span class="kommer">Kommt mit v2.1</span></a></li>
       <li><a href="#rediger">Fährte bearbeiten</a></li>
       <li><a href="#avvik">Abweichung von der Fährte</a></li>
       <li><a href="#vaer">Wetter</a></li>
@@ -680,8 +679,24 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Gegenstände bekommen einen grünen Haken, wenn sie gefunden werden. Bei älteren Fährten, bei denen der Zeitpunkt des Fundes nicht gespeichert wurde, gilt der Gegenstand dort als gefunden, wo der Hund ihm am nächsten kam.</p>
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
-  <section class="m" id="rediger">
+  <section class="m" id="hundens-spor">
     <p class="eyebrow">18</p>
+    <h2>Fährte des Hundes vom GPS-Halsband <span class="kommer">Kommt mit v2.1</span></h2>
+    <p class="intro">Trägt dein Hund ein GPS-Halsband, zum Beispiel von Garmin oder Tractive? Füge die GPX-Datei vom Halsband hinzu, dann siehst du, wo der Hund im Vergleich zu dir und zur Fährte gelaufen ist.</p>
+    <ol class="steps">
+      <li>Exportiere die Runde als GPX-Datei vom Halsband oder aus der App des Halsbands und sichere sie in Dateien oder schicke sie per AirDrop an das iPhone.</li>
+      <li>Öffne die abgeschlossene Fährte und tippe in der Karte „Fährte des Hundes“ auf „Fährte des Hundes hinzufügen“. Wähle die GPX-Datei.</li>
+      <li>Enthält die Datei mehrere Hunde, wählst du, wer die Fährte gearbeitet hat. Der Hund mit demselben Namen wie auf der Fährte steht oben.</li>
+    </ol>
+    <p>Du kannst die GPX-Datei auch direkt aus Dateien oder per AirDrop öffnen. Passen die Zeiten in der Datei zu einer Fährte, die du gearbeitet hast, fragt Trax „Ist das die Fährte des Hundes?“. Tippe auf „Fährte des Hundes hinzufügen“ oder auf „Als neue Fährte importieren“, wenn die Datei eine normale Fährte ist.</p>
+    <p>Trax verwendet nur den Teil der Datei aus der Zeit, in der du die Fährte gearbeitet hast, mit zwei zusätzlichen Minuten an jedem Ende. Der Rest der Runde wird nicht übernommen. Die Datei muss zur selben Fährte gehören: Passen die Zeiten nicht, bekommst du einen Hinweis.</p>
+    <p>Die Karte „Fährte des Hundes“ zeigt die Länge der Fährte des Hundes und den weitesten Abstand des Hundes zu dir. Mit „Auf der Karte zeigen“ blendest du die Linie des Hundes aus oder ein. „Ersetzen“ wählt eine neue Datei, und „Entfernen“ löscht die Fährte des Hundes, ohne den Rest der Fährte zu verändern.</p>
+    <p>Bei „Fährte abspielen“ erscheint der Hund als Pfote und du als eigener Punkt, und unter der Zeitleiste steht, wie weit der Hund in dem Moment von dir entfernt war. Die Fährte des Hundes ist auch auf der Karte im PDF zu sehen und wird mitgeschickt, wenn du die Fährte an einen anderen Trax-Nutzer sendest.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tipp: </span>Hat die Datei keine Zeiten, wird die Fährte des Hundes auf der Karte gezeigt, aber nicht in der Wiedergabe.</p></div>
+    <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
+  </section>
+  <section class="m" id="rediger">
+    <p class="eyebrow">19</p>
     <h2>Fährte bearbeiten</h2>
     <p class="intro">Schneide den Anfang oder das Ende einer Fährte ab, zum Beispiel ein langes Endstück, weil du vergessen hast, auf Stopp zu tippen.</p>
     <ol class="steps">
@@ -695,7 +710,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="avvik">
-    <p class="eyebrow">19</p>
+    <p class="eyebrow">20</p>
     <h2>Abweichung von der Fährte</h2>
     <p class="intro">Sieh, wie genau du und dein Hund der Fährte gefolgt seid, die der Fährtenleger gelegt hat.</p>
     <p>Die Karte „Abweichung von der Fährte“ steht bei abgeschlossenen Fährten unter dem Ergebnis in der Fährtenübersicht. Sie zeigt:</p>
@@ -710,7 +725,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="vaer">
-    <p class="eyebrow">20</p>
+    <p class="eyebrow">21</p>
     <h2>Wetter</h2>
     <p>Trax ruft das Wetter an dem Ort ab, an dem die Fährte begann, für den Zeitpunkt, an dem du gestartet bist: Temperatur, Wind und Windrichtung, Niederschlag und Luftfeuchtigkeit. Wenn der Hund die Fährte startet, wird das Wetter erneut abgerufen, da der Wind während des Fährtenalters gedreht oder zugenommen haben kann. Die Wetterdaten werden mit der Fährte gespeichert und sind im PDF-Export enthalten, in den Spalten „Gelegt“ und „Gearbeitet“.</p>
     <p>Während die Fährte gelegt wird und während der Hund arbeitet, zeigt ein kleiner Pfeil auf der Karte über den Kartentasten, wohin der Wind weht und wie stark in m/s. Der Pfeil zeigt dorthin, wohin der Wind weht, also wohin die Witterung zieht, und dreht sich mit der Karte. Tippe auf den Pfeil, um zum Beispiel „Wind aus SW, 4 m/s“ zu sehen. Der Wind wird einmal beim Start abgerufen und unterwegs nicht aktualisiert. Der Pfeil ist auch auf der Karte im PDF und auf dem Bild für soziale Medien zu sehen.</p>
@@ -719,7 +734,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="sosiale-medier">
-    <p class="eyebrow">21</p>
+    <p class="eyebrow">22</p>
     <h2>In sozialen Medien teilen</h2>
     <p class="intro">Zeig deine Fährte: Trax erstellt ein Bild mit der Fährte, der Länge, dem Fährtenalter und den Funden, gern über einem Foto von dir und deinem Hund.</p>
     <ol class="steps">
@@ -738,7 +753,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="dele">
-    <p class="eyebrow">22</p>
+    <p class="eyebrow">23</p>
     <h2>Fährten teilen und empfangen</h2>
     <p class="intro">Fährtenleger und Hundeführer müssen nicht dasselbe iPhone verwenden. Der Fährtenleger sendet die Fährte als Trax-Datei.</p>
     <ol class="steps">
@@ -758,7 +773,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="pdf">
-    <p class="eyebrow">23</p>
+    <p class="eyebrow">24</p>
     <h2>PDF-Bericht</h2>
     <p>Tippe in der Fährtenübersicht oben auf die Teilen-Taste, wähle „PDF (mehrere)“ und wähle eine oder mehrere abgeschlossene Fährten aus. Du bekommst ein PDF mit einer Fährte pro Seite, die älteste zuerst, mit Karte, Kennzahlen, Gegenständen, Funden, Untergrund, Notiz, Bewertung und Wetter, fertig zum Senden oder Drucken.</p>
     <p>Die Kennzahlen enthalten auch Fährtenart, Winkel, „Innerhalb X m der Fährte“ und „Fährte verloren“, und die Route des Hundeführers ist auf der Karte nach Abweichung eingefärbt, mit der Grenze, die du in der Fährtenübersicht gewählt hast (siehe „Abweichung von der Fährte“). Schweißfährten enthalten auch die Schweißmenge, Fährtenschuh/Schalen und die Schweißpausen. Jeder Gegenstand steht mit seiner Koordinate in dem Format, das du unter Einstellungen › Karte und Fährten gewählt hast, und wie genau das GPS war, als der Gegenstand ausgelegt wurde, zum Beispiel „±4 m Genauigkeit“. Ältere Fährten haben die Genauigkeit nicht gespeichert, dann steht dort „Genauigkeit unbekannt“.</p>
@@ -767,7 +782,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="hunder">
-    <p class="eyebrow">24</p>
+    <p class="eyebrow">25</p>
     <h2>Hunde</h2>
     <p class="intro">Lege die Hunde an, mit denen du trainierst, dann siehst du, welcher Hund welche Fährte gearbeitet hat.</p>
     <ol class="steps">
@@ -784,7 +799,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="innstillinger">
-    <p class="eyebrow">25</p>
+    <p class="eyebrow">26</p>
     <h2>Einstellungen</h2>
     <p>Ganz oben in den Einstellungen steht „Meine Hunde“, darunter eine Zeile für jede Seite: Hinweise, Karte und Fährten, Batterie, Backup und Über Trax. Tippe auf eine Zeile, um die Seite zu öffnen.</p>
     <ul>
@@ -800,7 +815,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="sikkerhetskopi">
-    <p class="eyebrow">26</p>
+    <p class="eyebrow">27</p>
     <h2>Backup und neues iPhone</h2>
     <p class="intro">Sichere deine Fährten, falls du dein iPhone verlierst oder auf ein neues wechselst.</p>
     <p>„Automatische Kopie in iCloud Drive“ unter Einstellungen › Backup ist standardmäßig eingeschaltet. Trax legt dann ein Backup im Ordner „Trax“ in deinem eigenen iCloud Drive ab, wenige Sekunden nachdem eine Fährte oder ein Hund gespeichert oder geändert wurde, sodass du nicht selbst daran denken musst. Während eine Fährte läuft, wartet Trax, bis die Fährte gespeichert ist. Unter dem Schalter steht, wann die letzte Kopie abgelegt wurde, oder dass iCloud Drive auf dem iPhone ausgeschaltet ist.</p>
@@ -815,7 +830,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="administrere">
-    <p class="eyebrow">27</p>
+    <p class="eyebrow">28</p>
     <h2>Fährten löschen und wiederherstellen</h2>
     <p>Tippe auf dem Startbildschirm auf „Bearbeiten“, um eine oder mehrere Fährten auszuwählen und zu löschen. Du kannst auch eine Fährte öffnen und ganz unten auf der Seite auf „Fährte löschen“ tippen. Du wirst immer gefragt, bevor etwas gelöscht wird.</p>
     <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Wichtig: </span>Gelöschte Fährten können nicht wiederhergestellt werden, es sei denn, sie sind in einem Backup. Exportiere die Fährte vorher als GPX oder PDF, wenn du sie behalten willst.</p></div>
@@ -824,7 +839,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="feilsoking">
-    <p class="eyebrow">28</p>
+    <p class="eyebrow">29</p>
     <h2>Tipps und Fehlerbehebung</h2>
     <ul>
       <li>Die Fährte ist zackig oder hat Lücken: Prüfe, ob Trax Zugriff auf deinen Standort hat und „Genauer Standort“ eingeschaltet ist.</li>
@@ -839,7 +854,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Zum Inhalt</a></p>
   </section>
   <section class="m" id="personvern">
-    <p class="eyebrow">29</p>
+    <p class="eyebrow">30</p>
     <h2>Datenschutz</h2>
     <p>Alle Fährten werden auf deinem iPhone gespeichert. Trax hat kein Konto und keinen eigenen Server. Nutzt du iCloud Drive, legt Trax ein Backup im Ordner „Trax“ in deinem eigenen iCloud Drive ab. Das kannst du unter Einstellungen › Backup ausschalten. Deine Fährten werden nur geteilt, wenn du sie selbst exportierst.</p>
     <p>Das Bild für soziale Medien wird auf deinem iPhone erstellt. Wählst du „Bild sichern“, fragt iOS, ob Trax Fotos zu „Fotos“ hinzufügen darf. Trax kann nur Fotos hinzufügen, deine Fotos aber nicht sehen. Wählst du ein eigenes Foto, über das die Fährte gelegt wird, sieht Trax nur dieses eine Foto.</p>
