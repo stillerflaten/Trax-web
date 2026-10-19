@@ -18,7 +18,7 @@ Tysk (`de/`):
 - Forside: `/de/`
 - Datenschutz: `/de/datenschutz/`
 
-Den tyske siden sier tydelig at appen kommer på tysk med versjon 2.1 (boksen `.de-hinweis` i toppen, en linje under App Store-merket og et avsnitt under versjon 2.0). Til da bruker den de engelske skjermbildene (App Store-merket er Apples tyske, `img/app-store-de.svg`), og den tyske manualen (`/de/manual/`, «Handbuch») viser appen på tysk med en beskjed om at appen er på engelsk til 2.1. Når appen er på tysk: lag tyske skjermbilder til galleriet, fjern `note` og `og` for tysk i `LANGS` i `verktoy/lag-manual.py` (lag `img/og-image-de.png` først), kjør skriptet og fjern 2.1-beskjedene.
+Appen er på tysk fra versjon 2.1 (ute 19. oktober 2026), og 2.1-beskjedene på den tyske siden og i manualen er fjernet. Den tyske siden har egne tyske skjermbilder i galleriet og Apples tyske App Store-merke (`img/app-store-de.svg`). Delebildet er fortsatt det engelske (`og="en"` i `LANGS` i `verktoy/lag-manual.py` og `og:image` i `de/index.html`); lag `img/og-image-de.png` og bytt begge stedene når det finnes. Lanseringsvideoen for 2.0 er også den engelske.
 
 Språksidene har samme stil. Endrer du tekst eller utseende på én av dem, gjør det samme på de andre. Forsiden har `<body class="forside">` med bred layout og flater; reglene for den står samlet nederst i stilen. Personvernsidene og manualen bruker samme stil uten klassen, som lesesider. Ankeret `#personvern`/`#integritet`/`#privacy` finnes fortsatt på forsiden (kort sammendrag med lenke) i tilfelle skript er slått av.
 
@@ -26,7 +26,7 @@ Språkvelgeren i menyen (`<details class="lang">`) har én linje per språk. Nyt
 
 ## Skjermbildegalleri
 
-Forsiden har et sveipbart galleri med sju skjermbilder: hjemskjerm, detaljkort, valg av øvelse (sportypene), feltsøk, blodspor, kryss-spor og nattmodus (`img/galleri/galleri-<språk>-<nr>-<navn>.webp`, 640 × 999). Bildene er laget fra skjermbildene i det nye designet (`appstore-bilder/kilde/nytt-design/<språk>/`, fra skjermbilde-workflowen i app-repoet), satt i en telefon på samme bakgrunn som App Store-bildene, uten piler og merkelapper. Teksten under hvert bilde står i HTML-en. Toppbildet på forsiden er bilde 2 (detaljkortet). Bildene er fra versjon 2.0. På den tyske siden står en setning over galleriet (`.ny-tekst`) om at bildene er på engelsk til 2.1. `galleri.js` legger til piler og prikker og er felles for alle språk. Nytt språk: lag sju nye bilder og kopier `<div class="galleri">` med oversatt tekst.
+Forsiden har et sveipbart galleri med sju skjermbilder: hjemskjerm, detaljkort, valg av øvelse (sportypene), feltsøk, blodspor, kryss-spor og nattmodus (`img/galleri/galleri-<språk>-<nr>-<navn>.webp`, 640 × 999). Bildene er laget fra skjermbildene i det nye designet (`appstore-bilder/kilde/nytt-design/<språk>/`, fra skjermbilde-workflowen i app-repoet), satt i en telefon på samme bakgrunn som App Store-bildene, uten piler og merkelapper. Teksten under hvert bilde står i HTML-en. Toppbildet på forsiden er bilde 2 (detaljkortet). Bildene er fra versjon 2.0. De tyske bildene (`galleri-de-*`) er laget ved å bytte skjermen i de engelske bildene med de tyske skjermbildene fra `appstore-bilder/kilde/nytt-design/de/` (samme skjermbilder som de andre språkene, skalert til 418 px bredde og plassert 111 px fra venstre og 59 px fra toppen). `galleri.js` legger til piler og prikker og er felles for alle språk. Nytt språk: lag sju nye bilder og kopier `<div class="galleri">` med oversatt tekst.
 
 ## Lanseringsvideo
 
@@ -43,6 +43,8 @@ python3 verktoy/lag-manual.py ../Trax
 # eller bare noen språk, f.eks.:
 python3 verktoy/lag-manual.py ../Trax de
 ```
+
+Kjør skriptet mot den app-versjonen som er i App Store (eller er sendt inn), ikke uten videre mot `main`: `main` i app-repoet kan ha endringer som ikke er ute ennå, og da beskriver nettmanualen ting brukerne ikke har. Derfor ble «Kommer i v. 2.1»-merkene fjernet for hånd i manualsidene da 2.1 kom ut, i stedet for å kjøre skriptet på nytt.
 
 Skriptet henter stilen fra `index.html`, så endringer i utseendet på forsiden følger med neste gang det kjøres. Nytt språk: legg til en linje i `LANGS` øverst i skriptet.
 
@@ -77,4 +79,4 @@ Seksjonen om å sende spor til en annen Trax-bruker (`#send-spor`, svensk `#skic
 
 ## Versjon 2.0
 
-Seksjonen «Nytt i versjon 2.0» (`#versjon-2`, svensk, tysk og engelsk `#version-2`) står mellom funksjonene og delebildet. Den sier at 2.0 er ute som gratis oppdatering, og lister det nye som ikke står i funksjonslisten over. «Kommer snart»-tekstene for 2.0 ble fjernet da 2.0 kom ut (17. oktober 2026). Den tyske siden har i tillegg et avsnitt om at tysk kommer i 2.1.
+Seksjonen «Nytt i versjon 2.0» (`#versjon-2`, svensk, tysk og engelsk `#version-2`) står mellom funksjonene og delebildet. Den sier at 2.0 er ute som gratis oppdatering, og lister det nye som ikke står i funksjonslisten over. «Kommer snart»-tekstene for 2.0 ble fjernet da 2.0 kom ut (17. oktober 2026). Det tyske avsnittet om at tysk kommer i 2.1 ble fjernet da 2.1 kom ut (19. oktober 2026).
