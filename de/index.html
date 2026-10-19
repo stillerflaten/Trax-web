@@ -225,7 +225,6 @@ nav .kj:active{transform:scale(.97)}
 .forside footer .utvikler{font-size:14px}
 @media (max-width:600px){.forside footer{padding-block:64px 32px}}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
-.ny-tekst{margin:20px 0 0;font-size:16px;color:var(--muted)}
 .forside .v2{padding-block:120px 0}
 .v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
 .v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
@@ -293,12 +292,6 @@ nav a.l:hover,nav a.l:focus-visible,nav a.l[aria-current]{color:var(--accent)}
 body:not(.forside) main > *,body:not(.forside) footer{max-width:760px}
 @media (max-width:480px){nav a.l ~ a.l{display:none}nav .wrap{gap:10px}.lang summary .chev{display:none}}
 @media (max-width:380px){.brand{font-size:0;gap:0}}
-/* Bare på den tyske siden: beskjed om at appen kommer på tysk i versjon 2.1 */
-.de-hinweis{margin:0 0 32px;padding:14px 18px;border-radius:16px;background:var(--surface);border:1px solid var(--line);font-size:17px;line-height:1.45;max-width:44ch}
-.de-hinweis b{display:block;font:800 19px/1.25 var(--display);color:var(--accent);margin-bottom:2px}
-.v2-de{margin:56px 0 0;font-size:20px;line-height:1.5;max-width:52ch}
-.v2-de b{font-family:var(--display)}
-@media (max-width:600px){.de-hinweis{font-size:16px;margin-bottom:24px}.v2-de{font-size:18px;margin-top:40px}}
 /* Tysk: «Handbuch» er lengre enn «Manual», så navnet ved logoen skjules litt tidligere på smal skjerm */
 @media (max-width:430px){.brand{font-size:0;gap:0}}
 </style>
@@ -335,33 +328,31 @@ if(location.hash==='#privacy')location.replace('privacy/');
     <div>
       <h1>Der Fährte folgen. Den Fortschritt sehen.</h1>
       <p class="lead">Trax ist eine iPhone-App, mit der du Fährten legst, deinen Hund trainierst und seine Entwicklung über die Zeit verfolgst.</p>
-      <p class="de-hinweis"><b>Auf Deutsch ab Version 2.1</b>Trax gibt es zurzeit auf Englisch, Norwegisch und Schwedisch. Mit dem nächsten Update, Version 2.1, kommt die App auch auf Deutsch.</p>
       <div class="kjop">
         <p class="snart"><span class="chip">Bald im App Store</span><span>Einmalkauf, kein Abo.</span></p>
         <div class="live" hidden>
         <a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-de.svg" height="50" loading="lazy" alt="Laden im App Store"></a>
-        <p class="pris"><b class="intro">9,99 €</b><b class="ord" hidden>12,99 €</b><span class="intro">Einführungspreis in der ersten Woche, danach 12,99 €.</span><span>Einmalkauf, kein Abo.</span><span>Vorerst auf Englisch, Deutsch folgt mit Version 2.1.</span></p>
+        <p class="pris"><b class="intro">9,99 €</b><b class="ord" hidden>12,99 €</b><span class="intro">Einführungspreis in der ersten Woche, danach 12,99 €.</span><span>Einmalkauf, kein Abo.</span></p>
       </div>
       </div>
       <ul class="tillit"><li>Kein Konto</li><li>Keine Werbung</li><li>Deine Daten bleiben auf dem Handy</li></ul>
     </div>
-    <div class="flate"><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer langen Fährte mit Karte, gefundenen Gegenständen, Länge, Fährtenalter, Arbeitszeit und Bewertung" decoding="async" fetchpriority="high"></div>
+    <div class="flate"><img src="../img/galleri/galleri-de-2-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer langen Fährte mit Karte, gefundenen Gegenständen, Länge, Fährtenalter, Arbeitszeit und Bewertung" decoding="async" fetchpriority="high"></div>
   </header>
   <div class="wrap">
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
-    <p class="ny-tekst">Die Bilder sind auf Englisch, weil die App erst mit Version 2.1 Deutsch bekommt.</p>
     <div class="galleri" role="region" aria-roledescription="Karussell" aria-label="Bildschirmfotos aus der App" data-forrige="Vorheriges Bild" data-neste="Nächstes Bild" data-prikk="Bild {n} von {t}">
       <ul class="g-liste" tabindex="0" aria-label="Bildschirmfotos aus der App">
-        <li><figure><img src="../img/galleri/galleri-en-1-hjem.webp" width="640" height="999" alt="Der Startbildschirm von Trax mit den Zahlen des Monats, startbereiten Fährten und den letzten Fährten" decoding="async"><figcaption><b>Alles an einem Ort</b><span>Die Zahlen des Monats, startbereite Fährten und deine letzten Fährten.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer langen Fährte mit Karte, gefundenen Gegenständen, Länge, Fährtenalter, Arbeitszeit und Bewertung" decoding="async" loading="lazy"><figcaption><b>Die ganze Fährte auf einen Blick</b><span>Karte, gefundene Gegenstände, Länge, Fährtenalter und wie viel der Fährte dein Hund gehalten hat.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-3-sportyper.webp" width="640" height="999" alt="Auswahl der Übung vor dem Start: Fährte, IGP-Fährte, Schweißfährte und Gegenstandssuche, mit Feldgröße und Zeitlimit" decoding="async" loading="lazy"><figcaption><b>Übung wählen</b><span>Fährte, IGP-Fährte, Schweißfährte oder Gegenstandssuche. Zeichne das Feld auf der Karte und setze ein Zeitlimit.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-4-feltsok.webp" width="640" height="999" alt="Das Ergebnis einer Gegenstandssuche mit Feld, Zeitlimit und der Zeit bis zu jedem Fund" decoding="async" loading="lazy"><figcaption><b>Gegenstandssuche und Flächensuche</b><span>Sieh, welche Gegenstände dein Hund gefunden hat und wie lange jeder Fund gedauert hat.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-5-blodspor.webp" width="640" height="999" alt="Eine laufende Schweißfährte mit Knöpfen für Anschuss, Schweiß und Wild" decoding="async" loading="lazy"><figcaption><b>Schweißfährte</b><span>Markiere Anschuss, erneuten Schweiß und das Wild mit einem Tippen, während ihr die Fährte ausarbeitet.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-6-kryss-spor.webp" width="640" height="999" alt="Eine Fährte mit einer quer gelegten Verleitungsfährte und dem herunterzählenden Fährtenalter" decoding="async" loading="lazy"><figcaption><b>Verleitungsfährten</b><span>Lege eine frischere Fährte quer über die erste und sieh das Fährtenalter bis zum Start herunterzählen.</span></figcaption></figure></li>
-        <li><figure><img src="../img/galleri/galleri-en-7-nattmodus.webp" width="640" height="999" alt="Nachtmodus mit dunkelrotem Bildschirm und Karte" decoding="async" loading="lazy"><figcaption><b>Nachtmodus</b><span>Rotes Licht auf dem Bildschirm, wenn du im Dunkeln trainierst.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-de-1-hjem.webp" width="640" height="999" alt="Der Startbildschirm von Trax mit den Zahlen des Monats, startbereiten Fährten und den letzten Fährten" decoding="async"><figcaption><b>Alles an einem Ort</b><span>Die Zahlen des Monats, startbereite Fährten und deine letzten Fährten.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-de-2-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer langen Fährte mit Karte, gefundenen Gegenständen, Länge, Fährtenalter, Arbeitszeit und Bewertung" decoding="async" loading="lazy"><figcaption><b>Die ganze Fährte auf einen Blick</b><span>Karte, gefundene Gegenstände, Länge, Fährtenalter und wie viel der Fährte dein Hund gehalten hat.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-de-3-sportyper.webp" width="640" height="999" alt="Auswahl der Übung vor dem Start: Fährte, IGP-Fährte, Schweißfährte und Gegenstandssuche, mit Feldgröße und Zeitlimit" decoding="async" loading="lazy"><figcaption><b>Übung wählen</b><span>Fährte, IGP-Fährte, Schweißfährte oder Gegenstandssuche. Zeichne das Feld auf der Karte und setze ein Zeitlimit.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-de-4-feltsok.webp" width="640" height="999" alt="Das Ergebnis einer Gegenstandssuche mit Feld, Zeitlimit und der Zeit bis zu jedem Fund" decoding="async" loading="lazy"><figcaption><b>Gegenstandssuche und Flächensuche</b><span>Sieh, welche Gegenstände dein Hund gefunden hat und wie lange jeder Fund gedauert hat.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-de-5-blodspor.webp" width="640" height="999" alt="Eine laufende Schweißfährte mit Knöpfen für Anschuss, Schweiß und Wild" decoding="async" loading="lazy"><figcaption><b>Schweißfährte</b><span>Markiere Anschuss, erneuten Schweiß und das Wild mit einem Tippen, während ihr die Fährte ausarbeitet.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-de-6-kryss-spor.webp" width="640" height="999" alt="Eine Fährte mit einer quer gelegten Verleitungsfährte und dem herunterzählenden Fährtenalter" decoding="async" loading="lazy"><figcaption><b>Verleitungsfährten</b><span>Lege eine frischere Fährte quer über die erste und sieh das Fährtenalter bis zum Start herunterzählen.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-de-7-nattmodus.webp" width="640" height="999" alt="Nachtmodus mit dunkelrotem Bildschirm und Karte" decoding="async" loading="lazy"><figcaption><b>Nachtmodus</b><span>Rotes Licht auf dem Bildschirm, wenn du im Dunkeln trainierst.</span></figcaption></figure></li>
       </ul>
       <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
@@ -404,7 +395,6 @@ if(location.hash==='#privacy')location.replace('privacy/');
         <li><b>Sicherung</b><span>Automatische Kopie aller Fährten und Hunde in iCloud Drive.</span></li>
       </ul>
     </div>
-    <p class="v2-de"><b>Als Nächstes kommt Version 2.1 auf Deutsch.</b> Mit dem Update auf 2.1 bekommt Trax eine vollständige deutsche Oberfläche.</p>
   </div></section>
 
   <section id="teilen" class="del"><div class="wrap del-g">

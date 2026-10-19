@@ -54,7 +54,6 @@ LANGS = [
          dev_by="Entwickelt von Tillerflaten Digital · Org.-Nr. 938 657 742", logo_alt="Logo von Tillerflaten Digital",
          css="/* «Handbuch» er lengre enn «Manual», så navnet ved logoen skjules litt tidligere på smal skjerm */\n@media (max-width:430px){.brand{font-size:0;gap:0}}",
          og="en",  # delebildet finnes ikke på tysk ennå
-         note="Das Handbuch zeigt Trax auf Deutsch, so wie die App mit Version 2.1 kommt. Bis dahin ist die App auf Englisch, die Funktionen sind dieselben.",
          title="Handbuch – Trax", desc="Handbuch für Trax, die App für die Fährtenarbeit mit deinem Hund: Fährten legen, den Hund trainieren und den Fortschritt verfolgen.",
          months=["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]),
 ]
@@ -161,8 +160,9 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 
 
 # Avsnitt om funksjoner som ikke er i App Store ennå, med versjonen de kommer i. Avsnittet merkes
-# «Kommer i v. 2.1» (teksten står i «coming» i LANGS). Fjern linjen når versjonen er ute.
-COMING = {"hundens-spor"}
+# «Kommer i v. 2.1» (teksten står i «coming» i LANGS). Tomt nå som 2.1 er ute; legg til avsnitts-id-er
+# (f.eks. {"hundens-spor"}) og oppdater «coming» ved neste versjon.
+COMING = set()
 
 # Språk som har nettside, men ikke manual ennå (manualen kommer når appen er oversatt). Lenkene går til forsiden.
 SITE_ONLY_LANGS = []
