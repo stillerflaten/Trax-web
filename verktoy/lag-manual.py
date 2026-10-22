@@ -26,28 +26,28 @@ BASE_URL = "https://trax-dogtracking.no/"
 IMG_W, IMG_H = 420, 913  # samme størrelse som skjermbildene på forsiden
 
 LANGS = [
-    dict(code="nb", coming="Kommer i v. 2.1", swift="norwegian", lproj="nb", suffix="", dir="", short="NO", name="Norsk",
+    dict(code="nb", gp_title="Snart for Android", coming="Kommer i v. 2.1", swift="norwegian", lproj="nb", suffix="", dir="", short="NO", name="Norsk",
          locale="nb_NO", privacy=("personvern", "Personvern"), badge_alt="Last ned fra App Store", choose="Velg språk",
          contents_back="Til innholdet", updated="Sist oppdatert", tip="Tips", warning="Viktig",
          eyebrow="iOS-app for sportrening", nav="Manual",
          dev_by="Utviklet av Tillerflaten Digital · Org.nr. 938 657 742", logo_alt="Logo for Tillerflaten Digital",
          title="Brukermanual – Trax", desc="Brukermanual for Trax, appen for sportrening med hund: legg spor, tren hunden og følg utviklingen over tid.",
          months=["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"]),
-    dict(code="sv", coming="Kommer i v. 2.1", swift="swedish", lproj="sv", suffix="-sv", dir="sv/", short="SV", name="Svenska",
+    dict(code="sv", gp_title="Snart för Android", coming="Kommer i v. 2.1", swift="swedish", lproj="sv", suffix="-sv", dir="sv/", short="SV", name="Svenska",
          locale="sv_SE", privacy=("integritet", "Integritet"), badge_alt="Hämta i App Store", choose="Välj språk",
          contents_back="Till innehållet", updated="Senast uppdaterad", tip="Tips", warning="Viktigt",
          eyebrow="iOS-app för spårträning", nav="Manual",
          dev_by="Utvecklad av Tillerflaten Digital · Org.nr. 938 657 742", logo_alt="Logotyp för Tillerflaten Digital",
          title="Användarmanual – Trax", desc="Användarmanual för Trax, appen för spårträning med hund: lägg spår, träna hunden och följ utvecklingen över tid.",
          months=["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"]),
-    dict(code="en", coming="Coming in v2.1", swift="english", lproj="en", suffix="-en", dir="en/", short="EN", name="English",
+    dict(code="en", gp_title="Coming soon to Android", coming="Coming in v2.1", swift="english", lproj="en", suffix="-en", dir="en/", short="EN", name="English",
          locale="en_US", privacy=("privacy", "Privacy"), badge_alt="Download on the App Store", choose="Choose language",
          contents_back="Back to contents", updated="Last updated", tip="Tip", warning="Important",
          eyebrow="iOS app for tracking training", nav="Manual",
          dev_by="Developed by Tillerflaten Digital · Org. no. 938 657 742", logo_alt="Tillerflaten Digital logo",
          title="User manual – Trax", desc="User manual for Trax, the app for tracking training with your dog: lay tracks, train your dog and follow your progress over time.",
          months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]),
-    dict(code="de", coming="Kommt mit v2.1", swift="german", lproj="de", suffix="-de", dir="de/", short="DE", name="Deutsch",
+    dict(code="de", gp_title="Bald für Android", coming="Kommt mit v2.1", swift="german", lproj="de", suffix="-de", dir="de/", short="DE", name="Deutsch",
          locale="de_DE", privacy=("datenschutz", "Datenschutz"), badge_alt="Laden im App Store", choose="Sprache wählen",
          contents_back="Zum Inhalt", updated="Zuletzt aktualisiert", tip="Tipp", warning="Wichtig",
          eyebrow="iOS-App für die Fährtenarbeit", nav="Handbuch",
@@ -265,6 +265,7 @@ def render(l, sections, strings, style, app, used, date):
   <a class="l opt" href="{home}{pslug}/">{pname}</a>
 {nav_lang(l, up)}
   <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="{up}img/app-store-{l["code"]}.svg" width="120" height="40" alt="{l["badge_alt"]}"></a>
+  <span class="gp" title="{l["gp_title"]}"><img src="{up}img/google-play-{l["code"]}.svg" width="135" height="40" alt="Google Play: {l["gp_title"]}"></span>
 </div></nav>
 
 <main class="wrap" id="top">

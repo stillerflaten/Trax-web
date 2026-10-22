@@ -150,6 +150,9 @@ footer .utvikler img{border-radius:6px;flex:none}
 nav .kj{display:block;line-height:0;border-radius:7px;transition:transform .15s}
 nav .kj img{height:40px;width:auto}
 nav .kj:active{transform:scale(.97)}
+nav .gp{display:block;line-height:0;margin-left:-8px}
+nav .gp img{height:40px;width:auto}
+@media (max-width:900px){nav .gp{display:none}} /* på smal skjerm står Google Play-merket rett under, i toppen av siden */
 @media (max-width:480px){.forside nav a.l:not([href$="manual/"]){display:none}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .forside section{border-top:0;padding-block:0}
@@ -324,6 +327,7 @@ if(location.hash==='#personvern')location.replace('personvern/');
     </ul>
   </details>
   <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" width="120" height="40" alt="Last ned fra App Store"></a>
+  <span class="gp" title="Snart for Android"><img src="img/google-play-nb.svg" width="135" height="40" alt="Google Play: Snart for Android"></span>
 </div></nav>
 
 <main id="top">
