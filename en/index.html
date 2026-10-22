@@ -169,6 +169,11 @@ nav .kj:active{transform:scale(.97)}
 .kjop .live{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
 .kjop .pris{display:flex;flex-direction:column;margin:0;font-size:16px;line-height:1.4;color:var(--muted)}
 .kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
+.kjop .android{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:20px 0 0;font:700 17px/1.3 var(--display);color:var(--fg)}
+.kjop .android img{display:block;height:50px;width:auto}
+.forside footer .kjop .android{color:var(--on-foot)}
+.v2 + .v2{padding-top:96px}
+.v2-mer{margin:48px 0 0;color:var(--muted);font-size:16px;line-height:1.5;max-width:70ch}
 .appstore{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
 .appstore:active{transform:scale(.97)}
 .appstore img{height:52px;width:auto}
@@ -332,6 +337,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
         <a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" height="50" loading="lazy" alt="Download on the App Store"></a>
         <p class="pris"><b class="intro">$9.99</b><b class="ord" hidden>$11.99</b><span class="intro">Introductory price for the first week, then $11.99.</span><span>One-time purchase, no subscription.</span></p>
       </div>
+        <p class="android"><img src="../img/google-play-en.svg" width="169" height="50" loading="lazy" alt="Google Play badge"><span>Coming soon to Android too!</span></p>
       </div>
       <ul class="tillit"><li>No account</li><li>No ads</li><li>Your data stays on your phone</li></ul>
     </div>
@@ -369,12 +375,28 @@ if(location.hash==='#privacy')location.replace('privacy/');
     </ul>
   </div></section>
 
+  <section id="version-2-2" class="v2"><div class="wrap">
+    <span class="v2-merke">Out now</span>
+    <h2>New in version 2.2</h2>
+    <p class="lead">Version 2.2 is out now in the App Store, as a free update for everyone who has the app.</p>
+      <ul class="v2-liste">
+        <li><b>Fresher design</b><span>A new home screen with the month’s tracks, km and finds, and large cards for ready tracks with the lie time as a bar.</span></li>
+        <li><b>Mark finds automatically</b><span>The item is marked as found when you reach it. Turn it on in Settings.</span></li>
+        <li><b>Metres between items</b><span>See how far it is since the last item while you lay the track, and the distances in the track overview.</span></li>
+        <li><b>Send a track blind</b><span>The recipient only sees the start until the track has been walked.</span></li>
+        <li><b>Choose the language</b><span>English, Norwegian, Swedish or German, whatever the phone’s language.</span></li>
+        <li><b>Hold to stop</b><span>The track is not ended by accident.</span></li>
+        <li><b>Alert five minutes ahead</b><span>The lie time alert gives you time to get the dog ready.</span></li>
+        <li><b>Brighter night mode</b><span>The track and your position are easy to see, and the screen still only shows red light.</span></li>
+      </ul>
+    <p class="v2-mer">You also get new markers for handler and dog in playback, a share image for area search with the dog’s track, corners only in IGP tracks, a question before the same track is saved twice, and several bug fixes.</p>
+  </div></section>
+
   <section id="version-2" class="v2"><div class="wrap">
     <div class="v2-g">
     <div class="v2-tekst">
-      <span class="v2-merke">Out now</span>
       <h2>New in version 2.0</h2>
-      <p class="lead">Version 2.0 is out now in the App Store, as a free update for everyone who has the app. On top of everything in the list above, you get:</p>
+      <p class="lead">This came in version 2.0:</p>
     </div>
     <div class="v2-film">
       <video controls muted loop playsinline preload="metadata" poster="../img/video/trax-2-en.jpg" width="720" height="1280" aria-label="Trax 2.0 launch video: the version 1.0 poster is smashed by a new iPhone, followed by five new features: article and area search, night mode, blood tracking, blind tracks and spoken alerts.">
@@ -442,7 +464,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
 <footer><div class="wrap">
   <p class="stort" aria-hidden="true">Trax</p>
   <div class="rad">
-    <div class="kjop"><p class="snart"><span class="chip">Coming soon to the App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" height="52" loading="lazy" alt="Download on the App Store"></a></div></div>
+    <div class="kjop"><p class="snart"><span class="chip">Coming soon to the App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" height="52" loading="lazy" alt="Download on the App Store"></a></div><p class="android"><img src="../img/google-play-en.svg" width="169" height="50" loading="lazy" alt="Google Play badge"><span>Coming soon to Android too!</span></p></div>
     <p class="lenker"><a href="manual/">User manual</a> · <a href="privacy/">Privacy</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a></p>
   </div>
   <p class="liten">© 2026 Silje Tillerflaten</p>

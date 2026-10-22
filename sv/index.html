@@ -169,6 +169,11 @@ nav .kj:active{transform:scale(.97)}
 .kjop .live{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
 .kjop .pris{display:flex;flex-direction:column;margin:0;font-size:16px;line-height:1.4;color:var(--muted)}
 .kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
+.kjop .android{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:20px 0 0;font:700 17px/1.3 var(--display);color:var(--fg)}
+.kjop .android img{display:block;height:50px;width:auto}
+.forside footer .kjop .android{color:var(--on-foot)}
+.v2 + .v2{padding-top:96px}
+.v2-mer{margin:48px 0 0;color:var(--muted);font-size:16px;line-height:1.5;max-width:70ch}
 .appstore{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
 .appstore:active{transform:scale(.97)}
 .appstore img{height:52px;width:auto}
@@ -332,6 +337,7 @@ if(location.hash==='#integritet')location.replace('integritet/');
         <a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-sv.svg" height="50" loading="lazy" alt="Hämta i App Store"></a>
         <p class="pris"><b class="intro">129 kr</b><b class="ord" hidden>149 kr</b><span class="intro">Introduktionspris den första veckan, därefter 149 kr.</span><span>Engångsköp, ingen prenumeration.</span></p>
       </div>
+        <p class="android"><img src="../img/google-play-sv.svg" width="169" height="50" loading="lazy" alt="Google Play-märket"><span>Snart för Android också!</span></p>
       </div>
       <ul class="tillit"><li>Inget konto</li><li>Ingen reklam</li><li>Datan stannar i telefonen</li></ul>
     </div>
@@ -369,12 +375,28 @@ if(location.hash==='#integritet')location.replace('integritet/');
     </ul>
   </div></section>
 
+  <section id="version-2-2" class="v2"><div class="wrap">
+    <span class="v2-merke">Ute nu</span>
+    <h2>Nytt i version 2.2</h2>
+    <p class="lead">Version 2.2 finns nu i App Store, som en gratis uppdatering för alla som har appen.</p>
+      <ul class="v2-liste">
+        <li><b>Fräschare design</b><span>Ny startskärm som visar månadens spår, km och fynd, och stora kort för spår som är klara, med spårets ålder som en stapel.</span></li>
+        <li><b>Registrera fynd automatiskt</b><span>Föremålet registreras som hittat när du kommer fram till det. Slås på i Inställningar.</span></li>
+        <li><b>Meter mellan föremål</b><span>Se hur långt det är sedan förra föremålet medan du lägger spåret, och avstånden i spåröversikten.</span></li>
+        <li><b>Skicka som okänt spår</b><span>Mottagaren ser bara starten tills spåret är spårat.</span></li>
+        <li><b>Välj språk</b><span>Svenska, norska, engelska eller tyska, oberoende av språket på telefonen.</span></li>
+        <li><b>Håll in Stoppa</b><span>Spåret avslutas inte av misstag.</span></li>
+        <li><b>Avisering fem minuter före</b><span>Aviseringen om spårets ålder ger dig tid att göra hunden redo.</span></li>
+        <li><b>Ljusare nattläge</b><span>Spåret och positionen syns bra, och skärmen lyser fortfarande bara rött.</span></li>
+      </ul>
+    <p class="v2-mer">Du får också nya markörer för förare och hund i uppspelningen, delningsbild för ytsök med hundens spår, vinklar bara i IGP-spår, en fråga innan samma spår sparas två gånger, och flera felrättningar.</p>
+  </div></section>
+
   <section id="version-2" class="v2"><div class="wrap">
     <div class="v2-g">
     <div class="v2-tekst">
-      <span class="v2-merke">Ute nu</span>
       <h2>Nytt i version 2.0</h2>
-      <p class="lead">Version 2.0 finns nu i App Store, som en gratis uppdatering för alla som har appen. Utöver allt i listan ovan får du detta:</p>
+      <p class="lead">Det här kom i version 2.0:</p>
     </div>
     <div class="v2-film">
       <video controls muted loop playsinline preload="metadata" poster="../img/video/trax-2-sv.jpg" width="720" height="1280" aria-label="Lanseringsvideo för Trax 2.0: affischen för version 1.0 krossas av en ny iPhone, och fem nyheter visas: föremålssök, nattläge, viltspår, okänt spår och röstaviseringar.">
@@ -442,7 +464,7 @@ if(location.hash==='#integritet')location.replace('integritet/');
 <footer><div class="wrap">
   <p class="stort" aria-hidden="true">Trax</p>
   <div class="rad">
-    <div class="kjop"><p class="snart"><span class="chip">Snart i App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-sv.svg" height="52" loading="lazy" alt="Hämta i App Store"></a></div></div>
+    <div class="kjop"><p class="snart"><span class="chip">Snart i App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-sv.svg" height="52" loading="lazy" alt="Hämta i App Store"></a></div><p class="android"><img src="../img/google-play-sv.svg" width="169" height="50" loading="lazy" alt="Google Play-märket"><span>Snart för Android också!</span></p></div>
     <p class="lenker"><a href="manual/">Användarmanual</a> · <a href="integritet/">Integritet</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../en/" hreflang="en" lang="en">English</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a></p>
   </div>
   <p class="liten">© 2026 Silje Tillerflaten</p>
