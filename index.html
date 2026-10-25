@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-itunes-app" content="app-id=6758005408">
-<meta name="description" content="Trax er en iPhone-app for sportrening med hund. Legg spor med GPS, få varsel ved gjenstandene og se hvor godt hunden holdt sporet.">
+<meta name="description" content="Trax er en app for iPhone og Android for sportrening med hund. Legg spor med GPS, få varsel ved gjenstandene og se hvor godt hunden holdt sporet.">
 <title>Trax – sportrening med hund</title>
 <link rel="alternate" hreflang="nb" href="https://trax-dogtracking.no/">
 <link rel="alternate" hreflang="sv" href="https://trax-dogtracking.no/sv/">
@@ -20,14 +20,14 @@
 <meta property="og:locale:alternate" content="de_DE">
 <meta property="og:site_name" content="Trax">
 <meta property="og:title" content="Trax – sportrening med hund">
-<meta property="og:description" content="Trax er en iPhone-app for sportrening med hund. Legg spor med GPS, få varsel ved gjenstandene og se hvor godt hunden holdt sporet.">
+<meta property="og:description" content="Trax er en app for iPhone og Android for sportrening med hund. Legg spor med GPS, få varsel ved gjenstandene og se hvor godt hunden holdt sporet.">
 <meta property="og:url" content="https://trax-dogtracking.no/">
 <meta property="og:image" content="https://trax-dogtracking.no/img/og-image-nb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Trax: Legg sporet. Følg hunden. En iPhone med et spor på kartet.">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Trax", "operatingSystem": "iOS", "applicationCategory": "SportsApplication", "inLanguage": "nb", "description": "iPhone-app for sportrening med hund. Legg spor med GPS, få varsel ved gjenstandene og se hvor godt hunden holdt sporet.", "url": "https://trax-dogtracking.no/", "image": "https://trax-dogtracking.no/img/og-image-nb.png", "author": {"@type": "Person", "name": "Silje Tillerflaten"}, "publisher": {"@type": "Organization", "name": "Tillerflaten Digital"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Trax", "operatingSystem": "iOS, Android", "applicationCategory": "SportsApplication", "inLanguage": "nb", "description": "App for iPhone og Android for sportrening med hund. Legg spor med GPS, få varsel ved gjenstandene og se hvor godt hunden holdt sporet.", "url": "https://trax-dogtracking.no/", "image": "https://trax-dogtracking.no/img/og-image-nb.png", "author": {"@type": "Person", "name": "Silje Tillerflaten"}, "publisher": {"@type": "Organization", "name": "Tillerflaten Digital"}}</script>
 <style>
 /* Layout: smal leseside med sticky nav, tre seksjoner (app, support, personvern), sporlinje som motiv */
 :root{
@@ -174,6 +174,8 @@ nav .gp img{height:40px;width:auto}
 .kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
 .kjop .android{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:20px 0 0;font:700 17px/1.3 var(--display);color:var(--fg)}
 .kjop .android img{display:block;height:50px;width:auto}
+.kjop .googleplay{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
+.kjop .googleplay:active{transform:scale(.97)}
 .forside footer .kjop .android{color:var(--on-foot)}
 .v2 + .v2{padding-top:96px}
 .v2-mer{margin:48px 0 0;color:var(--muted);font-size:16px;line-height:1.5;max-width:70ch}
@@ -327,21 +329,21 @@ if(location.hash==='#personvern')location.replace('personvern/');
     </ul>
   </details>
   <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" width="120" height="40" alt="Last ned fra App Store"></a>
-  <span class="gp" title="Snart for Android"><img src="img/google-play-nb.svg" width="135" height="40" alt="Google Play: Snart for Android"></span>
+  <a class="gp" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="img/google-play-nb.svg" width="135" height="40" alt="Tilgjengelig på Google Play"></a>
 </div></nav>
 
 <main id="top">
   <header class="wrap topp">
     <div>
       <h1>Følg sporet. Se fremgangen.</h1>
-      <p class="lead">Trax er en iPhone-app som hjelper deg å legge spor, trene hunden og følge utviklingen over tid.</p>
+      <p class="lead">Trax er en app for iPhone og Android som hjelper deg å legge spor, trene hunden og følge utviklingen over tid.</p>
       <div class="kjop">
         <p class="snart"><span class="chip">Snart i App Store</span><span>Engangskjøp, ingen abonnement.</span></p>
         <div class="live" hidden>
         <a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" height="50" loading="lazy" alt="Last ned fra App Store"></a>
         <p class="pris"><b class="intro">129 kr</b><b class="ord" hidden>149 kr</b><span class="intro">Introduksjonspris første uken, deretter 149 kr.</span><span>Engangskjøp, ingen abonnement.</span></p>
       </div>
-        <p class="android"><img src="img/google-play-nb.svg" width="169" height="50" loading="lazy" alt="Google Play-merket"><span>Snart for Android også!</span></p>
+        <p class="android"><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="img/google-play-nb.svg" width="169" height="50" loading="lazy" alt="Tilgjengelig på Google Play"></a><span>Nå også for Android!</span></p>
       </div>
       <ul class="tillit"><li>Ingen konto</li><li>Ingen reklame</li><li>Dataene blir på telefonen</li></ul>
     </div>
@@ -436,8 +438,8 @@ if(location.hash==='#personvern')location.replace('personvern/');
 
   <section id="support"><div class="wrap">
     <h2>Trenger du hjelp?</h2>
-    <p class="sup-intro">Send meg en e-post, så svarer jeg så raskt jeg kan, vanligvis innen to virkedager. Beskriv gjerne hva du prøvde å gjøre, hvilken iPhone og iOS-versjon du har, og legg ved skjermbilde om mulig.</p>
-    <a class="post" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=Hva%20pr%C3%B8vde%20du%20%C3%A5%20gj%C3%B8re%3F%0A%0A%0AiPhone-modell%3A%0AiOS-versjon%3A%0A">post@trax-dogtracking.no</a>
+    <p class="sup-intro">Send meg en e-post, så svarer jeg så raskt jeg kan, vanligvis innen to virkedager. Beskriv gjerne hva du prøvde å gjøre, hvilken telefon du har (iPhone eller Android) og hvilken versjon av iOS eller Android den kjører, og legg ved skjermbilde om mulig.</p>
+    <a class="post" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=Hva%20pr%C3%B8vde%20du%20%C3%A5%20gj%C3%B8re%3F%0A%0A%0ATelefonmodell%3A%0AiOS-%2FAndroid-versjon%3A%0A">post@trax-dogtracking.no</a>
     <h3 class="sr">Vanlige spørsmål</h3>
     <div class="faq">
       <div><h3>Sporet blir unøyaktig</h3><p>Sjekk at Trax har tilgang til posisjon «Ved bruk av appen» og at Nøyaktig posisjon er slått på under Innstillinger › Trax › Posisjon. GPS er mindre presis i tett skog og mellom høye bygninger.</p></div>
@@ -455,7 +457,7 @@ if(location.hash==='#personvern')location.replace('personvern/');
 <footer><div class="wrap">
   <p class="stort" aria-hidden="true">Trax</p>
   <div class="rad">
-    <div class="kjop"><p class="snart"><span class="chip">Snart i App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" height="52" loading="lazy" alt="Last ned fra App Store"></a></div><p class="android"><img src="img/google-play-nb.svg" width="169" height="50" loading="lazy" alt="Google Play-merket"><span>Snart for Android også!</span></p></div>
+    <div class="kjop"><p class="snart"><span class="chip">Snart i App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" height="52" loading="lazy" alt="Last ned fra App Store"></a></div><p class="android"><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="img/google-play-nb.svg" width="169" height="50" loading="lazy" alt="Tilgjengelig på Google Play"></a><span>Nå også for Android!</span></p></div>
     <p class="lenker"><a href="manual/">Brukermanual</a> · <a href="personvern/">Personvern</a> · <a href="sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="en/" hreflang="en" lang="en">English</a> · <a href="de/" hreflang="de" lang="de">Deutsch</a></p>
   </div>
   <p class="liten">© 2026 Silje Tillerflaten</p>
