@@ -358,7 +358,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">iOS app for tracking training</p>
     <h1>User manual</h1>
     <p class="lead">Everything you need to lay tracks, walk them and follow your training over time.</p>
-    <p class="updated">Last updated: 22 October 2026</p>
+    <p class="updated">Last updated: 25 October 2026</p>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
@@ -382,6 +382,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <li><a href="#varsler">Alerts and voice alerts</a></li>
       <li><a href="#sporoversikt">Track overview</a></li>
       <li><a href="#vurdering">Assessment and corners</a></li>
+      <li><a href="#treningsmomenter">Training elements</a></li>
       <li><a href="#avspilling">Playing back the walk</a></li>
       <li><a href="#hundens-spor">Dog’s track from a GPS collar</a></li>
       <li><a href="#rediger">Editing a track</a></li>
@@ -420,7 +421,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="intro">Everything starts here, and this is where you find all your tracks.</p>
     <p>The green header shows this month’s figures: the number of tracks, how many km they added up to and the share of items found. The icons at the top right are Import, User manual and Settings. “Import” opens a track from a Trax or GPX file, for example a track someone has sent you.</p>
     <ul>
-      <li>“Ready to walk” lists tracks that have been laid but not walked yet. They are shown as large map cards at the top, and if you have several, you swipe sideways. The dots below show how many there are. The label on the card shows the status (“Ready”, “Ready in …” while the lie time counts down, or “Walk in progress” if the walk has been started but not stopped) and the lie time, and a bar shows how far the lie time has come. The card also shows the length and the number of items.</li>
+      <li>“Ready to walk” lists tracks that have been laid but not walked yet. They are shown as large map cards at the top, and if you have several, you swipe sideways. The dots below show how many there are. The label on the card shows the status (“Ready”, “Ready in …” while the lie time counts down, or “Walk in progress” if the walk has been started but not stopped) and the lie time, and a bar shows how far the lie time has come. The card also shows the length, the number of items and the dog the track is laid for, for example “for Luna”.</li>
       <li>“Start” on the card takes you straight to the track. Otherwise, tap the card to open the track overview. Press and hold the card and choose “Delete” to delete the track.</li>
       <li>“Recent tracks” lists the three latest completed tracks. Each row has a small map with the track type as a badge, the date, length and dog on one line, and the finds on the right, for example 3/3. The small map shows your route in the same colours as in the track overview: green, orange or red depending on how far from the track it went (see “Deviation from track”). Tap a track to see the details.</li>
       <li>Swipe a track to the left to delete it. “See all” next to “Recent tracks” opens the “Completed tracks” page with all your tracks.</li>
@@ -454,7 +455,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>If the GPS signal is weak before you start, a box appears below the panel at the top. Red means you should wait for a better signal, yellow that you can start, but the track will be more accurate if you wait. The box closes by itself when the signal is good, or when you tap “OK, got it”. You can always start.</p>
     <p>The panel at the top shows time, length and number of items in large numbers, how accurate the GPS is, and the battery level. A green dot means better than 10 metres, yellow 10–25 metres and red more than 25 metres. “No GPS” means the phone has had no position for more than 15 seconds. Once you have dropped an item, the panel also shows “Since last”: how many metres you have walked since the last item. Tap the panel to see when the track started, when the position was last updated, the coordinate where you are standing and when the last item was dropped.</p>
     <p>When you tap “Start”, the map zooms in on you, always to the same view. If you zoom during the track, the map keeps the zoom you chose.</p>
-    <p>The map buttons on the right are grouped in one capsule. The top button opens the map menu, where you choose “Map”, “Topo” or “Satellite”, and turn “Night mode” on or off (see “Night mode”). Topo is the topographic map from the Norwegian Mapping Authority (Kartverket), with contour lines and paths. It needs internet access, shows “© Kartverket” at the bottom and is only available in Norway. The N button switches the map direction: north up, or a map that turns with the direction you face. Your choice is remembered, and you can also change it under Settings › Map and tracks. The bottom button centres the map on you again.</p>
+    <p>The map buttons on the right are grouped in one capsule. The top button opens the map menu, where you choose “Map”, “Topo” or “Satellite”, and turn “Night mode” on or off (see “Night mode”). Topo is the topographic map from the Norwegian Mapping Authority (Kartverket), with contour lines and paths. It needs internet access, shows “© Kartverket” at the bottom and is only available in Norway. The N button switches the map direction: north up, or a map that turns with the direction you face. Your choice is remembered, and you can also change it under Settings › Map and tracks. The map follows your location dot. If you drag the map, for example to move the corners of a field, the map stops following you and stays where you left it. If you zoom or rotate the map, it keeps following you. The bottom button shows an outlined arrow when the map is not following you. Tap it to centre the map on you again and follow you from there, with the same zoom.</p>
     <p>The arrow above the map buttons shows the wind (see “Weather”).</p>
     <p>While you lay the track, it is shown on the lock screen and in the Dynamic Island with time, length and number of items. On the lock screen you can tap “Pause” or “Resume”, and “Item” to drop an item without unlocking the phone.</p>
     <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Important: </span>If you tap the back arrow at the top left of the panel before the track is stopped, the app asks whether you want to discard the track or stop and save it. A discarded track cannot be recovered.</p></div>
@@ -478,6 +479,17 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Blood tracks have their own lie time choices, from 30 minutes to 24 hours (see “Lie time”).</p>
     <p>When the blood track is walked, wound beds and game count as items. The alert says “Near wound bed” or “Near game”, and the find is recorded as “Wound bed marked as found”. Before a blood stop and before the blood starts again, the app alerts you with “Blood stop” and “Blood again” (see “Alerts and voice alerts”).</p>
     <p>The track overview and the PDF list “Wound beds, game and blood stops” with the length of each blood stop, plus the blood amount and tracking shoe. The blood amount is also in the dog report and on the image for social media.</p>
+    <p>IGP tracks: After “Stop”, and later in the track overview, IGP tracks have the card “IGP training” with four optional fields: “Food” (in every footstep, in every other footstep, scattered, only at the end or no food), “Start” (flag or scent pad), “Corners” (laid naturally or trampled) and “Track layer” (own or stranger’s track). Your last choices are suggested next time. The fields are in the PDF and are included when you send the track. The dog’s progress chart has the option “Food” under “More”, so you can see how the food is reduced over time.</p>
+    <figure class="shot"><img src="../../img/manual/manual-igp-training-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The “IGP training” card in the “Save track” sheet.</figcaption></figure>
+    <p>IGP level: When you choose “IGP track” before you start, you also choose a level: “Free” (no requirements), IGP-V, IGP 1, IGP 2, IGP 3, FH 1, FH 2 or FH 3. The requirements for the level are shown below the buttons. While the track is laid, the panel at the top shows “Steps” (e.g. 212/300), the items and the number of steps since the last corner on the leg you are on (“Leg 2”). Tap the panel to see the length in metres. If a corner comes less than 50 steps after the previous corner, or an item is closer than 20 steps to a corner, a warning appears at the top of the map. Corners are found from the GPS and are only registered 5–20 metres after the corner, so the warning comes a little late. After “Stop” the lie time is set to at least the requirement for the level. In the track overview, the card “IGP requirements” shows a green and red checklist: length, corners, distance between corners, items, items clear of corners, cross tracks (FH 2 and FH 3), lie time and working time. Lie time and working time are checked once the track has been walked. You can change the level in the card, and it is shown in the PDF. Steps are converted from metres with the step length under Settings › Map and tracks › “Step length” (0.75 m by default). The warnings can be turned off under Settings › Alerts › “IGP requirements” (under “While laying the track”).</p>
+    <figure class="shot"><img src="../../img/manual/manual-igp-level-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>IGP level and the template on the map before you start.</figcaption></figure>
+    <figure class="shot"><img src="../../img/manual/manual-igp-check-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The “IGP requirements” card in the track overview.</figcaption></figure>
+    <p>IGP template: Turn on “Show template on map” below the level buttons, and a template for the level is placed on the map where you stand, as soon as the GPS has found you. The template shows the legs, the corners and where the items should go, and points north. Turn it with the left and right buttons, or press and drag ↻ on the map. If you change the level, you get a new template for that level in the same place. When you tap “Start”, the template moves to where you stand.</p>
+    <p>“Adjust” opens the “Adjust template” sheet. There you change the length of each leg in steps, and whether each corner turns left or right. The sheet shows how many steps the template has in total, and tells you if it becomes shorter than the requirement for the level. The items are placed in the middle of the legs and the last one at the end, at least 20 steps from the corners, and move along when you change the legs. “Reset” gives you the template for the level again.</p>
+    <figure class="shot"><img src="../../img/manual/manual-igp-plan-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Adjust template: the length of the legs and the direction of the corners.</figcaption></figure>
+    <p>While you lay the track, the card at the top of the map shows what comes next, for example “Right corner in about 20 steps” or “Place item 2 now”, and how far you have come on the leg, for example “Leg 2 · 40 of 100 steps”. Before corners and items you feel a small tap, and with “Read alerts aloud” on, the message is read out. You turn off the tap and the read-out under Settings › Alerts › “IGP template guidance”. The card is shown either way.</p>
+    <figure class="shot"><img src="../../img/manual/manual-igp-lay-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The card at the top tells you what comes next while you lay the track by the template.</figcaption></figure>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>The template is a guide, not the answer. Steps are worked out from the length the GPS measures, divided by your step length, and the GPS can be off by a few metres. Go by the terrain and your own steps.</p></div>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="sok">
@@ -531,6 +543,8 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>You can give the track a name. If you leave the field empty, the track is named with the date and time.</p>
     <p>Under “Surface” you can write what the track goes over, for example forest floor, gravel or meadow. The handler sees the surface on the track, also when you send it to another phone.</p>
     <p>Under “Lie time” you tap the button for how long the track should lie before the dog walks it (see “Lie time”). On a blood track, the “Shot site” and “Blood and tracking shoe” cards are also shown (see “Track type and blood tracks”).</p>
+    <p>Under “Laid for dog” you can choose which dog the track is laid for. It is optional, and “No dog” is the default. The dogs are shown as buttons, and the chosen dog is green. Tap the chosen dog again to clear it, or “New dog…” to add a dog. The dog is shown on the card under “Ready to walk” and as the “For …” badge in the track overview, where you can also change it. When the track is started, the dog is already chosen, but you can switch. The dog is included when you send the track as a Trax file, and is matched to the dog with the same name on the receiving phone.</p>
+    <p>Under “Training elements” you choose what the track should train (see “Training elements”).</p>
     <figure class="shot"><img src="../../img/manual/manual-save-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Save the track, export it or continue laying.</figcaption></figure>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
@@ -566,7 +580,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="intro">As the handler, you walk the track with your dog. The track layer’s route and the items are shown on the map, and your own route is drawn in a different colour.</p>
     <ol class="steps">
       <li>Tap “Start” on the track under “Ready to walk” on the home screen. You can also open the track and tap “Start track” at the bottom.</li>
-      <li>Choose the dog that will walk the track. If you only have one dog, it is already chosen. If you have not registered any dogs, you can start right away.</li>
+      <li>Choose the dog that will walk the track. The dogs are shown as buttons, and the chosen dog is green. If the track is laid for a dog, or you only have one dog, it is already chosen. “New dog…” at the end adds a new dog and chooses it right away. If you have not registered any dogs, you can start without one.</li>
       <li>To walk without seeing the track, turn on “Walk blind” (see “Blind tracks”).</li>
       <li>Tap “Start”.</li>
       <li>Follow your dog. Use “Pause” and “Resume” when needed.</li>
@@ -626,7 +640,10 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>If you want finds to be recorded by themselves, turn on “Mark finds automatically” under Settings › Map and tracks › Finds. The item is then marked as found when you have been within the “Distance to marker” (3, 5, 8 or 12 metres, 5 metres by default) with a good GPS signal. The phone vibrates, and you can tap “Undo” right away. When you stop, you can correct found and not found. This does not apply to blind tracks and searches.</p>
     <figure class="shot"><img src="../../img/manual/manual-found-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The banner appears when you are near an item.</figcaption></figure>
     <p>When you stop, the “Walk completed” sheet shows a list of the items. Finds you recorded along the way are already ticked. Correct anything that is missing.</p>
-    <p>In the same sheet you can give the track an assessment (see “Assessment and corners”) and write notes, for example about the conditions or how the dog worked. The notes are included in the PDF. If the track layer left the surface empty, you can fill it in here. Tap “Save” when you are done.</p>
+    <p>Indication: On tracks and IGP tracks, the message after “Found” has five buttons: “Down”, “Sit”, “Stand”, “Retrieve” and “Passed” (the dog went past and you showed it the article). Tap the one that fits, or leave it. The message stays for about 10 seconds. Finds from the lock screen and finds recorded automatically can be given an indication when you stop. In the track overview, the indication is shown after “Found” on each item, with a summary at the top of the card. Tap an item to change it. The indication is also in the PDF, and the dog’s progress chart has the option “Indication” under “More”, with one bar per track.</p>
+    <figure class="shot"><img src="../../img/manual/manual-indication-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Choose the indication after “Found”.</figcaption></figure>
+    <p>False indication: On IGP tracks there is a separate button, “False indication”, next to “Found”. Tap it when the dog indicates where there is nothing. The time and position are saved, and a red mark is shown on the map. Tapped by mistake? Tap “Undo” in the message, or “Remove” when you stop. False indications are shown in the track overview, in the PDF and as red numbers in the “Indication” chart.</p>
+    <p>In the same sheet you can give the track an assessment (see “Assessment and corners”). In the learning point you write what you want to remember from the track, for example what went well or what needs more work. It is included in the PDF. If the track layer left the surface empty, you can fill it in here. Tap “Save” when you are done.</p>
     <p>“Export” in the same sheet shares the track as a Trax file, GPX or PDF right away. Afterwards you are back in the sheet with everything you filled in. To show off the track, tap “Share on social media” (see “Share on social media”).</p>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>To walk the track without alerts and without seeing it, turn on “Walk blind” before you start (see “Blind tracks”).</p></div>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
@@ -640,8 +657,11 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <li>“Blood stop” and “Blood resumes” (blood tracks): before you reach a blood stop, and before the blood starts again after it. Choose the distance under “Distance to blood stop” (20 metres by default).</li>
       <li>“Track loss”: when you have been further from the laid track than the “Distance from track” for a while (5–30 metres, 15 metres by default). The app does not alert until you have been on the track once.</li>
       <li>“Crossing track”: 12 metres before each place where a cross track crosses the track. Crossings close together give one alert.</li>
+      <li>“IGP requirements” (while laying the track): when a corner comes less than 50 steps after the previous corner, or an item is placed closer than 20 steps to a corner. Applies to IGP tracks with a level chosen (see “Track type and blood tracks”).</li>
+      <li>“IGP template guidance” (while laying the track): a small tap before corners and items when you lay the track by a template, and a read-out when “Read alerts aloud” is on.</li>
     </ul>
     <p>All of these are on by default. The main “Alerts” switch at the top turns all alerts on and off, including voice alerts. Alerts also appear on the lock screen. On a blind track no alerts are given. Changes to blood stop, track loss and crossing track apply the next time you start a track.</p>
+    <p>The page has four groups: “While the dog tracks” (item nearby, track loss and crossing tracks), “Blood tracks” (blood stop and blood resumes), “While laying the track” (IGP requirements) and “Sound and voice” (alert type and reading out the distance).</p>
     <figure class="shot"><img src="../../img/manual/manual-alerts-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Settings › Alerts.</figcaption></figure>
     <p>Under “Alert type” you choose “Vibration only” or “Vibration and sound”. The sound only plays when the phone is not on silent or in Do Not Disturb.</p>
     <p>Voice alerts: turn on “Read alerts aloud” under “Alert type”. The phone then reads out all the alerts you have turned on, for example “Marker 3, about 11 metres away”, “Blood stop in 20 metres” or “Track lost, about 18 metres from the track”. Tap “Play example” to hear the voice. Voice alerts play in AirPods or the speaker, also with the screen locked and when the phone is on silent. Music is lowered while the message is read.</p>
@@ -657,13 +677,14 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <li>The map at the top shows both routes and all items. Tap “Fullscreen” for a larger map. There, the map button at the bottom right switches between the standard map, topo and satellite. Fullscreen always opens on the standard map.</li>
       <li>“Options” in the top left corner of the map has “Play back walk” and “Edit track”. On a track that has not been walked yet, “Edit track” is shown there directly.</li>
       <li>The result card below the title shows the finds in a ring (for example “4/4 found”), the length, the lie time, the time spent and how much of your route was on the track. For searches the card shows the size of the field instead of the length, and a separate card shows the time to each find (see “Search: article and area search”).</li>
-      <li>The dog and the track type are shown as badges below the title. Walked with the wrong dog, or forgot to choose one? Tap the dog badge and pick another dog or “No dog”.</li>
+      <li>The dog and the track type are shown as badges below the title. Walked with the wrong dog, or forgot to choose one? Tap the dog badge and pick another dog or “No dog”, or “New dog…” to add one. While the track is waiting, the “For …” badge shows the dog the track is laid for. Tap it to change or remove the dog.</li>
       <li>On the map, found items get a small green tick in the corner and keep their colour and symbol, so you can see whether it was a wound bed or game. Items that were not found are grey. The handler’s route is coloured by how far from the track it went (see “Deviation from track”), and in IGP tracks small numbered circles show the corners (see “Assessment and corners”).</li>
       <li>“Assessment” below the result shows the rating, difficulty and learning point.</li>
       <li>“Deviation from track” shows how closely the walk followed the track.</li>
       <li>For tracks that are waiting, the card shows the lie time in large figures, with the goal and how far it has come, and “Start track” stays at the bottom of the screen. This is also where you find the “Cross tracks” card (see “Lie time” and “Cross tracks”).</li>
       <li>Under “Items” you see each item with its description and result. Below each item it says how many metres it is from the start and from the previous item. Tap an item to write or change its description. On a blood track the card is called “Wound beds, game and blood stops”.</li>
-      <li>“Track type”, surface and notes are further down. Tap them to change them.</li>
+      <li>“Training elements” shows what the track trains, and how each element went (see “Training elements”).</li>
+      <li>“Track type” and surface are further down. If the track has notes from an earlier version of the app, they are shown there too. Tap them to change them.</li>
       <li>The share button at the top exports the track as a Trax file, GPX or PDF, and creates the image for social media for completed tracks.</li>
       <li>“Details” shows “Laying started”, “Laying finished”, “Walking started” and “Walking finished”, the number of corners (IGP tracks) and whether the track was walked blind. Tap “Rename” to give the track a new name.</li>
       <li>“Delete track” at the bottom deletes the track after you confirm.</li>
@@ -687,8 +708,21 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Corners: In IGP tracks, Trax counts the corners in the laid track by itself, where the track turns at least 45 degrees. Small bends and GPS noise are not counted. “Details” in the track overview shows “Corners”, and the map has small numbered circles at each corner. The PDF has the row “Corners in track”. Other track types get no corners. Tracks under 30 metres get no corners either, and on a blind track they are hidden until the track is stopped.</p>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
-  <section class="m" id="avspilling">
+  <section class="m" id="treningsmomenter">
     <p class="eyebrow">17</p>
+    <h2>Training elements</h2>
+    <p class="intro">Choose what the track should train, and assess each element once the track has been walked.</p>
+    <p>The “Training elements” card is in the “Save track” sheet after the track has been laid, below the lie time. The first time, the list is empty. Tap “New element”, enter a name, for example “Sharp corner” or “Article on a steep slope”, and tap “Add”. The element is chosen right away and remembered for the next track. Tap an element to choose it or clear it.</p>
+    <figure class="shot"><img src="../../img/manual/manual-moments-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Choose training elements when you save the track.</figcaption></figure>
+    <p>To tidy the list, tap the pencil at the top right of the card. Each element then gets a red cross that deletes it from the list. Tap “Done” when you are finished. Tracks that already have the element keep it.</p>
+    <p>When the track has been walked, you assess each chosen element as “Good”, “Fair” or “Poor” in the “Walk completed” sheet, above “Assessment”. Tap again to clear a choice. The card is only shown when the track layer chose elements.</p>
+    <p>In the track overview you can choose elements while the track is waiting, and assess them once it has been walked. If no elements were chosen before the track was walked, the card is not shown. On tracks sent blind, the elements are hidden until the track has been walked.</p>
+    <p>When you choose a dog on the “Completed tracks” page, the dog card has the row “Training elements” with the number of elements. Tap it to see one bar per element, for example “7 of 9 good”. The row is only shown when the dog has assessed elements.</p>
+    <p>The elements are in the PDF, are included when you send the track as a Trax file, and are part of the backup. Article and area searches have no training elements.</p>
+    <p class="back"><a href="#innhold">↑ Back to contents</a></p>
+  </section>
+  <section class="m" id="avspilling">
+    <p class="eyebrow">18</p>
     <h2>Playing back the walk</h2>
     <p class="intro">See how the dog worked, on top of the track that was laid.</p>
     <ol class="steps">
@@ -701,7 +735,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="hundens-spor">
-    <p class="eyebrow">18</p>
+    <p class="eyebrow">19</p>
     <h2>Dog’s track from a GPS collar</h2>
     <p class="intro">Does your dog wear a GPS collar, for example from Garmin or Tractive? Add the GPX file from the collar to see where the dog went compared with you and the track.</p>
     <ol class="steps">
@@ -718,7 +752,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="rediger">
-    <p class="eyebrow">19</p>
+    <p class="eyebrow">20</p>
     <h2>Editing a track</h2>
     <p class="intro">Trim the start or end of a track, for example a long tail because you forgot to tap Stop.</p>
     <ol class="steps">
@@ -732,7 +766,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="avvik">
-    <p class="eyebrow">20</p>
+    <p class="eyebrow">21</p>
     <h2>Deviation from track</h2>
     <p class="intro">See how closely the walk followed the track that was laid.</p>
     <p>The “Deviation from track” card is below the result in the track overview for completed tracks. It shows:</p>
@@ -747,7 +781,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="vaer">
-    <p class="eyebrow">21</p>
+    <p class="eyebrow">22</p>
     <h2>Weather</h2>
     <p>Trax fetches the weather where the track started, for the time you started: temperature, wind and wind direction, precipitation and humidity. When the dog starts the track, the weather is fetched again, since the wind may have turned or picked up during the lie time. The weather is saved with the track and included in the PDF export, in the columns “Laid” and “Tracked”.</p>
     <p>While the track is laid and while the dog is tracking, a small arrow on the map, above the map buttons, shows where the wind is blowing and its strength in m/s. The arrow points where the wind is blowing, which is where the scent goes, and turns with the map. Tap the arrow to see, for example, “Wind from SW, 4 m/s”. The wind is fetched once at the start and is not updated along the way. The arrow is also shown on the map in the PDF and on the image for social media.</p>
@@ -756,7 +790,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="sosiale-medier">
-    <p class="eyebrow">22</p>
+    <p class="eyebrow">23</p>
     <h2>Share on social media</h2>
     <p class="intro">Show off the track: Trax makes an image with the track, the length, the lie time and the finds, ideally on top of a photo of you and your dog.</p>
     <ol class="steps">
@@ -775,7 +809,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="dele">
-    <p class="eyebrow">23</p>
+    <p class="eyebrow">24</p>
     <h2>Sharing and receiving tracks</h2>
     <p class="intro">The track layer and the handler do not need to use the same phone. The track layer sends the track as a Trax file.</p>
     <ol class="steps">
@@ -798,16 +832,16 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="pdf">
-    <p class="eyebrow">24</p>
+    <p class="eyebrow">25</p>
     <h2>PDF report</h2>
-    <p>In the track overview, tap the share button at the top, choose “PDF (multiple)” and select one or more completed tracks. You get one PDF with one track per page, oldest first, with the map, key figures, items, finds, surface, notes, assessment and weather, ready to send or print.</p>
+    <p>In the track overview, tap the share button at the top, choose “PDF (multiple)” and select one or more completed tracks. You get one PDF with one track per page, oldest first, with the map, key figures, items, finds, surface, assessment and weather, ready to send or print.</p>
     <p>The key figures also include the track type, corners, “Within X m of the track” and “Lost the track”, and the walk is coloured by deviation on the map, using the limit you chose in the track overview (see “Deviation from track”). Blood tracks also have the blood amount, tracking shoe/hoof and the blood stops. Each item is listed with its coordinate in the format you chose under Settings › Map and tracks, and how accurate the GPS was when the item was dropped, for example “±4 m accuracy”. Older tracks did not save the accuracy, and then it says “accuracy unknown”.</p>
-    <p>For all the tracks of one dog, tap “See all” next to “Recent tracks” on the home screen, then the document button at the top right. Choose the dog, and turn on “Choose period” if you only want the tracks between two dates. The PDF gets a cover page with a summary, the average rating and a list of the tracks, followed by one page per track. The tracks in the report get the “Exported” badge.</p>
+    <p>For all the tracks of one dog, tap “See all” next to “Recent tracks” on the home screen, then the document button at the top right. Choose the dog, turn on “Choose period” if you only want the tracks between two dates, and tap “Create PDF” at the bottom. The PDF gets a cover page with a summary, the average rating and a list of the tracks, followed by one page per track. The tracks in the report get the “Exported” badge.</p>
     <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>The PDF report works well as a training log or to show your instructor.</p></div>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="hunder">
-    <p class="eyebrow">25</p>
+    <p class="eyebrow">26</p>
     <h2>Dogs</h2>
     <p class="intro">Register the dogs you train with, so you can see which dog walked each track.</p>
     <ol class="steps">
@@ -815,24 +849,36 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <li>Tap “Add dog” and enter the name.</li>
       <li>Tap “Save”.</li>
     </ol>
-    <p>Once you have registered dogs, you choose the dog when you start walking a track, not when the track is laid. If you only have one dog, it is chosen for you. The dog is shown in the track overview and in the PDF report.</p>
+    <p>You can also add a dog where you choose the dog: tap “New dog…” at the end of the dog buttons before you start walking a track, or under “Laid for dog” in the “Save track” sheet, or in the menu when you tap the dog badge in the track overview. Enter the name and tap “Save”, and the dog is added to the list and chosen right away. If you have no dogs yet, “Add dog” opens the same name field.</p>
+    <p>Once you have registered dogs, you choose the dog when you start walking a track. The track layer can choose who the track is laid for (see “Saving the track”), and then that dog is chosen for you. If you only have one dog, it is chosen for you. The dog is shown in the track overview and in the PDF report.</p>
     <p>You can change the dog afterwards in the track overview. On the “Completed tracks” page (tap “See all” on the home screen) you can show the tracks of one dog at a time with the buttons at the top.</p>
-    <p>When you choose one dog, the card shows four figures: “Tracks”, “Found”, “Last 30 days” and “On track” (the average share of each track that was within the deviation limit). Below is “Progress”: a chart of the dog’s completed tracks over time. Choose what the chart shows: “Found”, “On track” or “Length”, or under “More”: “Track age” (lie time), “Rating” or “Blood” (blood amount per 100 metres, when the dog has at least two blood tracks with a blood amount). The chart appears once the dog has at least two tracks. If the tracks lack the value you chose, it says there are too few tracks to show a chart.</p>
+    <p>When you choose one dog, the card shows four figures: “Tracks”, “Found”, “Last 30 days” and “On track” (the average share of each track that was within the deviation limit). Below is “Progress”: a chart of the dog’s completed tracks over time. Choose what the chart shows: “Found”, “On track” or “Length”, or under “More”: “Track age” (lie time), “Rating”, “Blood” (blood amount per 100 metres, when the dog has at least two blood tracks with a blood amount) or “Food” (the food on IGP tracks, when the dog has at least two IGP tracks with food set). The chart appears once the dog has at least two tracks. If the tracks lack the value you chose, it says there are too few tracks to show a chart.</p>
+    <p>“Working time” under “More” shows how long the dog spent on the IGP tracks, when the dog has at least two IGP tracks. If the IGP tracks were laid for different levels, separate level buttons appear below the track types, for example “All levels”, “IGP 1” and “IGP 2”. Choose one level, and the card, the chart and the list show only tracks laid for that level, so you compare like with like. With one level chosen, “Working time” shows a dashed line for the maximum working time at that level, and tracks above the line get an orange point. The FH levels have no line.</p>
     <p>If you choose “Article search” or “Area search” for the dog, the card shows “Count” instead of “Tracks”, and not “On track”. The chart for searches appears once the dog has at least two searches. Searches are never counted in the statistics for tracks.</p>
+    <p>Goals: When you choose one dog on “Completed tracks”, the dog card has the row “Goals”. Tap it to see the goals with progress bars, and “Add goal” to create a new one. You can also add goals before the dog has walked any tracks: under Settings › My dogs, tap “…” next to the dog and choose “Goals”. If the dog has no tracks yet, “Completed tracks” shows a card with just the goals.</p>
+    <ul>
+      <li>“Name”: for example trial or Season 2027.</li>
+      <li>“Deadline”: “Date” (tracks from today until the date count, for example leading up to a trial) or “Period” (tracks between two dates count, for example a season).</li>
+      <li>“Track type”: “All tracks”, or only tracks, IGP tracks or blood tracks.</li>
+      <li>“Requirements”: one or more of “Length”, “Lie time”, “Number of tracks”, “Found” and “On track”. Searches never count.</li>
+    </ul>
+    <p>By default each requirement can be met on a separate track: length and lie time are the best track in the period, and “On track” is the average of all the tracks. If the goal has at least two of length, lie time, found and on track, you can turn on “All requirements on the same track”. Then the goal is only reached when one track meets all the requirements at once, and the goal shows “Closest: the track from …” or “Reached on the track from …”. “Number of tracks” always counts all tracks in the period.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tip: </span>Example: the goal is 1000 m, 2 hours lie time and 90 % on track. Without “All requirements on the same track”, the goal is reached when the dog has walked one track of 1000 m, another with 2 hours lie time, and has 90 % on track on average. With the switch on, it has to be one and the same track that is 1000 m, has lain for 2 hours and where you were 90 % on track.</p></div>
+    <p>Tap a goal to change or delete it. The goals are part of the backup.</p>
     <p>If you delete a dog, its tracks keep the dog’s name. The dog is listed under Settings › My dogs › “Previous dogs” as long as it has tracks, and there you can turn off the switch to hide it from the dog filter. The tracks are still listed under “All”.</p>
     <figure class="shot"><img src="../../img/manual/manual-dogs-en.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>The dogs you train with.</figcaption></figure>
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="innstillinger">
-    <p class="eyebrow">26</p>
+    <p class="eyebrow">27</p>
     <h2>Settings</h2>
     <p>At the top of Settings is “My dogs”, and below it one row for each page: Alerts, Map and tracks, Battery, Backup, Language and About Trax. Tap a row to open the page.</p>
     <ul>
-      <li>Alerts: alerts for nearby items, blood stops and blood resuming, track loss and crossing tracks, reading out the distance walked, and the alert type with voice alerts. See “Alerts and voice alerts”.</li>
-      <li>Map and tracks: choose the colour and icon of the item markers (number, pin, flag, paw or bag), “Track layer color” and “Handler color”. “Rotate map to my direction” turns the map to face the way you face while laying or walking a track; when it is off, north is always up. Here you also choose the coordinate format: decimal degrees (DD), UTM, degrees/minutes/seconds (DMS) or MGRS. Under “Finds” you turn on “Mark finds automatically” and choose the distance (see “Recording finds”).</li>
+      <li>Alerts: alerts for nearby items, blood stops and blood resuming, track loss and crossing tracks, IGP requirements and IGP template guidance while laying, reading out the distance walked, and the alert type with voice alerts. See “Alerts and voice alerts”.</li>
+      <li>Map and tracks: choose the colour and icon of the item markers (number, pin, flag, paw or bag), “Track layer color” and “Handler color”. “Rotate map to my direction” turns the map to face the way you face while laying or walking a track; when it is off, north is always up. Here you also choose the coordinate format: decimal degrees (DD), UTM, degrees/minutes/seconds (DMS) or MGRS. Under “Finds” you turn on “Mark finds automatically” and choose the distance (see “Recording finds”). Under “IGP tracks” you choose the “Step length” (see “Track type and blood tracks”).</li>
       <li>Battery: “GPS battery saver” uses less power on long tracks. The track is slightly less detailed, but the proximity alert and “Found” work as before. While recording, the battery level is shown at the top, and the app warns you at 20 and 10 percent, also with the screen locked.</li>
       <li>Backup: automatic copy to iCloud Drive, and backups you create yourself. See “Backup and new phone”.</li>
-      <li>My dogs: add, rename or delete dogs. Under “Previous dogs” you can hide deleted dogs from the dog filter.</li>
+      <li>My dogs: add, rename or delete dogs, and set goals for each dog (tap “…” next to the dog). Under “Previous dogs” you can hide deleted dogs from the dog filter.</li>
       <li>Language: choose “Phone language”, Norsk, English, Svenska or Deutsch. The new language is shown the next time Trax starts, so close the app completely and open it again. The widget always follows the phone’s language.</li>
       <li>About Trax: “Send feedback” opens an email to me with the app version, iOS version and phone model already filled in. Write your question, bug or wish at the top. “Write a review” opens Trax in the App Store, where you can give stars and write a review. “Privacy policy” opens the privacy policy on the Trax website.</li>
     </ul>
@@ -841,7 +887,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="sikkerhetskopi">
-    <p class="eyebrow">27</p>
+    <p class="eyebrow">28</p>
     <h2>Backup and new phone</h2>
     <p class="intro">Keep your tracks safe if you lose your phone or switch to a new one.</p>
     <p>“Automatic Copy to iCloud Drive” under Settings › Backup is on by default. Trax then puts a backup in the “Trax” folder in your own iCloud Drive a few seconds after a track or a dog is saved or changed, so you don’t have to remember it. While a track is in progress, Trax waits until the track is saved. Below the switch it says when the last copy was made, or that iCloud Drive is off on the phone.</p>
@@ -856,7 +902,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="administrere">
-    <p class="eyebrow">28</p>
+    <p class="eyebrow">29</p>
     <h2>Deleting and recovering tracks</h2>
     <p>Swipe a track to the left on the home screen or on the “Completed tracks” page to delete it. You can also open a track and tap “Delete track” at the bottom of the page. You are always asked before anything is deleted.</p>
     <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Important: </span>Deleted tracks cannot be recovered unless they are in a backup. Export the track as GPX or PDF first if you want to keep it.</p></div>
@@ -865,7 +911,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="feilsoking">
-    <p class="eyebrow">29</p>
+    <p class="eyebrow">30</p>
     <h2>Tips and troubleshooting</h2>
     <ul>
       <li>The track is jagged or has gaps: check that Trax has location access and that “Precise Location” is on.</li>
@@ -880,7 +926,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Back to contents</a></p>
   </section>
   <section class="m" id="personvern">
-    <p class="eyebrow">30</p>
+    <p class="eyebrow">31</p>
     <h2>Privacy</h2>
     <p>All tracks are stored on your phone. Trax has no account and no server of its own. If you use iCloud Drive, Trax puts a backup in the “Trax” folder in your own iCloud Drive. You can turn this off under Settings › Backup. Your tracks are shared only when you export them yourself.</p>
     <p>The image for social media is created on your phone. If you choose “Save Image”, iOS asks whether Trax may add photos to Photos. Trax can only add photos, not see your photos. If you choose your own photo to put the track on, Trax only sees the one photo you pick.</p>
