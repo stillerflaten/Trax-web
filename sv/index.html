@@ -177,6 +177,8 @@ nav .gp img{height:40px;width:auto}
 .kjop .googleplay{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
 .kjop .googleplay:active{transform:scale(.97)}
 .forside footer .kjop .android{color:var(--on-foot)}
+.kjop .android .aintro{display:block;font:400 16px/1.4 var(--body);color:var(--muted)}
+.forside footer .kjop .android .aintro{color:var(--on-foot-2)}
 .v2 + .v2{padding-top:96px}
 .v2-mer{margin:48px 0 0;color:var(--muted);font-size:16px;line-height:1.5;max-width:70ch}
 .appstore{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
@@ -313,7 +315,7 @@ if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').
 if(location.hash==='#integritet')location.replace('integritet/');
 </script>
 </head>
-<body class="forside" data-lansering="2026-10-16">
+<body class="forside" data-lansering="2026-10-16" data-android="2026-10-25">
 <nav><div class="wrap">
   <a class="brand" href="#top"><img src="../img/icon-192.png" width="32" height="32" alt="">Trax</a>
   <a class="l" href="manual/">Manual</a>
@@ -343,7 +345,7 @@ if(location.hash==='#integritet')location.replace('integritet/');
         <a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-sv.svg" height="50" loading="lazy" alt="Hämta i App Store"></a>
         <p class="pris"><b class="intro">129 kr</b><b class="ord" hidden>149 kr</b><span class="intro">Introduktionspris den första veckan, därefter 149 kr.</span><span>Engångsköp, ingen prenumeration.</span></p>
       </div>
-        <p class="android"><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="../img/google-play-sv.svg" width="169" height="50" loading="lazy" alt="Ladda ned på Google Play"></a><span>Nu även för Android!</span></p>
+        <p class="android"><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="../img/google-play-sv.svg" width="169" height="50" loading="lazy" alt="Ladda ned på Google Play"></a><span>Nu även för Android!<span class="aintro">Introduktionspris den första veckan.</span></span></p>
       </div>
       <ul class="tillit"><li>Inget konto</li><li>Ingen reklam</li><li>Datan stannar i telefonen</li></ul>
     </div>
@@ -457,7 +459,7 @@ if(location.hash==='#integritet')location.replace('integritet/');
 <footer><div class="wrap">
   <p class="stort" aria-hidden="true">Trax</p>
   <div class="rad">
-    <div class="kjop"><p class="snart"><span class="chip">Snart i App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-sv.svg" height="52" loading="lazy" alt="Hämta i App Store"></a></div><p class="android"><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="../img/google-play-sv.svg" width="169" height="50" loading="lazy" alt="Ladda ned på Google Play"></a><span>Nu även för Android!</span></p></div>
+    <div class="kjop"><p class="snart"><span class="chip">Snart i App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-sv.svg" height="52" loading="lazy" alt="Hämta i App Store"></a></div><p class="android"><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="../img/google-play-sv.svg" width="169" height="50" loading="lazy" alt="Ladda ned på Google Play"></a><span>Nu även för Android!<span class="aintro">Introduktionspris den första veckan.</span></span></p></div>
     <p class="lenker"><a href="manual/">Användarmanual</a> · <a href="integritet/">Integritet</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../en/" hreflang="en" lang="en">English</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a></p>
   </div>
   <p class="liten">© 2026 Silje Tillerflaten</p>
@@ -477,6 +479,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.o
 var t=new Date(d+'T00:00:00').getTime(),n=Date.now();if(isNaN(t)||n<t)return;
 var k=document.querySelectorAll('.kjop');for(var j=0;j<k.length;j++){k[j].querySelector('.snart').hidden=true;k[j].querySelector('.live').hidden=false}
 if(n>=t+7*864e5){var e=document.querySelectorAll('.kjop .intro,.kjop .ord');for(var i=0;i<e.length;i++)e[i].hidden=!e[i].hidden}})();
+/* Android-lansering (data-android på <body>): introprisen for Android skjules etter sju dager */
+(function(){var d=document.body.getAttribute('data-android');if(!d)return;var t=Date.parse(d);if(isNaN(t)||Date.now()<t+7*864e5)return;var e=document.querySelectorAll('.kjop .aintro');for(var i=0;i<e.length;i++)e[i].hidden=true})();
 </script>
 <script src="../spor.js" defer></script>
 <script src="../galleri.js" defer></script>
