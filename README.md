@@ -46,6 +46,8 @@ python3 verktoy/lag-manual.py ../Trax de
 
 Kjør skriptet mot den app-versjonen som er i App Store (eller er sendt inn), ikke uten videre mot `main`: `main` i app-repoet kan ha endringer som ikke er ute ennå, og da beskriver nettmanualen ting brukerne ikke har. Derfor ble «Kommer i v. 2.1»-merkene fjernet for hånd i manualsidene da 2.1 kom ut, i stedet for å kjøre skriptet på nytt.
 
+Nettmanualen er nå laget fra versjon 2.3 (bygg 42), det vil si app-commit `d22cd57` (merge av PR #287). Slik gjør du det for en bestemt versjon: `git -C ../Trax worktree add ../Trax-2.3 d22cd57`, og kjør `python3 verktoy/lag-manual.py ../Trax-2.3`. Neste gang (2.4) brukes commiten bygg 43 ble arkivert fra.
+
 Skriptet henter stilen fra `index.html`, så endringer i utseendet på forsiden følger med neste gang det kjøres. Nytt språk: legg til en linje i `LANGS` øverst i skriptet.
 
 ## App Store-knapp og pris
