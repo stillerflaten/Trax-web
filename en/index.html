@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-itunes-app" content="app-id=6758005408">
-<meta name="description" content="Trax is an iPhone app for tracking training with your dog. Lay tracks with GPS, get alerted at each item and see how well your dog held the track.">
+<meta name="description" content="Trax is an iPhone and Android app for tracking training with your dog. Lay tracks with GPS, get alerted at each item and see how well your dog held the track.">
 <title>Trax – tracking training for dogs</title>
 <link rel="alternate" hreflang="nb" href="https://trax-dogtracking.no/">
 <link rel="alternate" hreflang="sv" href="https://trax-dogtracking.no/sv/">
@@ -20,14 +20,14 @@
 <meta property="og:locale:alternate" content="de_DE">
 <meta property="og:site_name" content="Trax">
 <meta property="og:title" content="Trax – tracking training for dogs">
-<meta property="og:description" content="Trax is an iPhone app for tracking training with your dog. Lay tracks with GPS, get alerted at each item and see how well your dog held the track.">
+<meta property="og:description" content="Trax is an iPhone and Android app for tracking training with your dog. Lay tracks with GPS, get alerted at each item and see how well your dog held the track.">
 <meta property="og:url" content="https://trax-dogtracking.no/en/">
 <meta property="og:image" content="https://trax-dogtracking.no/img/og-image-en.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Trax: Lay the track. Follow your dog. An iPhone showing a track on the map.">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Trax", "operatingSystem": "iOS", "applicationCategory": "SportsApplication", "inLanguage": "en", "description": "iPhone app for tracking training with your dog. Lay tracks with GPS, get alerted at each item and see how well your dog held the track.", "url": "https://trax-dogtracking.no/en/", "image": "https://trax-dogtracking.no/img/og-image-en.png", "author": {"@type": "Person", "name": "Silje Tillerflaten"}, "publisher": {"@type": "Organization", "name": "Tillerflaten Digital"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Trax", "operatingSystem": "iOS, Android", "applicationCategory": "SportsApplication", "inLanguage": "en", "description": "iPhone and Android app for tracking training with your dog. Lay tracks with GPS, get alerted at each item and see how well your dog held the track.", "url": "https://trax-dogtracking.no/en/", "image": "https://trax-dogtracking.no/img/og-image-en.png", "author": {"@type": "Person", "name": "Silje Tillerflaten"}, "publisher": {"@type": "Organization", "name": "Tillerflaten Digital"}}</script>
 <style>
 /* Engelsk utgave av index.html: samme stil, hold de tre filene i takt */
 :root{
@@ -174,6 +174,8 @@ nav .gp img{height:40px;width:auto}
 .kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
 .kjop .android{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:20px 0 0;font:700 17px/1.3 var(--display);color:var(--fg)}
 .kjop .android img{display:block;height:50px;width:auto}
+.kjop .googleplay{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
+.kjop .googleplay:active{transform:scale(.97)}
 .forside footer .kjop .android{color:var(--on-foot)}
 .v2 + .v2{padding-top:96px}
 .v2-mer{margin:48px 0 0;color:var(--muted);font-size:16px;line-height:1.5;max-width:70ch}
@@ -327,21 +329,21 @@ if(location.hash==='#privacy')location.replace('privacy/');
     </ul>
   </details>
   <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" width="120" height="40" alt="Download on the App Store"></a>
-  <span class="gp" title="Coming soon to Android"><img src="../img/google-play-en.svg" width="135" height="40" alt="Google Play: Coming soon to Android"></span>
+  <a class="gp" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="../img/google-play-en.svg" width="135" height="40" alt="Get it on Google Play"></a>
 </div></nav>
 
 <main id="top">
   <header class="wrap topp">
     <div>
       <h1>Follow the track. See the progress.</h1>
-      <p class="lead">Trax is an iPhone app that helps you lay tracks, train your dog and follow its progress over time.</p>
+      <p class="lead">Trax is an iPhone and Android app that helps you lay tracks, train your dog and follow its progress over time.</p>
       <div class="kjop">
         <p class="snart"><span class="chip">Coming soon to the App Store</span><span>One-time purchase, no subscription.</span></p>
         <div class="live" hidden>
         <a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" height="50" loading="lazy" alt="Download on the App Store"></a>
         <p class="pris"><b class="intro">$9.99</b><b class="ord" hidden>$11.99</b><span class="intro">Introductory price for the first week, then $11.99.</span><span>One-time purchase, no subscription.</span></p>
       </div>
-        <p class="android"><img src="../img/google-play-en.svg" width="169" height="50" loading="lazy" alt="Google Play badge"><span>Coming soon to Android too!</span></p>
+        <p class="android"><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="../img/google-play-en.svg" width="169" height="50" loading="lazy" alt="Get it on Google Play"></a><span>Now on Android too!</span></p>
       </div>
       <ul class="tillit"><li>No account</li><li>No ads</li><li>Your data stays on your phone</li></ul>
     </div>
@@ -436,8 +438,8 @@ if(location.hash==='#privacy')location.replace('privacy/');
 
   <section id="support"><div class="wrap">
     <h2>Need help?</h2>
-    <p class="sup-intro">Send me an email and I'll reply as soon as I can, usually within two business days. Please describe what you were trying to do, which iPhone and iOS version you have, and attach a screenshot if possible.</p>
-    <a class="post" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=What%20were%20you%20trying%20to%20do%3F%0A%0A%0AiPhone%20model%3A%0AiOS%20version%3A%0A">post@trax-dogtracking.no</a>
+    <p class="sup-intro">Send me an email and I'll reply as soon as I can, usually within two business days. Please describe what you were trying to do, which phone you have (iPhone or Android) and which iOS or Android version it runs, and attach a screenshot if possible.</p>
+    <a class="post" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=What%20were%20you%20trying%20to%20do%3F%0A%0A%0APhone%20model%3A%0AiOS%2FAndroid%20version%3A%0A">post@trax-dogtracking.no</a>
     <h3 class="sr">Frequently asked questions</h3>
     <div class="faq">
       <div><h3>The track is inaccurate</h3><p>Make sure Trax has location access “While Using the App” and that Precise Location is turned on under Settings › Trax › Location. GPS is less accurate in dense forest and between tall buildings.</p></div>
@@ -455,7 +457,7 @@ if(location.hash==='#privacy')location.replace('privacy/');
 <footer><div class="wrap">
   <p class="stort" aria-hidden="true">Trax</p>
   <div class="rad">
-    <div class="kjop"><p class="snart"><span class="chip">Coming soon to the App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" height="52" loading="lazy" alt="Download on the App Store"></a></div><p class="android"><img src="../img/google-play-en.svg" width="169" height="50" loading="lazy" alt="Google Play badge"><span>Coming soon to Android too!</span></p></div>
+    <div class="kjop"><p class="snart"><span class="chip">Coming soon to the App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" height="52" loading="lazy" alt="Download on the App Store"></a></div><p class="android"><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="../img/google-play-en.svg" width="169" height="50" loading="lazy" alt="Get it on Google Play"></a><span>Now on Android too!</span></p></div>
     <p class="lenker"><a href="manual/">User manual</a> · <a href="privacy/">Privacy</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a></p>
   </div>
   <p class="liten">© 2026 Silje Tillerflaten</p>
