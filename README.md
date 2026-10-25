@@ -30,7 +30,7 @@ Forsiden har et sveipbart galleri med sju skjermbilder: hjemskjerm, detaljkort, 
 
 ## Lanseringsvideo
 
-I «Nytt i versjon 2.0» på forsiden står lanseringsvideoen for 2.0 (`<div class="v2-film">`), én per språk: `img/video/trax-2-<nb|sv|en>.mp4` (720 × 1280, 30 fps, ca. 3 MB) med plakatbilde `.jpg`. Den tyske siden bruker den engelske til appen er på tysk. `film.js` spiller videoen lydløst i loop mens den er synlig, og knappen slår på lyd fra starten. Uten skript vises vanlige videokontroller, og med «Reduser bevegelse» starter den ikke av seg selv. Videoene lages i videoprosjektet (`video/trax-2-lansering/kilde/` i prosjektmappa, `scripts/web_version.sh`).
+Lanseringsvideoen for 2.0 (`img/video/trax-2-<nb|sv|en>.mp4` med plakatbilde, og `film.js`) ble tatt av forsiden 25. oktober 2026 sammen med «Nytt i versjon 2.0». Filene ligger igjen i repoet hvis de skal brukes igjen. `film.js` spiller av alt med klassen `.v2-film`.
 
 ## Brukermanual
 
@@ -79,6 +79,6 @@ Seksjonen om å sende spor til en annen Trax-bruker (`#send-spor`, svensk `#skic
 
 `forside.js` (felles for alle språk) gir forsiden bevegelse: delene i hver seksjon glir inn når de kommer til syne, telefonen i toppen synker litt når du scroller, og sporlinja fortsetter fra toppen og nedover siden. Skjermbildegalleriet glir ikke inn, fordi bevegelse inni den vannrette rullelista hakket på iPhone. Hver seksjon er en gjenstand (1–5) som får en grønn hake når sporet når den; siste gjenstand er App Store-knappen nederst. På skjermer fra 1240 px går linja i margen til høyre, på smalere skjermer vises gjenstandene som prikker foran overskriftene. Gjenstandene settes i `MAAL` øverst i skriptet. Med «Reduser bevegelse» står alt stille, linja er tegnet ferdig og alle gjenstandene er funnet.
 
-## Versjon 2.0
+## Versjonsseksjoner
 
-Seksjonen «Nytt i versjon 2.0» (`#versjon-2`, svensk, tysk og engelsk `#version-2`) står mellom funksjonene og delebildet. Den sier at 2.0 er ute som gratis oppdatering, og lister det nye som ikke står i funksjonslisten over. «Kommer snart»-tekstene for 2.0 ble fjernet da 2.0 kom ut (17. oktober 2026). Det tyske avsnittet om at tysk kommer i 2.1 ble fjernet da 2.1 kom ut (19. oktober 2026).
+Forsiden har én seksjon for siste versjon (`class="v2"`, nå «Nytt i versjon 2.3», `#versjon-2-3`, svensk, engelsk og tysk `#version-2-3`), rett etter funksjonene. Når en ny versjon kommer, flyttes det viktigste fra forrige versjonsseksjon inn i funksjonslisten (`#funksjoner`), og den gamle seksjonen fjernes. Det ble gjort for 2.2 (23. oktober 2026) og 2.0 (25. oktober 2026). Feltsøk og arealsøk, vind og vær, vurdering, redigering, flere spor i én PDF og sikkerhetskopi står nå i funksjonslisten.

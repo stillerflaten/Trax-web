@@ -381,6 +381,12 @@ if(location.hash==='#personvern')location.replace('personvern/');
       <li><b>Send spor blindt</b><span>Mottakeren ser bare startstedet til sporet er gått.</span></li>
       <li><b>Hold inne Stopp</b><span>Sporet avsluttes ikke ved et uhell.</span></li>
       <li><b>Nattmodus</b><span>Rødt lys på skjermen, med sporet og posisjonen godt synlig.</span></li>
+      <li><b>Feltsøk og arealsøk</b><span>Lag et felt på kartet og søk etter gjenstander eller figuranter, med tidsgrense og egen statistikk.</span></li>
+      <li><b>Vind og vær</b><span>Vindpil på kartet og været idet hunden starter sporet.</span></li>
+      <li><b>Vurdering av sporet</b><span>Gi karakter, vanskelighetsgrad og et læringspunkt etter hvert spor.</span></li>
+      <li><b>Rediger spor</b><span>Kutt starten og slutten av et spor i etterkant.</span></li>
+      <li><b>Flere spor i én PDF</b><span>Eksporter mange spor samlet, for eksempel til treningsloggen.</span></li>
+      <li><b>Sikkerhetskopi</b><span>Automatisk kopi av alle spor og hunder til iCloud Drive.</span></li>
       <li><b>Velg språk</b><span>Norsk, svensk, engelsk eller tysk, uavhengig av språket på telefonen.</span></li>
     </ul>
   </div></section>
@@ -400,31 +406,6 @@ if(location.hash==='#personvern')location.replace('personvern/');
         <li><b>Kartet blir stående</b><span>Dra i kartet, så blir det liggende der du la det. Trykk på posisjonsknappen for å følge igjen.</span></li>
       </ul>
     <p class="v2-mer">Du får også arbeidstid og filter på IGP-nivå i utviklingsgrafen, en ryddigere Varsler-side, et enklere lagringsark etter sporet og «PDF for hund» i appens farger.</p>
-  </div></section>
-
-  <section id="versjon-2" class="v2"><div class="wrap">
-    <div class="v2-g">
-    <div class="v2-tekst">
-      <h2>Nytt i versjon 2.0</h2>
-      <p class="lead">Dette kom i versjon 2.0:</p>
-    </div>
-    <div class="v2-film">
-      <video controls muted loop playsinline preload="metadata" poster="img/video/trax-2-nb.jpg" width="720" height="1280" aria-label="Lanseringsvideo for Trax 2.0: plakaten for versjon 1.0 knuses av en ny iPhone, og fem nyheter vises: feltsøk, nattmodus, blodspor, blindt spor og talevarsler.">
-        <source src="img/video/trax-2-nb.mp4" type="video/mp4">
-      </video>
-      <button class="v2-lyd" type="button" hidden data-paa="Slå på lyd" data-av="Slå av lyd" data-spill="Spill av"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="bolge" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="kryss" d="m16 9 6 6m0-6-6 6"/></svg>Slå på lyd</button>
-    </div>
-      <ul class="v2-liste">
-        <li><b>Ny design</b><span>Ny hjemskjerm med månedens tall, store kartkort for klare spor og roligere skjermer mens du legger spor og følger sporet med hunden.</span></li>
-        <li><b>Feltsøk og arealsøk</b><span>Lag et felt på kartet og søk etter gjenstander eller figuranter, med tidsgrense og egen statistikk.</span></li>
-        <li><b>Nattmodus</b><span>Rødt lys på skjermen når du trener i mørket, så du ser kartet uten å bli blendet.</span></li>
-        <li><b>Vind og vær</b><span>Vindpil på kartet og været idet hunden starter sporet.</span></li>
-        <li><b>Vurdering av sporet</b><span>Gi karakter, vanskelighetsgrad og et læringspunkt etter hvert spor.</span></li>
-        <li><b>Rediger spor</b><span>Kutt starten og slutten av et spor i etterkant.</span></li>
-        <li><b>Flere spor i én PDF</b><span>Eksporter mange spor samlet, for eksempel til treningsloggen.</span></li>
-        <li><b>Sikkerhetskopi</b><span>Automatisk kopi av alle spor og hunder til iCloud Drive.</span></li>
-      </ul>
-    </div>
   </div></section>
 
   <section id="deling" class="del"><div class="wrap del-g">
@@ -498,7 +479,6 @@ if(n>=t+7*864e5){var e=document.querySelectorAll('.kjop .intro,.kjop .ord');for(
 <script src="spor.js" defer></script>
 <script src="galleri.js" defer></script>
 <script src="forside.js" defer></script>
-<script src="film.js" defer></script>
 <script data-goatcounter="https://trax-dogtracking.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

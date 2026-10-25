@@ -383,6 +383,12 @@ if(location.hash==='#privacy')location.replace('privacy/');
       <li><b>Fährte blind senden</b><span>Der Empfänger sieht nur den Start, bis die Fährte gearbeitet ist.</span></li>
       <li><b>Stopp gedrückt halten</b><span>Die Fährte wird nicht aus Versehen beendet.</span></li>
       <li><b>Nachtmodus</b><span>Rotes Licht auf dem Bildschirm, mit gut sichtbarer Fährte und Position.</span></li>
+      <li><b>Gegenstands- und Flächensuche</b><span>Markiere ein Feld auf der Karte und suche nach Gegenständen oder Personen, mit Zeitlimit und eigener Statistik.</span></li>
+      <li><b>Wind und Wetter</b><span>Ein Windpfeil auf der Karte und das Wetter, wenn dein Hund die Fährte beginnt.</span></li>
+      <li><b>Bewertung der Fährte</b><span>Note, Schwierigkeit und ein Lernpunkt nach jeder Fährte.</span></li>
+      <li><b>Fährten bearbeiten</b><span>Kürze Anfang und Ende einer Fährte im Nachhinein.</span></li>
+      <li><b>Mehrere Fährten in einem PDF</b><span>Exportiere viele Fährten zusammen, zum Beispiel für dein Trainingstagebuch.</span></li>
+      <li><b>Sicherung</b><span>Automatische Kopie aller Fährten und Hunde in iCloud Drive.</span></li>
       <li><b>Sprache wählen</b><span>Deutsch, Englisch, Norwegisch oder Schwedisch, unabhängig von der Sprache des Handys.</span></li>
     </ul>
   </div></section>
@@ -402,31 +408,6 @@ if(location.hash==='#privacy')location.replace('privacy/');
         <li><b>Die Karte bleibt stehen</b><span>Verschiebe die Karte, und sie bleibt, wo du sie hingelegt hast. Tippe auf die Standorttaste, um wieder zu folgen.</span></li>
       </ul>
     <p class="v2-mer">Außerdem gibt es Ausarbeitungszeit und einen Filter nach IGP-Stufe in der Entwicklungsgrafik, eine übersichtlichere Seite für Hinweise, ein einfacheres Speicherblatt nach der Fährte und „PDF für Hund“ in den Farben der App.</p>
-  </div></section>
-
-  <section id="version-2" class="v2"><div class="wrap">
-    <div class="v2-g">
-    <div class="v2-tekst">
-      <h2>Neu in Version 2.0</h2>
-      <p class="lead">Das kam mit Version 2.0:</p>
-    </div>
-    <div class="v2-film">
-      <video controls muted loop playsinline preload="metadata" poster="../img/video/trax-2-en.jpg" width="720" height="1280" aria-label="Startvideo zu Trax 2.0 (auf Englisch): Das Plakat von Version 1.0 wird von einem neuen iPhone zerschlagen, danach folgen fünf Neuheiten: Gegenstands- und Flächensuche, Nachtmodus, Schweißfährte, Blindfährte und Sprachansagen.">
-        <source src="../img/video/trax-2-en.mp4" type="video/mp4">
-      </video>
-      <button class="v2-lyd" type="button" hidden data-paa="Ton an" data-av="Ton aus" data-spill="Abspielen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="bolge" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="kryss" d="m16 9 6 6m0-6-6 6"/></svg>Ton an</button>
-    </div>
-      <ul class="v2-liste">
-        <li><b>Neues Design</b><span>Ein neuer Startbildschirm mit den Zahlen des Monats, große Kartenansichten für bereite Fährten und ruhigere Bildschirme beim Legen und beim Ausarbeiten mit dem Hund.</span></li>
-        <li><b>Gegenstands- und Flächensuche</b><span>Markiere ein Feld auf der Karte und suche nach Gegenständen oder Personen, mit Zeitlimit und eigener Statistik.</span></li>
-        <li><b>Nachtmodus</b><span>Rotes Licht auf dem Bildschirm, wenn du im Dunkeln trainierst, damit du die Karte siehst, ohne geblendet zu werden.</span></li>
-        <li><b>Wind und Wetter</b><span>Ein Windpfeil auf der Karte und das Wetter, wenn dein Hund die Fährte beginnt.</span></li>
-        <li><b>Bewertung der Fährte</b><span>Note, Schwierigkeit und ein Lernpunkt nach jeder Fährte.</span></li>
-        <li><b>Fährten bearbeiten</b><span>Kürze Anfang und Ende einer Fährte im Nachhinein.</span></li>
-        <li><b>Mehrere Fährten in einem PDF</b><span>Exportiere viele Fährten zusammen, zum Beispiel für dein Trainingstagebuch.</span></li>
-        <li><b>Sicherung</b><span>Automatische Kopie aller Fährten und Hunde in iCloud Drive.</span></li>
-      </ul>
-    </div>
   </div></section>
 
   <section id="teilen" class="del"><div class="wrap del-g">
@@ -500,7 +481,6 @@ if(n>=t+7*864e5){var e=document.querySelectorAll('.kjop .intro,.kjop .ord');for(
 <script src="../spor.js" defer></script>
 <script src="../galleri.js" defer></script>
 <script src="../forside.js" defer></script>
-<script src="../film.js" defer></script>
 <script data-goatcounter="https://trax-dogtracking.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
