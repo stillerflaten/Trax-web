@@ -252,7 +252,7 @@ body:not(.forside) main > *,body:not(.forside) footer{max-width:760px}
     <p>Denne erklæringen forklarer hvilke opplysninger Trax samler inn, hvorfor, og hvilke rettigheter du har. Trax er utviklet av Silje Tillerflaten, som du når på <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>.</p>
 
     <h3>Kort fortalt</h3>
-    <p>Alt du registrerer i Trax lagres bare på din egen telefon. Trax har ingen konto, ingen egen server og ingen reklame, og utvikleren har ikke tilgang til dataene dine.</p>
+    <p>Alt du registrerer i Trax lagres bare på din egen telefon. Trax har ingen konto, ingen egen server og ingen reklame, og utvikleren har ikke tilgang til dataene dine. Trax finnes for både iPhone og Android. Der de to versjonene bruker ulike tjenester, står det nedenfor hva som gjelder for hver.</p>
 
     <h3>Hva appen lagrer på telefonen</h3>
     <dl>
@@ -262,23 +262,24 @@ body:not(.forside) main > *,body:not(.forside) footer{max-width:760px}
 
     <h3>Når data forlater telefonen</h3>
     <dl>
-      <dt>Værdata</dt><dd>For å hente været for en økt sender appen posisjonen og tidspunktet sporet startet til Apple Weather (WeatherKit). Apple bruker posisjonen bare til å svare på forespørselen og knytter den ikke til deg eller Apple-kontoen din. Det sendes ingen navn eller treningsdata. Værdataene som kommer tilbake, lagres sammen med økten på telefonen. Eldre økter kan ha værdata fra Open-Meteo (open-meteo.com, CC BY 4.0).</dd>
-      <dt>Stedsnavn</dt><dd>Når du stopper et spor, foreslår appen et navn med stedet der sporet startet, for eksempel «Byneset 25. okt. 08:15». For å finne stedsnavnet sendes koordinatene til startpunktet til Kartverkets stedsnavntjeneste når du er i Norge, og ellers til Apple. Det sendes ingen navn, treningsdata eller noe annet som identifiserer deg, og stedsnavnet lagres bare som navnet på sporet på telefonen. Uten nett blir navnet dato og klokkeslett i stedet.</dd>
-      <dt>Kart</dt><dd>Kartbildene hentes fra Apple Kart, eller fra Kartverket når du velger topografisk kart. Tjenesten får da vite hvilket kartutsnitt som vises, slik det er i alle kartapper.</dd>
+      <dt>Værdata</dt><dd>På iPhone sender appen posisjonen og tidspunktet sporet startet til Apple Weather (WeatherKit) for å hente været for en økt. Apple bruker posisjonen bare til å svare på forespørselen og knytter den ikke til deg eller Apple-kontoen din. Eldre økter kan ha værdata fra Open-Meteo (open-meteo.com, CC BY 4.0). På Android sender appen posisjonen, rundet av til omtrent 100 meter, og tidspunktet til Open-Meteo (open-meteo.com, Sveits) når du legger et spor, når hunden starter, og når du trykker «Hent vær». Det sendes ingen konto, navn eller treningsdata. Værdataene som kommer tilbake, lagres sammen med økten på telefonen.</dd>
+      <dt>Stedsnavn</dt><dd>Når du stopper et spor, foreslår appen et navn med stedet der sporet startet, for eksempel «Byneset 25. okt. 08:15». For å finne stedsnavnet sendes koordinatene til startpunktet til Kartverkets stedsnavntjeneste når du er i Norge, og ellers til Apple (iPhone) eller Google (Android). På Android rundes posisjonen av til omtrent 100 meter før den sendes. Det sendes ingen navn, treningsdata eller noe annet som identifiserer deg, og stedsnavnet lagres bare som navnet på sporet på telefonen. Uten nett blir navnet dato og klokkeslett i stedet.</dd>
+      <dt>Kart</dt><dd>Kartbildene hentes fra Apple Kart på iPhone og fra Google Maps på Android, eller fra Kartverket når du velger topografisk kart. Tjenesten får da vite hvilket kartutsnitt som vises, slik det er i alle kartapper. Google behandler slike data etter <a href="https://policies.google.com/privacy?hl=no">Googles personvernerklæring</a>.</dd>
+      <dt>Posisjon på Android</dt><dd>På Android hentes posisjonen gjennom Googles posisjonstjenester på telefonen (Google Play-tjenester). Har du slått på Googles posisjonsnøyaktighet, kan Google bruke Wi-Fi og mobilnett for å finne posisjonen, etter innstillingene du har valgt hos Google. Trax sender ikke sporene dine noe sted.</dd>
       <dt>Eksport</dt><dd>Når du velger å eksportere eller dele en økt, sendes den dit du selv velger, for eksempel på e-post, melding eller til en annen app. Det skjer bare når du trykker på eksport.</dd>
-      <dt>Sikkerhetskopi</dt><dd>Hvis du har iCloud-sikkerhetskopi slått på, kan iOS ta med Trax-dataene i sikkerhetskopien din. Den styres av Apple og din Apple-konto, ikke av Trax.</dd>
-      <dt>Krasjrapporter</dt><dd>Anonyme krasjrapporter fra Apple, bare hvis du har slått på deling av analysedata på iPhonen.</dd>
+      <dt>Sikkerhetskopi</dt><dd>På iPhone kan iOS ta med Trax-dataene i iCloud-sikkerhetskopien din hvis den er slått på, og Trax kan legge en automatisk kopi i iCloud Drive. Den styres av Apple og din Apple-konto, ikke av Trax. På Android er Trax holdt utenfor Googles automatiske sikkerhetskopi. Appen kan i stedet legge en automatisk kopi i en mappe du selv velger. Er mappen synkronisert med en skytjeneste, for eksempel Google Disk, er det den tjenesten og ditt eget valg som styrer kopien.</dd>
+      <dt>Krasjrapporter</dt><dd>Anonyme krasjrapporter fra Apple, bare hvis du har slått på deling av analysedata på iPhonen. På Android kan Google Play sende anonyme krasjrapporter hvis du har slått på deling av bruks- og diagnosedata hos Google.</dd>
     </dl>
     <p>Trax selger ikke data, bruker dem ikke til reklame og sporer deg ikke på tvers av andre apper og nettsteder.</p>
 
     <h3>Denne nettsiden</h3>
-    <p>Nettsiden ligger på GitHub Pages. GitHub lagrer IP-adressen til besøkende i tekniske logger av sikkerhetshensyn, se <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHubs personvernerklæring</a>. Nettsiden bruker ikke informasjonskapsler (cookies) og henter ikke skrifttyper fra andre tjenester. For å se hvor mange som besøker siden, bruker vi <a href="https://www.goatcounter.com/">GoatCounter</a>, som teller sidevisninger anonymt. GoatCounter bruker ikke informasjonskapsler, lagrer ikke IP-adressen din og kan ikke følge deg mellom nettsteder. Grunnlaget er vår berettigede interesse i å vite hvordan nettsiden brukes (GDPR art. 6 nr. 1 bokstav f).</p>
+    <p>Nettsiden ligger på GitHub Pages. GitHub lagrer IP-adressen til besøkende i tekniske logger av sikkerhetshensyn, se <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHubs personvernerklæring</a>. Nettsiden bruker ikke informasjonskapsler (cookies) og henter ikke skrifttyper fra andre tjenester. For å se hvor mange som besøker siden, bruker jeg <a href="https://www.goatcounter.com/">GoatCounter</a>, som teller sidevisninger anonymt. GoatCounter bruker ikke informasjonskapsler, lagrer ikke IP-adressen din og kan ikke følge deg mellom nettsteder. Grunnlaget er min berettigede interesse i å vite hvordan nettsiden brukes (GDPR art. 6 nr. 1 bokstav f).</p>
 
     <h3>Hvor lenge dataene lagres</h3>
     <p>Dataene ligger på telefonen til du sletter dem. Du kan slette enkeltøkter i appen, og alt fjernes permanent når du sletter appen.</p>
 
     <h3>Dine rettigheter</h3>
-    <p>Siden dataene bare ligger hos deg, har du full kontroll over dem selv. Du kan når som helst slå av tilgang til posisjon under Innstillinger › Trax på iPhonen. Har du spørsmål om personvern, kontakt <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>. Du kan også klage til Datatilsynet (<a href="https://www.datatilsynet.no">datatilsynet.no</a>).</p>
+    <p>Siden dataene bare ligger hos deg, har du full kontroll over dem selv. Du kan når som helst slå av tilgang til posisjon under Innstillinger › Trax på iPhone, eller under Innstillinger › Apper › Trax › Tillatelser på Android. Har du spørsmål om personvern, kontakt <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>. Du kan også klage til Datatilsynet (<a href="https://www.datatilsynet.no">datatilsynet.no</a>).</p>
 
     <h3>Barn</h3>
     <p>Trax er ikke rettet mot barn under 13 år, og jeg samler ikke bevisst inn opplysninger om dem.</p>
