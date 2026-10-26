@@ -247,7 +247,7 @@ body:not(.forside) main > *,body:not(.forside) footer{max-width:760px}
   <header class="hero">
     <h1>Så hanterar Trax dina data</h1>
   </header>
-  <p class="updated">Senast uppdaterad: 25 oktober 2026</p>
+  <p class="updated">Senast uppdaterad: 26 oktober 2026</p>
     
     <p>Den här policyn förklarar vilka uppgifter Trax samlar in, varför, och vilka rättigheter du har. Trax är utvecklad av Silje Tillerflaten, som du når på <a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a>.</p>
 
@@ -256,13 +256,14 @@ body:not(.forside) main > *,body:not(.forside) footer{max-width:760px}
 
     <h3>Vad appen sparar på telefonen</h3>
     <dl>
-      <dt>Plats</dt><dd>GPS-punkter medan du registrerar ett spår eller ett träningspass. Platsen hämtas bara när appen används och du har startat ett träningspass.</dd>
+      <dt>Plats</dt><dd>GPS-punkter medan du registrerar ett spår eller ett träningspass. Platsen hämtas bara medan ett träningspass pågår, även när skärmen är låst.</dd>
       <dt>Träningsdata</dt><dd>Spår, rutter, tidpunkter, spårets ålder, väder, anteckningar och uppgifter om din hund som du själv lägger in.</dd>
+      <dt>Bilder och kamera</dt><dd>Tar du en bild eller väljer en egen bild till delningsbilden av ett spår använder appen kameran eller bara den bild du väljer. Bilden sparas på telefonen. Väljer du att spara delningsbilden i Bilder kan Trax bara lägga till bilder där, inte se dina bilder.</dd>
     </dl>
 
     <h3>När data lämnar telefonen</h3>
     <dl>
-      <dt>Väderdata</dt><dd>På iPhone skickar appen platsen och tidpunkten då spåret startade till Apple Weather (WeatherKit) för att hämta vädret för ett träningspass. Apple använder platsen bara för att besvara förfrågan och kopplar den inte till dig eller ditt Apple-konto. Äldre träningspass kan ha väderdata från Open-Meteo (open-meteo.com, CC BY 4.0). På Android skickar appen platsen, avrundad till ungefär 100 meter, och tidpunkten till Open-Meteo (open-meteo.com, Schweiz) när du lägger ett spår, när hunden startar och när du trycker på ”Hämta väder”. Inget konto, namn eller träningsdata skickas. Väderdata som kommer tillbaka sparas tillsammans med träningspasset på telefonen.</dd>
+      <dt>Väderdata</dt><dd>På iPhone skickar appen platsen och tidpunkten där spåret startade, och där hunden startade spåret, till Apple Weather (WeatherKit) för att hämta vädret för ett träningspass. Apple använder platsen bara för att besvara förfrågan och kopplar den inte till dig eller ditt Apple-konto. Äldre träningspass kan ha väderdata från Open-Meteo (open-meteo.com, CC BY 4.0). På Android skickar appen platsen, avrundad till ungefär 100 meter, och tidpunkten till Open-Meteo (open-meteo.com, Schweiz) när du lägger ett spår, när hunden startar och när du trycker på ”Hämta väder”. Inget konto, namn eller träningsdata skickas. Väderdata som kommer tillbaka sparas tillsammans med träningspasset på telefonen.</dd>
       <dt>Ortnamn</dt><dd>När du stoppar ett spår föreslår appen ett namn med platsen där spåret startade, till exempel ”Byneset 25 okt. 08:15”. För att hitta ortnamnet skickas koordinaterna för startpunkten till norska Kartverkets ortnamnstjänst när du är i Norge, och annars till Apple (iPhone) eller Google (Android). På Android avrundas platsen till ungefär 100 meter innan den skickas. Inga namn, träningsdata eller något annat som identifierar dig skickas, och ortnamnet sparas bara som spårets namn på telefonen. Utan nätverk blir namnet datum och klockslag i stället.</dd>
       <dt>Kartor</dt><dd>Kartbilderna hämtas från Apple Kartor på iPhone och från Google Maps på Android, eller från norska Kartverket när du väljer topografisk karta. Tjänsten får då veta vilken del av kartan som visas, precis som i alla kartappar. Google behandlar sådana data enligt <a href="https://policies.google.com/privacy?hl=sv">Googles integritetspolicy</a>.</dd>
       <dt>Plats på Android</dt><dd>På Android hämtas platsen genom Googles platstjänster på telefonen (Google Play-tjänster). Om du har slagit på Googles platsnoggrannhet kan Google använda wifi och mobilnät för att bestämma platsen, enligt de inställningar du har valt hos Google. Trax skickar inte dina spår någonstans.</dd>
