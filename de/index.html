@@ -113,6 +113,24 @@ dd{margin:0;color:var(--muted);min-width:0}
 .g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
 .g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
 @media (hover:none) and (pointer:coarse){.g-pil{display:none}}
+/* Bryter iPhone/Android over galleriet: radioknapper, så piltastene virker. Uten JS bytter :has() lista; galleri.js setter også data-os på .galleri for eldre nettlesere. */
+.g-os{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 16px;padding:0;border:0;min-width:0}
+.g-os legend{float:left;padding:0;font-size:15px;color:var(--muted)}
+.g-os .valg{display:inline-flex;gap:2px;padding:4px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.g-os label{position:relative;display:block;cursor:pointer}
+.g-os input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.g-os label span{display:block;padding:9px 18px;border-radius:999px;font:700 15px/1.2 var(--display);color:var(--muted);transition:background .2s,color .2s}
+.g-os label:hover span{color:var(--fg)}
+.g-os input:checked+span{background:var(--accent);color:var(--accent-ink)}
+.g-os input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.g-merk{margin:-6px 0 12px;font-size:14px;color:var(--muted)}
+.galleri .g-liste[data-os=android],.galleri .g-merk{display:none}
+.galleri:has(.g-os input[value=android]:checked) .g-liste[data-os=ios]{display:none}
+.galleri:has(.g-os input[value=android]:checked) .g-liste[data-os=android]{display:flex}
+.galleri:has(.g-os input[value=android]:checked) .g-merk{display:block}
+.galleri[data-os=android] .g-liste[data-os=ios]{display:none}
+.galleri[data-os=android] .g-liste[data-os=android]{display:flex}
+.galleri[data-os=android] .g-merk{display:block}
 @media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
@@ -359,7 +377,9 @@ if(location.hash==='#privacy')location.replace('privacy/');
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
     <div class="galleri" role="region" aria-roledescription="Karussell" aria-label="Bildschirmfotos aus der App" data-forrige="Vorheriges Bild" data-neste="Nächstes Bild" data-prikk="Bild {n} von {t}">
-      <ul class="g-liste" tabindex="0" aria-label="Bildschirmfotos aus der App">
+      <fieldset class="g-os"><legend>Bildschirmfotos für</legend><div class="valg"><label><input type="radio" name="os-de" value="ios" checked><span>iPhone</span></label><label><input type="radio" name="os-de" value="android"><span>Android</span></label></div></fieldset>
+      <p class="g-merk">Die Android-Bildschirmfotos zeigen die App vorerst auf Norwegisch.</p>
+      <ul class="g-liste" data-os="ios" tabindex="0" aria-label="Bildschirmfotos aus der iPhone-App">
         <li><figure><img src="../img/galleri/galleri-de-1-hjem.webp" width="640" height="999" alt="Der Startbildschirm von Trax mit den Zahlen des Monats, startbereiten Fährten und den letzten Fährten" decoding="async"><figcaption><b>Alles an einem Ort</b><span>Die Zahlen des Monats, startbereite Fährten und deine letzten Fährten.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-de-2-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer langen Fährte mit Karte, gefundenen Gegenständen, Länge, Fährtenalter, Arbeitszeit und Bewertung" decoding="async" loading="lazy"><figcaption><b>Die ganze Fährte auf einen Blick</b><span>Karte, gefundene Gegenstände, Länge, Fährtenalter und wie viel der Fährte dein Hund gehalten hat.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-de-3-sportyper.webp" width="640" height="999" alt="Auswahl der Übung vor dem Start: Fährte, IGP-Fährte, Schweißfährte und Gegenstandssuche, mit Feldgröße und Zeitlimit" decoding="async" loading="lazy"><figcaption><b>Übung wählen</b><span>Fährte, IGP-Fährte, Schweißfährte oder Gegenstandssuche. Zeichne das Feld auf der Karte und setze ein Zeitlimit.</span></figcaption></figure></li>
@@ -367,6 +387,16 @@ if(location.hash==='#privacy')location.replace('privacy/');
         <li><figure><img src="../img/galleri/galleri-de-5-blodspor.webp" width="640" height="999" alt="Eine laufende Schweißfährte mit Knöpfen für Anschuss, Schweiß und Wild" decoding="async" loading="lazy"><figcaption><b>Schweißfährte</b><span>Markiere Anschuss, erneuten Schweiß und das Wild mit einem Tippen, während ihr die Fährte ausarbeitet.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-de-6-kryss-spor.webp" width="640" height="999" alt="Eine Fährte mit einer quer gelegten Verleitungsfährte und dem herunterzählenden Fährtenalter" decoding="async" loading="lazy"><figcaption><b>Verleitungsfährten</b><span>Lege eine frischere Fährte quer über die erste und sieh das Fährtenalter bis zum Start herunterzählen.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-de-7-nattmodus.webp" width="640" height="999" alt="Nachtmodus mit dunkelrotem Bildschirm und Karte" decoding="async" loading="lazy"><figcaption><b>Nachtmodus</b><span>Rotes Licht auf dem Bildschirm, wenn du im Dunkeln trainierst.</span></figcaption></figure></li>
+      </ul>
+      <ul class="g-liste" data-os="android" tabindex="0" aria-label="Bildschirmfotos aus der Android-App">
+        <li><figure><img src="../img/galleri/galleri-android-1-hjem.webp" width="640" height="999" alt="Der Startbildschirm von Trax für Android mit den Zahlen des Monats, einer startbereiten Fährte und den letzten Fährten" decoding="async" loading="lazy"><figcaption><b>Alles an einem Ort</b><span>Die Zahlen des Monats, startbereite Fährten und deine letzten Fährten.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-2-varsel.webp" width="640" height="999" alt="Eine laufende Fährte mit dem Hinweis, dass du nahe an einem Gegenstand bist, und dem Knopf zum Erfassen des Fundes" decoding="async" loading="lazy"><figcaption><b>Funde unterwegs erfassen</b><span>Trax meldet sich, wenn du dich einem Gegenstand näherst. Ein Tippen, und der Fund ist erfasst.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-3-detaljkort.webp" width="640" height="999" alt="Die Detailansicht einer Schweißfährte mit Karte, Funden, Länge, Fährtenalter, Arbeitszeit und Bewertung" decoding="async" loading="lazy"><figcaption><b>Die ganze Fährte auf einen Blick</b><span>Karte, gefundene Gegenstände, Länge, Fährtenalter und wie viel der Fährte dein Hund gehalten hat.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-4-avspilling.webp" width="640" height="999" alt="Wiedergabe einer Fährte auf der Karte mit Gegenständen und Zeitleiste" decoding="async" loading="lazy"><figcaption><b>Fährte abspielen</b><span>Sieh die gelegte Fährte und den Weg des Hundes nebeneinander, bis zu 10x schnell.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-5-arealsok.webp" width="640" height="999" alt="Das Ergebnis einer Flächensuche mit dem Feld, dem Weg des Hundes und der Zeit bis zu jedem Fund" decoding="async" loading="lazy"><figcaption><b>Gegenstandssuche und Flächensuche</b><span>Sieh, welche Gegenstände und Personen dein Hund gefunden hat, und die Zeit bis zu jedem Fund.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-6-igp.webp" width="640" height="999" alt="Eine IGP-Fährte auf der Karte mit nummerierten Winkeln, Gegenständen und dem Weg des Hundes" decoding="async" loading="lazy"><figcaption><b>IGP-Fährten mit Winkeln</b><span>Nummerierte Winkel und Gegenstände, mit dem Weg des Hundes über der gelegten Fährte.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-7-utvikling.webp" width="640" height="999" alt="Abgeschlossene Fährten eines Hundes mit Zahlen und einem Diagramm der Funde im Zeitverlauf" decoding="async" loading="lazy"><figcaption><b>Entwicklung verfolgen</b><span>Funde, wie gut dein Hund die Fährte gehalten hat, und Länge im Zeitverlauf, für jeden Hund.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-8-nattmodus.webp" width="640" height="999" alt="Nachtmodus mit rotem Bildschirm und einem Hinweis auf einen Gegenstand" decoding="async" loading="lazy"><figcaption><b>Nachtmodus</b><span>Rotes Licht auf dem Bildschirm, wenn du im Dunkeln trainierst.</span></figcaption></figure></li>
       </ul>
       <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
