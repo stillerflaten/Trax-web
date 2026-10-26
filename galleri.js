@@ -1,11 +1,13 @@
 /* Skjermbildegalleri på forsiden: piler og prikker over en vannrett liste med scroll-snap.
    Sveip og rulling gjøres av nettleseren selv; skriptet legger bare til knappene og holder prikkene oppdatert.
-   Tekstene til knappene står i data-attributter på .galleri, så skriptet er felles for index.html, sv/index.html og en/index.html. */
+   Tekstene til knappene står i data-attributter på .galleri, så skriptet er felles for alle språksidene.
+   Bryteren iPhone/Android (.g-os) velger hvilken .g-liste som vises (data-os="ios"/"android"); prikkene lages på nytt ved bytte.
+   På Android-telefoner er Android valgt fra start. */
 (function(){
   var g=document.querySelector('.galleri');
   if(!g)return;
-  var liste=g.querySelector('.g-liste'), ktrl=g.querySelector('.g-ktrl'), prikker=g.querySelector('.g-prikker');
-  var bilder=[].slice.call(liste.children), piler=g.querySelectorAll('.g-pil'), knapper=[], aktiv=-1, maal=-1, stopp=0;
+  var ktrl=g.querySelector('.g-ktrl'), prikker=g.querySelector('.g-prikker'), piler=g.querySelectorAll('.g-pil'), valg=g.querySelectorAll('.g-os input');
+  var liste, bilder=[], knapper=[], aktiv=-1, maal=-1, stopp=0;
   var rolig=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function gaTil(i){
@@ -30,19 +32,39 @@
     piler[1].disabled=i===bilder.length-1;
   }
 
-  bilder.forEach(function(b,n){
-    var k=document.createElement('button');
-    k.type='button';
-    k.setAttribute('aria-label',(g.dataset.prikk||'{n} / {t}').replace('{n}',n+1).replace('{t}',bilder.length));
-    k.addEventListener('click',function(){gaTil(n)});
-    prikker.appendChild(k);knapper.push(k);
-  });
+  // Viser lista for valgt system og lager prikker til den
+  function bruk(os){
+    g.setAttribute('data-os',os);
+    liste=g.querySelector('.g-liste[data-os="'+os+'"]')||g.querySelector('.g-liste');
+    bilder=[].slice.call(liste.children);
+    prikker.textContent='';knapper=[];aktiv=-1;maal=-1;
+    bilder.forEach(function(b,n){
+      var k=document.createElement('button');
+      k.type='button';
+      k.setAttribute('aria-label',(g.dataset.prikk||'{n} / {t}').replace('{n}',n+1).replace('{t}',bilder.length));
+      k.addEventListener('click',function(){gaTil(n)});
+      prikker.appendChild(k);knapper.push(k);
+    });
+    liste.scrollLeft=0;
+    oppdater();
+  }
+
   [].forEach.call(piler,function(p){p.addEventListener('click',function(){gaTil((maal<0?aktiv:maal)+(+p.dataset.steg))})});
 
   var ventende=0;
-  liste.addEventListener('scroll',function(){if(!ventende)ventende=requestAnimationFrame(function(){ventende=0;oppdater()});
-    clearTimeout(stopp);stopp=setTimeout(function(){maal=-1;oppdater()},150)},{passive:true});
-  window.addEventListener('resize',oppdater);
+  [].forEach.call(g.querySelectorAll('.g-liste'),function(l){
+    l.addEventListener('scroll',function(){if(l!==liste)return;
+      if(!ventende)ventende=requestAnimationFrame(function(){ventende=0;oppdater()});
+      clearTimeout(stopp);stopp=setTimeout(function(){maal=-1;oppdater()},150)},{passive:true});
+  });
+  window.addEventListener('resize',function(){oppdater()});
+
+  var valgt='ios';
+  [].forEach.call(valg,function(v){
+    if(v.value==='android'&&/Android/i.test(navigator.userAgent))v.checked=true;
+    if(v.checked)valgt=v.value;
+    v.addEventListener('change',function(){if(v.checked)bruk(v.value)});
+  });
   ktrl.hidden=false;
-  oppdater();
+  bruk(valgt);
 })();

@@ -113,6 +113,21 @@ dd{margin:0;color:var(--muted);min-width:0}
 .g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
 .g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
 @media (hover:none) and (pointer:coarse){.g-pil{display:none}}
+/* Bryter iPhone/Android over galleriet: radioknapper, så piltastene virker. Uten JS bytter :has() lista; galleri.js setter også data-os på .galleri for eldre nettlesere. */
+.g-os{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 16px;padding:0;border:0;min-width:0}
+.g-os legend{float:left;padding:0;font-size:15px;color:var(--muted)}
+.g-os .valg{display:inline-flex;gap:2px;padding:4px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.g-os label{position:relative;display:block;cursor:pointer}
+.g-os input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.g-os label span{display:block;padding:9px 18px;border-radius:999px;font:700 15px/1.2 var(--display);color:var(--muted);transition:background .2s,color .2s}
+.g-os label:hover span{color:var(--fg)}
+.g-os input:checked+span{background:var(--accent);color:var(--accent-ink)}
+.g-os input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.galleri .g-liste[data-os=android]{display:none}
+.galleri:has(.g-os input[value=android]:checked) .g-liste[data-os=ios]{display:none}
+.galleri:has(.g-os input[value=android]:checked) .g-liste[data-os=android]{display:flex}
+.galleri[data-os=android] .g-liste[data-os=ios]{display:none}
+.galleri[data-os=android] .g-liste[data-os=android]{display:flex}
 @media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
@@ -357,7 +372,8 @@ if(location.hash==='#privacy')location.replace('privacy/');
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
     </svg>
     <div class="galleri" role="region" aria-roledescription="carousel" aria-label="Screenshots from the app" data-forrige="Previous image" data-neste="Next image" data-prikk="Image {n} of {t}">
-      <ul class="g-liste" tabindex="0" aria-label="Screenshots from the app">
+      <fieldset class="g-os"><legend>Show screenshots from</legend><div class="valg"><label><input type="radio" name="os-en" value="ios" checked><span>iPhone</span></label><label><input type="radio" name="os-en" value="android"><span>Android</span></label></div></fieldset>
+      <ul class="g-liste" data-os="ios" tabindex="0" aria-label="Screenshots from the iPhone app">
         <li><figure><img src="../img/galleri/galleri-en-1-hjem.webp" width="640" height="999" alt="The Trax home screen with this month's numbers, tracks ready to start and recent tracks" decoding="async"><figcaption><b>Everything in one place</b><span>This month's numbers, tracks ready to start and your latest tracks.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-en-2-detaljkort.webp" width="640" height="999" alt="The detail card for a long track with map, items found, length, lie time, time used and assessment" decoding="async" loading="lazy"><figcaption><b>The whole track on one card</b><span>Map, items found, length, lie time and how much of the track your dog followed.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-en-3-sportyper.webp" width="640" height="999" alt="Choosing the exercise before starting: track, IGP track, blood track and article search, with field size and time limit" decoding="async" loading="lazy"><figcaption><b>Choose the exercise</b><span>Track, IGP track, blood track or article search. Draw the field on the map and set a time limit.</span></figcaption></figure></li>
@@ -365,6 +381,16 @@ if(location.hash==='#privacy')location.replace('privacy/');
         <li><figure><img src="../img/galleri/galleri-en-5-blodspor.webp" width="640" height="999" alt="A blood track in progress with buttons for wound bed, blood again and game" decoding="async" loading="lazy"><figcaption><b>Blood tracking</b><span>Mark the wound bed, more blood and the game with one tap as you work through the track.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-en-6-kryss-spor.webp" width="640" height="999" alt="A track with a cross track laid across it and the lie time counting down" decoding="async" loading="lazy"><figcaption><b>Cross tracks</b><span>Lay a fresher track across the first, and watch the lie time count down before you start.</span></figcaption></figure></li>
         <li><figure><img src="../img/galleri/galleri-en-7-nattmodus.webp" width="640" height="999" alt="Night mode with a dark red screen and map" decoding="async" loading="lazy"><figcaption><b>Night mode</b><span>Red light on the screen when you train in the dark.</span></figcaption></figure></li>
+      </ul>
+      <ul class="g-liste" data-os="android" tabindex="0" aria-label="Screenshots from the Android app">
+        <li><figure><img src="../img/galleri/galleri-android-en-1-hjem.webp" width="640" height="999" alt="The Trax home screen on Android with this month&#x27;s numbers, a track ready to start and recent tracks" decoding="async" loading="lazy"><figcaption><b>Everything in one place</b><span>This month's numbers, tracks ready to start and your latest tracks.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-en-2-varsel.webp" width="640" height="999" alt="A track in progress with an alert that you are close to an item and a Mark as found button" decoding="async" loading="lazy"><figcaption><b>Log finds as you go</b><span>Trax tells you when you get close to an item. One tap and the find is logged.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-en-3-detaljkort.webp" width="640" height="999" alt="The detail card for a blood track with map, items found, length, lie time, time used and assessment" decoding="async" loading="lazy"><figcaption><b>The whole track on one card</b><span>Map, items found, length, lie time and how much of the track your dog followed.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-en-4-avspilling.webp" width="640" height="999" alt="Replay of a track on the map with items and a timeline" decoding="async" loading="lazy"><figcaption><b>Replay the track</b><span>See the laid track and your dog's route side by side, at up to 10x speed.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-en-5-arealsok.webp" width="640" height="999" alt="The result of an area search with the field, the dog&#x27;s route and the time to each find" decoding="async" loading="lazy"><figcaption><b>Article search and area search</b><span>See which items and people your dog found, and the time to each find.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-en-6-igp.webp" width="640" height="999" alt="An IGP track on the map with numbered corners, articles and the dog&#x27;s route" decoding="async" loading="lazy"><figcaption><b>IGP tracks with corners</b><span>Numbered corners and articles, with your dog's route on top of the laid track.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-en-7-utvikling.webp" width="640" height="999" alt="Completed tracks for one dog, with numbers and a chart of finds over time" decoding="async" loading="lazy"><figcaption><b>Follow the progress</b><span>Finds, how well your dog held the track and length over time, for each dog.</span></figcaption></figure></li>
+        <li><figure><img src="../img/galleri/galleri-android-en-8-nattmodus.webp" width="640" height="999" alt="Night mode with a red screen and an item alert" decoding="async" loading="lazy"><figcaption><b>Night mode</b><span>Red light on the screen when you train in the dark.</span></figcaption></figure></li>
       </ul>
       <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
