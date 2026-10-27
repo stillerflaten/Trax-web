@@ -48,7 +48,7 @@ python3 verktoy/lag-manual.py ../Trax de
 
 Kjør skriptet mot den app-versjonen som er i App Store (eller er sendt inn), ikke uten videre mot `main`: `main` i app-repoet kan ha endringer som ikke er ute ennå, og da beskriver nettmanualen ting brukerne ikke har. Derfor ble «Kommer i v. 2.1»-merkene fjernet for hånd i manualsidene da 2.1 kom ut, i stedet for å kjøre skriptet på nytt.
 
-Nettmanualen er nå laget fra versjon 2.5.1 (bygg 45), app-commit `44518bf` (bygg 45 er `c8ce604`; `44518bf` legger bare til personvernteksten om stedsnavn, PR #306, som gjelder appen som er ute). Slik gjør du det for en bestemt versjon: `git -C ../Trax worktree add ../Trax-2.5.1 44518bf`, og kjør `python3 verktoy/lag-manual.py ../Trax-2.5.1`. Neste gang brukes commiten neste bygg ble arkivert fra.
+Nettmanualen er nå laget fra versjon 2.5.1 (bygg 45), fra app-main `7c8195f` etter Trax PR #307 (runde 8 i #108: manualtekst og nye skjermbilder for alt nytt i 2.4 og 2.5). Main har ingen appendringer etter bygg 45 (`c8ce604`) utover personvernteksten om stedsnavn (PR #306) og manualen, så teksten passer appen som er ute. Slik gjør du det for en bestemt versjon: `git -C ../Trax worktree add ../Trax-2.5.1 44518bf`, og kjør `python3 verktoy/lag-manual.py ../Trax-2.5.1`. Neste gang brukes commiten neste bygg ble arkivert fra.
 
 Skriptet henter stilen fra `index.html`, så endringer i utseendet på forsiden følger med neste gang det kjøres. Nytt språk: legg til en linje i `LANGS` øverst i skriptet.
 
