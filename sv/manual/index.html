@@ -111,6 +111,21 @@ dd{margin:0;color:var(--muted);min-width:0}
 .g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
 .g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
 @media (hover:none) and (pointer:coarse){.g-pil{display:none}}
+/* Bryter iPhone/Android over galleriet: radioknapper, så piltastene virker. Uten JS bytter :has() lista; galleri.js setter også data-os på .galleri for eldre nettlesere. */
+.g-os{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 16px;padding:0;border:0;min-width:0}
+.g-os legend{float:left;padding:0;font-size:15px;color:var(--muted)}
+.g-os .valg{display:inline-flex;gap:2px;padding:4px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.g-os label{position:relative;display:block;cursor:pointer}
+.g-os input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.g-os label span{display:block;padding:9px 18px;border-radius:999px;font:700 15px/1.2 var(--display);color:var(--muted);transition:background .2s,color .2s}
+.g-os label:hover span{color:var(--fg)}
+.g-os input:checked+span{background:var(--accent);color:var(--accent-ink)}
+.g-os input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.galleri .g-liste[data-os=android]{display:none}
+.galleri:has(.g-os input[value=android]:checked) .g-liste[data-os=ios]{display:none}
+.galleri:has(.g-os input[value=android]:checked) .g-liste[data-os=android]{display:flex}
+.galleri[data-os=android] .g-liste[data-os=ios]{display:none}
+.galleri[data-os=android] .g-liste[data-os=android]{display:flex}
 @media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
 nav .wrap{position:relative}
@@ -172,7 +187,11 @@ nav .gp img{width:128px;height:auto}
 .kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
 .kjop .android{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin:20px 0 0;font:700 17px/1.3 var(--display);color:var(--fg)}
 .kjop .android img{display:block;width:160px;height:auto}
+.kjop .googleplay{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
+.kjop .googleplay:active{transform:scale(.97)}
 .forside footer .kjop .android{color:var(--on-foot)}
+.kjop .android .aintro{display:block;font:400 16px/1.4 var(--body);color:var(--muted)}
+.forside footer .kjop .android .aintro{color:var(--on-foot-2)}
 .v2 + .v2{padding-top:96px}
 .v2-mer{margin:48px 0 0;color:var(--muted);font-size:16px;line-height:1.5;max-width:70ch}
 .appstore{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
@@ -358,7 +377,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">iOS-app för spårträning</p>
     <h1>Användarmanual</h1>
     <p class="lead">Allt du behöver för att lägga spår, spåra och följa träningen över tid.</p>
-    <p class="updated">Senast uppdaterad: 25. oktober 2026</p>
+    <p class="updated">Senast uppdaterad: 27. oktober 2026</p>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
@@ -455,7 +474,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Om GPS-signalen är svag innan du startar visas en ruta under fältet högst upp. Röd betyder att du bör vänta på bättre signal, gul att du kan starta men att spåret blir mer exakt om du väntar. Rutan stängs av sig själv när signalen blir bra, eller när du trycker på ”OK, uppfattat”. Du kan alltid starta.</p>
     <p>Fältet högst upp visar tid, längd och antal föremål med stora siffror, hur exakt GPS:en är och batterinivån. Grön prick betyder bättre än 10 meter, gul 10–25 meter och röd mer än 25 meter. Står det ”Ingen GPS” har telefonen inte haft någon position på mer än 15 sekunder. När du har lagt ut ett föremål visar fältet också ”Från förra”: hur många meter du har gått sedan förra föremålet. Tryck på fältet för att se när spåret startade, när positionen senast uppdaterades, koordinaten där du står och när förra föremålet lades.</p>
     <p>När du trycker på ”Starta” zoomar kartan in på dig, alltid till samma vy. Om du zoomar under spåret behåller kartan den zoom du valde.</p>
-    <p>Kartknapparna till höger är samlade i en kapsel. Den översta knappen öppnar kartmenyn, där du väljer ”Karta”, ”Topo” eller ”Satellit”, och slår på eller av ”Nattläge” (se ”Nattläge”). Topo är den topografiska kartan från norska Lantmäteriet (Kartverket), med höjdkurvor och stigar. Den kräver internet, visar ”© Kartverket” längst ner och finns bara i Norge. N-knappen byter kartriktning: norr uppåt, eller en karta som vrider sig efter riktningen du står vänd åt. Ditt val sparas, och du kan även ändra det under Inställningar › Karta och spår. Kartan följer din positionsprick. Om du drar i kartan, till exempel för att flytta hörnen på ett fält, slutar kartan följa dig och stannar där du lämnade den. Om du zoomar eller vrider kartan följer den dig fortfarande. Den nedersta knappen visar en tom pil när kartan inte följer dig. Tryck på den så centreras kartan på dig igen och följer dig vidare, med samma zoom.</p>
+    <p>Kartknapparna till höger är samlade i en kapsel. Den översta knappen öppnar kartmenyn, där du väljer ”Karta”, ”Topo” eller ”Satellit”, och slår på eller av ”Nattläge” (se ”Nattläge”). Topo är den topografiska kartan från norska Lantmäteriet (Kartverket), med höjdkurvor och stigar. Den kräver internet, visar ”© Kartverket” längst ner och finns bara i Norge. Nere till vänster på kartan finns en skalstock, så att du ser avstånden. N-knappen byter kartriktning: norr uppåt, eller en karta som vrider sig efter riktningen du står vänd åt. Ditt val sparas, och du kan även ändra det under Inställningar › Karta och spår. Kartan följer din positionsprick. Om du drar i kartan, till exempel för att flytta hörnen på ett fält, slutar kartan följa dig och stannar där du lämnade den. Om du zoomar eller vrider kartan följer den dig fortfarande. Den nedersta knappen visar en tom pil när kartan inte följer dig. Tryck på den så centreras kartan på dig igen och följer dig vidare, med samma zoom.</p>
     <p>Pilen ovanför kartknapparna visar vinden (se ”Väder”).</p>
     <p>Medan du lägger spåret visas det på låsskärmen och i Dynamic Island med tid, längd och antal föremål. På låsskärmen kan du trycka på ”Pausa” eller ”Fortsätt”, och på ”Föremål” för att lägga ut ett föremål utan att låsa upp telefonen.</p>
     <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Viktigt: </span>Om du trycker på bakåtpilen uppe till vänster i fältet innan spåret är stoppat frågar appen om du vill slänga spåret eller stoppa och spara det. Ett slängt spår kan inte återställas.</p></div>
@@ -481,7 +500,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Spåröversikten och PDF:en visar ”Sårbäddar, vilt och blodavbrott” med längden på varje blodavbrott, samt blodmängd och spårsko. Blodmängden finns också med i hundrapporten och på bilden för sociala medier.</p>
     <p>IGP-spår: Efter ”Stopp”, och senare i spåröversikten, har IGP-spår kortet ”IGP-träning” med fyra valfria fält: ”Mat” (i varje fotsteg, i vartannat fotsteg, utspridd, bara i slutet eller ingen mat), ”Spårstart” (flagga eller trampad startruta), ”Vinklar” (naturligt lagda eller trampade) och ”Spårläggare” (eget eller främmande spår). Senaste valen föreslås nästa gång. Fälten finns i PDF:en och följer med när du skickar spåret. Hundens utvecklingsgraf har valet ”Mat” under ”Mer”, så att du ser nedtrappningen av maten över tid.</p>
     <figure class="shot"><img src="../../img/manual/manual-igp-training-sv.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Kortet ”IGP-träning” i bladet ”Spara spår”.</figcaption></figure>
-    <p>IGP-nivå: När du väljer ”IGP-spår” före start väljer du också nivå: ”Fritt” (inga krav), IGP-V, IGP 1, IGP 2, IGP 3, FH 1, FH 2 eller FH 3. Kraven för nivån står under knapparna. Medan spåret läggs visar panelen överst ”Steg” (t.ex. 212/300), föremålen och antalet steg sedan senaste vinkeln på sträckan du är på (”Sträcka 2”). Tryck på panelen för att se längden i meter. Kommer en vinkel mindre än 50 steg efter förra vinkeln, eller ligger ett föremål närmare än 20 steg från en vinkel, visas en varning överst på kartan. Vinklarna hittas med GPS:en och registreras först 5–20 meter efter vinkeln, så varningen kommer lite i efterhand. Efter ”Stopp” sätts spårets ålder till minst kravet för nivån. I spåröversikten visar kortet ”IGP-krav” en grön och röd checklista: längd, vinklar, avstånd mellan vinklarna, föremål, föremål bort från vinklar, störspår (FH 2 och FH 3), spårets ålder och arbetstid. Spårets ålder och arbetstid kontrolleras när spåret är spårat. Nivån kan bytas i kortet och står i PDF:en. Stegen räknas om från meter med steglängden under Inställningar › Karta och spår › ”Steglängd” (standard 0,75 m). Varningarna kan stängas av under Inställningar › Aviseringar › ”IGP-krav” (under ”Medan spåret läggs”).</p>
+    <p>IGP-nivå: När du väljer ”IGP-spår” före start väljer du också nivå: ”Fritt” (inga krav), IGP-V, IGP 1, IGP 2, IGP 3, FH 1, FH 2 eller FH 3. Kraven för nivån står under knapparna. Medan spåret läggs visar panelen överst ”Steg” (t.ex. 212/300), föremålen och antalet steg sedan senaste vinkeln på sträckan du är på (”Sträcka 2”). Tryck på panelen för att se längden i meter. Kommer en vinkel mindre än 50 steg efter förra vinkeln, eller ligger ett föremål närmare än 20 steg från en vinkel, visas en varning överst på kartan. Vinklarna hittas med GPS:en och registreras först 5–20 meter efter vinkeln, så varningen kommer lite i efterhand. Efter ”Stopp” sätts spårets ålder till minst kravet för nivån. I spåröversikten visar kortet ”IGP-krav” en grön och röd checklista: längd, vinklar, avstånd mellan vinklarna, föremål, föremål bort från vinklar, korsningar med störspår (FH 2 och FH 3; ett störspår som korsar spåret på två ställen räknas som två), spårets ålder och arbetstid. Spårets ålder och arbetstid kontrolleras när spåret är spårat. Nivån kan bytas i kortet och står i PDF:en. Stegen räknas om från meter med steglängden under Inställningar › Karta och spår › ”Steglängd” (standard 0,75 m). Varningarna kan stängas av under Inställningar › Aviseringar › ”IGP-krav” (under ”Medan spåret läggs”).</p>
     <figure class="shot"><img src="../../img/manual/manual-igp-level-sv.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>IGP-nivå och mallen på kartan före start.</figcaption></figure>
     <figure class="shot"><img src="../../img/manual/manual-igp-check-sv.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Kortet ”IGP-krav” i spåröversikten.</figcaption></figure>
     <p>IGP-mall: Slå på ”Visa mall på kartan” under nivåknapparna, så läggs en mall för nivån på kartan där du står, så snart GPS:en har hittat dig. Mallen visar sträckorna, vinklarna och var föremålen ska ligga, och pekar mot norr. Vrid den med knapparna för vänster och höger, eller håll och dra i ↻ på kartan. Byter du nivå får du en ny mall för nivån på samma ställe. När du trycker på ”Start” flyttas mallen dit du står.</p>
@@ -540,7 +559,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <li>”Exportera” låter dig välja Trax-fil, GPX eller PDF. Välj ”Till en annan Trax-användare” för att skicka spåret till hundföraren, eller ”Till en annan Trax-användare, som okänt spår” om hundföraren inte ska se spåret (se ”Dela och ta emot spår”). När du är klar med exporten kommer du tillbaka till arket med allt du har fyllt i, och trycker på ”Spara spår”.</li>
       <li>”Fortsätt spåret” tar dig tillbaka till kartan om du tryckte på ”Stoppa” för tidigt.</li>
     </ul>
-    <p>Du kan ge spåret ett namn. Om du lämnar fältet tomt får spåret ett namn med datum och klockslag.</p>
+    <p>Du kan ge spåret ett namn. Om du lämnar fältet tomt får spåret namnet på platsen där det startade, datum och klockslag, till exempel ”Byneset 25 okt. 08:15”. Utan internet får det datum och klockslag i stället.</p>
     <p>Under ”Underlag” kan du skriva vad spåret går över, till exempel skogsmark, grus eller äng. Hundföraren ser underlaget på spåret, även när du skickar det till en annan telefon.</p>
     <p>Under ”Spårets ålder” trycker du på knappen för hur länge spåret ska ligga innan hunden spårar (se ”Spårets ålder”). På viltspår visas även korten ”Skottplats” och ”Blod och spårsko” (se ”Spårtyp och viltspår”).</p>
     <p>Under ”Lagt för hund” kan du välja vilken hund spåret är lagt för. Det är valfritt, och ”Ingen hund” är standard. Hundarna visas som knappar, och vald hund är grön. Tryck på vald hund igen för att ta bort valet, eller på ”Ny hund …” för att lägga till en hund. Hunden visas på kortet under ”Redo att spåra” och som märket ”För …” i spåröversikten, där du också kan ändra den. När spåret startas är hunden redan vald, men du kan byta. Hunden följer med när du skickar spåret som Trax-fil, och kopplas till hunden med samma namn hos mottagaren.</p>
@@ -931,6 +950,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p>Alla spår sparas på din telefon. Trax har inget konto och ingen egen server. Om du använder iCloud Drive lägger Trax en säkerhetskopia i mappen ”Trax” i din egen iCloud Drive. Det kan du stänga av under Inställningar › Säkerhetskopiering. Dina spår delas bara när du själv exporterar dem.</p>
     <p>Bilden för sociala medier skapas på din telefon. Om du väljer ”Spara bild” frågar iOS om Trax får lägga till bilder i Bilder. Trax kan bara lägga till bilder, inte se dina bilder. Väljer du en egen bild att lägga spåret över får Trax bara se den bild du väljer.</p>
     <p>För att hämta vädret skickas positionen och tidpunkten där spåret startade, och där hunden startade spåret, till Apple Väder. Apple kopplar inte förfrågan till dig eller ditt Apple-konto, och inga träningsdata skickas.</p>
+    <p>När du stoppar ett spår skickas startpunkten till norska Kartverkets ortnamnstjänst när du är i Norge, och annars till Apple, för att hitta ortnamnet i spårets namn. Inga träningsdata skickas, och ortnamnet sparas bara som spårets namn. Utan nätverk blir namnet datum och klockslag.</p>
     <p>Hela integritetspolicyn hittar du under Inställningar › Om Trax › Integritetspolicy.</p>
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
