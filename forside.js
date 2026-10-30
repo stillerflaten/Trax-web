@@ -2,7 +2,7 @@
    1) Delene i hver seksjon glir rolig inn når de kommer til syne (toppen gjøres med CSS ved lasting).
    2) Telefonen i toppen synker litt når du scroller.
    3) Sporlinja fortsetter fra toppen og nedover siden mens du scroller. Hver seksjon er en gjenstand
-      som får en grønn hake når sporet når den, og siste gjenstand er App Store-knappen nederst.
+      som får en grønn hake når sporet når den, og siste gjenstand er «Last ned Trax» nederst.
       På brede skjermer går linja i margen til høyre; på smalere skjermer vises bare gjenstandene
       som prikker foran overskriftene.
    Med «Reduser bevegelse» står alt stille: linja er tegnet ferdig og alle gjenstandene er funnet. */
@@ -14,7 +14,7 @@
 
   // ---------- 1) Innglidning per seksjon ----------
   // Skjermbildegalleriet er bevisst ikke med: bevegelse inni den vannrette rullelista ga hakking når man scrollet nedover på iPhone.
-  var GRUPPER=['.funk h2,.funk .sub,.fg li','.v2 h2,.v2 .lead,.v2-liste li','.del-g > div,.del img','.om-g blockquote,.om-g > div','#support h2,.sup-intro,.post,.faq > div,.pv','footer .stort,footer .rad'];
+  var GRUPPER=['.funk h2,.funk .sub,.fg li','.v2 h2,.v2 .lead,.v2-liste li','.del-g > div,.del img','.om-g blockquote,.om-g > div','#support h2,.sup-intro,.post,.faq > div,.pv','footer .stort,footer .fot > *'];
   if(!still&&'IntersectionObserver' in window){
     var vh=window.innerHeight, io=new IntersectionObserver(function(en){
       en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}});
@@ -32,7 +32,7 @@
   var tlf=document.querySelector('.flate img'), py=-1;
 
   // ---------- 3) Sporlinja ----------
-  var MAAL=['.funk h2','.v2 h2','.del h2','.om-g blockquote','#support h2','footer .kjop'];
+  var MAAL=['.funk h2','.v2 h2','.del h2','.om-g blockquote','#support h2','footer .fot-hent h2'];
   var maal=[];MAAL.forEach(function(s){var e=document.querySelector(s);if(e)maal.push(e)});
   var start=document.querySelector('.trackline > circle:last-of-type');
   var svg=el('svg',{'class':'sporlinje','aria-hidden':'true'}), path=el('path',{'class':'spor'});
