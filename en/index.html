@@ -245,11 +245,25 @@ nav .gp img{width:128px;height:auto}
 /* Bunnteksten: navnet stort, App Store-knappen en gang til, og lenkene */
 .forside footer{border-top:0;background:var(--foot);color:var(--on-foot-2);padding-block:96px 40px;font-size:16px}
 .forside footer .stort{font:800 clamp(88px,17vw,240px)/.8 var(--display);letter-spacing:-.06em;margin:0 0 40px;color:var(--on-foot)}
-.forside footer .rad{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
-.forside footer .rad a{color:var(--on-foot)}
-.forside footer .chip{background:var(--on-foot);color:var(--foot)}
-.forside footer .liten{margin:40px 0 0;font-size:14px}
-.forside footer .utvikler{font-size:14px}
+.forside footer .stort{margin-bottom:48px}
+/* Bunnen: last ned til venstre, lenker i to kolonner til høyre, smal linje med © og utvikler nederst */
+.forside footer .fot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px 64px;align-items:start}
+.forside footer .fot h2{font:700 13px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--on-foot-2);margin:0 0 16px;display:flex;align-items:center}
+.forside footer .fot h2 .gj-prikk{margin-right:14px}
+.forside footer .kjop .live{gap:12px;align-items:center}
+.forside footer .kjop .live img{display:block;height:48px;width:auto}
+.forside footer .kjop .googleplay,.forside footer .kjop .appstore{line-height:0}
+.forside footer .fot-pris{margin:14px 0 0;font-size:15px;color:var(--on-foot-2)}
+.forside footer .fot-lenker{display:flex;gap:64px}
+.forside footer .fot-lenker ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.forside footer .fot-lenker a{color:var(--on-foot);text-decoration:none}
+.forside footer .fot-lenker a:hover{text-decoration:underline;text-underline-offset:3px}
+.forside footer .fot-lenker [aria-current]{color:var(--on-foot-2)}
+.forside footer .fot-bunn{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 24px;margin-top:56px;padding-top:20px;border-top:1px solid rgba(230,235,230,.14);font-size:14px}
+.forside footer .fot-bunn p{margin:0}
+.forside footer .utvikler{font-size:14px;margin:0}
+@media (max-width:760px){.forside footer .fot{grid-template-columns:1fr}.forside footer .fot-lenker{gap:48px}}
+@media (max-width:600px){.forside footer .stort{margin-bottom:32px}.forside footer .fot-bunn{flex-direction:column;align-items:flex-start;margin-top:40px}}
 @media (max-width:600px){.forside footer{padding-block:64px 32px}}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
 .forside .v2{padding-block:120px 0}
@@ -290,7 +304,7 @@ nav .gp img{width:128px;height:auto}
 .bev .inn.vis{opacity:1;transform:none}
 .flate img{transform:translateX(-50%) translateY(var(--py,0px)) rotate(-3deg)}
 @media (prefers-reduced-motion:no-preference){
-  .post,.g-pil,.lang summary,footer .rad a{transition:transform .15s,color .15s}
+  .post,.g-pil,.lang summary,footer .fot-lenker a{transition:transform .15s,color .15s}
   .post:active,.g-pil:active,.lang summary:active{transform:scale(.97)}
   .appstore:hover,nav .kj:hover{transform:translateY(-1px)}
 }
@@ -485,12 +499,21 @@ if(location.hash==='#privacy')location.replace('privacy/');
 
 <footer><div class="wrap">
   <p class="stort" aria-hidden="true">Trax</p>
-  <div class="rad">
-    <div class="kjop"><p class="snart"><span class="chip">Coming soon to the App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" height="52" loading="lazy" alt="Download on the App Store"></a></div><p class="android"><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="../img/google-play-en.svg" width="169" height="50" loading="lazy" alt="Get it on Google Play"></a><span>Now on Android too!<span class="aintro">Introductory price for the first week.</span></span></p></div>
-    <p class="lenker"><a href="manual/">User manual</a> · <a href="privacy/">Privacy</a> · <a href="../" hreflang="nb" lang="nb">Norsk</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a></p>
+  <div class="fot">
+    <div class="fot-hent">
+      <h2>Get Trax</h2>
+      <div class="kjop"><p class="snart"><span class="chip">Coming soon to the App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="../img/app-store-en.svg" width="144" height="48" loading="lazy" alt="Download on the App Store"></a><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="../img/google-play-en.svg" width="162" height="48" loading="lazy" alt="Get it on Google Play"></a></div></div>
+      <p class="fot-pris">One-time purchase, no subscription.</p>
+    </div>
+    <div class="fot-lenker">
+      <div><h2>Help</h2><ul><li><a href="manual/">User manual</a></li><li><a href="#support">Support</a></li><li><a href="privacy/">Privacy</a></li></ul></div>
+      <div><h2>Language</h2><ul><li><a href="../" hreflang="nb" lang="nb">Norsk</a></li><li><a href="../sv/" hreflang="sv" lang="sv">Svenska</a></li><li><span aria-current="page">English</span></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li></ul></div>
+    </div>
   </div>
-  <p class="liten">© 2026 Silje Tillerflaten</p>
-  <p class="utvikler"><img src="../img/tillerflaten-digital.png" width="24" height="24" alt="Tillerflaten Digital logo"> Developed by Tillerflaten Digital · Org. no. 938 657 742</p>
+  <div class="fot-bunn">
+    <p>© 2026 Silje Tillerflaten</p>
+    <p class="utvikler"><img src="../img/tillerflaten-digital.png" width="24" height="24" alt="Tillerflaten Digital logo"> Developed by Tillerflaten Digital · Org. no. 938 657 742</p>
+  </div>
 </div></footer>
 
 <script>
