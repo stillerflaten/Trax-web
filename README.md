@@ -60,8 +60,8 @@ Forsidene har også Smart App Banner (`<meta name="apple-itunes-app" content="ap
 
 Fra datoen:
 
-- Fra datoen vises App Store-merket (`img/app-store-<språk>.svg`, Apples offisielle merke) og introduksjonsprisen.
-- Introprisen er 129 kr (norsk), 129 kr (svensk), $9.99 (engelsk) og 9,99 € (tysk). Sju dager etter datoen bytter alle sidene til ordinær pris: 149 kr, 149 kr, $11.99 og 12,99 €.
+- Fra datoen vises App Store-merket (`img/app-store-<språk>.svg`, Apples offisielle merke) og Google Play-merket side om side, med prisen under.
+- Prisen står én gang for begge butikkene: 149 kr (norsk), 149 kr (svensk), $11.99 (engelsk) og 12,99 € (tysk), engangskjøp i App Store og Google Play. Introprisene er over, og byttet er fjernet fra skriptet (november 2026).
 
 Merket vises både øverst og i bunnteksten, og knappen «App Store» i menyen går til appen fra datoen (før det til toppen). Lenken går til `https://apps.apple.com/app/id6758005408`.
 
