@@ -86,3 +86,7 @@ Seksjonen om å sende spor til en annen Trax-bruker (`#send-spor`, svensk `#skic
 ## Versjonsseksjoner
 
 Forsiden har én seksjon for siste versjon (`class="v2"`, nå «Nytt i versjon 2.5», `#versjon-2-5`, svensk, engelsk og tysk `#version-2-5`), rett etter funksjonene. Når en ny versjon kommer, flyttes det viktigste fra forrige versjonsseksjon inn i funksjonslisten (`#funksjoner`), og den gamle seksjonen fjernes. Det ble gjort for 2.2 (23. oktober 2026), 2.0 (25. oktober 2026) og 2.3 (27. oktober 2026). Feltsøk og arealsøk, vind og vær, vurdering, redigering, flere spor i én PDF, sikkerhetskopi, IGP-nivå og mal, markering og treningsmomenter står nå i funksjonslisten. 2.4 og 2.5 kom aldri ut i App Store; 2.5.1 (bygg 45) har alt, og siden kaller den «2.5».
+
+## For arrangører
+
+Nederst i support-delen på forsiden står en kort boks for arrangører av kurs, stevner og konkurranser (`#arrangorer` på norsk og svensk, `#organisers` på engelsk, `#veranstalter` på tysk), med lenke i bunnteksten under «Hjelp». Den sier bare «gratiskoder» (App Store og Google Play gir bare koder som gjør appen gratis for en betalt app, ikke rabatt) og «noen få koder per arrangement». E-postlenken fyller inn emne og felt for arrangement, dato og sted.
