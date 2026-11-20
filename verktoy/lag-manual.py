@@ -21,6 +21,9 @@ import sys
 
 from PIL import Image
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import felles  # noqa: E402  (felles <head>, meny og bunntekst for hele nettsiden)
+
 WEB = pathlib.Path(__file__).resolve().parent.parent
 BASE_URL = "https://trax-dogtracking.no/"
 IMG_W, IMG_H = 420, 913  # samme størrelse som skjermbildene på forsiden
@@ -121,19 +124,17 @@ def copy_image(app, name, used):
 
 ICON_TIP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg>'
 ICON_WARN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg>'
-GLOBE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>'
-CHEV = '<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
 MANUAL_CSS = """/* Brukermanual (lages av verktoy/lag-manual.py): innholdsliste, nummererte steg, tips og skjermbilder */
-nav a.l[aria-current]{color:var(--accent)}
-.hero .lead{font-size:20px;color:var(--muted);margin:0;max-width:40ch}
-.hero p.updated{font-size:13px;margin-top:12px;max-width:none}
+.m-hode{padding-block:56px 8px}
+.m-hode .lead{font-size:20px;color:var(--muted);margin:0;max-width:40ch}
+.m-hode p.updated{font-size:13px;margin-top:12px;max-width:none}
 .toc,.m{scroll-margin-top:64px}
 .toc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-top:28px}
 .toc ol{margin:0;padding:0;list-style:none;columns:1;column-gap:28px;counter-reset:toc}
 .toc li{counter-increment:toc;break-inside:avoid;max-width:none}
 .toc a{display:flex;gap:10px;padding:5px 0;text-decoration:none;color:var(--fg);font-weight:500}
-.toc a::before{content:counter(toc,decimal-leading-zero);font:400 13px/1.9 var(--mono);color:var(--muted);flex:none}
+.toc a::before{content:counter(toc,decimal-leading-zero);font:400 13px/1.9 var(--body);color:var(--muted);flex:none}
 .toc a:hover,.toc a:focus-visible{color:var(--accent)}
 @media (min-width:600px){.toc ol{columns:2}}
 .m .intro{font-size:18px;color:var(--muted)}
@@ -152,10 +153,11 @@ figure.shot img{display:block;width:100%;height:auto;border-radius:18px;border:1
 figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
 .back{font-size:14px;margin:20px 0 0}
 .back a{text-decoration:none;font-weight:600}
-.hero .callout{margin-top:20px}
-.hero .callout p{font-size:16px;color:var(--fg);max-width:none}
+.m-hode .callout{margin-top:20px}
+.m-hode .callout p{font-size:16px;color:var(--fg);max-width:none}
 /* «Kommer i v. 2.1»: samme stil som «Ute nå»-merket på forsiden (.v2-merke) */
 .kommer{display:inline-block;margin:0 0 10px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px;white-space:nowrap}
+.les section.m{padding-block:48px 0}
 .toc .kommer{flex:none;align-self:center;margin:0 0 0 auto;font-size:12px;padding:5px 9px}"""
 
 
@@ -168,27 +170,10 @@ COMING = set()
 SITE_ONLY_LANGS = []
 
 
-def nav_lang(l, here_prefix):
-    """Språkvelgeren med lenker til manualen på de andre språkene."""
-    items = []
-    for o in LANGS:
-        href = here_prefix + o["dir"] + "manual/"
-        if o is l:
-            items.append(f'      <li><a href="./" lang="{o["code"]}" aria-current="page">{o["name"]}</a></li>')
-        else:
-            items.append(f'      <li><a href="{href}" hreflang="{o["code"]}" lang="{o["code"]}">{o["name"]}</a></li>')
-    for o in SITE_ONLY_LANGS:
-        items.append(f'      <li><a href="{here_prefix}{o["dir"]}" hreflang="{o["code"]}" lang="{o["code"]}">{o["name"]}</a></li>')
-    return ("  <details class=\"lang\">\n"
-            f'    <summary aria-label="{l["choose"]}">{GLOBE}<span>{l["short"]}</span>{CHEV}</summary>\n'
-            "    <ul>\n" + "\n".join(items) + "\n    </ul>\n  </details>")
 
-
-def render(l, sections, strings, style, app, used, date):
+def render(l, sections, strings, app, used, date):
     up = "../" * (1 + l["dir"].count("/"))       # fra manualsiden til roten
-    home = up + l["dir"]                          # forsiden på samme språk
     img = up + "img/manual/"
-    pslug, pname = l["privacy"]
     d = f'{date.day}. {l["months"][date.month - 1]} {date.year}' if l["code"] != "en" else f'{date.day} {l["months"][date.month - 1]} {date.year}'
 
     # Valgfri beskjed øverst, f.eks. når manualen kommer før appen er oversatt (fjern «note» i LANGS når den ikke trengs)
@@ -222,63 +207,24 @@ def render(l, sections, strings, style, app, used, date):
         out.append("\n".join(h))
 
     toc = "\n".join(f'      <li><a href="#{s["id"]}">{esc(s["title"])}' + (f' <span class="kommer">{l["coming"]}</span>' if s["id"] in COMING else "") + '</a></li>' for s in sections)
-    alts = "\n".join(f'<link rel="alternate" hreflang="{o["code"]}" href="{BASE_URL}{o["dir"]}manual/">' for o in LANGS)
-    loc_alts = "\n".join(f'<meta property="og:locale:alternate" content="{o["locale"]}">' for o in LANGS if o is not l)
-    footer_langs = " · ".join(f'<a href="{up}{o["dir"]}manual/" hreflang="{o["code"]}" lang="{o["code"]}">{o["name"]}</a>' for o in LANGS if o is not l)
-    footer_langs += "".join(f' · <a href="{up}{o["dir"]}" hreflang="{o["code"]}" lang="{o["code"]}">{o["name"]}</a>' for o in SITE_ONLY_LANGS)
 
-    return f"""<!doctype html>
-<html lang="{l["code"]}">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="{l["desc"]}">
-<title>{l["title"]}</title>
+    fl = felles.SPRAK_BY[l["code"]]
+    stil = f"""
 <!-- Lages av verktoy/lag-manual.py fra manualen i appen. Ikke rediger for hånd; endre appen og kjør skriptet på nytt. -->
-<link rel="canonical" href="{BASE_URL}{l["dir"]}manual/">
-{alts}
-<link rel="icon" type="image/png" sizes="32x32" href="{up}img/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="{up}img/icon-192.png">
-<link rel="apple-touch-icon" href="{up}img/apple-touch-icon.png">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="{l["locale"]}">
-{loc_alts}
-<meta property="og:site_name" content="Trax">
-<meta property="og:title" content="{l["title"]}">
-<meta property="og:description" content="{l["desc"]}">
-<meta property="og:url" content="{BASE_URL}{l["dir"]}manual/">
-<meta property="og:image" content="{BASE_URL}img/og-image-{l.get("og", l["code"])}.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
 <style>
-{style}
 {MANUAL_CSS}
-{l.get("css", "")}
-</style>
-</head>
+</style>"""
+    return felles.head(fl, "manual", l["title"], l["desc"], up, ekstra=stil, og_type="article") + f"""
 <body>
-<nav><div class="wrap">
-  <a class="brand" href="{home}"><img src="{up}img/icon-192.png" width="32" height="32" alt="">Trax</a>
-  <a class="l" href="./" aria-current="page">{l["nav"]}</a>
-  <a class="l" href="{home}#support">Support</a>
-  <a class="l opt" href="{home}{pslug}/">{pname}</a>
-{nav_lang(l, up)}
-  <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="{up}img/app-store-{l["code"]}.svg" width="120" height="40" alt="{l["badge_alt"]}"></a>
-  <a class="gp" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="{up}img/google-play-{l["code"]}.svg" width="135" height="40" alt="{l["gp_alt"]}"></a>
-</div></nav>
+{felles.nav(fl, "manual", up)}
 
-<main class="wrap" id="top">
-  <header class="hero">
+<main class="wrap les">
+  <header class="m-hode">
     <p class="eyebrow">{l["eyebrow"]}</p>
     <h1>{esc(strings["manual.title"])}</h1>
     <p class="lead">{esc(strings["manual.subtitle"])}</p>
     <p class="updated">{l["updated"]}: {d}</p>
-{note}    <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
-      <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
-    </svg>
-    <div class="toc" id="innhold" role="navigation" aria-labelledby="innhold-tittel">
+{note}    <div class="toc" id="innhold" role="navigation" aria-labelledby="innhold-tittel">
       <p class="eyebrow" id="innhold-tittel">{esc(strings["manual.contents"])}</p>
       <ol>
 {toc}
@@ -289,19 +235,7 @@ def render(l, sections, strings, style, app, used, date):
 {chr(10).join(out)}
 </main>
 
-<div class="wrap">
-  <footer>© {date.year} Silje Tillerflaten · <a href="./">{esc(strings["manual.title"])}</a> · <a href="{home}#support">Support</a> · <a href="{home}{pslug}/">{pname}</a> · {footer_langs}
-    <p class="utvikler"><img src="{up}img/tillerflaten-digital.png" width="24" height="24" alt="{l["logo_alt"]}"> {l["dev_by"]}</p>
-  </footer>
-</div>
-
-<script>
-/* Språkvelger: lukk menyen ved klikk utenfor eller Escape */
-(function(){{var d=document.querySelector('.lang');if(!d)return;
-document.addEventListener('click',function(e){{if(d.open&&!d.contains(e.target))d.open=false}});
-document.addEventListener('keydown',function(e){{if(e.key==='Escape'&&d.open){{d.open=false;d.querySelector('summary').focus()}}}});}})();
-</script>
-<script data-goatcounter="https://trax-dogtracking.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{felles.bunn(fl, "manual", up, date.year)}
 </body>
 </html>
 """
@@ -315,8 +249,6 @@ def main():
     if only - {l["code"] for l in LANGS}:
         sys.exit(f"ukjent språk: {', '.join(sorted(only))}")
     swift = (app / "Trax/UserManualView.swift").read_text(encoding="utf-8")
-    style = re.search(r"<style>\n(.*?)\n</style>", (WEB / "index.html").read_text(encoding="utf-8"), re.S).group(1)
-    style = style.split("\n", 1)[1]  # dropp forsidens layout-kommentar
     date = datetime.date.today()
     used = set()
     for l in LANGS:
@@ -324,7 +256,7 @@ def main():
             continue
         sections = parse_sections(swift, l["swift"])
         strings = read_strings(app / f'Trax/{l["lproj"]}.lproj/Localizable.strings')
-        page = render(l, sections, strings, style, app, used, date)
+        page = render(l, sections, strings, app, used, date)
         dst = WEB / l["dir"] / "manual/index.html"
         dst.parent.mkdir(parents=True, exist_ok=True)
         dst.write_text(page, encoding="utf-8")
