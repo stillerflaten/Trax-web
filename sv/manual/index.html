@@ -183,7 +183,7 @@ nav .gp img{width:128px;height:auto}
 .kjop .chip{display:inline-block;background:var(--fg);color:var(--bg);font:700 17px/1 var(--display);padding:16px 24px;border-radius:999px}
 .kjop .snart span:not(.chip){font-size:17px;color:var(--muted)}
 .kjop .live{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
-.kjop .pris{display:flex;flex-direction:column;margin:0;font-size:16px;line-height:1.4;color:var(--muted)}
+.kjop .pris{display:flex;flex-direction:column;flex-basis:100%;margin:0;font-size:16px;line-height:1.4;color:var(--muted)}
 .kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
 .kjop .android{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin:20px 0 0;font:700 17px/1.3 var(--display);color:var(--fg)}
 .kjop .android img{display:block;width:160px;height:auto}
@@ -243,11 +243,25 @@ nav .gp img{width:128px;height:auto}
 /* Bunnteksten: navnet stort, App Store-knappen en gang til, og lenkene */
 .forside footer{border-top:0;background:var(--foot);color:var(--on-foot-2);padding-block:96px 40px;font-size:16px}
 .forside footer .stort{font:800 clamp(88px,17vw,240px)/.8 var(--display);letter-spacing:-.06em;margin:0 0 40px;color:var(--on-foot)}
-.forside footer .rad{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
-.forside footer .rad a{color:var(--on-foot)}
-.forside footer .chip{background:var(--on-foot);color:var(--foot)}
-.forside footer .liten{margin:40px 0 0;font-size:14px}
-.forside footer .utvikler{font-size:14px}
+.forside footer .stort{margin-bottom:48px}
+/* Bunnen: last ned til venstre, lenker i to kolonner til høyre, smal linje med © og utvikler nederst */
+.forside footer .fot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px 64px;align-items:start}
+.forside footer .fot h2{font:700 13px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--on-foot-2);margin:0 0 16px;display:flex;align-items:center}
+.forside footer .fot h2 .gj-prikk{margin-right:14px}
+.forside footer .kjop .live{gap:12px;align-items:center}
+.forside footer .kjop .live img{display:block;height:48px;width:auto}
+.forside footer .kjop .googleplay,.forside footer .kjop .appstore{line-height:0}
+.forside footer .fot-pris{margin:14px 0 0;font-size:15px;color:var(--on-foot-2)}
+.forside footer .fot-lenker{display:flex;gap:64px}
+.forside footer .fot-lenker ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.forside footer .fot-lenker a{color:var(--on-foot);text-decoration:none}
+.forside footer .fot-lenker a:hover{text-decoration:underline;text-underline-offset:3px}
+.forside footer .fot-lenker [aria-current]{color:var(--on-foot-2)}
+.forside footer .fot-bunn{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 24px;margin-top:56px;padding-top:20px;border-top:1px solid rgba(230,235,230,.14);font-size:14px}
+.forside footer .fot-bunn p{margin:0}
+.forside footer .utvikler{font-size:14px;margin:0}
+@media (max-width:760px){.forside footer .fot{grid-template-columns:1fr}.forside footer .fot-lenker{gap:48px}}
+@media (max-width:600px){.forside footer .stort{margin-bottom:32px}.forside footer .fot-bunn{flex-direction:column;align-items:flex-start;margin-top:40px}}
 @media (max-width:600px){.forside footer{padding-block:64px 32px}}
 /* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
 .forside .v2{padding-block:120px 0}
@@ -288,7 +302,7 @@ nav .gp img{width:128px;height:auto}
 .bev .inn.vis{opacity:1;transform:none}
 .flate img{transform:translateX(-50%) translateY(var(--py,0px)) rotate(-3deg)}
 @media (prefers-reduced-motion:no-preference){
-  .post,.g-pil,.lang summary,footer .rad a{transition:transform .15s,color .15s}
+  .post,.g-pil,.lang summary,footer .fot-lenker a{transition:transform .15s,color .15s}
   .post:active,.g-pil:active,.lang summary:active{transform:scale(.97)}
   .appstore:hover,nav .kj:hover{transform:translateY(-1px)}
 }
@@ -377,7 +391,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="eyebrow">iOS-app för spårträning</p>
     <h1>Användarmanual</h1>
     <p class="lead">Allt du behöver för att lägga spår, spåra och följa träningen över tid.</p>
-    <p class="updated">Senast uppdaterad: 27. oktober 2026</p>
+    <p class="updated">Senast uppdaterad: 20. november 2026</p>
     <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
       <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
       <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
@@ -388,6 +402,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
       <li><a href="#kom-i-gang">Kom igång</a></li>
       <li><a href="#hjem">Hemskärmen</a></li>
       <li><a href="#legge-spor">Lägga spår</a></li>
+      <li><a href="#sporplaner">Spårplaner</a></li>
       <li><a href="#sportype">Spårtyp och viltspår</a></li>
       <li><a href="#sok">Sök: föremålssök och ytsök</a></li>
       <li><a href="#gjenstander">Föremål</a></li>
@@ -481,8 +496,30 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Viktigt: </span>Om du trycker på bakåtpilen uppe till vänster i fältet innan spåret är stoppat frågar appen om du vill slänga spåret eller stoppa och spara det. Ett slängt spår kan inte återställas.</p></div>
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
-  <section class="m" id="sportype">
+  <section class="m" id="sporplaner">
     <p class="eyebrow">04</p>
+    <h2>Spårplaner</h2>
+    <p class="intro">Planera spåret på kartan innan du lägger det: sträckor, föremål och längden på varje sträcka. Samla spåren för en träningsdag i en grupp, så ser du att de inte korsar varandra.</p>
+    <p>Tryck på ”Planer” till höger om ”Nytt spår” på hemskärmen, och på ”+” uppe till höger för en ny plan.</p>
+    <ol class="steps">
+      <li>Tryck på kartan där spåret ska börja, och sedan där det ska svänga och sluta. Längden på varje sträcka står mitt på sträckan, och längden på hela spåret under kartan.</li>
+      <li>Välj ”Föremål” under ”Tryck på kartan lägger till”, och tryck på spåret där föremålen ska ligga. Föremålen hamnar på spårlinjen och numreras i ordning från start. På blodspår kan du också välja sårbädd och vilt.</li>
+      <li>Håll inne och dra en punkt eller ett föremål för att flytta det. Tryck på en punkt för att välja den, och på ”Radera punkt” för att ta bort den. ”Ångra” tar tillbaka den senaste ändringen.</li>
+      <li>Tryck på ”Spara”. Ge planen ett namn, välj eller skriv en grupp, välj spårtyp och skriv gärna ett meddelande till den som ska lägga spåret. ”Spara” i bladet sparar planen och tar dig tillbaka till listan.</li>
+    </ol>
+    <figure class="shot"><img src="../../img/manual/manual-plan-draw-sv.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Planen ritas på kartan, med längden på varje sträcka och föremålen numrerade från start.</figcaption></figure>
+    <p>Trycker du på ”Tillbaka” innan en ny plan är sparad, frågar appen om du vill kasta den. En sparad plan sparas automatiskt när du ändrar den. Namn, grupp, spårtyp och meddelande ändrar du senare i menyn uppe till höger, där du också hittar ”Vänd spåret”, ”Dela plan” och ”Radera plan”.</p>
+    <p>Kartan börjar på satellit. Kartknappen nere till höger växlar mellan ”Karta”, ”Topo” och ”Satellit”, och slår på eller av ”Visa andra planer”. De andra planerna visas vitt streckade. Korsar spåret en annan plan, eller kommer närmare än 30 meter, visas en varning under kartan.</p>
+    <p>Listan har ett kort för varje grupp. Kartan överst i kortet visar alla planer i gruppen, numrerade och i var sin färg, och säger ”Inga spår korsar” eller varnar om spår korsar eller ligger för nära. Under kartan står planerna med längd och föremål, och ”Lägg” för att lägga spåret. Tryck på en plan för att öppna den. Med ⋯ vid gruppnamnet gör du en ny plan i gruppen, byter namn på gruppen eller delar alla planer i gruppen. Planer utan grupp har var sitt kort längst ned. Håll inne på en plan för att lägga spåret, dela planen eller radera den.</p>
+    <figure class="shot"><img src="../../img/manual/manual-plan-list-sv.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Ett kort för varje grupp, med alla planer på samma karta.</figcaption></figure>
+    <p>Lägg spår efter planen: tryck på ”Lägg” i listan, eller ”Lägg spår efter planen” när planen är öppen. ”Lägg spår” öppnas med planens spårtyp, och planen visas streckad på kartan med längderna och föremålen. De andra planerna i samma grupp visas svagare, bara så att du ser var de ska ligga. På satellit är planen orange och de andra vita. Innan du trycker på ”Start” visar ett kort överst planens namn, längden, avståndet till start och meddelandet. När spåret sparas föreslås planens namn, och planen märks ”Lagt” med datum i listan.</p>
+    <figure class="shot"><img src="../../img/manual/manual-plan-lay-sv.jpg" width="420" height="913" alt="" loading="lazy"><figcaption>Spåret läggs efter planen. Planen visas streckad, och kortet överst visar längden och hur långt det är till start.</figcaption></figure>
+    <p>Dela plan: ”Till en annan Trax-användare” skickar planen som en fil som öppnas i Trax och hamnar i Spårplaner hos mottagaren. ”Som GPX till andra kartappar” skickar spåret som rutt och föremålen som punkter. Planerna ingår i säkerhetskopian.</p>
+    <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><p><span class="sr">Tips: </span>Planen är en riktlinje. Lägg spåret efter terrängen, och använd de streckade linjerna för att hålla spåren isär.</p></div>
+    <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
+  </section>
+  <section class="m" id="sportype">
+    <p class="eyebrow">05</p>
     <h2>Spårtyp och viltspår</h2>
     <p class="intro">Välj om spåret är ett vanligt spår, ett IGP-spår eller ett viltspår. Viltspår har egna knappar och egna val. Föremålssök och ytsök finns under ”Sök” (se ”Sök: föremålssök och ytsök”).</p>
     <p>Du väljer spårtyp med de stora knapparna under ”Välj övning innan du startar” på skärmen för spårläggning, innan du trycker på ”Starta”. Du kan ändra den i efterhand i kortet ”Spårtyp” i spåröversikten. Spårtypen visas på spåret, i PDF:en och i filen när du skickar spåret.</p>
@@ -513,7 +550,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="sok">
-    <p class="eyebrow">05</p>
+    <p class="eyebrow">06</p>
     <h2>Sök: föremålssök och ytsök</h2>
     <p class="intro">Sök är egna övningar, inte spår. Du lägger en ruta eller en yta på kartan och lägger ut föremål eller figuranter, och hunden söker inom en tidsgräns.</p>
     <ol class="steps">
@@ -538,7 +575,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="gjenstander">
-    <p class="eyebrow">06</p>
+    <p class="eyebrow">07</p>
     <h2>Föremål</h2>
     <ol class="steps">
       <li>Stå där föremålet läggs och tryck på ”Föremål”. Föremålet sparas direkt, med nummer och position.</li>
@@ -552,7 +589,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="lagre">
-    <p class="eyebrow">07</p>
+    <p class="eyebrow">08</p>
     <h2>Spara spåret</h2>
     <p class="intro">När du trycker på ”Stoppa” öppnas arket ”Spara spår”. Högst upp ser du längden, antal föremål och tiden.</p>
     <ul>
@@ -569,7 +606,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="liggetid">
-    <p class="eyebrow">08</p>
+    <p class="eyebrow">09</p>
     <h2>Spårets ålder</h2>
     <p>Spårets ålder är tiden från att du började lägga spåret tills hundföraren startar spåret. Den räknas upp av sig själv och visas både medan spåret väntar och under spårningen. När spåret har spårats låses åldern och sparas med spåret.</p>
     <p>Vill du få besked när spåret har legat tillräckligt länge väljer du spårets ålder med knapparna i arket ”Spara spår”: ”Ingen”, 15, 30, 45, 60 eller 90 minuter, 2 timmar, eller ”Egen …” med timmar och minuter (högst 48 timmar). Ditt senaste val sparas. På viltspår är valen 30 minuter och 1, 2, 3, 6, 12, 18 och 24 timmar, och viltspår kommer ihåg sitt eget val.</p>
@@ -580,7 +617,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="kryss-spor">
-    <p class="eyebrow">09</p>
+    <p class="eyebrow">10</p>
     <h2>Störspår</h2>
     <p class="intro">Ett störspår är ett färskare spår som korsar huvudspåret, för att träna hunden att hålla sig på rätt spår.</p>
     <ol class="steps">
@@ -596,7 +633,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="ga-spor">
-    <p class="eyebrow">10</p>
+    <p class="eyebrow">11</p>
     <h2>Spåra</h2>
     <p class="intro">Som hundförare följer du hunden när den spårar. Spårläggarens rutt och föremålen visas på kartan, och din egen rutt ritas i en annan färg.</p>
     <ol class="steps">
@@ -618,7 +655,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="blindt-spor">
-    <p class="eyebrow">11</p>
+    <p class="eyebrow">12</p>
     <h2>Okänt spår</h2>
     <p class="intro">Spåra utan att se var spårläggaren gick, som på prov.</p>
     <p>Slå på ”Okänt spår” innan du trycker på ”Starta”. Reglaget är avstängt när du öppnar spåret, så du slår på det varje gång. Har spåret skickats till dig som okänt spår är det redan på (se ”Dela och ta emot spår”).</p>
@@ -634,7 +671,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="nattmodus">
-    <p class="eyebrow">12</p>
+    <p class="eyebrow">13</p>
     <h2>Nattläge</h2>
     <p class="intro">Tränar du i mörker gör nattläget skärmen mörk och röd, så att ditt mörkerseende inte förstörs.</p>
     <ol class="steps">
@@ -649,7 +686,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="funn">
-    <p class="eyebrow">13</p>
+    <p class="eyebrow">14</p>
     <h2>Registrera fynd</h2>
     <p>När du kommer inom valt avstånd från ett föremål (12 meter som standard) visas en banner med nummer, beskrivning och avstånd. Telefonen vibrerar, även med låst skärm. Om GPS:en är osäker väntar appen med aviseringen tills positionen är bättre. Du väljer avstånd och aviseringstyp under Inställningar › Aviseringar (se ”Aviseringar och röstaviseringar”).</p>
     <ul>
@@ -671,7 +708,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="varsler">
-    <p class="eyebrow">14</p>
+    <p class="eyebrow">15</p>
     <h2>Aviseringar och röstaviseringar</h2>
     <p class="intro">Medan hunden spårar kan telefonen avisera dig med vibration, ljud och röst. Alla aviseringar ställs in under Inställningar › Aviseringar.</p>
     <ul>
@@ -692,7 +729,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="sporoversikt">
-    <p class="eyebrow">15</p>
+    <p class="eyebrow">16</p>
     <h2>Spåröversikten</h2>
     <p class="intro">Tryck på ett spår på hemskärmen för att se allt om det.</p>
     <ul>
@@ -715,7 +752,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="vurdering">
-    <p class="eyebrow">16</p>
+    <p class="eyebrow">17</p>
     <h2>Bedömning och vinklar</h2>
     <p class="intro">Ge varje spår en bedömning och se hur många vinklar IGP-spåret hade.</p>
     <p>Kortet ”Bedömning” finns i arket ”Spåret är klart” och på fliken ”Översikt” i spåröversikten. Allt är valfritt:</p>
@@ -731,7 +768,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="treningsmomenter">
-    <p class="eyebrow">17</p>
+    <p class="eyebrow">18</p>
     <h2>Träningsmoment</h2>
     <p class="intro">Välj vad spåret ska träna på, och bedöm varje moment när spåret är spårat.</p>
     <p>Kortet ”Träningsmoment” finns i bladet ”Spara spår” när spåret är lagt, under spårets ålder. Första gången är listan tom. Tryck på ”Nytt moment”, skriv ett namn, till exempel ”Spetsig vinkel” eller ”Föremål i brant backe”, och tryck på ”Lägg till”. Momentet väljs direkt och sparas till nästa spår. Tryck på ett moment för att välja det eller ta bort valet.</p>
@@ -744,7 +781,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="avspilling">
-    <p class="eyebrow">18</p>
+    <p class="eyebrow">19</p>
     <h2>Spela upp spåret</h2>
     <p class="intro">Se hur hunden arbetade, ovanpå spåret som spårläggaren lade.</p>
     <ol class="steps">
@@ -758,7 +795,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="hundens-spor">
-    <p class="eyebrow">19</p>
+    <p class="eyebrow">20</p>
     <h2>Hundens spår från GPS-halsband</h2>
     <p class="intro">Har hunden GPS-halsband, till exempel från Garmin eller Tractive? Lägg till GPX-filen från halsbandet, så ser du var hunden gick i förhållande till dig och spåret.</p>
     <ol class="steps">
@@ -775,7 +812,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="rediger">
-    <p class="eyebrow">20</p>
+    <p class="eyebrow">21</p>
     <h2>Redigera spår</h2>
     <p class="intro">Klipp bort början eller slutet av ett spår, till exempel en lång svans för att du glömde att trycka på ”Stoppa”.</p>
     <ol class="steps">
@@ -789,7 +826,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="avvik">
-    <p class="eyebrow">21</p>
+    <p class="eyebrow">22</p>
     <h2>Avvikelse från spåret</h2>
     <p class="intro">Se hur väl du och hunden följde spåret som spårläggaren lade.</p>
     <p>Kortet ”Avvikelse från spåret” finns på fliken ”Avvikelse” i spåröversikten för avslutade spår. Det visar:</p>
@@ -805,7 +842,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="vaer">
-    <p class="eyebrow">22</p>
+    <p class="eyebrow">23</p>
     <h2>Väder</h2>
     <p>Trax hämtar vädret på platsen där spåret startade, för tidpunkten du startade: temperatur, vind och vindriktning, nederbörd och luftfuktighet. När hunden startar spåret hämtas vädret på nytt, eftersom vinden kan ha vänt eller ökat medan spåret åldrades. Väderdata sparas tillsammans med spåret och finns med i PDF-exporten, i kolumnerna ”Lagt” och ”Spårat”.</p>
     <p>Medan spåret läggs och medan hunden spårar visar en liten pil på kartan, ovanför kartknapparna, vart vinden blåser och styrkan i m/s. Pilen pekar dit vinden blåser, alltså dit vittringen går, och vrider sig med kartan. Tryck på pilen för att se till exempel ”Vind från SV, 4 m/s”. Vinden hämtas bara vid start och uppdateras inte under tiden. Pilen finns också med på kartan i PDF:en och på bilden för sociala medier.</p>
@@ -814,7 +851,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="sosiale-medier">
-    <p class="eyebrow">23</p>
+    <p class="eyebrow">24</p>
     <h2>Dela på sociala medier</h2>
     <p class="intro">Visa upp spåret: Trax gör en bild med spåret, längden, spårets ålder och fynden, gärna ovanpå en bild på dig och hunden.</p>
     <ol class="steps">
@@ -833,7 +870,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="dele">
-    <p class="eyebrow">24</p>
+    <p class="eyebrow">25</p>
     <h2>Dela och ta emot spår</h2>
     <p class="intro">Spårläggare och hundförare behöver inte använda samma telefon. Spårläggaren skickar spåret som en Trax-fil.</p>
     <ol class="steps">
@@ -856,7 +893,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="pdf">
-    <p class="eyebrow">25</p>
+    <p class="eyebrow">26</p>
     <h2>PDF-rapport</h2>
     <p>I spåröversikten trycker du på delningsknappen överst, väljer ”PDF (flera)” och markerar ett eller flera avslutade spår. Du får en PDF med ett spår per sida, äldst först, med karta, nyckeltal, föremål, fynd, underlag, anteckningar, bedömning och väder, redo att skicka eller skriva ut.</p>
     <p>Nyckeltalen innehåller också spårtyp, vinklar, ”Inom X m från spåret” och ”Tappade spåret”, och hundförarens rutt är färgad efter avvikelse på kartan, med gränsen du har valt i spåröversikten (se ”Avvikelse från spåret”). Viltspår har också blodmängd, spårsko/klöv och blodavbrotten. Varje föremål listas med koordinat i formatet du har valt under Inställningar › Karta och spår, och hur noggrann GPS:en var när föremålet lades ut, till exempel ”±4 m noggrannhet”. Äldre spår sparade inte noggrannheten, och då står det ”noggrannhet okänd”.</p>
@@ -865,7 +902,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="hunder">
-    <p class="eyebrow">26</p>
+    <p class="eyebrow">27</p>
     <h2>Hundar</h2>
     <p class="intro">Registrera hundarna du tränar med, så ser du vilken hund som spårade varje spår.</p>
     <ol class="steps">
@@ -897,7 +934,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="innstillinger">
-    <p class="eyebrow">27</p>
+    <p class="eyebrow">28</p>
     <h2>Inställningar</h2>
     <p>Överst i Inställningar finns ”Mina hundar”. Under ”Appen” finns Aviseringar, Karta och spår, Batteri och Språk. Under ”Spår och data” finns ”Importera spår”, som öppnar ett spår från en Trax- eller GPX-fil, till exempel ett spår som någon har skickat till dig, och Säkerhetskopiering. Under ”Hjälp” finns Användarmanual och Om Trax. Tryck på en rad för att öppna sidan.</p>
     <ul>
@@ -914,7 +951,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="sikkerhetskopi">
-    <p class="eyebrow">28</p>
+    <p class="eyebrow">29</p>
     <h2>Säkerhetskopia och ny telefon</h2>
     <p class="intro">Ta vara på dina spår om du tappar bort telefonen eller byter till en ny.</p>
     <p>”Automatisk kopia till iCloud Drive” under Inställningar › Säkerhetskopiering är på som standard. Trax lägger då en säkerhetskopia i mappen ”Trax” i din egen iCloud Drive några sekunder efter att ett spår eller en hund har sparats eller ändrats, så du slipper komma ihåg det själv. Medan ett spår läggs eller pågår väntar Trax tills spåret är sparat. Under reglaget står det när den senaste kopian gjordes, eller att iCloud Drive är avstängt på telefonen.</p>
@@ -929,7 +966,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="administrere">
-    <p class="eyebrow">29</p>
+    <p class="eyebrow">30</p>
     <h2>Radera och återställa spår</h2>
     <p>Svep ett spår åt vänster på hemskärmen eller på sidan ”Avslutade spår” för att radera det. Du kan också öppna ett spår, trycka på ⋯ överst och välja ”Radera spår”. Du får alltid frågan innan något raderas.</p>
     <div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg><p><span class="sr">Viktigt: </span>Raderade spår kan inte återställas, om de inte finns i en säkerhetskopia. Exportera spåret som GPX eller PDF först om du vill spara det.</p></div>
@@ -938,7 +975,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="feilsoking">
-    <p class="eyebrow">30</p>
+    <p class="eyebrow">31</p>
     <h2>Tips och felsökning</h2>
     <ul>
       <li>Spåret blir hackigt eller får luckor: kontrollera att Trax har platsåtkomst och att ”Exakt plats” är på.</li>
@@ -953,7 +990,7 @@ figure.shot figcaption{font-size:14px;color:var(--muted);margin-top:8px}
     <p class="back"><a href="#innhold">↑ Till innehållet</a></p>
   </section>
   <section class="m" id="personvern">
-    <p class="eyebrow">31</p>
+    <p class="eyebrow">32</p>
     <h2>Integritet</h2>
     <p>Alla spår sparas på din telefon. Trax har inget konto och ingen egen server. Om du använder iCloud Drive lägger Trax en säkerhetskopia i mappen ”Trax” i din egen iCloud Drive. Det kan du stänga av under Inställningar › Säkerhetskopiering. Dina spår delas bara när du själv exporterar dem.</p>
     <p>Bilden för sociala medier skapas på din telefon. Om du väljer ”Spara bild” frågar iOS om Trax får lägga till bilder i Bilder. Trax kan bara lägga till bilder, inte se dina bilder. Väljer du en egen bild att lägga spåret över får Trax bara se den bild du väljer.</p>
