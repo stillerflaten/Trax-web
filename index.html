@@ -6,17 +6,24 @@
 <meta name="apple-itunes-app" content="app-id=6758005408">
 <meta name="description" content="Trax er en app for iPhone og Android for sportrening med hund. Legg spor med GPS, få varsel ved gjenstandene og se hvor godt hunden holdt sporet.">
 <title>Trax – sportrening med hund</title>
+<link rel="canonical" href="https://trax-dogtracking.no/">
 <link rel="alternate" hreflang="nb" href="https://trax-dogtracking.no/">
 <link rel="alternate" hreflang="sv" href="https://trax-dogtracking.no/sv/">
 <link rel="alternate" hreflang="en" href="https://trax-dogtracking.no/en/">
 <link rel="alternate" hreflang="de" href="https://trax-dogtracking.no/de/">
+<link rel="alternate" hreflang="x-default" href="https://trax-dogtracking.no/en/">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonter/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonter/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="stil.css?v=2">
+<meta name="theme-color" content="#f7f8f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111713" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nb_NO">
-<meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="sv_SE">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="de_DE">
 <meta property="og:site_name" content="Trax">
 <meta property="og:title" content="Trax – sportrening med hund">
@@ -25,529 +32,152 @@
 <meta property="og:image" content="https://trax-dogtracking.no/img/og-image-nb.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Trax: Legg sporet. Følg hunden. En iPhone med et spor på kartet.">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Trax", "operatingSystem": "iOS, Android", "applicationCategory": "SportsApplication", "inLanguage": "nb", "description": "App for iPhone og Android for sportrening med hund. Legg spor med GPS, få varsel ved gjenstandene og se hvor godt hunden holdt sporet.", "url": "https://trax-dogtracking.no/", "image": "https://trax-dogtracking.no/img/og-image-nb.png", "author": {"@type": "Person", "name": "Silje Tillerflaten"}, "publisher": {"@type": "Organization", "name": "Tillerflaten Digital"}}</script>
-<style>
-/* Layout: smal leseside med sticky nav, tre seksjoner (app, support, personvern), sporlinje som motiv */
-:root{
-  --bg:#f3f5f1; --surface:#ffffff; --fg:#1d241f; --muted:#5b665e; --line:#d6ddd5;
-  --accent:#2f6b45; --accent-ink:#ffffff; --track:#c7772e; --mark:#fff1c2;
-  --tile-g:#e4efe7; --tile-o:#fbeadb; --tile-r:#f6e1e1; --tile-b:#e1ebf6; --ink-g:#2f6b45; --ink-o:#a8561a; --ink-r:#a3262b; --ink-b:#2f63a3; --band:#e7ece4; --deep:#1f4d31; --on-deep:#ffffff; --on-deep-2:#c9dccf; --foot:#1d241f; --on-foot:#e6ebe6; --on-foot-2:#a3b0a7;
-  --display:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
-  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#141a16; --surface:#1c241f; --fg:#e6ebe6; --muted:#9aa79e; --line:#2e3a32;
-  --accent:#6fbf8a; --accent-ink:#0f1511; --track:#e39a54; --mark:#4a3f16; --tile-g:#22362a; --tile-o:#3a2a1c; --tile-r:#3d2224; --tile-b:#1f2c3d; --ink-g:#6fbf8a; --ink-o:#e39a54; --ink-r:#ef8a8e; --ink-b:#86b4e8; --band:#1a221d; --deep:#173a25; --on-deep:#ffffff; --on-deep-2:#b9d0c0; --foot:#0c110e; --on-foot:#e6ebe6; --on-foot-2:#9aa79e; color-scheme:dark}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0}
-body{background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body);padding-inline:16px}
-.wrap{max-width:720px;margin:0 auto}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:10px 16px}
-nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.brand{font:800 20px var(--display);letter-spacing:-.02em;color:var(--fg);text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:10px}
-.brand img{width:32px;height:32px;border-radius:8px}
-nav a.l{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
-nav a.l:hover,nav a.l:focus-visible{color:var(--accent)}
-a{color:var(--accent)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-header.hero{padding-block:48px 32px}
-.hero h1{font:800 clamp(40px,9vw,64px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
-.hero p{font-size:20px;color:var(--muted);margin:0;max-width:34ch}
-/* App Store-knapp og pris. Før lanseringsdatoen (data-lansering på <body>, ÅÅÅÅ-MM-DD) vises «Snart i App Store».
-   Fra datoen vises merket og introprisen, og sju dager senere ordinær pris. Uten dato står «Snart» til datoen settes. */
-.tillit{display:flex;flex-wrap:wrap;gap:4px 18px;margin:16px 0 0;padding:0;list-style:none;font-size:15px;color:var(--muted)}
-.tillit li{display:flex;align-items:center;gap:6px}
-.trackline{display:block;width:100%;height:60px;margin-top:24px}
-.trackline path{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
-.trackline circle{fill:var(--accent)}
-/* Poteanimasjon på sporlinja (spor.js): full bredde, ender og poter i riktig form */
-html{overflow-x:clip}
-.spor-js .trackline{width:100vw;margin-left:calc(50% - 50vw);overflow:visible}
-.spor-klar .trackline path,.spor-klar .trackline circle:last-of-type{opacity:0}
-.trackline .paws{fill:var(--accent)}
-.trackline circle{transform-box:fill-box;transform-origin:center}
-.trackline.spiller circle:last-of-type{transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
-.trackline.spiller.ferdig circle:last-of-type{transform:none}
-section{padding-block:40px;border-top:1px solid var(--line);scroll-margin-top:64px}
-h2{font:700 28px/1.2 var(--display);letter-spacing:-.02em;margin:0 0 8px;text-wrap:balance}
-h3{font:700 18px/1.3 var(--display);margin:28px 0 6px}
-.eyebrow{font:700 13px var(--display);text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin:0 0 6px}
-p,li{max-width:65ch}
-ul{padding-left:1.2em}
-/* Funksjoner: to kolonner på mobil, tre fra 600 px. Ikonfargene følger lys og mørk modus. */
-.funk .sub{color:var(--muted);margin:0}
-.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 0;padding:0;list-style:none}
-.fg li{max-width:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
-.fg b{display:block;font:700 16px/1.25 var(--display);margin-bottom:3px}
-.fg span{display:block;color:var(--muted);font-size:14.5px;line-height:1.45}
-.ph{background:var(--mark);padding:0 4px;border-radius:3px}
-button{font:600 14px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
-dl{display:grid;grid-template-columns:8.5em 1fr;gap:6px 16px;margin:12px 0}
-dt{font-weight:600}
-dd{margin:0;color:var(--muted);min-width:0}
-@media (max-width:480px){dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
-/* Skjermbildegalleri (galleri.js): sveip på mobil, piler og prikker på PC. Uten JS er det en vanlig vannrett rulleliste. */
-.galleri{margin-top:28px}
-.g-liste{display:flex;gap:16px;margin:0 -16px;padding:4px 16px 8px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;overscroll-behavior-x:contain;scrollbar-width:none}
-.g-liste::-webkit-scrollbar{display:none}
-.g-liste:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:12px}
-.g-liste li{flex:0 0 min(76%,272px);max-width:none;scroll-snap-align:start}
-.g-liste figure{margin:0}
-.g-liste img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#eef0e4}
-.g-liste figcaption{padding:10px 2px 0}
-.g-liste figcaption b{display:block;font:700 17px/1.3 var(--display)}
-.g-liste figcaption span{display:block;color:var(--muted);font-size:15px;line-height:1.45}
-.g-ktrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
-.g-ktrl[hidden]{display:none}
-.g-pil{width:40px;height:40px;padding:0;border-radius:50%;background:var(--surface);color:var(--fg);border:1px solid var(--line);display:grid;place-items:center}
-.g-pil:hover:not(:disabled){color:var(--accent);border-color:var(--accent)}
-.g-pil:disabled{opacity:.35;cursor:default}
-.g-pil svg{width:18px;height:18px}
-.g-prikker{display:flex;gap:2px}
-.g-prikker button{width:24px;height:24px;padding:0;background:none;border-radius:50%;display:grid;place-items:center}
-.g-prikker button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
-.g-prikker button[aria-current]::before{background:var(--accent);transform:scale(1.25)}
-@media (hover:none) and (pointer:coarse){.g-pil{display:none}}
-/* Bryter iPhone/Android over galleriet: radioknapper, så piltastene virker. Uten JS bytter :has() lista; galleri.js setter også data-os på .galleri for eldre nettlesere. */
-.g-os{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 16px;padding:0;border:0;min-width:0}
-.g-os legend{float:left;padding:0;font-size:15px;color:var(--muted)}
-.g-os .valg{display:inline-flex;gap:2px;padding:4px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
-.g-os label{position:relative;display:block;cursor:pointer}
-.g-os input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
-.g-os label span{display:block;padding:9px 18px;border-radius:999px;font:700 15px/1.2 var(--display);color:var(--muted);transition:background .2s,color .2s}
-.g-os label:hover span{color:var(--fg)}
-.g-os input:checked+span{background:var(--accent);color:var(--accent-ink)}
-.g-os input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
-.galleri .g-liste[data-os=android]{display:none}
-.galleri:has(.g-os input[value=android]:checked) .g-liste[data-os=ios]{display:none}
-.galleri:has(.g-os input[value=android]:checked) .g-liste[data-os=android]{display:flex}
-.galleri[data-os=android] .g-liste[data-os=ios]{display:none}
-.galleri[data-os=android] .g-liste[data-os=android]{display:flex}
-@media (min-width:600px){.fg{grid-template-columns:repeat(3,minmax(0,1fr))}}
-/* Språkvelger: én meny for alle språk, så nye språk bare blir en ny linje i lista */
-nav .wrap{position:relative}
-.lang{position:relative} /* lista åpner rett under knappen, høyrejustert mot den, så det ser ut som knappen utvider seg */
-.lang summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--muted);font:600 15px var(--body);padding:4px 10px;border:1px solid var(--line);border-radius:8px;user-select:none}
-.lang summary::-webkit-details-marker{display:none}
-.lang summary:hover,.lang[open] summary{color:var(--accent);border-color:var(--accent)}
-.lang summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.lang summary svg{width:16px;height:16px;flex:none}
-.lang summary .chev{width:10px;height:10px;transition:transform .15s}
-.lang[open] summary .chev{transform:rotate(180deg)}
-.lang ul{position:absolute;right:0;top:calc(100% + 4px);margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgb(0 0 0/.14);min-width:max(100%,9.5em);z-index:6}
-.lang li{max-width:none}
-.lang ul a{display:flex;justify-content:space-between;gap:12px;padding:7px 10px;border-radius:6px;color:var(--fg);text-decoration:none;font-size:15px}
-.lang ul a:hover,.lang ul a:focus-visible{background:var(--bg);color:var(--accent)}
-.lang ul a[aria-current]{font-weight:700;color:var(--accent)}
-.lang ul a[aria-current]::after{content:"✓"}
-/* Smal skjerm: menyen skal få plass på én linje */
-/* Mobil: personvernlenken tas ut av menyen (den står i bunnteksten), så Manual får plass på én linje */
-@media (max-width:480px){nav a.l.opt{display:none}}
-@media (max-width:400px){nav .wrap{gap:12px}.lang summary .chev{display:none}}
-@media (max-width:360px){.lang summary svg{display:none}}
-footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:14px}
-footer .utvikler{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:13px}
-footer .utvikler img{border-radius:6px;flex:none}
-.updated{font-size:14px;color:var(--muted)}
-/* Forsiden (body.forside): bred layout, flater i stedet for streker og kort, store overskrifter.
-   Manualen og personvernsiden bruker ikke klassen og beholder lesesidestilen over. */
-.forside{padding-inline:0}
-.forside .wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
-@media (max-width:600px){.forside .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
-.forside nav{margin-inline:0;padding-inline:0;border-bottom:0}
-.forside nav a.l{color:var(--fg)}
-.forside nav a.l:hover,.forside nav a.l:focus-visible{color:var(--accent)}
-nav .kj{display:block;line-height:0;border-radius:7px;transition:transform .15s}
-nav .kj img{width:128px;height:auto}
-nav .kj:active{transform:scale(.97)}
-nav .gp{display:block;line-height:0;margin-left:-8px}
-nav .gp img{width:128px;height:auto}
-@media (max-width:900px){nav .gp{display:none}} /* på smal skjerm står Google Play-merket rett under, i toppen av siden */
-@media (max-width:480px){.forside nav a.l:not([href$="manual/"]){display:none}}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.forside section{border-top:0;padding-block:0}
-.forside p,.forside li{max-width:none}
-.forside h2{font:800 clamp(34px,4.4vw,56px)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 16px}
-/* Toppen: tekst til venstre, appen stor på en grønn flate til høyre (under teksten på mobil) */
-.topp{display:grid;grid-template-columns:1.3fr .9fr;gap:40px;align-items:end;padding-top:40px}
-.topp h1{font:800 clamp(44px,5.5vw,84px)/.95 var(--display);letter-spacing:-.045em;margin:0 0 24px;text-wrap:balance}
-.topp .lead{font-size:21px;line-height:1.45;margin:0 0 32px;max-width:30ch}
-.topp .tillit{margin:28px 0 48px;gap:6px 22px;font-size:17px;color:var(--fg)}
-.tillit li::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--track);margin-right:3px}
-.kjop{margin:0}
-.kjop [hidden]{display:none!important}
-.kjop .snart{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:0}
-.kjop .chip{display:inline-block;background:var(--fg);color:var(--bg);font:700 17px/1 var(--display);padding:16px 24px;border-radius:999px}
-.kjop .snart span:not(.chip){font-size:17px;color:var(--muted)}
-.kjop .live{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
-.kjop .pris{display:flex;flex-direction:column;flex-basis:100%;margin:0;font-size:16px;line-height:1.4;color:var(--muted)}
-.kjop .pris b{font:800 22px/1.2 var(--display);color:var(--fg)}
-.kjop .android{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin:20px 0 0;font:700 17px/1.3 var(--display);color:var(--fg)}
-.kjop .android img{display:block;width:160px;height:auto}
-.kjop .googleplay{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
-.kjop .googleplay:active{transform:scale(.97)}
-.forside footer .kjop .android{color:var(--on-foot)}
-.kjop .android .aintro{display:block;font:400 16px/1.4 var(--body);color:var(--muted)}
-.forside footer .kjop .android .aintro{color:var(--on-foot-2)}
-.v2 + .v2{padding-top:96px}
-.v2-mer{margin:48px 0 0;color:var(--muted);font-size:16px;line-height:1.5;max-width:70ch}
-.appstore{display:inline-block;line-height:0;border-radius:9px;transition:transform .15s}
-.appstore:active{transform:scale(.97)}
-.appstore img{width:160px;height:auto}
-.flate{background:var(--deep);border-radius:28px 28px 0 0;height:min(76vh,700px);min-height:440px;position:relative;overflow:hidden}
-.flate img{position:absolute;left:50%;top:48px;width:min(74%,400px);height:auto;border-radius:28px}
-@media (max-width:860px){.topp{grid-template-columns:1fr;gap:0}.flate{height:460px;min-height:0}.flate img{width:300px;top:36px}}
-@media (max-width:600px){.topp{padding-top:20px}.topp .lead{font-size:19px;margin-bottom:24px}.topp .tillit{margin:22px 0 28px}
-  .flate{height:340px;margin-inline:-16px;border-radius:0}.flate img{width:250px;top:28px}}
-.forside .trackline{margin-top:28px}
-.forside .galleri{margin-top:12px;padding-bottom:96px}
-.forside .g-liste img{border:0}
-@media (min-width:1000px){.forside .g-liste li{flex:0 0 calc((100% - 64px)/5)}.forside .g-ktrl{display:none!important}}
-@media (max-width:600px){.forside .galleri{padding-bottom:64px}}
-/* Funksjoner: hel grønn flate, oransje gjenstandsmarkør foran hver funksjon som i appen */
-.forside .funk{background:var(--deep);color:var(--on-deep);padding-block:120px 136px}
-.forside .funk h2{max-width:14ch}
-.forside .funk .sub{color:var(--on-deep-2);font-size:21px;margin:0 0 64px}
-.forside .fg{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 56px;margin:0}
-.forside .fg li{background:none;border:0;border-radius:0;padding:0}
-.forside .fg b{display:flex;align-items:center;gap:12px;font:800 25px/1.15 var(--display);letter-spacing:-.02em;margin-bottom:8px}
-.forside .fg b::before{content:"";flex:none;width:14px;height:14px;border-radius:50%;background:var(--track);box-shadow:0 0 0 5px rgb(199 119 46/.3)}
-.forside .fg span{color:var(--on-deep-2);font-size:17px;line-height:1.5;padding-left:26px}
-@media (max-width:860px){.forside .fg{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.forside .funk{padding-block:72px 84px}.forside .funk .sub{font-size:19px;margin-bottom:40px}.forside .fg{grid-template-columns:1fr;gap:28px}.forside .fg b{font-size:22px}}
-/* Om: setningen stort til venstre, navn og resten av teksten til høyre. Bytt poten i .bilde med <img> når bildet finnes. */
-.om-g{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start;padding-block:136px}
-.om-g blockquote{margin:0;font:700 clamp(26px,2.6vw,36px)/1.25 var(--display);letter-spacing:-.02em;text-wrap:balance}
-.om-g .hvem{display:flex;align-items:center;gap:16px;margin:0 0 18px}
-.om-g .bilde{flex:none;width:160px;height:160px;border-radius:32px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;overflow:hidden}
-.om-g .bilde svg{width:32px;height:32px}
-.om-g .bilde img{width:100%;height:100%;object-fit:cover}
-.om-g .hvem b{display:block;font:800 21px/1.25 var(--display)}
-.om-g .hvem span{color:var(--muted);font-size:16px}
-.om-g p{margin:0}
-@media (max-width:860px){.om-g{grid-template-columns:1fr;gap:28px;padding-block:80px}.om-g .bilde{width:120px;height:120px;border-radius:26px}}
-/* Support: tonet flate, e-posten som stor lenke, spørsmålene i tre kolonner */
-.forside #support{background:var(--band);padding-block:120px}
-.sup-intro{max-width:60ch;margin:0}
-.post{display:inline-block;font:800 clamp(22px,2.6vw,34px)/1.2 var(--display);color:var(--accent);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:3px;margin:20px 0 72px;overflow-wrap:anywhere}
-.faq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 48px}
-.faq h3,.pv h3{font:800 20px/1.25 var(--display);margin:0 0 6px}
-.faq p{margin:0;font-size:17px}
-.pv{margin-top:64px;max-width:60ch}
-.pv p{margin:0 0 8px;font-size:17px}
-.pv a{font-weight:600}
-@media (max-width:860px){.forside #support{padding-block:72px}.post{margin-bottom:48px}.faq{grid-template-columns:1fr;gap:26px}.pv{margin-top:40px}}
-/* Bunnteksten: navnet stort, App Store-knappen en gang til, og lenkene */
-.forside footer{border-top:0;background:var(--foot);color:var(--on-foot-2);padding-block:96px 40px;font-size:16px}
-.forside footer .stort{font:800 clamp(88px,17vw,240px)/.8 var(--display);letter-spacing:-.06em;margin:0 0 40px;color:var(--on-foot)}
-.forside footer .stort{margin-bottom:48px}
-/* Bunnen: last ned til venstre, lenker i to kolonner til høyre, smal linje med © og utvikler nederst */
-.forside footer .fot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px 64px;align-items:start}
-.forside footer .fot h2{font:700 13px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--on-foot-2);margin:0 0 16px;display:flex;align-items:center}
-.forside footer .fot h2 .gj-prikk{margin-right:14px}
-.forside footer .kjop .live{gap:12px;align-items:center}
-.forside footer .kjop .live img{display:block;height:48px;width:auto}
-.forside footer .kjop .googleplay,.forside footer .kjop .appstore{line-height:0}
-.forside footer .fot-pris{margin:14px 0 0;font-size:15px;color:var(--on-foot-2)}
-.forside footer .fot-lenker{display:flex;gap:64px}
-.forside footer .fot-lenker ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.forside footer .fot-lenker a{color:var(--on-foot);text-decoration:none}
-.forside footer .fot-lenker a:hover{text-decoration:underline;text-underline-offset:3px}
-.forside footer .fot-lenker [aria-current]{color:var(--on-foot-2)}
-.forside footer .fot-bunn{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 24px;margin-top:56px;padding-top:20px;border-top:1px solid rgba(230,235,230,.14);font-size:14px}
-.forside footer .fot-bunn p{margin:0}
-.forside footer .utvikler{font-size:14px;margin:0}
-@media (max-width:760px){.forside footer .fot{grid-template-columns:1fr}.forside footer .fot-lenker{gap:48px}}
-@media (max-width:600px){.forside footer .stort{margin-bottom:32px}.forside footer .fot-bunn{flex-direction:column;align-items:flex-start;margin-top:40px}}
-@media (max-width:600px){.forside footer{padding-block:64px 32px}}
-/* Merking av skjermbildene før lansering: skjules av lanseringsskriptet fra datoen */
-.forside .v2{padding-block:120px 0}
-.v2 .v2-merke{display:inline-block;margin:0 0 18px;background:var(--deep);color:var(--on-deep);font:700 14px/1 var(--display);padding:8px 12px;border-radius:999px}
-.v2 .lead{font-size:20px;line-height:1.5;max-width:52ch;margin:0 0 56px}
-.v2-liste{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;margin:0;padding:0;list-style:none}
-.v2-liste li{max-width:none}
-.v2-liste b{display:flex;align-items:center;gap:10px;font:800 21px/1.2 var(--display);letter-spacing:-.015em;margin-bottom:6px}
-.v2-liste b::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--track)}
-.v2-liste span{display:block;color:var(--muted);font-size:16px;line-height:1.5;padding-left:22px}
-@media (max-width:1000px){.v2-liste{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.forside .v2{padding-block:80px 0}.v2 .lead{font-size:19px;margin-bottom:36px}.v2-liste{grid-template-columns:1fr;gap:24px}}
-.v2-g{display:grid;grid-template-columns:minmax(0,1fr) 320px;grid-template-areas:"tekst film" "liste film";column-gap:72px;align-items:start}
-.v2-tekst{grid-area:tekst}.v2-g .v2-liste{grid-area:liste;grid-template-columns:repeat(2,minmax(0,1fr))}
-.v2-film{grid-area:film;position:relative;width:320px;aspect-ratio:9/16;border-radius:32px;overflow:hidden;background:#0d1410;box-shadow:0 30px 70px rgba(19,38,28,.28)}
-.v2-film video{display:block;width:100%;height:100%;object-fit:cover}
-.v2-lyd{position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:10px 14px 10px 12px;background:rgba(10,16,12,.62);color:#fff;font:700 14px/1 var(--display);cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.v2-lyd[hidden]{display:none}
-.v2-lyd svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.v2-lyd .bolge{display:none}.v2-lyd.paa .bolge{display:inline}.v2-lyd.paa .kryss{display:none}
-.v2-lyd:focus-visible{outline:3px solid var(--track);outline-offset:3px}
-@media (max-width:900px){.v2-g{grid-template-columns:1fr;grid-template-areas:"tekst" "film" "liste"}.v2-film{justify-self:center;width:min(320px,100%);margin-bottom:56px}}
-@media (max-width:600px){.v2-g .v2-liste{grid-template-columns:1fr}.v2-film{margin-bottom:40px}}
-.del-g{display:grid;grid-template-columns:1fr minmax(0,340px);gap:64px;align-items:center;padding-block:120px 0}
-.del p{font-size:20px;line-height:1.5;max-width:40ch;margin:0}
-.del img{display:block;width:100%;height:auto;border-radius:28px}
-@media (max-width:860px){.del-g{grid-template-columns:1fr;gap:36px;padding-block:80px 0}.del img{max-width:300px;margin-inline:auto}}
-.send .del-g{grid-template-columns:minmax(0,440px) 1fr}
-.send .del-g img{order:-1;border-radius:24px}
-.send .tips{font-size:16px;color:var(--muted);margin-top:16px}
-@media (max-width:860px){.send .del-g{grid-template-columns:1fr}.send .del-g img{order:0;max-width:440px}}
-/* Bevegelse (forside.js). Toppen glir inn med CSS ved lasting; .bev settes i <head> bare uten «Reduser bevegelse». */
-@keyframes inn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.bev .topp > div:first-child > *,.bev .flate{animation:inn .7s cubic-bezier(.2,.7,.2,1) both}
-.bev .topp > div:first-child > :nth-child(2){animation-delay:.08s}.bev .topp > div:first-child > :nth-child(3){animation-delay:.16s}
-.bev .topp > div:first-child > :nth-child(4){animation-delay:.24s}.bev .flate{animation-delay:.12s}
-.bev .inn{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-.bev .inn.vis{opacity:1;transform:none}
-.flate img{transform:translateX(-50%) translateY(var(--py,0px)) rotate(-3deg)}
-@media (prefers-reduced-motion:no-preference){
-  .post,.g-pil,.lang summary,footer .fot-lenker a{transition:transform .15s,color .15s}
-  .post:active,.g-pil:active,.lang summary:active{transform:scale(.97)}
-  .appstore:hover,nav .kj:hover{transform:translateY(-1px)}
-}
-/* Sporlinja nedover siden (forside.js): i margen til høyre på brede skjermer, ellers prikker foran overskriftene */
-.sporlinje{position:absolute;left:0;top:0;width:100%;height:0;pointer-events:none;z-index:1;overflow:visible}
-.sporlinje .spor{fill:none;stroke:var(--track);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
-.sporlinje .m{fill:var(--track);stroke:var(--on-deep);stroke-width:2.5}
-.sporlinje text{fill:#fff;font:800 15px var(--display)}
-.sporlinje .hake{transform:scale(0);transform-box:fill-box;transform-origin:center;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
-.sporlinje .hake circle{fill:#2f9e5a;stroke:var(--on-deep);stroke-width:2}
-.sporlinje .hake path{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.sporlinje .funnet .hake{transform:none}
-.gj-prikk{display:inline-block;flex:none;width:.42em;height:.42em;max-width:16px;max-height:16px;min-width:12px;min-height:12px;border-radius:50%;background:var(--track);margin-right:.3em;vertical-align:.12em;position:relative}
-.gj-prikk::after{content:"";position:absolute;right:-7px;top:-7px;width:12px;height:12px;border-radius:50%;background:#2f9e5a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3.3 6.2l1.8 1.8 3.6-3.8' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");transform:scale(0);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
-.gj-prikk.funnet::after{transform:none}
-.spor-bred .gj-prikk{display:none}
-.spor-still .sporlinje .hake,.spor-still .gj-prikk::after{transition:none}
-/* Menyen og sidebredden er lik på alle sider, slik den er på forsiden: samme bredde, farger og App Store-merke.
-   På undersidene står teksten til venstre i full bredde, men linjene holdes korte nok til å lese. */
-body{padding-inline:0}
-nav{margin-inline:0;padding-inline:0;border-bottom:0}
-.wrap{max-width:1180px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
-nav a.l{color:var(--fg)}
-nav a.l:hover,nav a.l:focus-visible,nav a.l[aria-current]{color:var(--accent)}
-@media (max-width:600px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
-body:not(.forside) main > *,body:not(.forside) footer{max-width:760px}
-@media (max-width:480px){nav a.l ~ a.l{display:none}nav .wrap{gap:10px}.lang summary .chev{display:none}}
-@media (max-width:380px){.brand{font-size:0;gap:0}}
-</style>
-<script>
-/* Klargjør sporanimasjonen før første tegning, så den statiske linja ikke blinker. Vises likevel hvis spor.js ikke lastes. */
-(function(r){r.classList.add('spor-js');if(window.matchMedia&&!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('bev');var v;try{v=sessionStorage.getItem('trax-spor')}catch(e){}
-if(v!=='1'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){r.classList.add('spor-klar');setTimeout(function(){if(!window.traxSpor)r.classList.remove('spor-klar')},3000)}})(document.documentElement);
-</script>
-<script>
-/* Personvern har egen side. Gamle lenker til #personvern (blant annet fra App Store) sendes dit. */
-if(location.hash==='#personvern')location.replace('personvern/');
-</script>
 </head>
-<body class="forside" data-lansering="2026-10-16">
-<nav><div class="wrap">
-  <a class="brand" href="#top"><img src="img/icon-192.png" width="32" height="32" alt="">Trax</a>
-  <a class="l" href="manual/">Manual</a>
-  <a class="l" href="#support">Support</a>
-  <a class="l opt" href="personvern/">Personvern</a>
-  <details class="lang">
-    <summary aria-label="Velg språk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span>NO</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+<body data-gamle="support=hjelp/ personvern=personvern/ arrangorer=hjelp/#arrangorer funksjoner=funksjoner/ sporplaner=nytt/ versjon-2-5=nytt/#versjon-2-5 deling=funksjoner/#deling send-spor=funksjoner/#send-spor">
+<a class="hopp" href="#innhold">Hopp til innholdet</a>
+<header class="topp"><div class="wrap"><nav class="bar" aria-label="Meny">
+  <a class="merke" href="" aria-label="Trax, til forsiden"><img src="img/icon-192.png" width="32" height="32" alt="">Trax</a>
+  <ul class="lenker">
+    <li><a href="funksjoner/">Funksjoner</a></li>
+    <li><a href="nytt/">Nytt</a></li>
+    <li><a href="hjelp/">Hjelp</a></li>
+  </ul>
+  <details class="sprak">
+    <summary aria-label="Velg språk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>NB</summary>
     <ul>
-      <li><a href="./" lang="nb" aria-current="page">Norsk</a></li>
+      <li><a href="" hreflang="nb" lang="nb" aria-current="page">Norsk</a></li>
       <li><a href="sv/" hreflang="sv" lang="sv">Svenska</a></li>
       <li><a href="en/" hreflang="en" lang="en">English</a></li>
       <li><a href="de/" hreflang="de" lang="de">Deutsch</a></li>
     </ul>
   </details>
-  <a class="kj" href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" width="120" height="40" alt="Last ned fra App Store"></a>
-  <a class="gp" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="img/google-play-nb.svg" width="135" height="40" alt="Tilgjengelig på Google Play"></a>
-</div></nav>
-
-<main id="top">
-  <header class="wrap topp">
-    <div>
-      <h1>Følg sporet. Se fremgangen.</h1>
-      <p class="lead">Trax er en app for iPhone og Android som hjelper deg å legge spor, trene hunden og følge utviklingen over tid.</p>
-      <div class="kjop">
-        <p class="snart"><span class="chip">Snart i App Store</span><span>Engangskjøp, ingen abonnement.</span></p>
-        <div class="live" hidden>
-        <a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" height="50" loading="lazy" alt="Last ned fra App Store"></a>
-        <a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="img/google-play-nb.svg" width="169" height="50" loading="lazy" alt="Tilgjengelig på Google Play"></a>
-        <p class="pris"><b>149 kr</b><span>Engangskjøp i App Store og Google Play, ingen abonnement.</span></p>
-      </div>
-      </div>
-      <ul class="tillit"><li>Ingen konto</li><li>Ingen reklame</li><li>Dataene blir på telefonen</li></ul>
+  <a class="knapp" href="#last-ned" data-last-ned>Last ned</a>
+  <details class="meny">
+    <summary aria-label="Meny"><span></span></summary>
+    <div class="panel">
+      <a href="funksjoner/">Funksjoner</a>
+      <a href="nytt/">Nytt</a>
+      <a href="hjelp/">Hjelp</a>
+      <a href="manual/">Brukermanual</a>
+      <hr>
+      <div class="sm" lang=""><a href="" hreflang="nb" lang="nb" aria-current="page">Norsk</a><a href="sv/" hreflang="sv" lang="sv">Svenska</a><a href="en/" hreflang="en" lang="en">English</a><a href="de/" hreflang="de" lang="de">Deutsch</a></div>
     </div>
-    <div class="flate"><img src="img/galleri/galleri-nb-2-detaljkort.webp" width="640" height="999" alt="Detaljkortet for et langt spor med kart, funn, lengde, liggetid, tid brukt og vurdering" decoding="async" fetchpriority="high"></div>
-  </header>
-  <div class="wrap">
-    <svg class="trackline" viewBox="0 0 700 60" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M10 40 C 90 10, 150 55, 240 30 S 380 8, 460 38 S 600 50, 690 18"/>
-      <circle cx="10" cy="40" r="6"/><circle cx="690" cy="18" r="6"/>
-    </svg>
-    <div class="galleri" role="region" aria-roledescription="karusell" aria-label="Skjermbilder fra appen" data-forrige="Forrige bilde" data-neste="Neste bilde" data-prikk="Bilde {n} av {t}">
-      <fieldset class="g-os"><legend>Vis skjermbilder fra</legend><div class="valg"><label><input type="radio" name="os-nb" value="ios" checked><span>iPhone</span></label><label><input type="radio" name="os-nb" value="android"><span>Android</span></label></div></fieldset>
-      <ul class="g-liste" data-os="ios" tabindex="0" aria-label="Skjermbilder fra iPhone-appen">
-        <li><figure><img src="img/galleri/galleri-nb-1-hjem.webp" width="640" height="999" alt="Startsiden i Trax med månedens tall, spor som er klare til start og de siste sporene" decoding="async"><figcaption><b>Alt på ett sted</b><span>Månedens tall, spor som er klare til start og de siste sporene dine.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-nb-2-detaljkort.webp" width="640" height="999" alt="Detaljkortet for et langt spor med kart, funn, lengde, liggetid, tid brukt og vurdering" decoding="async" loading="lazy"><figcaption><b>Hele sporet på ett kort</b><span>Kart, funn, lengde, liggetid og hvor mye av sporet hunden fulgte.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-nb-3-sportyper.webp" width="640" height="999" alt="Valg av øvelse før start: spor, IGP-spor, blodspor og feltsøk, med feltstørrelse og tidsgrense" decoding="async" loading="lazy"><figcaption><b>Velg øvelse</b><span>Spor, IGP-spor, blodspor eller feltsøk. Tegn feltet på kartet og sett en tidsgrense.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-nb-4-feltsok.webp" width="640" height="999" alt="Resultatet av et feltsøk med felt, tidsgrense og tiden til hvert funn" decoding="async" loading="lazy"><figcaption><b>Feltsøk og arealsøk</b><span>Se hvilke gjenstander hunden fant, og hvor lang tid hvert funn tok.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-nb-5-blodspor.webp" width="640" height="999" alt="Blodspor som pågår, med knapper for sårleie, blod igjen og vilt" decoding="async" loading="lazy"><figcaption><b>Blodspor</b><span>Marker sårleie, blod igjen og vilt med ett trykk mens dere jobber dere gjennom sporet.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-nb-6-kryss-spor.webp" width="640" height="999" alt="Et spor med et kryss-spor lagt på tvers og liggetiden som teller ned" decoding="async" loading="lazy"><figcaption><b>Kryss-spor</b><span>Legg et ferskere spor på tvers, og se liggetiden telle ned før dere starter.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-nb-7-nattmodus.webp" width="640" height="999" alt="Nattmodus med mørk rød skjerm og kart" decoding="async" loading="lazy"><figcaption><b>Nattmodus</b><span>Rødt lys på skjermen når du trener i mørket.</span></figcaption></figure></li>
-      </ul>
-      <ul class="g-liste" data-os="android" tabindex="0" aria-label="Skjermbilder fra Android-appen">
-        <li><figure><img src="img/galleri/galleri-android-nb-1-hjem.webp" width="640" height="999" alt="Startsiden i Trax for Android med månedens tall, et spor som er klart til start og de siste sporene" decoding="async" loading="lazy"><figcaption><b>Alt på ett sted</b><span>Månedens tall, spor som er klare til start og de siste sporene dine.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-android-nb-2-varsel.webp" width="640" height="999" alt="Et spor som pågår, med varsel om at du er nær en gjenstand og knappen Merk som funnet" decoding="async" loading="lazy"><figcaption><b>Merk funn underveis</b><span>Trax sier fra når du nærmer deg en gjenstand. Ett trykk, så er funnet registrert.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-android-nb-3-detaljkort.webp" width="640" height="999" alt="Detaljkortet for et blodspor med kart, funn, lengde, liggetid, tid brukt og vurdering" decoding="async" loading="lazy"><figcaption><b>Hele sporet på ett kort</b><span>Kart, funn, lengde, liggetid og hvor mye av sporet hunden fulgte.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-android-nb-4-avspilling.webp" width="640" height="999" alt="Avspilling av et spor på kartet med gjenstander og tidslinje" decoding="async" loading="lazy"><figcaption><b>Spill av sporet</b><span>Se det lagte sporet og hundens vei side om side, i opptil 10x fart.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-android-nb-5-arealsok.webp" width="640" height="999" alt="Resultatet av et arealsøk med feltet, hundens spor og tiden til hvert funn" decoding="async" loading="lazy"><figcaption><b>Feltsøk og arealsøk</b><span>Se hvilke gjenstander og figuranter hunden fant, og tiden til hvert funn.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-android-nb-6-igp.webp" width="640" height="999" alt="Et IGP-spor på kartet med nummererte vinkler, gjenstander og hundens spor" decoding="async" loading="lazy"><figcaption><b>IGP-spor med vinkler</b><span>Nummererte vinkler og gjenstander, og hundens spor oppå det lagte sporet.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-android-nb-7-utvikling.webp" width="640" height="999" alt="Fullførte spor for én hund, med tall og en graf over funn over tid" decoding="async" loading="lazy"><figcaption><b>Følg utviklingen</b><span>Funn, hvor godt hunden holdt sporet og lengde over tid, for hver hund.</span></figcaption></figure></li>
-        <li><figure><img src="img/galleri/galleri-android-nb-8-nattmodus.webp" width="640" height="999" alt="Nattmodus med rød skjerm og varsel om en gjenstand" decoding="async" loading="lazy"><figcaption><b>Nattmodus</b><span>Rødt lys på skjermen når du trener i mørket.</span></figcaption></figure></li>
-      </ul>
-      <div class="g-ktrl" hidden><button class="g-pil" type="button" data-steg="-1" aria-label="Forrige bilde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g-prikker"></div><button class="g-pil" type="button" data-steg="1" aria-label="Neste bilde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
-    </div>
+  </details>
+</nav></div></header>
+<main id="innhold" class="forside">
+<section class="hero"><div class="wrap">
+  <div>
+    <a class="nyhet" href="nytt/"><b>Nytt</b>Sporplaner i versjon 2.6 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <h1>Følg sporet. <span>Se fremgangen.</span></h1>
+    <p class="ingress">Trax registrerer sporet mens du legger det, sier fra når hunden nærmer seg gjenstandene, og viser etterpå hvor godt hunden holdt sporet.</p>
+    <div class="butikker"><a href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" width="156" height="52" alt="Last ned fra App Store"></a><a href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="img/google-play-nb.svg" width="176" height="52" alt="Tilgjengelig på Google Play"></a></div>
+    <p class="pris"><b>149 kr, én gang.</b> Ingen abonnement, ingen konto, ingen reklame.</p>
   </div>
-
-  <section id="funksjoner" class="funk"><div class="wrap">
-    <h2>Laget for ordentlig sportrening</h2>
-    <p class="sub">Mer enn en GPS-logg. Trax kjenner sporarbeidet.</p>
-    <ul class="fg">
-      <li><b>Liggetid</b><span>Nedtelling på låseskjermen, og varsel fem minutter før sporet er klart.</span></li>
-      <li><b>Talevarsler</b><span>Hør det når du nærmer deg en gjenstand.</span></li>
-      <li><b>Blodspor</b><span>Sårleie, blodstopp, vilt og fluktretning.</span></li>
-      <li><b>Blindt spor</b><span>Sporet og varslene skjules til du stopper.</span></li>
-      <li><b>Kryss-spor</b><span>Legg et ferskere spor på tvers, med varsel før krysset.</span></li>
-      <li><b>Sportap</b><span>Telefonen vibrerer når dere kommer bort fra sporet.</span></li>
-      <li><b>Funn automatisk</b><span>Gjenstanden registreres som funnet når du kommer fram til den.</span></li>
-      <li><b>Meter mellom gjenstander</b><span>Se hvor langt det er siden forrige gjenstand mens du legger sporet.</span></li>
-      <li><b>Send spor blindt</b><span>Mottakeren ser bare startstedet til sporet er gått.</span></li>
-      <li><b>Hold inne Stopp</b><span>Sporet avsluttes ikke ved et uhell.</span></li>
-      <li><b>Nattmodus</b><span>Rødt lys på skjermen, med sporet og posisjonen godt synlig.</span></li>
-      <li><b>Feltsøk og arealsøk</b><span>Lag et felt på kartet og søk etter gjenstander eller figuranter, med tidsgrense og egen statistikk.</span></li>
-      <li><b>Vind og vær</b><span>Vindpil på kartet og været idet hunden starter sporet.</span></li>
-      <li><b>Vurdering av sporet</b><span>Gi karakter, vanskelighetsgrad og et læringspunkt etter hvert spor.</span></li>
-      <li><b>Rediger spor</b><span>Kutt starten og slutten av et spor i etterkant.</span></li>
-      <li><b>Flere spor i én PDF</b><span>Eksporter mange spor samlet, for eksempel til treningsloggen.</span></li>
-      <li><b>Sikkerhetskopi</b><span>Automatisk kopi av alle spor og hunder til iCloud Drive.</span></li>
-      <li><b>Velg språk</b><span>Norsk, svensk, engelsk eller tysk, uavhengig av språket på telefonen.</span></li>
-      <li><b>IGP-nivå og mal</b><span>Velg nivå fra IGP-V til FH 3, se skritt mot kravet og legg sporet etter en mal på kartet.</span></li>
-      <li><b>Markering</b><span>Ligg, sitt, stå, apport eller forbi, med ett trykk etter «Funnet».</span></li>
-      <li><b>Treningsmomenter</b><span>Lag egne momenter som «Spiss vinkel», og vurder dem etter sporet.</span></li>
-    </ul>
-  </div></section>
-
-  <section id="sporplaner" class="v2"><div class="wrap">
-    <span class="v2-merke">Ute nå</span>
-    <h2>Nytt i versjon 2.6: Sporplaner</h2>
-    <p class="lead">Versjon 2.6 er ute i App Store, som en gratis oppdatering for alle som har appen på iPhone. Nå kan du planlegge sporene på kartet hjemme, og legge dem etter planen ute i terrenget.</p>
-      <ul class="v2-liste">
-        <li><b>Tegn sporet på kartet</b><span>Trykk inn strekninger og gjenstander, og se lengden på hver strekning og hele sporet.</span></li>
-        <li><b>Grupper for treningsdagen</b><span>Samle sporene for samme dag og område på ett kart, og se med én gang om noen krysser eller ligger for nær hverandre.</span></li>
-        <li><b>Legg spor etter planen</b><span>Planen vises stiplet på kartet mens du legger sporet, med de andre sporene i gruppa svakt rundt.</span></li>
-        <li><b>Del med sporleggeren</b><span>Send planen til den som skal legge sporet, så havner den rett i Trax. Eller del den som GPX.</span></li>
-      </ul>
-  </div></section>
-
-  <section id="versjon-2-5" class="v2"><div class="wrap">
-    <h2>Nytt i versjon 2.5</h2>
-    <p class="lead">Versjon 2.5 ga deg en ny spordetalj og en egen side for hver hund.</p>
-      <ul class="v2-liste">
-        <li><b>Ny spordetalj</b><span>Stort kart øverst med avspilling, og faner for Oversikt, Avvik, Gjenstander og Forhold. En ny graf viser avviket langs sporet.</span></li>
-        <li><b>Hundesiden</b><span>Trykk på poten på hjemskjermen og se nøkkeltall, mål, treningsmomenter og utviklingen for hver hund.</span></li>
-        <li><b>«Krysser her» på IGP-spor</b><span>Trykk der kryss-sporet skal gå over, så teller kryssingen i IGP-kravet og du får varsel når hunden sporer forbi.</span></li>
-        <li><b>Markering i søk</b><span>Ligg, sitt, stå, apport eller forbi på feltsøk, og passiv markering, bringkobbel eller halsmarkering på arealsøk.</span></li>
-        <li><b>Rett funn etterpå</b><span>Trykk på en gjenstand i et lagret spor og velg Funnet eller Ikke funnet.</span></li>
-        <li><b>Stedsnavn og målestokk</b><span>Spor uten eget navn får stedsnavn og dato, og kartene har fått målestokk.</span></li>
-      </ul>
-    <p class="v2-mer">Spor som venter har fått samme utseende som ferdige spor, IGP-malen snus og feltet i søk formes med ett trykk og drag, og IGP-kravet for FH 2 og FH 3 teller nå kryssinger riktig. «Importer spor» og brukermanualen ligger nå i Innstillinger.</p>
-  </div></section>
-
-  <section id="deling" class="del"><div class="wrap del-g">
-    <div>
-      <h2>Del sporet med et bilde av hunden</h2>
-      <p>Velg et bilde fra kamerarullen, så legger Trax sporet, gjenstandene og tallene oppå. Du kan dele det som story eller innlegg, og velge fargene på sporet selv. Vil du heller vise bare sporet, får du det på en grønn bakgrunn.</p>
-    </div>
-    <img src="img/delebilde.webp" width="680" height="1209" loading="lazy" decoding="async" alt="Delebilde fra Trax: sporet med fire funne gjenstander lagt oppå et bilde av hunden min, med lengde, liggetid og funn nederst">
-  </div></section>
-
-  <section id="send-spor" class="del send"><div class="wrap del-g">
-    <div>
-      <h2>Send sporet til hundeføreren</h2>
-      <p>Sporlegger og hundefører trenger ikke bruke samme telefon. Trykk «Til en annen Trax-bruker» og send sporet med AirDrop eller e-post, så åpnes det rett i Trax hos mottakeren, klart til å gå. Ingen konto og ingen innlogging.</p>
-      <p class="tips">Bruk AirDrop eller e-post, ikke Meldinger. Går meldingen som SMS, kommer ikke filen fram.</p>
-    </div>
-    <img src="img/send-spor-nb.webp" width="800" height="1000" loading="lazy" decoding="async" alt="Tre steg for å dele et spor: sporleggeren trykker delingsknappen og velger «Til en annen Trax-bruker», sender med AirDrop eller e-post, og hundeføreren trykker «Gå sporet nå» i Trax">
-  </div></section>
-
-  <section id="om"><div class="wrap om-g">
-    <h2 class="sr">Laget av en som trener spor selv</h2>
+  <div class="vifte">
+    <div class="telefon t1"><img src="img/app/nb/home.webp" width="600" height="1304" alt="Hjemskjermen i Trax med siste spor" decoding="async" fetchpriority="high"></div>
+    <div class="telefon t2"><img src="img/app/nb/detail.webp" width="600" height="1304" alt="Spordetalj med kart, avspilling og fire av fire gjenstander funnet" decoding="async" fetchpriority="high"></div>
+    <div class="telefon t3"><img src="img/app/nb/dogpage.webp" width="600" height="1304" alt="Hundesiden med nøkkeltall og utvikling" decoding="async" fetchpriority="high"></div>
+  </div>
+</div></section>
+<section class="slik" id="slik"><div class="wrap">
+  <div class="tittel midt"><p class="smatittel">Slik fungerer det</p><h2>Fra plan til resultat, i én app.</h2></div>
+  <ul class="faner" role="tablist" aria-label="Steg" data-start="0">
+    <li role="presentation"><button type="button" role="tab" id="fane-1" aria-controls="steg-1" aria-selected="true"><span class="pin" aria-hidden="true">1</span>Planlegg</button></li><li role="presentation"><button type="button" role="tab" id="fane-2" aria-controls="steg-2" aria-selected="false"><span class="pin" aria-hidden="true">2</span>Legg</button></li><li role="presentation"><button type="button" role="tab" id="fane-3" aria-controls="steg-3" aria-selected="false"><span class="pin" aria-hidden="true">3</span>Spor</button></li><li role="presentation"><button type="button" role="tab" id="fane-4" aria-controls="steg-4" aria-selected="false"><span class="pin" aria-hidden="true">4</span>Se resultatet</button></li>
+  </ul>
+  <ol class="steg">
+    <li id="steg-1" role="tabpanel" aria-labelledby="fane-1">
+      <div class="tekst"><div class="hode"><span class="pin" aria-hidden="true">1</span><h3>Planlegg sporet</h3></div><span class="ios">iPhone</span> <p>Tegn strekninger og gjenstander på kartet hjemme, og send planen til sporleggeren.</p></div>
+      <div class="telefon"><img src="img/app/nb/plan-draw.webp" width="600" height="1304" alt="Sporplan tegnet på flyfoto med lengden på hver strekning" decoding="async" loading="lazy"></div>
+      <ul class="punkter"><li><b>Lengde underveis</b><span>For hver strekning og hele sporet.</span></li><li><b>Grupper</b><span>Se om sporene krysser eller ligger for nær.</span></li><li><b>Del planen</b><span>Rett inn i Trax eller som GPX.</span></li></ul>
+    </li><li id="steg-2" role="tabpanel" aria-labelledby="fane-2">
+      <div class="tekst"><div class="hode"><span class="pin" aria-hidden="true">2</span><h3>Legg sporet</h3></div><p>Trykk «Gjenstand» der du legger noe. Trax registrerer ruten med GPS, teller liggetiden og varsler når sporet er klart.</p></div>
+      <div class="telefon"><img src="img/app/nb/lay.webp" width="600" height="1304" alt="Sporlegging med tid, lengde og antall gjenstander" decoding="async" loading="lazy"></div>
+      <ul class="punkter"><li><b>Meter mellom gjenstander</b><span>Se avstanden siden forrige gjenstand.</span></li><li><b>Liggetid</b><span>Nedtelling på låseskjermen.</span></li><li><b>Hold inne Stopp</b><span>Sporet avsluttes ikke ved et uhell.</span></li></ul>
+    </li><li id="steg-3" role="tabpanel" aria-labelledby="fane-3">
+      <div class="tekst"><div class="hode"><span class="pin" aria-hidden="true">3</span><h3>Spor med hunden</h3></div><p>Ha telefonen i lomma. Du hører det når dere nærmer dere en gjenstand, og telefonen vibrerer hvis dere kommer bort fra sporet.</p></div>
+      <div class="telefon"><img src="img/app/nb/found.webp" width="600" height="1304" alt="Varselet «Nær gjenstand» mens hunden sporer" decoding="async" loading="lazy"></div>
+      <ul class="punkter"><li><b>Talevarsler</b><span>«Nær gjenstand» før dere er fremme.</span></li><li><b>Sportap</b><span>Vibrasjon når dere er bort fra sporet.</span></li><li><b>Funn automatisk</b><span>Registreres når du kommer fram.</span></li></ul>
+    </li><li id="steg-4" role="tabpanel" aria-labelledby="fane-4">
+      <div class="tekst"><div class="hode"><span class="pin" aria-hidden="true">4</span><h3>Se hva som skjedde</h3></div><p>Spill av sporet, se avviket langs ruten og hvor mange gjenstander hunden fant. Over tid ser du utviklingen for hver hund.</p></div>
+      <div class="telefon"><img src="img/app/nb/detail.webp" width="600" height="1304" alt="Spordetalj med kart, avspilling og resultat" decoding="async" loading="lazy"></div>
+      <ul class="punkter"><li><b>Avspilling</b><span>Se hele sporet på nytt.</span></li><li><b>Avvik</b><span>Graf langs hele sporet.</span></li><li><b>Vurdering</b><span>Karakter, vanskelighetsgrad og læringspunkt.</span></li></ul>
+    </li>
+  </ol>
+</div></section>
+<section id="treningsformer"><div class="wrap">
+  <div class="tittel"><p class="smatittel">Funksjoner</p><h2>Én app for hele sporarbeidet.</h2><p class="ingress">Spor, IGP-spor, blodspor, feltsøk og arealsøk i samme app.</p></div>
+  <div class="ruter" data-inn>
+    <article class="rute r4">
+      <div class="t"><span class="ios">iPhone</span> <h3>Sporplaner</h3><p>Planlegg treningsdagen hjemme. Tegn sporene på kartet, samle dem i en gruppe og se med én gang om noen krysser.</p></div>
+      <div class="utsnitt"><img src="img/app/nb/plan-draw.webp" width="600" height="1304" alt="Sporplan på flyfoto" loading="lazy" decoding="async"></div>
+    </article><article class="rute r2 mork">
+      <div class="t"><h3>Spordetaljen</h3><p>Avspilling, avvik, gjenstander og forhold på ett sted.</p></div>
+      <div class="utsnitt"><img src="img/app/nb/detail.webp" width="600" height="1304" alt="Spordetalj" loading="lazy" decoding="async"></div>
+    </article><article class="rute r2">
+      <div class="t"><h3>IGP-spor</h3><p>Nivå fra IGP-V til FH 3, mal på kartet og skritt mot kravet.</p></div>
+      <div class="utsnitt"><img src="img/app/nb/igp-check.webp" width="600" height="1304" alt="IGP-krav for et spor" loading="lazy" decoding="async"></div>
+    </article><article class="rute r2">
+      <div class="t"><h3>Blodspor</h3><p>Sårleie, blod igjen, vilt og fluktretning.</p></div>
+      <div class="utsnitt"><img src="img/app/nb/blood.webp" width="600" height="1304" alt="Blodspor under legging" loading="lazy" decoding="async"></div>
+    </article><article class="rute r2">
+      <div class="t"><h3>Feltsøk og arealsøk</h3><p>Tegn feltet, sett en tidsgrense og se tiden for hvert funn.</p></div>
+      <div class="utsnitt"><img src="img/app/nb/search-result.webp" width="600" height="1304" alt="Resultat av et feltsøk" loading="lazy" decoding="async"></div>
+    </article><article class="rute r3">
+      <div class="t"><h3>Hundesiden</h3><p>Nøkkeltall, mål, treningsmomenter og utviklingen for hver hund.</p></div>
+      <div class="utsnitt"><img src="img/app/nb/dogpage.webp" width="600" height="1304" alt="Hundesiden" loading="lazy" decoding="async"></div>
+    </article><article class="rute r3 natt">
+      <div class="t"><h3>Nattmodus</h3><p>Rødt lys på skjermen når du trener i mørket.</p></div>
+      <div class="utsnitt"><img src="img/app/nb/night.webp" width="600" height="1304" alt="Nattmodus med rødt lys" loading="lazy" decoding="async"></div>
+    </article>
+  </div>
+  <p class="mer-midt"><a class="mer" href="funksjoner/">Se alle funksjonene</a></p>
+</div></section>
+<section class="om" id="om"><div class="wrap"><div class="kort">
+  <div>
+    <p class="smatittel">Laget av en som trener spor selv</p>
     <blockquote>«Jeg trener hund nesten hver dag, og spor er noe av det morsomste jeg gjør.»</blockquote>
-    <div>
-      <div class="hvem"><span class="bilde"><img src="img/quatro-hode.jpg" width="160" height="160" loading="lazy" alt="Hunden min med en rød leke i munnen"></span><div><b>Silje Tillerflaten</b><span>Sporentusiast og utvikler av Trax</span></div></div>
-      <p>Trax laget jeg fordi jeg ville ha en enkel app som gjør akkurat det sporarbeidet trenger. Jeg bruker den selv når jeg trener spor med hunden min, og jobber hele tiden med å forbedre appen slik at den dekker alle behov. Jeg svarer på alle henvendelser selv.</p>
-    </div>
-  </div></section>
-
-  <section id="support"><div class="wrap">
-    <h2>Trenger du hjelp?</h2>
-    <p class="sup-intro">Send meg en e-post, så svarer jeg så raskt jeg kan, vanligvis innen to virkedager. Beskriv gjerne hva du prøvde å gjøre, hvilken telefon du har (iPhone eller Android) og hvilken versjon av iOS eller Android den kjører, og legg ved skjermbilde om mulig.</p>
-    <a class="post" href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=Hva%20pr%C3%B8vde%20du%20%C3%A5%20gj%C3%B8re%3F%0A%0A%0ATelefonmodell%3A%0AiOS-%2FAndroid-versjon%3A%0A">post@trax-dogtracking.no</a>
-    <h3 class="sr">Vanlige spørsmål</h3>
-    <div class="faq">
-      <div><h3>Sporet blir unøyaktig</h3><p>Sjekk at Trax har tilgang til posisjon «Ved bruk av appen» og at Nøyaktig posisjon er slått på under Innstillinger › Trax › Posisjon. GPS er mindre presis i tett skog og mellom høye bygninger.</p></div>
-      <div><h3>Hvordan sletter jeg dataene mine?</h3><p>Alt lagres bare på telefonen din. Du kan slette enkeltøkter i appen, eller slette appen for å fjerne alle data permanent.</p></div>
-      <div><h3>Kan jeg flytte data til en ny telefon?</h3><p>Dataene følger med når du gjenoppretter telefonen fra en iCloud- eller datamaskin-sikkerhetskopi. Du kan også eksportere økter fra appen.</p></div>
-    </div>
-    <div class="pv" id="personvern">
-      <h3>Personvern</h3>
-      <p>Alt du registrerer i Trax lagres bare på din egen telefon. Trax har ingen konto, ingen egen server og ingen reklame, og utvikleren har ikke tilgang til dataene dine.</p>
-      <a href="personvern/">Les hele personvernerklæringen</a>
-    </div>
-    <div class="pv" id="arrangorer">
-      <h3>For arrangører</h3>
-      <p>Arrangerer du kurs, stevne eller konkurranse? Jeg gir gjerne noen få gratiskoder for Trax per arrangement, til premiebordet eller instruktørene, både for iPhone og Android. Send meg en e-post om arrangementet og datoen, gjerne et par uker før.</p>
-      <a href="mailto:post@trax-dogtracking.no?subject=Gratiskoder%20til%20arrangement&amp;body=Arrangement%3A%0ADato%3A%0ASted%3A%0A">Spør om gratiskoder på e-post</a>
-    </div>
-  </div></section>
-</main>
-
-<footer><div class="wrap">
-  <p class="stort" aria-hidden="true">Trax</p>
-  <div class="fot">
-    <div class="fot-hent">
-      <h2>Last ned Trax</h2>
-      <div class="kjop"><p class="snart"><span class="chip">Snart i App Store</span></p><div class="live" hidden><a class="appstore" href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" width="144" height="48" loading="lazy" alt="Last ned fra App Store"></a><a class="googleplay" href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="img/google-play-nb.svg" width="162" height="48" loading="lazy" alt="Tilgjengelig på Google Play"></a></div></div>
-      <p class="fot-pris">Engangskjøp, ingen abonnement.</p>
-    </div>
-    <div class="fot-lenker">
-      <div><h2>Hjelp</h2><ul><li><a href="manual/">Brukermanual</a></li><li><a href="#support">Support</a></li><li><a href="personvern/">Personvern</a></li><li><a href="#arrangorer">For arrangører</a></li></ul></div>
-      <div><h2>Språk</h2><ul><li><span aria-current="page">Norsk</span></li><li><a href="sv/" hreflang="sv" lang="sv">Svenska</a></li><li><a href="en/" hreflang="en" lang="en">English</a></li><li><a href="de/" hreflang="de" lang="de">Deutsch</a></li></ul></div>
-    </div>
+    <p class="navn"><b>Silje Tillerflaten</b>Sporentusiast og utvikler av Trax</p>
+    <p class="ingress">Trax laget jeg fordi jeg ville ha en enkel app som gjør akkurat det sporarbeidet trenger. Jeg bruker den selv når jeg trener spor med hunden min, og jobber hele tiden med å forbedre appen slik at den dekker alle behov. Jeg svarer på alle henvendelser selv.</p>
   </div>
-  <div class="fot-bunn">
-    <p>© 2026 Silje Tillerflaten</p>
-    <p class="utvikler"><img src="img/tillerflaten-digital.png" width="24" height="24" alt="Logo for Tillerflaten Digital"> Utviklet av Tillerflaten Digital · Org.nr. 938 657 742</p>
+  <figure><img src="img/quatro.webp" width="720" height="720" alt="En hund ligger i gresset med en rød leke i munnen" loading="lazy" decoding="async"></figure>
+</div></div></section>
+<section class="last" id="last-ned"><div class="wrap"><div class="priskort">
+  <div>
+    <p class="smatittel">Pris</p>
+    <h2>Betal én gang. Bruk den så lenge du vil.</h2>
+    <div class="butikker"><a href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" width="156" height="52" alt="Last ned fra App Store"></a><a href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="img/google-play-nb.svg" width="176" height="52" alt="Tilgjengelig på Google Play"></a></div>
+  </div>
+  <div>
+    <p class="belop">149<small>kr</small></p>
+    <ul class="fordeler"><li>Alle funksjoner, ingen abonnement</li><li>Gratis oppdateringer</li><li>Ingen konto og ingen reklame</li><li>Sporene lagres på telefonen din</li><li>Norsk, svensk, engelsk og tysk</li></ul>
+  </div>
+</div></div></section>
+<section class="hjelp-forside"><div class="wrap">
+  <div class="tittel"><h2>Trenger du hjelp?</h2><p class="ingress">Jeg svarer på alle henvendelser selv, vanligvis innen to virkedager.</p></div>
+  <div class="hjelpekort" data-inn>
+    <a href="manual/"><b>Brukermanual</b><span>Alt om appen, steg for steg.</span></a><a href="hjelp/"><b>Vanlige spørsmål</b><span>GPS, ny telefon og sletting av data.</span></a><a href="mailto:post@trax-dogtracking.no?subject=Trax%20support&amp;body=Hva%20pr%C3%B8vde%20du%20%C3%A5%20gj%C3%B8re%3F%0A%0A%0ATelefonmodell%3A%0AiOS-%2FAndroid-versjon%3A%0A"><b>Skriv til meg</b><span>post@trax-dogtracking.no</span></a>
+  </div>
+</div></section>
+</main>
+<footer class="bunn"><div class="wrap">
+  <div class="rad">
+    <div>
+      <a class="merke" href=""><img src="img/icon-192.png" width="32" height="32" alt="">Trax</a>
+      <p>Sportrening med hund for iPhone og Android.</p>
+      <div class="butikker"><a href="https://apps.apple.com/app/id6758005408"><img src="img/app-store-nb.svg" width="120" height="40" alt="Last ned fra App Store"></a><a href="https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"><img src="img/google-play-nb.svg" width="135" height="40" alt="Tilgjengelig på Google Play"></a></div>
+    </div>
+    <div><h2>Produkt</h2><ul><li><a href="funksjoner/">Funksjoner</a></li><li><a href="nytt/">Nytt i Trax</a></li><li><a href="#last-ned">Last ned</a></li></ul></div>
+    <div id="support"><h2>Hjelp</h2><ul><li><a href="manual/">Brukermanual</a></li><li><a href="hjelp/">Support og spørsmål</a></li><li><a href="hjelp/#arrangorer">For arrangører</a></li><li><a href="mailto:post@trax-dogtracking.no">post@trax-dogtracking.no</a></li></ul></div>
+    <div><h2>Språk</h2><ul><li><a href=""><span lang="nb">Norsk</span></a></li><li><a href="sv/"><span lang="sv">Svenska</span></a></li><li><a href="en/"><span lang="en">English</span></a></li><li><a href="de/"><span lang="de">Deutsch</span></a></li></ul></div>
+  </div>
+  <div class="nederst">
+    <span class="utvikler"><img src="img/tillerflaten-digital.png" width="24" height="24" alt="Logo for Tillerflaten Digital">© 2026 Utviklet av Tillerflaten Digital · Org.nr. 938 657 742</span>
+    <a href="personvern/">Personvern</a>
   </div>
 </div></footer>
-
-<script>
-/* Språkvelger: lukk menyen ved klikk utenfor eller Escape */
-(function(){var d=document.querySelector('.lang');if(!d)return;
-document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus()}});})();
-</script>
-<script>
-/* Lanseringsdato (data-lansering på <body>, ÅÅÅÅ-MM-DD): bytt «Snart i App Store» med App Store-merket fra datoen,
-   og menyknappen går til App Store */
-(function(){var d=document.body.getAttribute('data-lansering');if(!d)return;
-var t=new Date(d+'T00:00:00').getTime(),n=Date.now();if(isNaN(t)||n<t)return;
-var k=document.querySelectorAll('.kjop');for(var j=0;j<k.length;j++){k[j].querySelector('.snart').hidden=true;k[j].querySelector('.live').hidden=false}})();
-</script>
-<script src="spor.js" defer></script>
-<script src="galleri.js" defer></script>
-<script src="forside.js" defer></script>
+<script src="side.js?v=2" defer></script>
 <script data-goatcounter="https://trax-dogtracking.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
