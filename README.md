@@ -42,6 +42,7 @@ Skriptet lager også `sitemap.xml` og `robots.txt`. Det kan kjøres så mange ga
 
 - Skriftene Inter og Inter Tight ligger i `fonter/` (latinske tegn, woff2). De lastes fra vår egen side, ikke fra Google Fonts, så besøkende ikke sendes til Google. Lisens: SIL Open Font License 1.1, © The Inter Project Authors.
 - `img/app/<språk>/<navn>.webp` (600 × 1304): skjermbildene på forsiden og Nytt. De er laget fra manualbildene i app-repoet (`Trax/Assets.xcassets/manual-<navn>[-sv|-en|-de]`), så de viser appen slik den er nå. Når appen endres, lag dem på nytt fra de samme bildene.
+- `img/app/<språk>/kort-<navn>.webp`: utsnittene på funksjonskortene på forsiden (Sporplaner, Spordetaljen, IGP-spor osv.). Hvert kort viser den delen av et manualbilde som viser funksjonen, og ingen ekte hundenavn. Hvilken del står i `verktoy/kortbilder.py`; lag dem på nytt med `python3 verktoy/kortbilder.py ../Trax` og kjør så `lag-sider.py`.
 - `img/quatro.webp` (720 × 720): bildet i «Om»-delen, uten metadata.
 - `img/delebilde.webp`: delebildet på Funksjoner (ekte bilde laget av Trax).
 - `img/galleri/`: galleriet på Funksjoner (iPhone sju bilder, Android åtte bilder per språk).

@@ -10,7 +10,7 @@ BASE_URL = "https://trax-dogtracking.no/"
 APP_STORE = "https://apps.apple.com/app/id6758005408"
 GOOGLE_PLAY = "https://play.google.com/store/apps/details?id=tillerflatendigital.trax.android"
 EPOST = "post@trax-dogtracking.no"
-VERSJON = "2"  # øk når stil.css eller side.js endres, så nettlesere henter ny fil
+VERSJON = "3"  # øk når stil.css eller side.js endres, så nettlesere henter ny fil
 
 # Adressene til hver side på hvert språk. Personvern og manual har adressene de alltid har hatt (App Store lenker dit).
 SIDER = {
