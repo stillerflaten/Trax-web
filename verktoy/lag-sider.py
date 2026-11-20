@@ -18,6 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from felles import (BASE_URL, EPOST, SIDER, SPRAK, butikker, bunn, esc, head, nav, opp)  # noqa: E402
 from tekster import T  # noqa: E402
+import kortbilder  # noqa: E402
 
 WEB = Path(__file__).resolve().parent.parent
 AAR = datetime.date.today().year
@@ -106,7 +107,7 @@ def forside(l):
     for k in t["kort"]:
         kort.append(f"""<article class="rute {k["k"]}">
       <div class="t">{ios_merke(k.get("ios"))}<h3>{k["tittel"]}</h3><p>{k["tekst"]}</p></div>
-      <div class="utsnitt"><img src="{up}img/app/{c}/{k["bilde"]}.webp" width="600" height="1304" alt="{esc(k["alt"])}" loading="lazy" decoding="async"></div>
+      <div class="utsnitt"><img src="{up}img/app/{c}/{k["bilde"]}.webp" width="{kortbilder.BREDDE}" height="{kortbilder.hoyde(k["bilde"])}" alt="{esc(k["alt"])}" loading="lazy" decoding="async"></div>
     </article>""")
     ruter = f"""<section id="treningsformer"><div class="wrap">
   <div class="tittel"><p class="smatittel">{r["smatittel"]}</p><h2>{r["h2"]}</h2><p class="ingress">{r["ingress"]}</p></div>
